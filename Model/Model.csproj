@@ -47,6 +47,7 @@
     <Compile Include="SearchModel.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Wall.cs" />
+    <Compile Include="WallListViewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

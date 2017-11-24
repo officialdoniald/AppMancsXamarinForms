@@ -4,20 +4,73 @@
              x:Class="AppMancsXamarinForms.HomePage"
              Title="Home">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView ItemsSource="{Binding asd}" x:Name="eventListView">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Label Text="{Binding text}">
-                                <Label.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"  NumberOfTapsRequired="1"></TapGestureRecognizer>
-                                </Label.GestureRecognizers>
-                            </Label>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <ListView SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding wallListViewAdapter}" x:Name="wallListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"></RowDefinition>
+                                        <RowDefinition Height="350"></RowDefinition>
+                                        <RowDefinition Height="25"></RowDefinition>
+                                        <RowDefinition Height="25"></RowDefinition>
+                                        <RowDefinition Height="65"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                <Image 
+                                    HeightRequest="50"
+                                    WidthRequest="50"
+                                    Source="{Binding profilepictureURL}"
+                                    Grid.Row="0"
+                                    Grid.Column="0"/>
+                                <Label
+                                    Text="{Binding petName}"
+                                    Grid.Row="0"
+                                    Grid.Column="1">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            NumberOfTapsRequired="1"
+                                            Tapped="TapGestureRecognizer_Tapped_1"
+                                        ></TapGestureRecognizer>    
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Image
+                                    HeightRequest="350"
+                                    VerticalOptions="StartAndExpand"
+                                    Source="{Binding pictureURL}"
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2" />
+                                <Label 
+                                    Text="{Binding howManyLikes}"
+                                    Grid.Row="2"
+                                    Grid.ColumnSpan="2">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            NumberOfTapsRequired="1"
+                                            Tapped="TapGestureRecognizer_Tapped_1"
+                                        ></TapGestureRecognizer>
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label
+                                    Text="{Binding hashtags}"
+                                    Grid.Row="3"
+                                    Grid.ColumnSpan="2"/>
+                                <Button
+                                    Text="{Binding followButtonText}"
+                                    Clicked="Button_Clicked_1"
+                                    Grid.Row="4"
+                                    Grid.ColumnSpan="2"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
