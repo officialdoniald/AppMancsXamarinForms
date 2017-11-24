@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMancsXamarinForms.NotPrimaryPages.WhosLiked">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView 
+                ItemsSource="{Binding listViewWithPictureAndSomeText}" 
+                x:Name="userListView"
+                ItemTapped="userListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="65"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image 
+                                    HeightRequest="50" 
+                                    WidthRequest="50" 
+                                    Source="{Binding ProfilePicture}"
+                                    Grid.Row="0" 
+                                    Grid.Column="0"/>
+                                <Label 
+                                    Text="{Binding Name}"
+                                    Grid.Row="0" 
+                                    Grid.Column="1"
+                                    />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

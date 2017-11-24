@@ -40,6 +40,7 @@
     <Compile Include="Following.cs" />
     <Compile Include="Hashtags.cs" />
     <Compile Include="Likes.cs" />
+    <Compile Include="ListViewWithPictureAndSomeText.cs" />
     <Compile Include="Pet.cs" />
     <Compile Include="Petpictures.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

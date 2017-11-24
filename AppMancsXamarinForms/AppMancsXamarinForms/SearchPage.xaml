@@ -4,10 +4,22 @@
              x:Class="AppMancsXamarinForms.SearchPage"
              Title="Keresés">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            Orientation="Vertical">
+            <Entry
+                x:Name="searchEntry"
+                Placeholder="Írj ami érdekel"
+                TextChanged="searchEntry_TextChanged"/>
+            
+                <ListView ItemTapped="searchListView_ItemTapped" ItemsSource="{Binding searchModelList}" x:Name="searchListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding hashtag}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

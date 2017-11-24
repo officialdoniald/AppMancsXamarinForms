@@ -8,8 +8,8 @@
             <ListView ItemsSource="{Binding asd}" x:Name="eventListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                    <ViewCell>
-                        <Label Text="{Binding text}">
+                        <ViewCell>
+                            <Label Text="{Binding text}">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"  NumberOfTapsRequired="1"></TapGestureRecognizer>
                                 </Label.GestureRecognizers>
@@ -17,7 +17,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                </ListView>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
