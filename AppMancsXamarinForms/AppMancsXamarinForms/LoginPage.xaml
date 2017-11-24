@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMancsXamarinForms.LoginPage"
+             Title="AppMancs">
+    <ContentPage.Content>
+        <StackLayout
+            Orientation="Vertical">
+            <Label
+                Text="E-Mail:"/>
+            <Entry
+                x:Name="emailEntry"
+                />
+            <Label
+                Text="Jelszó:"/>
+            <Entry
+                x:Name="pwEntry"
+                />
+            <Button
+                x:Name="loginButton"
+                Text="Bejelentkezés"
+                Clicked="loginButton_Clicked"/>
+            <Button
+                x:Name="signUpButton"
+                Text="Regisztrálás"
+                Clicked="signUpButton_Clicked"/>
+            <Button
+                x:Name="loginFacebookButton"
+                Text="Bejelentkezés Facebook fiókkal"
+                Clicked="loginFacebookButton_Clicked"/>
+            <Button
+                x:Name="forgotPasswordButton"
+                Text="Elfelejtett jelszó"
+                Clicked="forgotPasswordButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
