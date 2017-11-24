@@ -64,12 +64,7 @@ namespace AppMancsXamarinForms
                 return "Tetszik";
             }
         }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new HomePage());
-        }
-
+        
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Label label = (Label)sender;

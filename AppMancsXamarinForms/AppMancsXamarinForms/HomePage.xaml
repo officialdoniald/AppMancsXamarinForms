@@ -35,7 +35,7 @@
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer
                                             NumberOfTapsRequired="1"
-                                            Tapped="TapGestureRecognizer_Tapped_1"
+                                            Tapped="TapGestureRecognizer_Tapped"
                                         ></TapGestureRecognizer>    
                                     </Label.GestureRecognizers>
                                 </Label>
