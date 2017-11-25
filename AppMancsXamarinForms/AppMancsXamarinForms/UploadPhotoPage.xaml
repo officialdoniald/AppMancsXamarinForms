@@ -4,10 +4,25 @@
              x:Class="AppMancsXamarinForms.UploadPhotoPage"
              Title="Fotó">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Button
+                Text="Galéria"
+                x:Name="galleryButton"
+                Clicked="galleryButton_ClickedAsync"/>
+            <Image
+                x:Name="pictureImage"/>
+            <Picker
+                x:Name="petPicker"
+                Title="Háziállataim"
+                VerticalOptions="Center"
+                SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
+            <Entry 
+                x:Name="hashtagsEntry"
+                Placeholder="Hashtagek (pl.: #legszebb)"/>
+            <Button
+                Text="Fotó feltöltése"
+                x:Name="addPhotoButton"
+                Clicked="addPhotoButton_ClickedAsync"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

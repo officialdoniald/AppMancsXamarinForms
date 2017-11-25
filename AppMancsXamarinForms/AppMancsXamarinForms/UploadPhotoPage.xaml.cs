@@ -1,5 +1,12 @@
-﻿using System;
+﻿using AppMancsXamarinForms.BLL.ViewModel;
+using AppMancsXamarinForms.FileStoreAndLoad;
+using AppMancsXamarinForms.NotPrimaryPages;
+using Model;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,47 +19,61 @@ namespace AppMancsXamarinForms
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UploadPhotoPage : ContentPage
     {
+        private MediaFile mediaFile;
+
+        private Stream f;
+
+        private string pathf = "";
+
+        private int selectedPetId = -1;
+
+        private string userEmail = "";
+
+        private UploadPhotoFragmentViewModel uploadPhotoFragmentViewModel =
+            new UploadPhotoFragmentViewModel();
+
+        private User user = new User();
+
+        private string[] myPets = new string[] { };
+
+        private List<Pet> myPetList = new List<Pet>();
+
         public UploadPhotoPage()
         {
             InitializeComponent();
-        }
 
-        /*
-         #region takeandselectphoto
+            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
 
-        private async void takePhoto_Clicked(object sender, EventArgs e)
-        {
-            await CrossMedia.Current.Initialize();
+            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
 
-            if (!CrossMedia.Current.IsCameraAvailable ||
-                !CrossMedia.Current.IsTakePhotoSupported)
+            user = uploadPhotoFragmentViewModel.GetUserByEmail(userEmail);
+
+            myPetList = uploadPhotoFragmentViewModel.GetMyPets(user.id);
+
+            myPets = new string[myPetList.Count];
+
+            int i = 0;
+
+            if (myPetList.Count != 0)
             {
-                await DisplayAlert("Warning", "No camera available, please try again later!", "OK");
-                return;
+                selectedPetId = myPetList[0].id;
             }
 
-            var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            foreach (var item in myPetList)
             {
-                SaveToAlbum = true,
-                Name = "test.jpg"
-            });
+                myPets[i] = item.Name;
 
-            if (file == null) return;
+                i++;
+            }
 
-            photo = DependencyService.Get<IFileToByte>().ReadAllByteS(file.Path);
-
-            f = file.GetStream();
-            pathf = file.Path;
-
-            imageFromDevice.Source = ImageSource.FromStream(() => file.GetStream());
-
+            petPicker.ItemsSource = myPets;
         }
 
-        private async void selectPhoto_Clicked(object sender, EventArgs e)
+        private async Task galleryButton_ClickedAsync(object sender, EventArgs e)
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
-                await DisplayAlert(cimkek.GetWarning(), cimkek.GetNoPicking(), cimkek.GetOK());
+                await DisplayAlert("Warning", "No picking available, please try again later!", "OK");
                 return;
             }
 
@@ -62,74 +83,29 @@ namespace AppMancsXamarinForms
 
             if (file == null) return;
 
-            photo = DependencyService.Get<IFileToByte>().ReadAllByteS(file.Path);
-
             f = file.GetStream();
             pathf = file.Path;
 
-            imageFromDevice.Source = ImageSource.FromStream(() => file.GetStream());
+            pictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
 
-        private async void updatePictureButton_Clicked(object sender, EventArgs e)
+        private async Task addPhotoButton_ClickedAsync(object sender, EventArgs e)
         {
-            indicatorStackLayout.IsVisible = activityIndicator.IsVisible = activityIndicator.IsRunning = true;
-            mainStackLayout.IsVisible = false;
+            string success = await uploadPhotoFragmentViewModel.UploadPictureAsync(pathf, f, selectedPetId, hashtagsEntry.Text);
 
-            if (photo == null || photo.Length == 0)
+            if (!String.IsNullOrEmpty(success))
             {
-                indicatorStackLayout.IsVisible = activityIndicator.IsVisible = activityIndicator.IsRunning = false;
-                mainStackLayout.IsVisible = true;
-                await DisplayAlert(cimkek.GetWarning(), cimkek.GetChoosePhoto(), cimkek.GetOK());
+                //HIBA
             }
             else
             {
-                string uniqueBlobName = await blobStorage.UploadFileAsync(pathf, f);
-
-                newUser.PROFILEPICTURE = "https://officialdoniald.blob.core.windows.net/invme/" + uniqueBlobName;
-
-                try
-                {
-                    bool successInsert = false;
-
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.iOS:
-                            successInsert = DependencyService.Get<IiOSDatabaseAccess>().UpdateUser(newUser.id, newUser);
-                            break;
-                        case Device.Android:
-                            successInsert = DependencyService.Get<IAndroidDatabaseAccess>().UpdateUser(newUser.id, newUser);
-                            break;
-                        case Device.WinPhone:
-                            successInsert = await DependencyService.Get<IDatabaseAccess>().UpdateUser(newUser.id, newUser);
-                            break;
-                        case Device.Windows:
-                            successInsert = await DependencyService.Get<IDatabaseAccess>().UpdateUser(newUser.id, newUser);
-                            break;
-                        default:
-                            indicatorStackLayout.IsVisible = activityIndicator.IsVisible = activityIndicator.IsRunning = false;
-                            mainStackLayout.IsVisible = true;
-                            await DisplayAlert(cimkek.GetWarning(), cimkek.GetSomethingWentWrong(), cimkek.GetOK());
-                            break;
-                    }
-
-                    if (successInsert)
-                    {
-                        await DisplayAlert(cimkek.GetSuccess(), cimkek.GetYouHaceChangedyourPhoto(), cimkek.GetOK());
-
-                        await Navigation.PushModalAsync(new NavigationPage(new MainPage(newUser)));
-                    }
-                }
-                catch (Exception ex2)
-                {
-                    indicatorStackLayout.IsVisible = activityIndicator.IsVisible = activityIndicator.IsRunning = false;
-                    mainStackLayout.IsVisible = true;
-                    await DisplayAlert(cimkek.GetWarning(), ex2.Message, cimkek.GetOK());
-                }
-
+                await Navigation.PushAsync(new SeeMyPetProfile(selectedPetId));
             }
         }
 
-        #endregion
-             */
+        private void petPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedPetId = myPetList[petPicker.SelectedIndex].id;
+        }
     }
 }
