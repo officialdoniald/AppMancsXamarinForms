@@ -3,10 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.AddPetPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Button
+                Text="Galéria"
+                x:Name="galleryButton"
+                Clicked="galleryButton_ClickedAsync"/>
+            <Image
+                x:Name="profilePictureImage"/>
+            <Label
+                Text="Név"/>
+            <Entry
+                x:Name="nameEntry"/>
+            <Label
+                Text="Kor"/>
+            <Entry
+                x:Name="ageEntry"/>
+            <Label
+                Text="Faj"/>
+            <Entry
+                x:Name="typeEntry"/>
+            <StackLayout Orientation="Horizontal">
+                <Switch
+                    x:Name="shelterpetSwitch"/>
+                <Label
+                    Text="Menhelyen él-e"
+                    VerticalOptions="Center"/>
+            </StackLayout>
+            <Button
+                Text="Létrehoz"
+                x:Name="addPetButton"
+                Clicked="addPetButton_ClickedAsync"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

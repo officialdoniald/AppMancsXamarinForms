@@ -3,10 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.UpdateProfilePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <Label
+                    Text="Vezetéknév"/>
+                <Entry
+                    x:Name="lastnameEntry"/>
+                <Label
+                    Text="Keresztnév"/>
+                <Entry
+                    x:Name="firstnameEntry"/>
+                <Button
+                    Text="Módosít"
+                    x:Name="updateMyProfileButton"
+                    Clicked="updateMyProfileButton_ClickedAsync"/>
+                <Button
+                    Text="Facebook fiók módosítása"
+                    x:Name="changeFaceookButton"
+                    Clicked="changeFaceookButton_ClickedAsync"/>
+                <Label
+                    Text="E-Mail"/>
+                <Entry
+                    x:Name="emailEntry"/>
+                <Button
+                    Text="Módosít"
+                    x:Name="changeEmailButton"
+                    Clicked="changeEmailButton_ClickedAsync"/>
+                <Button
+                    Text="Galéria"
+                    x:Name="galleryButton"
+                    Clicked="galleryButton_ClickedAsync"/>
+                <Image
+                    x:Name="profilePictureImage"/>
+                <Button
+                    Text="Módosít"
+                    x:Name="changeProfilePictureButton"
+                    Clicked="changeProfilePictureButton_ClickedAsync"/>
+                <Label
+                    Text="Jelenlegi jelszó"/>
+                <Entry
+                    x:Name="pwEntry"/>
+                <Label
+                    Text="Új jelszó"/>
+                <Entry
+                    x:Name="newpwEntry"/>
+                <Button
+                    Text="Módosít"
+                    x:Name="changepwButton"
+                    Clicked="changepwButton_ClickedAsync"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

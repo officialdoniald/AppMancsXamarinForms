@@ -3,10 +3,46 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.UpdatePetProfilePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <Button
+                Text="Galéria"
+                x:Name="galleryButton"
+                Clicked="galleryButton_ClickedAsync"/>
+            <Image
+                x:Name="profilePictureImage"/>
+            <Button
+                Text="Módosít"
+                x:Name="changeProfilePictureButton"
+                Clicked="changeProfilePictureButton_Clicked"/>
+            <Label
+                Text="Név"/>
+            <Entry
+                x:Name="nameEntry"/>
+            <Label
+                Text="Kor"/>
+            <Entry
+                x:Name="ageEntry"/>
+            <Label
+                Text="Faj"/>
+            <Entry
+                x:Name="typeEntry"/>
+            <StackLayout Orientation="Horizontal">
+                <Switch
+                    x:Name="shelterpetSwitch"/>
+                <Label
+                    Text="Menhelyen él-e"
+                    VerticalOptions="Center"/>
+            </StackLayout>
+            <Button
+                Text="Módosít"
+                x:Name="changePetButton"
+                Clicked="changePetButton_ClickedAsync"/>
+            <Button
+                Text="Profil törlése"
+                x:Name="deletePetButton"
+                Clicked="deletePetButton_ClickedAsync"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

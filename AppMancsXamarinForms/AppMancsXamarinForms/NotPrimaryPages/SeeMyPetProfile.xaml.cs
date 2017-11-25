@@ -96,12 +96,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private void updateButton_Clicked(object sender, EventArgs e)
         {
-            //TODO
-        }
-
-        private void deleteButton_Clicked(object sender, EventArgs e)
-        {
-            //TODO
+            Navigation.PushAsync(new UpdatePetProfilePage(thisPet.id));
         }
     }
 }
