@@ -35,7 +35,10 @@ namespace AppMancsXamarinForms
 
             userNameLabel.Text = user.FirstName + " " + user.LastName;
 
-            profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+            if(!String.IsNullOrEmpty(user.ProfilePictureURL))
+            {
+                profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+            }
 
             petList = seeAnOwnerProfileViewModel.GetPet(user.id);
 

@@ -29,7 +29,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             User user = seeAnOwnerProfileViewModel.GetUser(userID);
 
-            profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+            if (!String.IsNullOrEmpty(user.ProfilePictureURL))
+            {
+                profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+            }
 
             userNameLabel.Text = user.FirstName + " " + user.LastName;
 

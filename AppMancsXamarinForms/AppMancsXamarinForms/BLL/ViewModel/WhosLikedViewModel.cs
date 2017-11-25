@@ -44,5 +44,10 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 return false;
             }
         }
+
+        public Pet GetPetByPetId(int petpicturesid)
+        {
+            return DependencyService.Get<IDBAccess.IBlobStorage>().GetPetByID(DependencyService.Get<IDBAccess.IBlobStorage>().GetOnePetpicturesByID(petpicturesid).PetID);
+        }
     }
 }

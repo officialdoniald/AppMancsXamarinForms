@@ -11,6 +11,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WhosLiked : ContentPage
     {
+        private Pet thisPet = new Pet();
+
         private string userEmail = "";
 
         private int petpicturesid = -1;
@@ -27,6 +29,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             this.petpicturesid = petpicturesid;
 
+            //thisPet = whosLikedViewModel.GetPetByPetId(petpicturesid);
+
 			InitializeComponent ();
 
             users = whosLikedViewModel.GetUserList(petpicturesid);
@@ -35,16 +39,29 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             foreach (var item in users)
             {
-                listViewWithPictureAndSomeText.Add(new ListViewWithPictureAndSomeText()
+                ListViewWithPictureAndSomeText listViewWith = new ListViewWithPictureAndSomeText()
                 {
                     user = item,
-                    ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
                     Name = item.LastName + " " + item.FirstName
-                });
+                    //pet = thisPet
+                };
+
+                if (!String.IsNullOrEmpty(item.ProfilePictureURL))
+                {
+                    listViewWith.ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL));
+                }
+                else
+                {
+                    listViewWith.ProfilePicture = "";
+                }
+                
+                listViewWithPictureAndSomeText.Add(listViewWith);
             }
 
             userListView.ItemsSource = listViewWithPictureAndSomeText;
         }
+        
+
 
         private void userListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -52,7 +69,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             var selectedLVWPAST = (ListViewWithPictureAndSomeText)listView.SelectedItem;
 
-            if (!whosLikedViewModel.IsMyPet(selectedLVWPAST.pet.id, userEmail))
+            if (userEmail != selectedLVWPAST.user.Email)
             {
                 var searchResultPage = new SeeAnOwnerPage(selectedLVWPAST.user.id);
 
