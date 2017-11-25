@@ -24,10 +24,10 @@
                 x:Name="signUpButton"
                 Text="Regisztrálás"
                 Clicked="signUpButton_Clicked"/>
-            <Button
+            <!--<Button
                 x:Name="loginFacebookButton"
                 Text="Bejelentkezés Facebook fiókkal"
-                Clicked="loginFacebookButton_Clicked"/>
+                Clicked="loginFacebookButton_Clicked"/>-->
             <Button
                 x:Name="forgotPasswordButton"
                 Text="Elfelejtett jelszó"
