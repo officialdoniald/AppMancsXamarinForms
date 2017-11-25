@@ -4,10 +4,27 @@
              x:Class="AppMancsXamarinForms.SignUpPage"
              Title="Regisztráció">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Label
+                Text="Vezetéknév"/>
+            <Entry
+                x:Name="lastnameEntry"/>
+            <Label
+                Text="Keresztnév"/>
+            <Entry
+                x:Name="firstnameEntry"/>
+            <Label
+                Text="E-Mail"/>
+            <Entry
+                x:Name="emailEntry"/>
+            <Label
+                Text="Jelszó"/>
+            <Entry
+                x:Name="pwEntry"/>
+            <Button
+                Text="Regisztráció"
+                x:Name="signupButton"
+                Clicked="signupButton_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
