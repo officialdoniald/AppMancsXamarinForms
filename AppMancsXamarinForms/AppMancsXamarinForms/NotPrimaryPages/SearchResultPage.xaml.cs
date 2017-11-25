@@ -1,4 +1,6 @@
-﻿using Model;
+﻿using AppMancsXamarinForms.BLL.ViewModel;
+using AppMancsXamarinForms.FileStoreAndLoad;
+using Model;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -12,6 +14,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         List<Petpictures> petpicturesList =
             new List<Petpictures>();
 
+        private WhosLikedViewModel whosLikedViewModel = new WhosLikedViewModel();
+
+        private string userEmail = "";
+
         public SearchResultPage()
         {
             InitializeComponent();
@@ -19,6 +25,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         public SearchResultPage(List<Petpictures> petpicturesList)
         {
+            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+
+            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
+
             this.petpicturesList = petpicturesList;
 
             InitializeComponent();
@@ -64,7 +74,14 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         
         public void OnPictureClicked(Petpictures petpictures)
         {
-            Navigation.PushAsync(new SeeAPicturePage(petpictures));
+            if (!whosLikedViewModel.IsMyPet(petpictures.PetID, userEmail))
+            {
+                Navigation.PushAsync(new SeeAPicturePage(petpictures));
+            }
+            else
+            {
+                Navigation.PushAsync(new SeeMyPicturePage(petpictures));
+            }
         }
     }
 }

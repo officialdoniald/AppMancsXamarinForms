@@ -28,5 +28,21 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             return userList;
         }
+
+        public bool IsMyPet(int petid, string userEmail)
+        {
+            var user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
+
+            var pet = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetByID(petid);
+
+            if (pet.Uploader == user.id)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

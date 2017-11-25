@@ -23,6 +23,8 @@ namespace AppMancsXamarinForms
                 var page = new AppMancsXamarinForms.MainPage();
 
                 MainPage = new NavigationPage(page);
+
+                NavigationPage.SetHasNavigationBar(page, false);
             }
             else
             {

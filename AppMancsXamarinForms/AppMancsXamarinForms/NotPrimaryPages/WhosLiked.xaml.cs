@@ -1,11 +1,8 @@
 ﻿using AppMancsXamarinForms.BLL.ViewModel;
+using AppMancsXamarinForms.FileStoreAndLoad;
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,6 +11,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WhosLiked : ContentPage
     {
+        private string userEmail = "";
+
         private int petpicturesid = -1;
 
         private List<User> users = new List<User>();
@@ -22,6 +21,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         public WhosLiked (int petpicturesid)
 		{
+            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+
+            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
+
             this.petpicturesid = petpicturesid;
 
 			InitializeComponent ();
@@ -49,9 +52,18 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             var selectedLVWPAST = (ListViewWithPictureAndSomeText)listView.SelectedItem;
 
-            var searchResultPage = new SeeAnOwnerPage(selectedLVWPAST.user.id);
+            if (!whosLikedViewModel.IsMyPet(selectedLVWPAST.pet.id, userEmail))
+            {
+                var searchResultPage = new SeeAnOwnerPage(selectedLVWPAST.user.id);
 
-            Navigation.PushAsync(searchResultPage);
+                Navigation.PushAsync(searchResultPage);
+            }
+            else
+            {
+                var searchResultPage = new MyAccountPage();
+
+                Navigation.PushAsync(searchResultPage);
+            }
         }
     }
 }

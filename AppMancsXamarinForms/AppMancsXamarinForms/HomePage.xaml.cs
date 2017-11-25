@@ -26,6 +26,8 @@ namespace AppMancsXamarinForms
 
         private HomeFragmentViewModel homeFragmentViewModel = new HomeFragmentViewModel();
 
+        private WhosLikedViewModel whosLikedViewModel = new WhosLikedViewModel();
+
         public HomePage()
         {
             FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
@@ -38,16 +40,19 @@ namespace AppMancsXamarinForms
 
             foreach (var item in wallList)
             {
-                wallListViewAdapter.Add(new WallListViewAdapter()
+                if (!whosLikedViewModel.IsMyPet(item.petpictures.PetID, userEmail))
                 {
-                    wallItem = item,
-                    howManyLikes = item.howmanylikes.ToString(),
-                    petName = item.name,
-                    profilepictureURL = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
-                    pictureURL = ImageSource.FromUri(new Uri(item.petpictures.PictureURL)),
-                    followButtonText = followButtonText(item.haveILiked),
-                     hashtags = homeFragmentViewModel.GetHashtags(item.petpictures.id)
-                });
+                    wallListViewAdapter.Add(new WallListViewAdapter()
+                    {
+                        wallItem = item,
+                        howManyLikes = item.howmanylikes.ToString(),
+                        petName = item.name,
+                        profilepictureURL = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
+                        pictureURL = ImageSource.FromUri(new Uri(item.petpictures.PictureURL)),
+                        followButtonText = followButtonText(item.haveILiked),
+                        hashtags = homeFragmentViewModel.GetHashtags(item.petpictures.id)
+                    });
+                }
             }
 
             wallListView.ItemsSource = wallListViewAdapter;
@@ -64,14 +69,21 @@ namespace AppMancsXamarinForms
                 return "Tetszik";
             }
         }
-        
+
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             Label label = (Label)sender;
 
             var wallListViewAdapterClicked = (WallListViewAdapter)label.BindingContext;
 
-            Navigation.PushAsync(new SeeAPetProfile(wallListViewAdapterClicked.wallItem.petpictures.PetID));
+            if (!whosLikedViewModel.IsMyPet(wallListViewAdapterClicked.wallItem.petpictures.PetID, userEmail))
+            {
+                Navigation.PushAsync(new SeeAPetProfile(wallListViewAdapterClicked.wallItem.petpictures.PetID));
+            }
+            else
+            {
+                Navigation.PushAsync(new SeeMyPetProfile(wallListViewAdapterClicked.wallItem.petpictures.PetID));
+            }
         }
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
