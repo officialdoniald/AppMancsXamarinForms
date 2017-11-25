@@ -35,6 +35,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             {
                 var page = new LoginPage();
 
+                Navigation.PushAsync(page);
+
                 NavigationPage.SetHasNavigationBar(page, false);
             }
         }
@@ -46,6 +48,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             fileStoreAndLoading.InsertToFile("login.txt","");
 
             var page = new LoginPage();
+
+            Navigation.PushAsync(page);
 
             NavigationPage.SetHasNavigationBar(page, false);
         }
