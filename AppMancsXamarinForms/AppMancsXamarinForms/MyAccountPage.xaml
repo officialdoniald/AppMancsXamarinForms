@@ -4,10 +4,52 @@
              x:Class="AppMancsXamarinForms.MyAccountPage"
              Title="Fiók">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Image x:Name="profilePictureImage"/>
+            <Label x:Name="userNameLabel"/>
+            <Button
+                x:Name="otherButton"
+                Text="Többi"
+                Clicked="otherButton_Clicked"/>
+            <Button
+                x:Name="updateProfileButton"
+                Text="Profilom szerkesztése"
+                Clicked="updateProfileButton_Clicked"/>
+            <Label Text="Háziállataim:"></Label>
+            <Button
+                x:Name="addPetButton"
+                Text="Háziállat hozzáadása"
+                Clicked="addPetButton_Clicked"/>
+            <ListView 
+                ItemsSource="{Binding listViewWithPictureAndSomeText}" 
+                x:Name="petListView"
+                ItemTapped="petListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="65"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image 
+                                    HeightRequest="50" 
+                                    WidthRequest="50" 
+                                    Source="{Binding ProfilePicture}"
+                                    Grid.Row="0" 
+                                    Grid.Column="0"/>
+                                <Label 
+                                    Text="{Binding Name}"
+                                    Grid.Row="0" 
+                                    Grid.Column="1"
+                                    />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

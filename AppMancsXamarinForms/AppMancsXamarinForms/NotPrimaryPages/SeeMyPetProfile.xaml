@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeMyPetProfile">
+    <ContentPage.Content>
+        <StackLayout>
+            <Image
+                    x:Name="profilePictureImage"
+                />
+            <Label 
+                    x:Name="petnameLabel"/>
+            <Button
+                    x:Name="updateButton"
+                    Clicked="updateButton_Clicked"
+                    Text="Módosítom"
+                />
+            <Button
+                    x:Name="deleteButton"
+                    Clicked="deleteButton_Clicked"
+                    Text="Törlés"
+                />
+            <Grid x:Name="pictureListGrid"></Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

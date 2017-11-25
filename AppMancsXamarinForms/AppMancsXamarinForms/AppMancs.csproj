@@ -74,6 +74,12 @@
     <Compile Include="MyAccountPage.xaml.cs">
       <DependentUpon>MyAccountPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotPrimaryPages\AddPetPage.xaml.cs">
+      <DependentUpon>AddPetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotPrimaryPages\OtherPage.xaml.cs">
+      <DependentUpon>OtherPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NotPrimaryPages\SearchResultPage.xaml.cs">
       <DependentUpon>SearchResultPage.xaml</DependentUpon>
     </Compile>
@@ -85,6 +91,18 @@
     </Compile>
     <Compile Include="NotPrimaryPages\SeeAPicturePage.xaml.cs">
       <DependentUpon>SeeAPicturePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotPrimaryPages\SeeMyPetProfile.xaml.cs">
+      <DependentUpon>SeeMyPetProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotPrimaryPages\SeeMyPicturePage.xaml.cs">
+      <DependentUpon>SeeMyPicturePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotPrimaryPages\UpdatePetProfilePage.xaml.cs">
+      <DependentUpon>UpdatePetProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NotPrimaryPages\UpdateProfilePage.xaml.cs">
+      <DependentUpon>UpdateProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="NotPrimaryPages\WhosLiked.xaml.cs">
       <DependentUpon>WhosLiked.xaml</DependentUpon>
@@ -198,6 +216,42 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NotPrimaryPages\SeeAnOwnerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NotPrimaryPages\OtherPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NotPrimaryPages\UpdateProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NotPrimaryPages\AddPetPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NotPrimaryPages\UpdatePetProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NotPrimaryPages\SeeMyPetProfile.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NotPrimaryPages\SeeMyPicturePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

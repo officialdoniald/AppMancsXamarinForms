@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeMyPicturePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+            Orientation="Vertical">
+                <Image
+                    x:Name="profilePictureImage"
+                />
+                <Label
+                    x:Name="nameLabel">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            NumberOfTapsRequired="1"
+                            Tapped="TapGestureRecognizer_Tapped"
+                            ></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Image
+                    x:Name="pictureImage"
+                />
+                <Label
+                    x:Name="howmanyLikesLabel">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            NumberOfTapsRequired="1"
+                            Tapped="TapGestureRecognizer_Tapped_1"
+                            ></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    x:Name="hashtagsLabel" />
+                <Button
+                    x:Name="deleteButton"
+                    Text="Törlöm"
+                    Clicked="deleteButton_Clicked"
+                />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
