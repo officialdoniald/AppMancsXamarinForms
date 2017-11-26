@@ -125,9 +125,9 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             profilePictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
 
-        private void changeFaceookButton_ClickedAsync(object sender, EventArgs e)
+        private async void changeFaceookButton_ClickedAsync(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
         }
     }
 }

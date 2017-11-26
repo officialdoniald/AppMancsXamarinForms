@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlobStorage\BlobStorage.cs" />
+    <Compile Include="ClearCookies\ClearCookies.cs" />
     <Compile Include="DBAccess\DBAccess.cs" />
     <Compile Include="FileStoreAndLoad\FileStoreAndLoad.cs" />
     <Compile Include="MainActivity.cs" />

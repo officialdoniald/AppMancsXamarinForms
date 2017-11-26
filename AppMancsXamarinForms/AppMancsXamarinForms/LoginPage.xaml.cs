@@ -40,9 +40,9 @@ namespace AppMancsXamarinForms
             await Navigation.PushAsync(new SignUpPage());
         }
 
-        private void loginFacebookButton_Clicked(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task loginFacebookButton_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
         }
 
         private async void forgotPasswordButton_Clicked(object sender, EventArgs e)

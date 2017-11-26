@@ -44,5 +44,10 @@ namespace AppMancsXamarinForms
                 Navigation.PopToRootAsync();
             }
         }
+
+        private async void loginFacebookButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
+        }
     }
 }

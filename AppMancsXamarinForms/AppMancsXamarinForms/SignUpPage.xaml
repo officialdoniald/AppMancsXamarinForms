@@ -5,6 +5,10 @@
              Title="Regisztráció">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
+            <Button
+                x:Name="loginFacebookButton"
+                Text="Regisztráció Facebook fiókkal"
+                Clicked="loginFacebookButton_Clicked"/>
             <Label
                 Text="Vezetéknév"/>
             <Entry

@@ -17,10 +17,10 @@
                     Text="Módosít"
                     x:Name="updateMyProfileButton"
                     Clicked="updateMyProfileButton_ClickedAsync"/>
-                <!--<Button
+                <Button
                     Text="Facebook fiók módosítása"
                     x:Name="changeFaceookButton"
-                    Clicked="changeFaceookButton_ClickedAsync"/>-->
+                    Clicked="changeFaceookButton_ClickedAsync"/>
                 <Label
                     Text="E-Mail"/>
                 <Entry
