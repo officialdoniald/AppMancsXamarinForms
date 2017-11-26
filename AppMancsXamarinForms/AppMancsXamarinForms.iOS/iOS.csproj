@@ -89,8 +89,10 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BlobStorage\BlobStorage.cs" />
     <Compile Include="ClearCookies\ClearCookies.cs" />
-    <Compile Include="iOS\FileStoreAndLoad\FileStoreAndLoad.cs" />
+    <Compile Include="DBAccess\DBAccess.cs" />
+    <Compile Include="FileStoreAndLoad\FileStoreAndLoad.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
@@ -174,6 +176,7 @@
       <Name>AppMancs</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
