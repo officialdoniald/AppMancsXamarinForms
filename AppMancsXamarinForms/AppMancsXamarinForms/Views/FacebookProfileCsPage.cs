@@ -87,6 +87,13 @@ namespace FacebookLogin.Views
 
                     fileStoreAndLoading.InsertToFile("login.txt", success);
 
+                    var pages = Navigation.NavigationStack;
+
+                    foreach (var item in pages)
+                    {
+                        Navigation.RemovePage(item);
+                    }
+                    
                     await Navigation.PushAsync(new MainPage());
                 }
             }

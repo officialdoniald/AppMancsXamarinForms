@@ -13,7 +13,7 @@ namespace AppMancsXamarinForms
         public MainPage()
         {
             InitializeComponent();
-
+            
             var homePage = new HomePage();
             
             var navigationHomePage = new NavigationPage(homePage);

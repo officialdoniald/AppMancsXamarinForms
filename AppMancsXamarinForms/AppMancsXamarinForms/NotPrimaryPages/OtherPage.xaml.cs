@@ -47,11 +47,9 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             fileStoreAndLoading.InsertToFile("login.txt","");
 
-            var page = new LoginPage();
+            var page = new NavigationPage(new LoginPage());
 
-            Navigation.PushAsync(page);
-
-            NavigationPage.SetHasNavigationBar(page, false);
+            Navigation.PushModalAsync(page);
         }
     }
 }

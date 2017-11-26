@@ -15,6 +15,8 @@ namespace AppMancsXamarinForms
         public LoginPage()
         {
             InitializeComponent();
+
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         private async void loginButton_Clicked(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace AppMancsXamarinForms
 
                 fileStoreAndLoading.InsertToFile("login.txt", emailEntry.Text);
 
-                await Navigation.PushAsync(new MainPage());
+                await Navigation.PushModalAsync(new MainPage());
             }
         }
 
