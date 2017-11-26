@@ -2,6 +2,7 @@
 using Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,15 @@ namespace AppMancsXamarinForms.BLL.ViewModel
     public class SignupPageViewModel
     {
         private English language = new English();
+
+        public async Task<string> UploadFileAsync(string pathf, Stream f)
+        {
+            string uniqueBlobName = await DependencyService.Get<IBlobStorage.IBlobStorage>().UploadFileAsync(pathf, f);
+
+            uniqueBlobName = "https://officialdoniald.blob.core.windows.net/appmancs/" + uniqueBlobName;
+
+            return uniqueBlobName;
+        }
 
         public string SignUp(User user)
         {

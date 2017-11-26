@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMancsXamarinForms.SomeInformationPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <Image
+                x:Name="profilePictureImage"/>
+            <Button
+                Text="Módosít"
+                x:Name="changePictureButton"
+                Clicked="changePictureButton_Clicked"/>
+            <Label
+                Text="Vezetéknév"/>
+            <Entry
+                x:Name="lastnameEntry"/>
+            <Label
+                Text="Keresztnév"/>
+            <Entry
+                x:Name="firstnameEntry"/>
+            <Label
+                Text="E-Mail"/>
+            <Entry
+                x:Name="emailEntry"/>
+            <Label
+                Text="Jelszó"/>
+            <Entry
+                x:Name="pwEntry"/>
+            <Button
+                Text="Regisztráció"
+                x:Name="signupButton"
+                Clicked="signupButton_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

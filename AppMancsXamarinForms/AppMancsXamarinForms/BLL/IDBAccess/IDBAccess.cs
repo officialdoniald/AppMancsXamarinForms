@@ -29,6 +29,8 @@ namespace AppMancsXamarinForms.BLL.IDBAccess
 
         User GetUserByEmail(string Email);
 
+        User GetUserByFacebookID(string facebookID);
+
         User GetUserByID(int ID);
 
         Pet GetPetByID(int ID);

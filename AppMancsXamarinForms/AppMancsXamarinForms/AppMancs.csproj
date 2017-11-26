@@ -43,6 +43,7 @@
     <Compile Include="BLL\Languages\English.cs" />
     <Compile Include="BLL\Languages\ILanguage.cs" />
     <Compile Include="BLL\ViewModel\AddpetFragmentViewModel.cs" />
+    <Compile Include="BLL\ViewModel\FacebookProfilePageViewModel.cs" />
     <Compile Include="BLL\ViewModel\ForgotPasswordPageViewModel.cs" />
     <Compile Include="BLL\ViewModel\HomeFragmentViewModel.cs" />
     <Compile Include="BLL\ViewModel\LoginPageViewModel.cs" />
@@ -116,6 +117,9 @@
     <Compile Include="Services\FacebookServices.cs" />
     <Compile Include="SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SomeInformationPage.xaml.cs">
+      <DependentUpon>SomeInformationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="UploadPhotoPage.xaml.cs">
       <DependentUpon>UploadPhotoPage.xaml</DependentUpon>
@@ -273,6 +277,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="NotPrimaryPages\SeeMyPicturePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SomeInformationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

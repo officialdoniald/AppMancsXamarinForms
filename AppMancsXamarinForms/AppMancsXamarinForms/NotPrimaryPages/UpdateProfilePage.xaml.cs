@@ -127,6 +127,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private async void changeFaceookButton_ClickedAsync(object sender, EventArgs e)
         {
+            DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
+            
             await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
         }
     }

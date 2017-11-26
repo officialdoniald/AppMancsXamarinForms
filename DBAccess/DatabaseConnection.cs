@@ -38,6 +38,8 @@ namespace DBAccess
         //GETBYID
         public string GET_USERBYEMAIL_SQL { get; } =
                     "SELECT * FROM [dbo].[User] WHERE EMAIL=@EMAIL";
+        public string GET_USERBYFACEBOOKID_SQL { get; } =
+                    "SELECT * FROM [dbo].[User] WHERE facebookid=@facebookid";
         public string GET_USERBYID_SQL { get; } =
                     "SELECT * FROM [dbo].[User] WHERE ID=@id";
         public string GET_DonatesBYID_SQL { get; } =
@@ -157,6 +159,7 @@ namespace DBAccess
             "([UserID], [DonateDate], [HowMany], [CashType], [PetID]) " +
             "VALUES(" +
             "@UserID,@DonateDate,@HowMany,@CashType,@PetID);";
+        
         public string INSERT_Petpictures_SQL { get; } =
             "INSERT INTO [dbo].[Petpictures]" +
             "([PetID], [PictureURL], [UploadDate]) " +
@@ -514,7 +517,58 @@ namespace DBAccess
         #endregion
 
         #region GetByIDFunctions
+        public User GetUserByFacebookID(string facebookID)
+        {
+            User user;
 
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                using (SqlCommand cmd = new SqlCommand(GET_USERBYFACEBOOKID_SQL, conn))
+                {
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@facebookid", facebookID);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader != null)
+                        {
+                            while (reader.Read())
+                            {
+                                user = new User();
+
+                                user.id = reader.GetInt32(reader.GetOrdinal("id"));
+                                user.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                                user.LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                                user.Email = reader.GetString(reader.GetOrdinal("Email"));
+                                user.Password = reader.GetString(reader.GetOrdinal("Password"));
+                                try
+                                {
+                                    user.FacebookId = reader.GetString(reader.GetOrdinal("facebookid"));
+                                }
+                                catch (Exception)
+                                {
+                                    user.FacebookId = null;
+                                }
+                                try
+                                {
+                                    user.ProfilePictureURL = reader.GetString(reader.GetOrdinal("ProfilePicture"));
+                                }
+                                catch (Exception)
+                                {
+                                    user.ProfilePictureURL = null;
+                                }
+                                return user;
+                            }
+                        }
+                    }
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
         public User GetUserByEmail(string Email)
         {
             User user = new User();

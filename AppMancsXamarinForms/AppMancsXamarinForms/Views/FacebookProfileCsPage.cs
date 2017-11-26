@@ -8,6 +8,10 @@ using FacebookLogin.ViewModels;
 using Xamarin.Forms;
 using Device = Xamarin.Forms.Device;
 using AppMancsXamarinForms;
+using AppMancsXamarinForms.BLL.ViewModel;
+using AppMancsXamarinForms.FileStoreAndLoad;
+using AppMancsXamarinForms.BLL.Languages;
+using AppMancsXamarinForms.NotPrimaryPages;
 
 namespace FacebookLogin.Views
 {
@@ -19,10 +23,9 @@ namespace FacebookLogin.Views
         /// https://developers.facebook.com/apps/
         /// </summary>
         private string ClientId = "142251139871410";
-
+        
         public FacebookProfileCsPage()
         {
-
             BindingContext = new FacebookViewModel();
 
             Title = "Facebook Profile";
@@ -59,29 +62,71 @@ namespace FacebookLogin.Views
             }
         }
 
-        private void SetPageContent(FacebookProfile facebookProfile)
+        private async void SetPageContent(FacebookProfile facebookProfile)
         {
-            //ide kell majd mindent csinálni
-            Content = new StackLayout
+            FacebookProfilePageViewModel facebookProfilePageViewModel = new FacebookProfilePageViewModel();
+
+            var page = Navigation.NavigationStack[Navigation.NavigationStack.Count-2];
+            
+            if (page is LoginPage)
             {
-                Orientation = StackOrientation.Vertical,
-                Padding = new Thickness(8, 30),
-                Children =
+                string success = facebookProfilePageViewModel.isThereAnyUser(facebookProfile.Id);
+
+                English english = new English();
+
+                if (success == english.NoAccountFindWithThisFacebookAccount())
                 {
-                    new Label
-                    {
-                        Text = facebookProfile.Id,
-                        TextColor = Color.Black,
-                        FontSize = 22,
-                    },
-                    new Label
-                    {
-                        Text = facebookProfile.Picture.Data.Url,
-                        TextColor = Color.Black,
-                        FontSize = 22,
-                    }
+                    //hibauzi
+                    DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
+
+                    await Navigation.PopToRootAsync();
                 }
-            };
+                else
+                {
+                    FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+
+                    fileStoreAndLoading.InsertToFile("login.txt", success);
+
+                    await Navigation.PushAsync(new MainPage());
+                }
+            }
+            else if (page is SignUpPage)
+            {
+                English english = new English();
+
+                DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
+
+                var success = facebookProfilePageViewModel.isThereAnyUser(facebookProfile.Id);
+
+                if (success == english.NoAccountFindWithThisFacebookAccount())
+                {
+                    await Navigation.PushAsync(new SomeInformationPage(facebookProfile));
+                }
+                else
+                {
+                    await Navigation.PopAsync();
+                }
+            }
+            else if (page is UpdateProfilePage)
+            {
+                FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+
+                DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
+
+                string userEmail = fileStoreAndLoading.GetSomethingText("logint.txt");
+
+                var success = facebookProfilePageViewModel.ChangeFacebookId(facebookProfile.Id, facebookProfile.Picture.Data.Url, userEmail);
+
+                if (String.IsNullOrEmpty(success))
+                {
+                    await Navigation.PushAsync(new MyAccountPage());
+                }
+                else
+                {
+                    //hiba
+                    await Navigation.PushAsync(new UpdateProfilePage());
+                }
+            }
         }
 
         private string ExtractAccessTokenFromUrl(string url)

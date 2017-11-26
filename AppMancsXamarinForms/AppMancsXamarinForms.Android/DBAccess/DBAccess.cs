@@ -263,6 +263,11 @@ namespace AppMancsXamarinForms.Droid.DBAccess
             return databaseConnections.DeletePetpictures(PetID);
         }
 
+        public User GetUserByFacebookID(string facebookID)
+        {
+            return databaseConnections.GetUserByFacebookID(facebookID);
+        }
+
         #endregion
     }
 }

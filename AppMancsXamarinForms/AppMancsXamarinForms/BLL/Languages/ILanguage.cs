@@ -9,6 +9,9 @@ namespace AppMancsXamarinForms.BLL.Languages
     public interface ILanguage
     {
         string AppName();
+        string AlreadyHaveThisFacebookAcoount();
+
+        string NoAccountFindWithThisFacebookAccount();
 
         string ChooseAnimal();
 

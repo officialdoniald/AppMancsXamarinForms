@@ -47,6 +47,8 @@ namespace AppMancsXamarinForms
 
         private async void loginFacebookButton_Clicked(object sender, EventArgs e)
         {
+            DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
+
             await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
         }
     }

@@ -8,7 +8,14 @@ namespace AppMancsXamarinForms.BLL.Languages
 {
     public class English : ILanguage
     {
-
+        public string AlreadyHaveThisFacebookAcoount()
+        {
+            return "Van már ilyen Facebook profillel felhasználó!";
+        }
+        public string NoAccountFindWithThisFacebookAccount()
+        {
+            return "Nem található ilyen Facebook felhasználóval fiók az adatbázisunkban!";
+        }
         public string AppName()
         {
             return "AppMancs";
