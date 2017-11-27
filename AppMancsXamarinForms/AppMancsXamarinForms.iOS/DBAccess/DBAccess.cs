@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
+[assembly: Xamarin.Forms.Dependency(typeof(AppMancsXamarinForms.iOS.DBAccess.DBAccess))]
 namespace AppMancsXamarinForms.iOS.DBAccess
 {
     public class DBAccess : AppMancsXamarinForms.BLL.IDBAccess.IBlobStorage

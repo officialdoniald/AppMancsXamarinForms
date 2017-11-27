@@ -22,6 +22,10 @@
                 Clicked="loginButton_Clicked"/>
             <Button
                 x:Name="signUpButton"
+                BackgroundColor="#FFCBB6"
+                TextColor="White"
+                BorderRadius="450"
+                BorderColor="Black"
                 Text="Regisztrálás"
                 Clicked="signUpButton_Clicked"/>
             <Button

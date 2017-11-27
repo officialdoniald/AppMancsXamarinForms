@@ -2,9 +2,75 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.App">
-	<Application.Resources>
-
-		<!-- Application resource dictionary -->
-
-	</Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style TargetType="ContentPage" x:Key="contentpage">
+                <Setter Property="BackgroundColor" Value="#3C1E3A"/>
+            </Style>
+            <Style TargetType="Label" x:Key="applicationtitle">
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label" x:Key="headertwo">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label" x:Key="comment">
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style TargetType="Label" x:Key="casualtext">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+            <Style TargetType="Label" x:Key="link">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="17"/>
+            </Style>
+            <Style TargetType="Label" x:Key="tappedtext">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+            <Style TargetType="DatePicker" x:Key="pickerstryle">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="TimePicker" x:Key="timepickerstryle">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="Entry" x:Key="entrystryle">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Margin" Value="0,0,20,0"/>
+            </Style>
+            <Style TargetType="Entry" x:Key="passwordentrystryle">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="IsPassword" Value="true"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="Margin" Value="0,0,20,0"/>
+            </Style>
+            <Style TargetType="Button" x:Key="button">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HeightRequest" Value="75"/>
+                <Setter Property="WidthRequest" Value="100"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="Margin" Value="20,0,20,0"/>
+            </Style>
+            <Style TargetType="Image" x:Key="selectedPhoto">
+                <Setter Property="WidthRequest" Value="100"></Setter>
+                <Setter Property="HeightRequest" Value="250"></Setter>
+            </Style>
+            <Style TargetType="ListView" x:Key="eventslistview">
+                <Setter Property="SeparatorColor" Value="White"></Setter>
+                <Setter Property="RowHeight" Value="100"></Setter>
+                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
