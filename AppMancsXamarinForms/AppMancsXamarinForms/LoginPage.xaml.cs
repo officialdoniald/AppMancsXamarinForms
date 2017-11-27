@@ -47,7 +47,7 @@ namespace AppMancsXamarinForms
             await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
         }
 
-        private async void forgotPasswordButton_Clicked(object sender, EventArgs e)
+        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ForgotPasswordPage());
         }

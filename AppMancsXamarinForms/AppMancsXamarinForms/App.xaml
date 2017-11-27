@@ -4,7 +4,7 @@
              x:Class="AppMancsXamarinForms.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Style TargetType="ContentPage" x:Key="contentpage">
+            <!--<Style TargetType="ContentPage" x:Key="contentpage">
                 <Setter Property="BackgroundColor" Value="#3C1E3A"/>
             </Style>
             <Style TargetType="Label" x:Key="applicationtitle">
@@ -51,18 +51,51 @@
                 <Setter Property="IsPassword" Value="true"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="Margin" Value="0,0,20,0"/>
+            </Style>-->
+            <Style TargetType="Entry" x:Key="NormalEnrty">
+                <Setter Property="TextColor" Value="#FFCBB6"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
             </Style>
-            <Style TargetType="Button" x:Key="button">
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="HeightRequest" Value="75"/>
-                <Setter Property="WidthRequest" Value="100"/>
-                <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="BorderColor" Value="Black"/>
-                <Setter Property="FontSize" Value="17"/>
-                <Setter Property="BorderRadius" Value="5"/>
-                <Setter Property="Margin" Value="20,0,20,0"/>
+            <Style TargetType="Label" x:Key="NormalLabel">
+                <Setter Property="TextColor" Value="#FFCBB6"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
             </Style>
-            <Style TargetType="Image" x:Key="selectedPhoto">
+            <Style TargetType="Label" x:Key="EntryAboveLabel">
+                <Setter Property="TextColor" Value="#FFCBB6"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+            <Style TargetType="Button" x:Key="NormalButton">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HeightRequest" Value="35"/>
+                <Setter Property="BackgroundColor" Value="#FFCBB6"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="BorderColor" Value="#FFCBB6"/>
+                <Setter Property="BorderRadius" Value="450"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="Button" x:Key="FacebookButton">
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="HeightRequest" Value="35"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="BackgroundColor" Value="#3B5998"/>
+                <Setter Property="BorderColor" Value="#FFCBB6"/>
+                <Setter Property="BorderRadius" Value="450"/>
+                <Setter Property="Margin" Value="0,0,0,5"/>
+            </Style>
+            <Style TargetType="StackLayout" x:Key="NormalStackLayout">
+                <Setter Property="Orientation" Value="Vertical"/>
+                <Setter Property="Margin" Value="50,0,50    ,0"/>
+            </Style>
+            <Style TargetType="Image" x:Key="Logo">
+                <Setter Property="WidthRequest" Value="150"></Setter>
+                <Setter Property="HeightRequest" Value="150"></Setter>
+                <Setter Property="Margin" Value="0,0,0,5"/>
+            </Style>
+            <!--<Style TargetType="Image" x:Key="selectedPhoto">
                 <Setter Property="WidthRequest" Value="100"></Setter>
                 <Setter Property="HeightRequest" Value="250"></Setter>
             </Style>
@@ -70,7 +103,7 @@
                 <Setter Property="SeparatorColor" Value="White"></Setter>
                 <Setter Property="RowHeight" Value="100"></Setter>
                 <Setter Property="BackgroundColor" Value="Transparent"></Setter>
-            </Style>
+            </Style>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

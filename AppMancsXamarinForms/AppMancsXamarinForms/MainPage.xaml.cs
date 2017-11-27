@@ -13,7 +13,10 @@ namespace AppMancsXamarinForms
         public MainPage()
         {
             InitializeComponent();
-            
+
+            NavigationPage.SetHasBackButton(this,false);
+            NavigationPage.SetHasNavigationBar(this, false);
+
             var homePage = new HomePage();
             
             var navigationHomePage = new NavigationPage(homePage);

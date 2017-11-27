@@ -42,7 +42,7 @@ namespace AppMancsXamarinForms
 
             var selectedSearchModel = (SearchModel)listView.SelectedItem;
 
-            var searchResultPage = new SearchResultPage(selectedSearchModel.petpicturesList);
+            var searchResultPage = new SearchResultPage(selectedSearchModel.petpicturesList, selectedSearchModel.hashtag);
 
             Navigation.PushAsync(searchResultPage);
         }

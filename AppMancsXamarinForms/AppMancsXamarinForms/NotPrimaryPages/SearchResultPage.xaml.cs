@@ -23,8 +23,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             InitializeComponent();
         }
 
-        public SearchResultPage(List<Petpictures> petpicturesList)
+        public SearchResultPage(List<Petpictures> petpicturesList, string hashtag)
         {
+            this.Title = "#" + hashtag;
+
             FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
 
             userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
