@@ -7,11 +7,13 @@
         <StackLayout
                 Style="{StaticResource NormalStackLayout}">
             <Button
+                Margin="0,25,0,0"
                 Text="Fiókom törlése"
                 Style="{StaticResource NormalButton}"
                 x:Name="deleteAcoountPageButton"
                 Clicked="deleteAcoountPageButton_Clicked"/>
             <Button
+                Margin="0,25,0,0"
                 Text="Kijelentkezés"
                 Style="{StaticResource NormalButton}"
                 x:Name="loguotButton"
