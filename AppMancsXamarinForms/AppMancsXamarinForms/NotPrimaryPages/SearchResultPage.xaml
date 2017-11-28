@@ -5,7 +5,16 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Grid x:Name="searchResultGrid"></Grid>
+                <Grid x:Name="searchResultGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                    </Grid.RowDefinitions>
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

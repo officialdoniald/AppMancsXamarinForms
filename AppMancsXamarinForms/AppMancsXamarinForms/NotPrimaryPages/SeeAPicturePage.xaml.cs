@@ -59,12 +59,12 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             howmanylike = likes.Count;
 
-            howmanyLikesLabel.Text = howmanylike.ToString();
+            howmanyLikesLabel.Text = howmanylike.ToString() + " Like";
 
             haveiliked = seePictureFragmentViewModel.HaveILiked(userEmail, petpictures.id);
 
-            if (haveiliked) likeOrNotButton.Text = seePictureFragmentViewModel.unlikeText;
-            else likeOrNotButton.Text = seePictureFragmentViewModel.likeText;
+            if (haveiliked) likeornotImage.Source = "unlike.png";
+            else likeornotImage.Source = "like.png";
         }
 
         private void likeOrNotButton_Clicked(object sender, EventArgs e)
@@ -81,11 +81,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 {
                     howmanylike = howmanylike - 1;
 
-                    howmanyLikesLabel.Text = howmanylike.ToString();
+                    howmanyLikesLabel.Text = howmanylike.ToString() + " Like";
 
                     haveiliked = !haveiliked;
 
-                    likeOrNotButton.Text = seePictureFragmentViewModel.likeText;
+                    likeornotImage.Source = "like.png";
                 }
             }
             else
@@ -100,11 +100,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 {
                     howmanylike = howmanylike + 1;
 
-                    howmanyLikesLabel.Text = howmanylike.ToString();
+                    howmanyLikesLabel.Text = howmanylike.ToString() + " Like";
 
                     haveiliked = !haveiliked;
 
-                    likeOrNotButton.Text = seePictureFragmentViewModel.unlikeText;
+                    likeornotImage.Source = "unlike.png";
                 }
             }
         }

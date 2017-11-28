@@ -2,24 +2,55 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeAPetProfile"
-             Title="Háziállat profil">
+             Title="Háziállat profil"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Image
-                    x:Name="profilePictureImage"
-                />
+        <ScrollView>
+        <StackLayout
+                Style="{StaticResource NormalStackLayout}">
+            <controls:CircleImage
+                x:Name="profilePictureImage"
+                Aspect="AspectFit"
+                Margin="0,20,0,0">
+                <controls:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.HeightRequest>
+            </controls:CircleImage>
             <Label 
-                x:Name="petnameLabel"/>
+                x:Name="petnameLabel"
+                Style="{StaticResource NormalLabel}"/>
             <Button
                     x:Name="followButton"
                     Clicked="followButton_Clicked"
+                Style="{StaticResource NormalButton}"
                 />
             <Button
-                    x:Name="goToOwnerPageButton"
-                    Clicked="goToOwnerPageButton_Clicked"
+                x:Name="goToOwnerPageButton"
+                Clicked="goToOwnerPageButton_Clicked"
+                Style="{StaticResource NormalButton}"
                 Text="Ugrás a gazdi profiljára"
                 />
-            <Grid x:Name="pictureListGrid"></Grid>
-        </StackLayout>
+            <Grid x:Name="pictureListGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

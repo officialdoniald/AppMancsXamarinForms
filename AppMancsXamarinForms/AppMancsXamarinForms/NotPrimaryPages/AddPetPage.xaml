@@ -2,38 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.AddPetPage"
-             Title="Háziállat hozzáadása">
+             Title="Háziállat hozzáadása"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <ScrollView>
+        <StackLayout
+                Style="{StaticResource NormalStackLayout}">
             <Button
                 Text="Galéria"
                 x:Name="galleryButton"
+                Style="{StaticResource NormalButton}"
                 Clicked="galleryButton_ClickedAsync"/>
-            <Image
-                x:Name="profilePictureImage"/>
-            <Label
-                Text="Név"/>
+            <controls:CircleImage
+                x:Name="profilePictureImage"
+                Aspect="AspectFit"
+                Margin="0,20,0,0">
+                    <controls:CircleImage.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.WidthRequest>
+                    <controls:CircleImage.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.HeightRequest>
+                </controls:CircleImage>
+                <Label
+                Text="Név"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="nameEntry"/>
+                x:Name="nameEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Kor"/>
+                Text="Kor"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="ageEntry"/>
+                x:Name="ageEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Faj"/>
+                Text="Faj"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="typeEntry"/>
+                x:Name="typeEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <StackLayout Orientation="Horizontal">
                 <Switch
                     x:Name="shelterpetSwitch"/>
                 <Label
                     Text="Menhelyen él-e"
+                Style="{StaticResource NormalLabel}"
                     VerticalOptions="Center"/>
             </StackLayout>
             <Button
                 Text="Létrehoz"
                 x:Name="addPetButton"
+                Style="{StaticResource NormalButton}"
                 Clicked="addPetButton_ClickedAsync"/>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -2,20 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeMyPetProfile"
-             Title="Háziállatom">
+             Title="Háziállatom"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
-        <StackLayout>
-            <Image
-                    x:Name="profilePictureImage"
-                />
+        <StackLayout
+                Style="{StaticResource NormalStackLayout}">
+            <controls:CircleImage
+                x:Name="profilePictureImage"
+                Aspect="AspectFit"
+                Margin="0,20,0,0">
+                <controls:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.HeightRequest>
+            </controls:CircleImage>
             <Label 
-                    x:Name="petnameLabel"/>
+                x:Name="petnameLabel"
+                Style="{StaticResource NormalLabel}"/>
             <Button
                     x:Name="updateButton"
                     Clicked="updateButton_Clicked"
                     Text="Módosítom"
-                />
-            <Grid x:Name="pictureListGrid"></Grid>
+                    Style="{StaticResource NormalButton}"/>
+            <Grid x:Name="pictureListGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

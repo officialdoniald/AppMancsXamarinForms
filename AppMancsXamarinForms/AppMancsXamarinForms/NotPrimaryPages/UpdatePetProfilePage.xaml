@@ -2,45 +2,73 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.UpdatePetProfilePage"
-             Title="Háziállatom profil szerkesztése">
+             Title="Háziállatom profil szerkesztése"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Orientation="Vertical">
-            <Button
-                Text="Galéria"
-                x:Name="galleryButton"
-                Clicked="galleryButton_ClickedAsync"/>
-            <Image
-                x:Name="profilePictureImage"/>
-            <Button
-                Text="Módosít"
-                x:Name="changeProfilePictureButton"
-                Clicked="changeProfilePictureButton_Clicked"/>
+            <StackLayout 
+                    Style="{StaticResource NormalStackLayout}">
+                <Button
+                    Text="Galéria"
+                    x:Name="galleryButton"
+                    Style="{StaticResource NormalButton}"
+                    Clicked="galleryButton_ClickedAsync"/>
+                <controls:CircleImage
+                    x:Name="profilePictureImage"
+                    Aspect="AspectFit">
+                    <controls:CircleImage.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.WidthRequest>
+                    <controls:CircleImage.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.HeightRequest>
+                </controls:CircleImage>
+                <Button
+                    Text="Módosít"
+                    x:Name="changeProfilePictureButton"
+                    Style="{StaticResource NormalButton}"
+                    Clicked="changeProfilePictureButton_Clicked"/>
             <Label
-                Text="Név"/>
+                Text="Név"
+                    Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="nameEntry"/>
+                x:Name="nameEntry"
+                    Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Kor"/>
+                Text="Kor"
+                    Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="ageEntry"/>
+                x:Name="ageEntry"
+                    Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Faj"/>
+                Text="Faj"
+                    Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="typeEntry"/>
+                x:Name="typeEntry"
+                    Style="{StaticResource NormalEnrty}"/>
             <StackLayout Orientation="Horizontal">
                 <Switch
                     x:Name="shelterpetSwitch"/>
                 <Label
                     Text="Menhelyen él-e"
+                Style="{StaticResource NormalLabel}"
                     VerticalOptions="Center"/>
             </StackLayout>
             <Button
                 Text="Módosít"
                 x:Name="changePetButton"
+                    Style="{StaticResource NormalButton}"
                 Clicked="changePetButton_ClickedAsync"/>
             <Button
                 Text="Profil törlése"
+                    Style="{StaticResource NormalButton}"
                 x:Name="deletePetButton"
                 Clicked="deletePetButton_ClickedAsync"/>
             </StackLayout>

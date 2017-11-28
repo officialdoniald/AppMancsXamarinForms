@@ -2,12 +2,35 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeAnOwnerPage"
-             Title="Gazdi profil">
+             Title="Gazdi profil"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Image x:Name="profilePictureImage"/>
-            <Label x:Name="userNameLabel"/>
-            <Label Text="Háziállatai:"></Label>
+        <StackLayout
+                Style="{StaticResource NormalStackLayout}">
+            <controls:CircleImage
+                x:Name="profilePictureImage"
+                Aspect="AspectFit"
+                Margin="0,20,0,0">
+                <controls:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.HeightRequest>
+            </controls:CircleImage>
+            <Label 
+                x:Name="userNameLabel"
+                Style="{StaticResource NormalLabel}"/>
+            <Label 
+                Text="Háziállatai:"
+                Style="{StaticResource NormalLabel}"/>
             <ListView 
                 ItemsSource="{Binding listViewWithPictureAndSomeText}" 
                 x:Name="petListView"
@@ -15,21 +38,38 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid
+                                BackgroundColor="White">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="65"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image 
-                                    HeightRequest="50" 
-                                    WidthRequest="50" 
-                                    Source="{Binding ProfilePicture}"
-                                    Grid.Row="0" 
-                                    Grid.Column="0"/>
+                                <controls:CircleImage
+                                        Source="{Binding ProfilePicture}"
+                                        Aspect="AspectFit"
+                                        Grid.Row="0" 
+                                        Grid.Column="0">
+                                    <controls:CircleImage.WidthRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="Android, iOS">40</On>
+                                            <On Platform="WinPhone">75</On>
+                                        </OnPlatform>
+                                    </controls:CircleImage.WidthRequest>
+                                    <controls:CircleImage.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="Android, iOS">40</On>
+                                            <On Platform="WinPhone">75</On>
+                                        </OnPlatform>
+                                    </controls:CircleImage.HeightRequest>
+                                </controls:CircleImage>
                                 <Label 
                                     Text="{Binding Name}"
+                                    Style="{StaticResource NormalLabel}"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
                                     Grid.Row="0" 
                                     Grid.Column="1"
                                     />

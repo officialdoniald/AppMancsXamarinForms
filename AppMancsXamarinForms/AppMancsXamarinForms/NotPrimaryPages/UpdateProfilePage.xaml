@@ -2,54 +2,89 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.UpdateProfilePage"
-             Title="Profilom szerkesztése">
+             Title="Profilom szerkesztése"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical">
-                <Label
-                    Text="Vezetéknév"/>
-                <Entry
-                    x:Name="lastnameEntry"/>
-                <Label
-                    Text="Keresztnév"/>
-                <Entry
-                    x:Name="firstnameEntry"/>
-                <Button
-                    Text="Módosít"
-                    x:Name="updateMyProfileButton"
-                    Clicked="updateMyProfileButton_ClickedAsync"/>
-                <Button
-                    Text="Facebook fiók módosítása"
-                    x:Name="changeFaceookButton"
-                    Clicked="changeFaceookButton_ClickedAsync"/>
-                <Label
-                    Text="E-Mail"/>
-                <Entry
-                    x:Name="emailEntry"/>
-                <Button
-                    Text="Módosít"
-                    x:Name="changeEmailButton"
-                    Clicked="changeEmailButton_ClickedAsync"/>
+            <StackLayout 
+                    Style="{StaticResource NormalStackLayout}">
                 <Button
                     Text="Galéria"
                     x:Name="galleryButton"
+                    Style="{StaticResource NormalButton}"
                     Clicked="galleryButton_ClickedAsync"/>
-                <Image
-                    x:Name="profilePictureImage"/>
+                <controls:CircleImage
+                    x:Name="profilePictureImage"
+                    Aspect="AspectFit">
+                    <controls:CircleImage.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.WidthRequest>
+                    <controls:CircleImage.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                            <On Platform="WinPhone">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.HeightRequest>
+                </controls:CircleImage>
                 <Button
                     Text="Módosít"
                     x:Name="changeProfilePictureButton"
+                    Style="{StaticResource NormalButton}"
                     Clicked="changeProfilePictureButton_ClickedAsync"/>
+                <Button
+                    Text="Facebook fiók módosítása"
+                    Style="{StaticResource FacebookButton}"
+                    x:Name="changeFaceookButton"
+                    Clicked="changeFaceookButton_ClickedAsync"/>
                 <Label
-                    Text="Jelenlegi jelszó"/>
+                    Text="Vezetéknév"
+                    Style="{StaticResource EntryAboveLabel}"/>
                 <Entry
-                    x:Name="pwEntry"/>
+                    x:Name="lastnameEntry"
+                    Style="{StaticResource NormalEnrty}"/>
                 <Label
-                    Text="Új jelszó"/>
+                    Text="Keresztnév"
+                    Style="{StaticResource EntryAboveLabel}"/>
                 <Entry
-                    x:Name="newpwEntry"/>
+                    x:Name="firstnameEntry"
+                    Style="{StaticResource NormalEnrty}"/>
                 <Button
                     Text="Módosít"
+                    x:Name="updateMyProfileButton"
+                    Style="{StaticResource NormalButton}"
+                    Clicked="updateMyProfileButton_ClickedAsync"/>
+                <Label
+                    Text="E-Mail"
+                    Style="{StaticResource EntryAboveLabel}"/>
+                <Entry
+                    x:Name="emailEntry"
+                    Style="{StaticResource NormalEnrty}"/>
+                <Button
+                    Text="Módosít"
+                    x:Name="changeEmailButton"
+                    Style="{StaticResource NormalButton}"
+                    Clicked="changeEmailButton_ClickedAsync"/>
+                <Label
+                    Text="Jelenlegi jelszó"
+                    Style="{StaticResource EntryAboveLabel}"/>
+                <Entry
+                    x:Name="pwEntry"
+                    IsPassword="True"
+                    Style="{StaticResource NormalEnrty}"/>
+                <Label
+                    Text="Új jelszó"
+                    Style="{StaticResource EntryAboveLabel}"/>
+                <Entry
+                    x:Name="newpwEntry"
+                    IsPassword="True"
+                    Style="{StaticResource NormalEnrty}"/>
+                <Button
+                    Text="Módosít"
+                    Style="{StaticResource NormalButton}"
                     x:Name="changepwButton"
                     Clicked="changepwButton_ClickedAsync"/>
             </StackLayout>

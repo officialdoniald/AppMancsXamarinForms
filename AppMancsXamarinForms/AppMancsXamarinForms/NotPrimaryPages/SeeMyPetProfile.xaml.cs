@@ -70,8 +70,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                     }
                 });
 
-                image.WidthRequest = 50;
-                image.HeightRequest = 50;
+                image.Aspect = Aspect.AspectFit;
 
                 pictureListGrid.Children.Add(image, top, left);
 

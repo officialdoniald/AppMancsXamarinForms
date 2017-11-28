@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeMyPicturePage"
-             Title="Képem">
+             Title="Képem"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout
+            <!--<StackLayout
             Orientation="Vertical">
                 <Image
                     x:Name="profilePictureImage"
@@ -32,7 +34,76 @@
                     </Label.GestureRecognizers>
                 </Label>
                 <Label
-                    x:Name="hashtagsLabel" />
+                    x:Name="hashtagsLabel" />-->
+
+            <StackLayout
+            Orientation="Vertical">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <controls:CircleImage
+                x:Name="profilePictureImage"
+                Aspect="AspectFit"
+                        Grid.Column="0"
+                        Grid.Row="0">
+                        <controls:CircleImage.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android, iOS">40</On>
+                                <On Platform="WinPhone">75</On>
+                            </OnPlatform>
+                        </controls:CircleImage.WidthRequest>
+                        <controls:CircleImage.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android, iOS">40</On>
+                                <On Platform="WinPhone">75</On>
+                            </OnPlatform>
+                        </controls:CircleImage.HeightRequest>
+                    </controls:CircleImage>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                    x:Name="nameLabel"
+                    Style="{StaticResource NormalLabel}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                            NumberOfTapsRequired="1"
+                            Tapped="TapGestureRecognizer_Tapped"
+                            ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <Image
+                        x:Name="pictureImage"
+                    HeightRequest="300"
+                    Aspect="AspectFit"
+                    />
+                <Label
+                    x:Name="howmanyLikesLabel"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Margin="15,0,0,0"
+                    Style="{StaticResource NormalLabel}" >
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            NumberOfTapsRequired="1"
+                            Tapped="TapGestureRecognizer_Tapped_1"
+                            ></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    x:Name="hashtagsLabel"
+                    HorizontalOptions="Start"
+                    Margin="15,0,0,0"
+                    Style="{StaticResource NormalLabel}" />
+
+
                 <Button
                     x:Name="deleteButton"
                     Text="Törlöm"

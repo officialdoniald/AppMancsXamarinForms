@@ -4,13 +4,16 @@
              x:Class="AppMancsXamarinForms.NotPrimaryPages.OtherPage"
              Title="Többi">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <StackLayout
+                Style="{StaticResource NormalStackLayout}">
             <Button
                 Text="Fiókom törlése"
+                Style="{StaticResource NormalButton}"
                 x:Name="deleteAcoountPageButton"
                 Clicked="deleteAcoountPageButton_Clicked"/>
             <Button
                 Text="Kijelentkezés"
+                Style="{StaticResource NormalButton}"
                 x:Name="loguotButton"
                 Clicked="loguotButton_Clicked"/>
         </StackLayout>

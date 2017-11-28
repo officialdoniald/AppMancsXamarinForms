@@ -2,11 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.WhosLiked"
-             Title="Kik lájkolták">
+             Title="Kik lájkolták"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
+        <StackLayout
+            Margin="25,0,25,0">
             <ListView 
-                ItemsSource="{Binding listViewWithPictureAndSomeText}" 
+                ItemsSource="{Binding listViewWithPictureAndSomeText}"
+                SeparatorVisibility="None"
                 x:Name="userListView"
                 ItemTapped="userListView_ItemTapped">
                 <ListView.ItemTemplate>
@@ -17,16 +22,31 @@
                                     <RowDefinition></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="65"></ColumnDefinition>
+                                    <ColumnDefinition Width="60"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image 
-                                    HeightRequest="50" 
-                                    WidthRequest="50" 
+                                <controls:CircleImage
                                     Source="{Binding ProfilePicture}"
                                     Grid.Row="0" 
-                                    Grid.Column="0"/>
+                                    Grid.Column="0"
+                                Aspect="AspectFit">
+                                    <controls:CircleImage.WidthRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="Android, iOS">40</On>
+                                            <On Platform="WinPhone">75</On>
+                                        </OnPlatform>
+                                    </controls:CircleImage.WidthRequest>
+                                    <controls:CircleImage.HeightRequest>
+                                        <OnPlatform x:TypeArguments="x:Double">
+                                            <On Platform="Android, iOS">40</On>
+                                            <On Platform="WinPhone">75</On>
+                                        </OnPlatform>
+                                    </controls:CircleImage.HeightRequest>
+                                </controls:CircleImage>
                                 <Label 
                                     Text="{Binding Name}"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Style="{StaticResource NormalLabel}"
                                     Grid.Row="0" 
                                     Grid.Column="1"
                                     />
@@ -35,6 +55,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
