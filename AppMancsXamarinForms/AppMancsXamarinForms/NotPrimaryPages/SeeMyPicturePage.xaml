@@ -7,35 +7,6 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <!--<StackLayout
-            Orientation="Vertical">
-                <Image
-                    x:Name="profilePictureImage"
-                />
-                <Label
-                    x:Name="nameLabel">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
-                            NumberOfTapsRequired="1"
-                            Tapped="TapGestureRecognizer_Tapped"
-                            ></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Image
-                    x:Name="pictureImage"
-                />
-                <Label
-                    x:Name="howmanyLikesLabel">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
-                            NumberOfTapsRequired="1"
-                            Tapped="TapGestureRecognizer_Tapped_1"
-                            ></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label
-                    x:Name="hashtagsLabel" />-->
-
             <StackLayout
             Orientation="Vertical">
                 <Grid>
