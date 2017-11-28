@@ -34,7 +34,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                     petpictures.Add(DependencyService.Get<IDBAccess.IBlobStorage>().GetOnePetpicturesByID(item1.petpicturesid));
                 }
 
-                searchModel.hashtag = item.Key;
+                searchModel.hashtag = "#" + item.Key;
                 searchModel.petpicturesList = petpictures;
 
                 searchModelList.Add(searchModel);

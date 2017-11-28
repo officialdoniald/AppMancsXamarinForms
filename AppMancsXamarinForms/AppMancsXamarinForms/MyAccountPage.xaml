@@ -2,46 +2,92 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.MyAccountPage"
-             Title="Profilom">
+             Title="Profilom"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Image x:Name="profilePictureImage"/>
-            <Label x:Name="userNameLabel"/>
+        <ScrollView>
+        <StackLayout 
+                Style="{StaticResource NormalStackLayout}">
+            <controls:CircleImage
+                x:Name="profilePictureImage"
+                Aspect="AspectFit"
+                Margin="0,20,0,0">
+                <controls:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">75</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.HeightRequest>
+            </controls:CircleImage>
+            <Label 
+                x:Name="userNameLabel"
+                Style="{StaticResource NormalLabel}"/>
             <Button
                 x:Name="otherButton"
+                Style="{StaticResource NormalButton}"
                 Text="Többi"
                 Clicked="otherButton_Clicked"/>
             <Button
                 x:Name="updateProfileButton"
+                Style="{StaticResource NormalButton}"
                 Text="Profilom szerkesztése"
                 Clicked="updateProfileButton_Clicked"/>
-            <Label Text="Háziállataim:"></Label>
+            <Label 
+                Text="Háziállataim:"
+                Style="{StaticResource NormalLabel}"/>
             <Button
                 x:Name="addPetButton"
+                Style="{StaticResource NormalButton}"
                 Text="Háziállat hozzáadása"
                 Clicked="addPetButton_Clicked"/>
             <ListView 
                 ItemsSource="{Binding listViewWithPictureAndSomeText}" 
                 x:Name="petListView"
-                ItemTapped="petListView_ItemTapped">
+                ItemTapped="petListView_ItemTapped"
+                SeparatorVisibility="None" 
+                HasUnevenRows="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid
+                                BackgroundColor="White">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="65"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Image 
-                                    HeightRequest="50" 
-                                    WidthRequest="50" 
-                                    Source="{Binding ProfilePicture}"
-                                    Grid.Row="0" 
-                                    Grid.Column="0"/>
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <controls:CircleImage
+                                        Source="{Binding ProfilePicture}"
+                                        Aspect="AspectFit"
+                                        Grid.Row="0" 
+                                        Grid.Column="0">
+                                        <controls:CircleImage.WidthRequest>
+                                            <OnPlatform x:TypeArguments="x:Double">
+                                                <On Platform="Android, iOS">40</On>
+                                                <On Platform="WinPhone">75</On>
+                                            </OnPlatform>
+                                        </controls:CircleImage.WidthRequest>
+                                        <controls:CircleImage.HeightRequest>
+                                            <OnPlatform x:TypeArguments="x:Double">
+                                                <On Platform="Android, iOS">40</On>
+                                                <On Platform="WinPhone">75</On>
+                                            </OnPlatform>
+                                        </controls:CircleImage.HeightRequest>
+                                    </controls:CircleImage>
                                 <Label 
                                     Text="{Binding Name}"
+                                    Style="{StaticResource NormalLabel}"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
                                     Grid.Row="0" 
                                     Grid.Column="1"
                                     />
@@ -50,6 +96,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

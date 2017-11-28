@@ -2,34 +2,57 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.HomePage"
-             Title="Fal">
+             Title="Fal"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <ListView SeparatorVisibility="None" HasUnevenRows="True" ItemsSource="{Binding wallListViewAdapter}" x:Name="wallListView">
+                <ListView 
+                    BackgroundColor="Transparent" 
+                    SeparatorVisibility="None" 
+                    HasUnevenRows="True" 
+                    ItemsSource="{Binding wallListViewAdapter}" 
+                    x:Name="wallListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid>
+                                <Grid
+                                    BackgroundColor="White">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition Width="60"></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="50"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
                                         <RowDefinition Height="350"></RowDefinition>
-                                        <RowDefinition Height="25"></RowDefinition>
-                                        <RowDefinition Height="25"></RowDefinition>
-                                        <RowDefinition Height="65"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
                                     </Grid.RowDefinitions>
-                                <Image 
-                                    HeightRequest="50"
-                                    WidthRequest="50"
-                                    Source="{Binding profilepictureURL}"
-                                    Grid.Row="0"
-                                    Grid.Column="0"/>
-                                <Label
+                                    <controls:CircleImage
+                                        Source="{Binding profilepictureURL}" 
+                                        Aspect="AspectFit"
+                                        Margin="0,20,0,0"
+                                        Grid.Row="0"
+                                        Grid.Column="0">
+                                        <controls:CircleImage.WidthRequest>
+                                            <OnPlatform x:TypeArguments="x:Double">
+                                                <On Platform="Android, iOS">45</On>
+                                                <On Platform="WinPhone">75</On>
+                                            </OnPlatform>
+                                        </controls:CircleImage.WidthRequest>
+                                        <controls:CircleImage.HeightRequest>
+                                            <OnPlatform x:TypeArguments="x:Double">
+                                                <On Platform="Android, iOS">45</On>
+                                                <On Platform="WinPhone">75</On>
+                                            </OnPlatform>
+                                        </controls:CircleImage.HeightRequest>
+                                    </controls:CircleImage>
+                               <Label
+                                    Style="{StaticResource NormalLabel}"
                                     Text="{Binding petName}"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Margin="0,20,0,0"
                                     Grid.Row="0"
                                     Grid.Column="1">
                                     <Label.GestureRecognizers>
@@ -39,16 +62,30 @@
                                         ></TapGestureRecognizer>    
                                     </Label.GestureRecognizers>
                                 </Label>
-                                <Image
-                                    HeightRequest="350"
-                                    VerticalOptions="StartAndExpand"
+                                <Image 
+                                    Aspect="AspectFit"
                                     Source="{Binding pictureURL}"
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2" />
-                                <Label 
-                                    Text="{Binding howManyLikes}"
+                                <Image
+                                    Source="{Binding followButtonText}"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
                                     Grid.Row="2"
-                                    Grid.ColumnSpan="2">
+                                    Grid.Column="0">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            NumberOfTapsRequired="1"
+                                            Tapped="Button_Clicked_1"/>
+                                    </Image.GestureRecognizers>
+                                </Image>    
+                                <Label      
+                                    Text="{Binding howManyLikes}"
+                                    Style="{StaticResource NormalLabel}"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"
+                                    Grid.Row="2"
+                                    Grid.Column="1">
                                     <Label.GestureRecognizers>
                                         <TapGestureRecognizer
                                             NumberOfTapsRequired="1"
@@ -58,12 +95,11 @@
                                 </Label>
                                 <Label
                                     Text="{Binding hashtags}"
+                                    Style="{StaticResource NormalLabel}"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Start"
+                                    Margin="20,0,0,0"
                                     Grid.Row="3"
-                                    Grid.ColumnSpan="2"/>
-                                <Button
-                                    Text="{Binding followButtonText}"
-                                    Clicked="Button_Clicked_1"
-                                    Grid.Row="4"
                                     Grid.ColumnSpan="2"/>
                                 </Grid>
                             </ViewCell>

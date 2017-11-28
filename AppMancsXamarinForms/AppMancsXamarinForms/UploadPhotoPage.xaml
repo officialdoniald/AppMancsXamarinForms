@@ -4,25 +4,38 @@
              x:Class="AppMancsXamarinForms.UploadPhotoPage"
              Title="Kép hozzáadása">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
-            <Button
+        <ScrollView>
+            <StackLayout 
+            Orientation="Vertical">
+                <Button
                 Text="Galéria"
                 x:Name="galleryButton"
-                Clicked="galleryButton_ClickedAsync"/>
-            <Image
-                x:Name="pictureImage"/>
-            <Picker
+                Clicked="galleryButton_ClickedAsync"
+                    Margin="25,15,25,0"
+                Style="{StaticResource NormalButton}"/>
+                <Image
+                x:Name="pictureImage"
+                Aspect="AspectFit"
+                HeightRequest="300"/>
+                <Picker
                 x:Name="petPicker"
                 Title="Háziállataim"
+                TextColor="#FFCBB6"
                 VerticalOptions="Center"
+                    Margin="25,0,25,0"
                 SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
-            <Entry 
+                <Entry 
                 x:Name="hashtagsEntry"
-                Placeholder="Hashtagek (pl.: #legszebb)"/>
-            <Button
+                Placeholder="Hashtagek (pl.: #legszebb)"
+                    Margin="25,0,25,0"
+                Style="{StaticResource NormalEnrty}"/>
+                <Button
                 Text="Fotó feltöltése"
                 x:Name="addPhotoButton"
-                Clicked="addPhotoButton_ClickedAsync"/>
-        </StackLayout>
+                    Margin="25,0,25,0"
+                Clicked="addPhotoButton_ClickedAsync"
+                Style="{StaticResource NormalButton}"/>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

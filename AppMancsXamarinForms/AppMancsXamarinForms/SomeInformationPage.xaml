@@ -2,36 +2,63 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.SomeInformationPage"
-             Title="Magadról...">
+             Title="Magadról..."
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
+
     <ContentPage.Content>
-        
-        <StackLayout Orientation="Vertical">
-            <Image
-                x:Name="profilePictureImage"/>
-            <Button
+        <ScrollView>
+        <StackLayout 
+                Style="{StaticResource NormalStackLayout}">
+            <controls:CircleImage
+                x:Name="profilePictureImage"
+                Aspect="AspectFit">
+                <controls:CircleImage.WidthRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">65</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.WidthRequest>
+                <controls:CircleImage.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS">65</On>
+                        <On Platform="WinPhone">75</On>
+                    </OnPlatform>
+                </controls:CircleImage.HeightRequest>
+            </controls:CircleImage>
+            <!--<Button
                 Text="Módosít"
                 x:Name="changePictureButton"
-                Clicked="changePictureButton_Clicked"/>
+                Clicked="changePictureButton_Clicked"/>-->
             <Label
-                Text="Vezetéknév"/>
+                Text="Vezetéknév"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="lastnameEntry"/>
+                x:Name="lastnameEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Keresztnév"/>
+                Text="Keresztnév"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="firstnameEntry"/>
+                x:Name="firstnameEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="E-Mail"/>
+                Text="E-Mail"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="emailEntry"/>
+                x:Name="emailEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Jelszó"/>
+                Text="Jelszó"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="pwEntry"/>
+                x:Name="pwEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Button
                 Text="Regisztráció"
                 x:Name="signupButton"
+                Style="{StaticResource NormalButton}"
                 Clicked="signupButton_Clicked"/>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -4,31 +4,47 @@
              x:Class="AppMancsXamarinForms.SignUpPage"
              Title="Regisztráció">
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical">
+        <ScrollView>
+        <StackLayout 
+                Style="{StaticResource NormalStackLayout}">
+            <Image
+                Style="{StaticResource Logo}"
+                Source="logo.jpg"/>
             <Button
+                Style="{StaticResource FacebookButton}"
                 x:Name="loginFacebookButton"
                 Text="Regisztráció Facebook fiókkal"
                 Clicked="loginFacebookButton_Clicked"/>
             <Label
-                Text="Vezetéknév"/>
+                Text="Vezetéknév"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="lastnameEntry"/>
+                x:Name="lastnameEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Keresztnév"/>
+                Text="Keresztnév"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="firstnameEntry"/>
+                x:Name="firstnameEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="E-Mail"/>
+                Text="E-Mail"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="emailEntry"/>
+                x:Name="emailEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Jelszó"/>
+                Text="Jelszó"
+                Style="{StaticResource EntryAboveLabel}"/>
             <Entry
-                x:Name="pwEntry"/>
+                x:Name="pwEntry"
+                Style="{StaticResource NormalEnrty}"/>
             <Button
                 Text="Regisztráció"
                 x:Name="signupButton"
+                Style="{StaticResource NormalButton}"
                 Clicked="signupButton_Clicked"/>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace AppMancsXamarinForms.Droid
 {
@@ -22,6 +23,7 @@ namespace AppMancsXamarinForms.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
             LoadApplication(new App());
         }
 

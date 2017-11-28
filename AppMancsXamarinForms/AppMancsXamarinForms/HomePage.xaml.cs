@@ -45,7 +45,7 @@ namespace AppMancsXamarinForms
                     wallListViewAdapter.Add(new WallListViewAdapter()
                     {
                         wallItem = item,
-                        howManyLikes = item.howmanylikes.ToString(),
+                        howManyLikes = item.howmanylikes.ToString() + " Like",
                         petName = item.name,
                         profilepictureURL = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
                         pictureURL = ImageSource.FromUri(new Uri(item.petpictures.PictureURL)),
@@ -62,11 +62,11 @@ namespace AppMancsXamarinForms
         {
             if (haveILiked)
             {
-                return "Nem tetszik";
+                return "unlike.png";
             }
             else
             {
-                return "Tetszik";
+                return "like.png";
             }
         }
 
@@ -98,13 +98,13 @@ namespace AppMancsXamarinForms
         private void Button_Clicked_1(object sender, EventArgs e)
         {
 
-            Button button = (Button)sender;
+            Image button = (Image)sender;
 
             var asd = (Grid)button.Parent;
 
             var collection = (Grid.IGridList<View>)asd.Children;
 
-            Label likeNumberLabel = (Label)collection[3];
+            Label likeNumberLabel = (Label)collection[4];
 
             var wallListViewAdapterClicked = (WallListViewAdapter)button.BindingContext;
 
@@ -116,11 +116,11 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
 
-                button.Text = "Tetszik";
+                button.Source = "like.png";
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes - 1;
 
-                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString();
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
             }
             else
             {
@@ -128,11 +128,11 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
 
-                button.Text = "Nem tetszik";
+                button.Source = "unlike.png";
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes + 1;
 
-                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString();
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
             }
         }
     }

@@ -4,18 +4,29 @@
              x:Class="AppMancsXamarinForms.SearchPage"
              Title="Keresés">
     <ContentPage.Content>
-        <StackLayout
-            Orientation="Vertical">
+        <StackLayout 
+            Margin="15,0,15,0">
             <Entry
                 x:Name="searchEntry"
                 Placeholder="Írj ami érdekel"
-                TextChanged="searchEntry_TextChanged"/>
-            
-                <ListView ItemTapped="searchListView_ItemTapped" ItemsSource="{Binding searchModelList}" x:Name="searchListView">
+                TextChanged="searchEntry_TextChanged"
+                Style="{StaticResource NormalEnrty}"/>
+                <ListView 
+                    ItemTapped="searchListView_ItemTapped"
+                    SeparatorColor="#FFCBB6"
+                    ItemsSource="{Binding searchModelList}" 
+                    x:Name="searchListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding hashtag}"/>
+                            <Grid
+                                BackgroundColor="White">
+                                <Label 
+                                Text="{Binding hashtag}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Center"
+                                Style="{StaticResource NormalLabel}"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
