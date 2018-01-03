@@ -268,7 +268,7 @@ namespace DBAccess
                                 pet.id = reader.GetInt32(reader.GetOrdinal("id"));
                                 pet.Name = reader.GetString(reader.GetOrdinal("Name"));
                                 pet.Age = reader.GetInt32(reader.GetOrdinal("Age"));
-                                pet.PetType = reader.GetString(reader.GetOrdinal("PetType"));
+                                pet.PetType = reader.GetString(reader.GetOrdinal("pettype"));
                                 pet.HaveAnOwner = reader.GetInt32(reader.GetOrdinal("HaveAnOwner"));
                                 pet.ProfilePictureURL = reader.GetString(reader.GetOrdinal("ProfilePicture"));
                                 pet.Uploader = reader.GetInt32(reader.GetOrdinal("Uploader"));
@@ -688,10 +688,11 @@ namespace DBAccess
                         {
                             while (reader.Read())
                             {
+                                var redd = reader;
                                 pet.id = reader.GetInt32(reader.GetOrdinal("id"));
                                 pet.Name = reader.GetString(reader.GetOrdinal("Name"));
                                 pet.Age = reader.GetInt32(reader.GetOrdinal("Age"));
-                                pet.PetType = reader.GetString(reader.GetOrdinal("PetType"));
+                                pet.PetType = reader.GetString(reader.GetOrdinal("pettype"));
                                 pet.HaveAnOwner = reader.GetInt32(reader.GetOrdinal("HaveAnOwner"));
                                 pet.ProfilePictureURL = reader.GetString(reader.GetOrdinal("ProfilePicture"));
                                 pet.Uploader = reader.GetInt32(reader.GetOrdinal("Uploader"));
@@ -701,8 +702,9 @@ namespace DBAccess
                 }
                 return pet;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string asd = ex.Message;
                 return null;
             }
         }
@@ -730,7 +732,7 @@ namespace DBAccess
                                 pet.id = reader.GetInt32(reader.GetOrdinal("id"));
                                 pet.Name = reader.GetString(reader.GetOrdinal("Name"));
                                 pet.Age = reader.GetInt32(reader.GetOrdinal("Age"));
-                                pet.PetType = reader.GetString(reader.GetOrdinal("PetType"));
+                                pet.PetType = reader.GetString(reader.GetOrdinal("pettype"));
                                 pet.HaveAnOwner = reader.GetInt32(reader.GetOrdinal("HaveAnOwner"));
                                 pet.ProfilePictureURL = reader.GetString(reader.GetOrdinal("ProfilePicture"));
                                 pet.Uploader = reader.GetInt32(reader.GetOrdinal("Uploader"));
