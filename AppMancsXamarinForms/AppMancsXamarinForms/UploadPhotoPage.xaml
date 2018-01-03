@@ -5,13 +5,12 @@
              Title="Kép hozzáadása">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout 
-            Orientation="Vertical">
+            <StackLayout
+               Style="{StaticResource NormalStackLayout}">
                 <Button
                 Text="Galéria"
                 x:Name="galleryButton"
                 Clicked="galleryButton_ClickedAsync"
-                    Margin="25,15,25,0"
                 Style="{StaticResource NormalButton}"/>
                 <Image
                 x:Name="pictureImage"
@@ -22,17 +21,14 @@
                 Title="Háziállataim"
                 TextColor="#FFCBB6"
                 VerticalOptions="Center"
-                    Margin="25,0,25,0"
                 SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
                 <Entry 
                 x:Name="hashtagsEntry"
                 Placeholder="Hashtagek (pl.: #legszebb)"
-                    Margin="25,0,25,0"
                 Style="{StaticResource NormalEnrty}"/>
                 <Button
                 Text="Fotó feltöltése"
                 x:Name="addPhotoButton"
-                    Margin="25,0,25,0"
                 Clicked="addPhotoButton_ClickedAsync"
                 Style="{StaticResource NormalButton}"/>
             </StackLayout>

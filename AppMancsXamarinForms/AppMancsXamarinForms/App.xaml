@@ -86,7 +86,7 @@
             </Style>
             <Style TargetType="StackLayout" x:Key="NormalStackLayout">
                 <Setter Property="Orientation" Value="Vertical"/>
-                <Setter Property="Margin" Value="50,0,50,0"/>
+                <Setter Property="Margin" Value="10,25,10,0"/>
             </Style>
             <Style TargetType="Image" x:Key="Logo">
                 <Setter Property="WidthRequest" Value="150"></Setter>

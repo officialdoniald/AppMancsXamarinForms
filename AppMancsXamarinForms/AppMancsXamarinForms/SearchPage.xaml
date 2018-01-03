@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.SearchPage"
              Title="Keresés">
     <ContentPage.Content>
         <StackLayout 
-            Margin="15,0,15,0">
+            Margin="10,25,0,0">
             <Entry
                 x:Name="searchEntry"
                 Placeholder="Írj ami érdekel"
@@ -13,7 +13,7 @@
                 Style="{StaticResource NormalEnrty}"/>
                 <ListView 
                     ItemTapped="searchListView_ItemTapped"
-                    SeparatorColor="#FFCBB6"
+                    SeparatorVisibility="None"
                     ItemsSource="{Binding searchModelList}" 
                     x:Name="searchListView">
                 <ListView.ItemTemplate>
