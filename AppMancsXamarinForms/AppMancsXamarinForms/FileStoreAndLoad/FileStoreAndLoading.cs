@@ -1,30 +1,25 @@
 ﻿using FileStoringWithDependency.IFileStoreAndLoad;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.FileStoreAndLoad
 {
-    public class FileStoreAndLoading
+    public static class FileStoreAndLoading
     {
-        public string GetSomethingText(string filename)
+        public static void GetSomethingText(string filename)
         {
             try
             {
-                string returnString = DependencyService.Get<IFileStoreAndLoad>().LoadText(filename);
-
-                return returnString;
+                GlobalVariables.ActualUsersEmail = DependencyService.Get<IFileStoreAndLoad>().LoadText(filename);
             }
             catch (Exception)
             {
-                return "";
+                GlobalVariables.ActualUsersEmail = String.Empty;
             }
         }
 
-        public void InsertToFile(string filename, string text)
+        public static void InsertToFile(string filename, string text)
         {
             DependencyService.Get<IFileStoreAndLoad>().SaveText(filename, text);
         }

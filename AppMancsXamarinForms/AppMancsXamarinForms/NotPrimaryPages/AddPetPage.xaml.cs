@@ -1,36 +1,18 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
-using Model;
+﻿using Model;
 using Plugin.Media;
-using Plugin.Media.Abstractions;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddPetPage : ContentPage
     {
-        private MediaFile mediaFile;
-
-        private Stream f;
-
-        private string pathf = "";
-
-        private string userEmail = "";
-
-        private AddpetFragmentViewModel addpetFragmentViewModel =
-                new AddpetFragmentViewModel();
-
         public AddPetPage()
         {
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
             InitializeComponent();
         }
         
@@ -61,11 +43,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 HaveAnOwner = isCheckedToInt
             };
 
-            string success = await addpetFragmentViewModel.AddPetAsync(userEmail, pathf, f, pet);
+            string success = await GlobalVariables.addpetFragmentViewModel.AddPetAsync(GlobalVariables.ActualUsersEmail, GlobalVariables.pathf, GlobalVariables.f, pet);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //hibaüzenet
+                //TODO
             }
             else
             {
@@ -83,12 +65,12 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             var file = await CrossMedia.Current.PickPhotoAsync();
 
-            mediaFile = file;
+            GlobalVariables.mediaFile = file;
 
             if (file == null) return;
 
-            f = file.GetStream();
-            pathf = file.Path;
+            GlobalVariables.f = file.GetStream();
+            GlobalVariables.pathf = file.Path;
 
             profilePictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }

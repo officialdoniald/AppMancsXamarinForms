@@ -1,10 +1,9 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
-using Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
@@ -13,10 +12,6 @@ namespace AppMancsXamarinForms.NotPrimaryPages
     {
         List<Petpictures> petpicturesList =
             new List<Petpictures>();
-
-        private WhosLikedViewModel whosLikedViewModel = new WhosLikedViewModel();
-
-        private string userEmail = "";
 
         public SearchResultPage()
         {
@@ -27,13 +22,13 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         {
             this.Title = "#" + hashtag;
 
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
             this.petpicturesList = petpicturesList;
 
             InitializeComponent();
+
+            var currentWidth = Application.Current.MainPage.Width;
+
+            var optimalWidth = currentWidth / 3;
 
             int left = 0;
             int top = 0;
@@ -46,6 +41,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
 
+                image.HeightRequest = optimalWidth;
+
+                image.Aspect = Aspect.AspectFill;
+
                 image.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
                     NumberOfTapsRequired = 1,
@@ -54,9 +53,6 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         OnPictureClicked(item);
                     }
                 });
-
-                image.WidthRequest = 50;
-                image.HeightRequest = 50;
 
                 searchResultGrid.Children.Add(image, top, left);
 
@@ -76,7 +72,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         
         public void OnPictureClicked(Petpictures petpictures)
         {
-            if (!whosLikedViewModel.IsMyPet(petpictures.PetID, userEmail))
+            if (!GlobalVariables.whosLikedViewModel.IsMyPet(petpictures.PetID))
             {
                 Navigation.PushAsync(new SeeAPicturePage(petpictures));
             }

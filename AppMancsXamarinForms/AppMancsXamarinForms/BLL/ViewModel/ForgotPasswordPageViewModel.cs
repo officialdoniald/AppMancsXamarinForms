@@ -36,7 +36,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().UpdateUser(user.id, user);
 
-            //send E-Mail
+            //TODO send E-Mail
 
             return language.Empty();
         }

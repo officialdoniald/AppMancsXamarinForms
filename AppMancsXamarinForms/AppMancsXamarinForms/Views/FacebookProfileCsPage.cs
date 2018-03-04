@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FacebookLogin.Models;
 using FacebookLogin.ViewModels;
 using Xamarin.Forms;
@@ -12,6 +8,7 @@ using AppMancsXamarinForms.BLL.ViewModel;
 using AppMancsXamarinForms.FileStoreAndLoad;
 using AppMancsXamarinForms.BLL.Languages;
 using AppMancsXamarinForms.NotPrimaryPages;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace FacebookLogin.Views
 {
@@ -23,7 +20,7 @@ namespace FacebookLogin.Views
         /// https://developers.facebook.com/apps/
         /// </summary>
         private string ClientId = "142251139871410";
-        
+
         public FacebookProfileCsPage()
         {
             BindingContext = new FacebookViewModel();
@@ -66,8 +63,8 @@ namespace FacebookLogin.Views
         {
             FacebookProfilePageViewModel facebookProfilePageViewModel = new FacebookProfilePageViewModel();
 
-            var page = Navigation.NavigationStack[Navigation.NavigationStack.Count-2];
-            
+            var page = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
+
             if (page is LoginPage)
             {
                 string success = facebookProfilePageViewModel.isThereAnyUser(facebookProfile.Id);
@@ -76,16 +73,14 @@ namespace FacebookLogin.Views
 
                 if (success == english.NoAccountFindWithThisFacebookAccount())
                 {
-                    //hibauzi
+                    //TODO
                     DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
 
                     await Navigation.PopToRootAsync();
                 }
                 else
                 {
-                    FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-                    fileStoreAndLoading.InsertToFile("login.txt", success);
+                    FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt, success);
 
                     //var pages = Navigation.NavigationStack;
 
@@ -94,7 +89,7 @@ namespace FacebookLogin.Views
                     //    Navigation.RemovePage(pages.Last());
                     //}
 
-                    await Navigation.PushAsync(new MainPage());
+                    Navigation.PushModalAsync(new JustActivityIndicator("facebook"));
                 }
             }
             else if (page is SignUpPage)
@@ -116,13 +111,11 @@ namespace FacebookLogin.Views
             }
             else if (page is UpdateProfilePage)
             {
-                FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
                 DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
 
-                string userEmail = fileStoreAndLoading.GetSomethingText("logint.txt");
+                FileStoreAndLoading.GetSomethingText(GlobalVariables.logintxt);
 
-                var success = facebookProfilePageViewModel.ChangeFacebookId(facebookProfile.Id, facebookProfile.Picture.Data.Url, userEmail);
+                var success = facebookProfilePageViewModel.ChangeFacebookId(facebookProfile.Id, facebookProfile.Picture.Data.Url, GlobalVariables.ActualUsersEmail);
 
                 if (String.IsNullOrEmpty(success))
                 {
@@ -130,7 +123,7 @@ namespace FacebookLogin.Views
                 }
                 else
                 {
-                    //hiba
+                    //TODO
                     await Navigation.PushAsync(new UpdateProfilePage());
                 }
             }

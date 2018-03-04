@@ -1,38 +1,19 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
-using AppMancsXamarinForms.NotPrimaryPages;
+﻿using AppMancsXamarinForms.NotPrimaryPages;
 using Model;
 using Plugin.Media;
-using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UploadPhotoPage : ContentPage
     {
-        private MediaFile mediaFile;
-
-        private Stream f;
-
-        private string pathf = "";
-
         private int selectedPetId = -1;
-
-        private string userEmail = "";
-
-        private UploadPhotoFragmentViewModel uploadPhotoFragmentViewModel =
-            new UploadPhotoFragmentViewModel();
-
-        private User user = new User();
 
         private string[] myPets = new string[] { };
 
@@ -42,13 +23,7 @@ namespace AppMancsXamarinForms
         {
             InitializeComponent();
 
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
-            user = uploadPhotoFragmentViewModel.GetUserByEmail(userEmail);
-
-            myPetList = uploadPhotoFragmentViewModel.GetMyPets(user.id);
+            myPetList = GlobalVariables.uploadPhotoFragmentViewModel.GetMyPets(GlobalVariables.ActualUser.id);
 
             myPets = new string[myPetList.Count];
 
@@ -79,23 +54,23 @@ namespace AppMancsXamarinForms
 
             var file = await CrossMedia.Current.PickPhotoAsync();
 
-            mediaFile = file;
+            GlobalVariables.mediaFile = file;
 
             if (file == null) return;
 
-            f = file.GetStream();
-            pathf = file.Path;
+            GlobalVariables.f = file.GetStream();
+            GlobalVariables.pathf = file.Path;
 
             pictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
 
         private async Task addPhotoButton_ClickedAsync(object sender, EventArgs e)
         {
-            string success = await uploadPhotoFragmentViewModel.UploadPictureAsync(pathf, f, selectedPetId, hashtagsEntry.Text);
+            string success = await GlobalVariables.uploadPhotoFragmentViewModel.UploadPictureAsync(GlobalVariables.pathf, GlobalVariables.f, selectedPetId, hashtagsEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //HIBA
+                //TODO
             }
             else
             {

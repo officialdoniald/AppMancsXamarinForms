@@ -1,10 +1,5 @@
-﻿using AppMancsXamarinForms.FileStoreAndLoad;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms
 {
@@ -13,18 +8,18 @@ namespace AppMancsXamarinForms
         public App()
         {
             InitializeComponent();
+        }
 
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+        protected override void OnStart()
+        {
+            GlobalVariables.InitializeUsersEmail();
 
-            string success = fileStoreAndLoading.GetSomethingText("login.txt");
-
-            if (!String.IsNullOrEmpty(success))
+            // Handle when your app starts
+            if (!GlobalVariables.HaveToLogin)
             {
-                var page = new AppMancsXamarinForms.MainPage();
+                GlobalVariables.InitializeUser();
 
-                MainPage = new NavigationPage(page);
-
-                NavigationPage.SetHasNavigationBar(page, false);
+                MainPage = new NotPrimaryPages.JustActivityIndicator();
             }
             else
             {
@@ -34,11 +29,6 @@ namespace AppMancsXamarinForms
 
                 NavigationPage.SetHasNavigationBar(page, false);
             }
-        }
-
-        protected override void OnStart()
-        {
-            // Handle when your app starts
         }
 
         protected override void OnSleep()

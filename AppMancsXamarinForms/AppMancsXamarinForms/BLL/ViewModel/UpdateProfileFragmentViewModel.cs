@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -14,17 +15,14 @@ namespace AppMancsXamarinForms.BLL.ViewModel
     {
         private English language = new English();
 
-        public User GetUserByEmail(string userEmail)
-        {
-            return DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
-        }
-
         private string UpdateUser(User user)
         {
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().UpdateUser(user.id, user);
 
             if (success)
             {
+                GlobalVariables.ActualUser = user;
+                
                 return language.Empty();
             }
             else
@@ -33,17 +31,15 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
         }
 
-        public string UpdateEmail(string EMAIL, string newEmail)
+        public string UpdateEmail(string newEmail)
         {
-            User userFromDB = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL);
-
-            if (EMAIL == newEmail)
+            if (GlobalVariables.ActualUser.Email == newEmail)
             {
                 return language.ThisEmailIsYourEmail();
             }
             if (String.IsNullOrEmpty(newEmail))
             {
-                userFromDB.Email = newEmail;
+                GlobalVariables.ActualUser.Email = newEmail;
 
                 User checkEmailExist = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(newEmail);
 
@@ -53,9 +49,9 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 }
                 else
                 {
-                    //új emailt küldeni az új címre
+                    //TODO új emailt küldeni az új címre
 
-                    return UpdateUser(userFromDB);
+                    return UpdateUser(GlobalVariables.ActualUser);
                 }
 
             }
@@ -63,49 +59,43 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             return language.SomethingWentWrong();
         }
 
-        public string UpdateProfile(string firstname, string lastname, string EMAIL)
+        public string UpdateProfile(string firstname, string lastname)
         {
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL);
-
             if (!String.IsNullOrEmpty(firstname))
             {
-                user.FirstName = firstname;
+                GlobalVariables.ActualUser.FirstName = firstname;
             }
             if (!String.IsNullOrEmpty(lastname))
             {
-                user.LastName = lastname;
+                GlobalVariables.ActualUser.LastName = lastname;
             }
 
-            return UpdateUser(user);
+            return UpdateUser(GlobalVariables.ActualUser);
         }
 
-        public async Task<string> UpdateProfilePicture(string uri, Stream stream, string EMAIL)
+        public async Task<string> UpdateProfilePicture(string uri, Stream stream)
         {
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL);
-
             if (!String.IsNullOrEmpty(uri))
             {
                 string uniqueBlobName = await DependencyService.Get<IBlobStorage.IBlobStorage>().UploadFileAsync(uri, stream);
 
-                uniqueBlobName = "https://officialdoniald.blob.core.windows.net/appmancs/" + uniqueBlobName;
+                uniqueBlobName = GlobalVariables.blobstorageurl + uniqueBlobName;
 
-                user.ProfilePictureURL = uniqueBlobName;
+                GlobalVariables.ActualUser.ProfilePictureURL = uniqueBlobName;
             }
-            else user.ProfilePictureURL = "";
+            else GlobalVariables.ActualUser.ProfilePictureURL = "";
 
-            return UpdateUser(user);
+            return UpdateUser(GlobalVariables.ActualUser);
         }
 
-        public string UpdatePassword(string oldpassword, string newPassword, string EMAIL)
+        public string UpdatePassword(string oldpassword, string newPassword)
         {
             if (String.IsNullOrEmpty(oldpassword) || String.IsNullOrEmpty(newPassword))
             {
                 return language.ThisEmailIsExist();
             }
 
-            User userFromDB = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL);
-
-            if (userFromDB.Password != oldpassword)
+            if (GlobalVariables.ActualUser.Password != oldpassword)
             {
                 return language.BadPasswordLength();
             }
@@ -115,9 +105,9 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 return language.BadPasswordLength();
             }
 
-            userFromDB.Password = newPassword;
+            GlobalVariables.ActualUser.Password = newPassword;
 
-            return UpdateUser(userFromDB);
+            return UpdateUser(GlobalVariables.ActualUser);
         }
     }
 }

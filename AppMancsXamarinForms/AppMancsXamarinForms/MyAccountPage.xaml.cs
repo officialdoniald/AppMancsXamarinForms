@@ -10,37 +10,27 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyAccountPage : ContentPage
     {
-        private string userEmail = "";
-
         private List<Pet> petList = new List<Pet>();
-
-        private SeeAnOwnerProfileViewModel seeAnOwnerProfileViewModel =
-                new SeeAnOwnerProfileViewModel();
 
         public MyAccountPage()
         {
             InitializeComponent();
 
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+            userNameLabel.Text = GlobalVariables.ActualUser.FirstName + " " + GlobalVariables.ActualUser.LastName;
 
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
-            User user = seeAnOwnerProfileViewModel.GetUserByEmail(userEmail);
-
-            userNameLabel.Text = user.FirstName + " " + user.LastName;
-
-            if(!String.IsNullOrEmpty(user.ProfilePictureURL))
+            if(!String.IsNullOrEmpty(GlobalVariables.ActualUser.ProfilePictureURL))
             {
-                profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+                profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
             }
 
-            petList = seeAnOwnerProfileViewModel.GetPet(user.id);
+            petList = GlobalVariables.seeAnOwnerProfileViewModel.GetPet(GlobalVariables.ActualUser.id);
 
             List<ListViewWithPictureAndSomeText> listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
 
@@ -55,6 +45,15 @@ namespace AppMancsXamarinForms
             }
 
             petListView.ItemsSource = listViewWithPictureAndSomeText;
+        }
+
+        protected override void OnAppearing()
+        {
+            var currentWidth = Application.Current.MainPage.Width;
+
+            var optimalWidth = currentWidth / 3;
+
+            profilePictureImage.HeightRequest = optimalWidth;
         }
 
         private void petListView_ItemTapped(object sender, ItemTappedEventArgs e)

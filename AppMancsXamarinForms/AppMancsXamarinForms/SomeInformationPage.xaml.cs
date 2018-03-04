@@ -12,21 +12,14 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SomeInformationPage : ContentPage
     {
-        private MediaFile mediaFile;
-
-        private Stream f;
-
-        private string pathf = "";
-
         private FacebookProfile facebookProfile = new FacebookProfile();
-
-        SignupPageViewModel signupPageViewModel = new SignupPageViewModel();
 
         public SomeInformationPage(FacebookProfile facebookProfile)
         {
@@ -34,7 +27,7 @@ namespace AppMancsXamarinForms
 
             InitializeComponent();
 
-            pathf = facebookProfile.Picture.Data.Url;
+            GlobalVariables.pathf = facebookProfile.Picture.Data.Url;
 
             profilePictureImage.Source = ImageSource.FromUri(new Uri(facebookProfile.Picture.Data.Url));
 
@@ -52,12 +45,12 @@ namespace AppMancsXamarinForms
 
             var file = await CrossMedia.Current.PickPhotoAsync();
 
-            mediaFile = file;
+            GlobalVariables.mediaFile = file;
 
             if (file == null) return;
 
-            f = file.GetStream();
-            pathf = file.Path;
+            GlobalVariables.f = file.GetStream();
+            GlobalVariables.pathf = file.Path;
 
             profilePictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
@@ -71,26 +64,29 @@ namespace AppMancsXamarinForms
                 FirstName = firstnameEntry.Text,
                 LastName = lastnameEntry.Text,
                 FacebookId = facebookProfile.Id,
-                ProfilePictureURL = pathf
+                ProfilePictureURL = GlobalVariables.pathf
             };
 
-            if (f is null)
+            if (GlobalVariables.f is null)
             {
-                user.ProfilePictureURL = pathf;
+                user.ProfilePictureURL = GlobalVariables.pathf;
             }
             else
             {
-                user.ProfilePictureURL = await signupPageViewModel.UploadFileAsync(pathf, f);
+                user.ProfilePictureURL = await GlobalVariables.signupPageViewModel.UploadFileAsync(GlobalVariables.pathf, GlobalVariables.f);
             }
 
-            string success = signupPageViewModel.SignUp(user);
+            string success = GlobalVariables.signupPageViewModel.SignUp(user);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //HIBA
+                //TODO
             }
             else
             {
+                GlobalVariables.ActualUser = user;
+                GlobalVariables.ActualUsersEmail = user.Email;
+
                 await Navigation.PopToRootAsync();
             }
         }

@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
+using AppMancsXamarinForms.NotPrimaryPages;
 
 namespace AppMancsXamarinForms
 {
@@ -14,45 +16,54 @@ namespace AppMancsXamarinForms
         {
             InitializeComponent();
 
-            NavigationPage.SetHasBackButton(this,false);
+            NavigationPage.SetHasBackButton(this, false);
             NavigationPage.SetHasNavigationBar(this, false);
 
-            var homePage = new HomePage();
-            
-            var navigationHomePage = new NavigationPage(homePage);
-            //navigationHomePage.Title = "Home";
-            navigationHomePage.Icon = "home.png";
+            //var activityPage = new JustActivityIndicator();
 
-            NavigationPage.SetHasNavigationBar(homePage, false);
+            //var navigationactivityPage = new NavigationPage(activityPage);
+            //navigationactivityPage.Icon = "home.png";
 
-            var searchPage = new SearchPage();
+            //Children.Add(navigationactivityPage);
 
-            var navigationSearchPage = new NavigationPage(searchPage);
-            //navigationSearchPage.Title = "Keresés";
-            navigationSearchPage.Icon = "search.png";
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                var homePage = new HomePage();
 
-            NavigationPage.SetHasNavigationBar(searchPage, false);
+                var navigationHomePage = new NavigationPage(homePage);
 
-            var uploadPhotoPage = new UploadPhotoPage();
+                var searchPage = new SearchPage();
 
-            var navigationUploadPhotoPage = new NavigationPage(uploadPhotoPage);
-            //navigationUploadPhotoPage.Title = "Fotó";
-            navigationUploadPhotoPage.Icon = "camera.png";
+                var navigationSearchPage = new NavigationPage(searchPage);
+                //navigationSearchPage.Title = "Keresés";
+                navigationSearchPage.Icon = "search.png";
 
-            NavigationPage.SetHasNavigationBar(uploadPhotoPage, false);
+                NavigationPage.SetHasNavigationBar(searchPage, false);
 
-            var myAccountPage = new MyAccountPage();
+                var uploadPhotoPage = new UploadPhotoPage();
 
-            var navigationMyAccountPage = new NavigationPage(myAccountPage);
-            //navigationMyAccountPage.Title = "Fiók";
-            navigationMyAccountPage.Icon = "profile.png";
+                var navigationUploadPhotoPage = new NavigationPage(uploadPhotoPage);
+                //navigationUploadPhotoPage.Title = "Fotó";
+                navigationUploadPhotoPage.Icon = "camera.png";
 
-            NavigationPage.SetHasNavigationBar(myAccountPage, false);
+                NavigationPage.SetHasNavigationBar(uploadPhotoPage, false);
 
-            Children.Add(navigationHomePage);
-            Children.Add(navigationSearchPage);
-            Children.Add(navigationUploadPhotoPage);
-            Children.Add(navigationMyAccountPage);
+                var myAccountPage = new MyAccountPage();
+
+                var navigationMyAccountPage = new NavigationPage(myAccountPage);
+                //navigationMyAccountPage.Title = "Fiók";
+                navigationMyAccountPage.Icon = "profile.png";
+
+                NavigationPage.SetHasNavigationBar(myAccountPage, false);
+
+                //Children.RemoveAt(0);
+                //Children.Insert(0, homePage);
+                //CurrentPage = homePage;
+                Children.Add(homePage);
+                Children.Add(navigationSearchPage);
+                Children.Add(navigationUploadPhotoPage);
+                Children.Add(navigationMyAccountPage);
+            });
         }
     }
 }

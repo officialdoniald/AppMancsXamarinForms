@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -27,7 +28,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             return returnString;
         }
 
-        public List<Wall> GetWallList(string userEmail)
+        public List<Wall> GetWallList()
         {
             List<Wall> wallList = new List<Wall>();
 
@@ -35,9 +36,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             List<Following> followingList = new List<Following>();
 
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
-
-            followingList = DependencyService.Get<IDBAccess.IBlobStorage>().GetFollowingByuserID(user.id);
+            followingList = DependencyService.Get<IDBAccess.IBlobStorage>().GetFollowingByuserID(GlobalVariables.ActualUser.id);
 
             List<Petpictures> petpictures = new List<Petpictures>();
 
@@ -64,7 +63,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                         wall.howmanylikes = DependencyService.Get<IDBAccess.IBlobStorage>().GetLikeByPetpicturesID(item2.id).Count;
                         wall.ProfilePictureURL = pet.ProfilePictureURL;
 
-                        Likes like = DependencyService.Get<IDBAccess.IBlobStorage>().GetLikeByUserID(user.id, item2.id);
+                        Likes like = DependencyService.Get<IDBAccess.IBlobStorage>().GetLikeByUserID(GlobalVariables.ActualUser.id, item2.id);
 
                         if (like is null)
                         {
@@ -82,13 +81,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
         }
 
-        public string Unlike(string userEmail, int petpicturesid)
+        public string Unlike(int petpicturesid)
         {
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
-
             Likes likes = new Likes()
             {
-                UserID = user.id,
+                UserID = GlobalVariables.ActualUser.id,
                 Petpicturesid = petpicturesid
             };
 
@@ -104,13 +101,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
         }
 
-        public string LikePicture(string userEmail, int petpicturesid)
+        public string LikePicture(int petpicturesid)
         {
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
-
             Likes likes = new Likes()
             {
-                UserID = user.id,
+                UserID = GlobalVariables.ActualUser.id,
                 Petpicturesid = petpicturesid
             };
 

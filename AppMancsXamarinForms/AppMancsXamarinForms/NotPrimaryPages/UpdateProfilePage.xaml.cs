@@ -1,61 +1,37 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
-using Model;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
+﻿using Plugin.Media;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UpdateProfilePage : ContentPage
     {
-        private MediaFile mediaFile;
-
-        private Stream f;
-
-        private string pathf = "";
-
-        private string userEmail = "";
-
-        UpdateProfileFragmentViewModel updateProfileFragmentViewModel
-            = new UpdateProfileFragmentViewModel();
-
         public UpdateProfilePage()
         {
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
-            User user = updateProfileFragmentViewModel.GetUserByEmail(userEmail);
-
             InitializeComponent();
 
-            lastnameEntry.Placeholder = user.LastName;
-            firstnameEntry.Placeholder = user.FirstName;
-            emailEntry.Placeholder = user.Email;
+            lastnameEntry.Placeholder = GlobalVariables.ActualUser.LastName;
+            firstnameEntry.Placeholder = GlobalVariables.ActualUser.FirstName;
+            emailEntry.Placeholder = GlobalVariables.ActualUser.Email;
 
-            if (!String.IsNullOrEmpty(user.ProfilePictureURL))
+            if (!String.IsNullOrEmpty(GlobalVariables.ActualUser.ProfilePictureURL))
             {
-                profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+                profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
             }
         }
 
         private async void updateMyProfileButton_ClickedAsync(object sender, EventArgs e)
         {
-            string success = updateProfileFragmentViewModel.UpdateProfile(firstnameEntry.Text, lastnameEntry.Text, userEmail);
+            string success = GlobalVariables.updateProfileFragmentViewModel.UpdateProfile(firstnameEntry.Text, lastnameEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //HIBA
+                //TODO
             }
             else
             {
@@ -65,11 +41,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private async void changeEmailButton_ClickedAsync(object sender, EventArgs e)
         {
-            string success = updateProfileFragmentViewModel.UpdateEmail(userEmail, emailEntry.Text);
+            string success = GlobalVariables.updateProfileFragmentViewModel.UpdateEmail(emailEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //HIBA
+                //TODO
             }
             else
             {
@@ -79,11 +55,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private async void changepwButton_ClickedAsync(object sender, EventArgs e)
         {
-            string success = updateProfileFragmentViewModel.UpdatePassword(pwEntry.Text, newpwEntry.Text, userEmail);
+            string success = GlobalVariables.updateProfileFragmentViewModel.UpdatePassword(pwEntry.Text, newpwEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //HIBA
+                //TODO
             }
             else
             {
@@ -93,11 +69,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private async Task changeProfilePictureButton_ClickedAsync(object sender, EventArgs e)
         {
-            string success = await updateProfileFragmentViewModel.UpdateProfilePicture(pathf, f, userEmail);
+            string success = await GlobalVariables.updateProfileFragmentViewModel.UpdateProfilePicture(GlobalVariables.pathf, GlobalVariables.f);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //hibaüzenet
+                //TODO
             }
             else
             {
@@ -115,12 +91,12 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             var file = await CrossMedia.Current.PickPhotoAsync();
 
-            mediaFile = file;
+            GlobalVariables.mediaFile = file;
 
             if (file == null) return;
             
-            f = file.GetStream();
-            pathf = file.Path;
+            GlobalVariables.f = file.GetStream();
+            GlobalVariables.pathf = file.Path;
 
             profilePictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }

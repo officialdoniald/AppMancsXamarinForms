@@ -8,29 +8,27 @@
             <StackLayout
                Style="{StaticResource NormalStackLayout}">
                 <Button
-                Text="Galéria"
-                x:Name="galleryButton"
-                Clicked="galleryButton_ClickedAsync"
-                Style="{StaticResource NormalButton}"/>
+                    Text="Galéria"
+                    x:Name="galleryButton"
+                    Clicked="galleryButton_ClickedAsync"
+                    Style="{StaticResource NormalButton}"/>
                 <Image
-                x:Name="pictureImage"
-                Aspect="AspectFit"
-                HeightRequest="300"/>
+                    x:Name="pictureImage"/>
                 <Picker
-                x:Name="petPicker"
-                Title="Háziállataim"
-                TextColor="#FFCBB6"
-                VerticalOptions="Center"
-                SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
+                    x:Name="petPicker"
+                    Title="Háziállataim"
+                    TextColor="#FFCBB6"
+                    VerticalOptions="Center"
+                    SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
                 <Entry 
-                x:Name="hashtagsEntry"
-                Placeholder="Hashtagek (pl.: #legszebb)"
-                Style="{StaticResource NormalEnrty}"/>
+                    x:Name="hashtagsEntry"
+                    Placeholder="Hashtagek (pl.: #legszebb)"
+                    Style="{StaticResource NormalEnrty}"/>
                 <Button
-                Text="Fotó feltöltése"
-                x:Name="addPhotoButton"
-                Clicked="addPhotoButton_ClickedAsync"
-                Style="{StaticResource NormalButton}"/>
+                    Text="Fotó feltöltése"
+                    x:Name="addPhotoButton"
+                    Clicked="addPhotoButton_ClickedAsync"
+                    Style="{StaticResource NormalButton}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

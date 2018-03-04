@@ -3,37 +3,37 @@ using AppMancsXamarinForms.FileStoreAndLoad;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
+using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        LoginPageViewModel loginPageViewModel =
-            new LoginPageViewModel();
-
         public LoginPage()
         {
             InitializeComponent();
 
+            //loginActivator.IsRunning = true;
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private async void loginButton_Clicked(object sender, EventArgs e)
+        private void loginButton_Clicked(object sender, EventArgs e)
         {
-            string success = loginPageViewModel.Login(emailEntry.Text, pwEntry.Text);
+            string success = GlobalVariables.loginPageViewModel.Login(emailEntry.Text, pwEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
             {
-                await DisplayAlert("Figyelmeztetés", success, "OK");
+                Device.BeginInvokeOnMainThread(() => loginActivator.IsRunning = false);
+
+                DisplayAlert("Figyelmeztetés", success, "OK");
             }
             else
             {
-                FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+                FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt, emailEntry.Text);
 
-                fileStoreAndLoading.InsertToFile("login.txt", emailEntry.Text);
-
-                await Navigation.PushModalAsync(new MainPage());
+                Navigation.PushModalAsync(new NotPrimaryPages.JustActivityIndicator("login"));
             }
         }
 

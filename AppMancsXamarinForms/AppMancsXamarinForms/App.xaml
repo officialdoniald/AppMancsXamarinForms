@@ -4,54 +4,6 @@
              x:Class="AppMancsXamarinForms.App">
     <Application.Resources>
         <ResourceDictionary>
-            <!--<Style TargetType="ContentPage" x:Key="contentpage">
-                <Setter Property="BackgroundColor" Value="#3C1E3A"/>
-            </Style>
-            <Style TargetType="Label" x:Key="applicationtitle">
-                <Setter Property="FontSize" Value="40"/>
-                <Setter Property="TextColor" Value="White"/>
-            </Style>
-            <Style TargetType="Label" x:Key="headertwo">
-                <Setter Property="FontSize" Value="20"/>
-                <Setter Property="TextColor" Value="White"/>
-            </Style>
-            <Style TargetType="Label" x:Key="comment">
-                <Setter Property="FontSize" Value="13"/>
-                <Setter Property="TextColor" Value="White"/>
-            </Style>
-            <Style TargetType="Label" x:Key="casualtext">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="15"/>
-            </Style>
-            <Style TargetType="Label" x:Key="link">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="17"/>
-            </Style>
-            <Style TargetType="Label" x:Key="tappedtext">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="15"/>
-            </Style>
-            <Style TargetType="DatePicker" x:Key="pickerstryle">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
-            <Style TargetType="TimePicker" x:Key="timepickerstryle">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
-            <Style TargetType="Entry" x:Key="entrystryle">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="17"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="Margin" Value="0,0,20,0"/>
-            </Style>
-            <Style TargetType="Entry" x:Key="passwordentrystryle">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="17"/>
-                <Setter Property="IsPassword" Value="true"/>
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="Margin" Value="0,0,20,0"/>
-            </Style>-->
             <Style TargetType="Entry" x:Key="NormalEnrty">
                 <Setter Property="TextColor" Value="#FFCBB6"/>
                 <Setter Property="FontSize" Value="14"/>
@@ -86,22 +38,17 @@
             </Style>
             <Style TargetType="StackLayout" x:Key="NormalStackLayout">
                 <Setter Property="Orientation" Value="Vertical"/>
-                <Setter Property="Margin" Value="10,25,10,0"/>
+                <Setter Property="Margin" Value="0,25,0,0"/>
             </Style>
             <Style TargetType="Image" x:Key="Logo">
-                <Setter Property="WidthRequest" Value="150"></Setter>
-                <Setter Property="HeightRequest" Value="150"></Setter>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="150"/>
                 <Setter Property="Margin" Value="0,0,0,5"/>
             </Style>
-            <!--<Style TargetType="Image" x:Key="selectedPhoto">
-                <Setter Property="WidthRequest" Value="100"></Setter>
-                <Setter Property="HeightRequest" Value="250"></Setter>
+            <Style TargetType="Grid" x:Key="ThreePicInOneRow">
+                <Setter Property="RowSpacing" Value="1"/>
+                <Setter Property="ColumnSpacing" Value="1"/>
             </Style>
-            <Style TargetType="ListView" x:Key="eventslistview">
-                <Setter Property="SeparatorColor" Value="White"></Setter>
-                <Setter Property="RowHeight" Value="100"></Setter>
-                <Setter Property="BackgroundColor" Value="Transparent"></Setter>
-            </Style>-->
         </ResourceDictionary>
     </Application.Resources>
 </Application>

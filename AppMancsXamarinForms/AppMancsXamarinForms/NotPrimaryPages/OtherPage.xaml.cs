@@ -1,35 +1,26 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
+﻿using AppMancsXamarinForms.FileStoreAndLoad;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OtherPage : ContentPage
     {
-        private string userEmail = "";
-
-        private OtherFragmentViewModel otherFragmentViewModel =
-            new OtherFragmentViewModel();
-
         public OtherPage()
         {
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
             InitializeComponent();
         }
 
         private void deleteAcoountPageButton_Clicked(object sender, EventArgs e)
         {
-            string success = otherFragmentViewModel.DeleteAccount(userEmail);
+            string success = GlobalVariables.otherFragmentViewModel.DeleteAccount(GlobalVariables.ActualUsersEmail);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //HIBA
+                //TODO
             }
             else
             {
@@ -43,9 +34,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private void loguotButton_Clicked(object sender, EventArgs e)
         {
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-            fileStoreAndLoading.InsertToFile("login.txt","");
+            FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt,String.Empty);
 
             var page = new NavigationPage(new LoginPage());
 

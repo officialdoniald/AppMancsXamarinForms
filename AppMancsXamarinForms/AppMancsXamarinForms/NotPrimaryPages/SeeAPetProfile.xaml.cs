@@ -3,12 +3,9 @@ using AppMancsXamarinForms.FileStoreAndLoad;
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
@@ -16,8 +13,6 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 	public partial class SeeAPetProfile : ContentPage
     {
         private int petid = -1;
-
-        private string userEmail = "";
 
         private bool HaveIAlreadyFollow = false;
 
@@ -27,28 +22,27 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private Petpictures petpictures = new Petpictures();
 
-        private PetProfileFragmentViewModel petProfileFragmentViewModel =
-            new PetProfileFragmentViewModel();
-
         public SeeAPetProfile (int petid)
 		{
             this.petid = petid;
 
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+            petPictureListfromDB = GlobalVariables.petProfileFragmentViewModel.GetPetPictureURL(petid);
 
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
-            petPictureListfromDB = petProfileFragmentViewModel.GetPetPictureURL(petid);
-
-            thisPet = petProfileFragmentViewModel.GetPetFromDBByID(petid);
+            thisPet = GlobalVariables.petProfileFragmentViewModel.GetPetFromDBByID(petid);
 
             InitializeComponent();
+
+            var currentWidth = Application.Current.MainPage.Width;
+
+            var optimalWidth = currentWidth / 3;
 
             petnameLabel.Text = thisPet.Name;
 
             profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
 
-            HaveIAlreadyFollow = petProfileFragmentViewModel.HaveIAlreadyFollow(userEmail, petid);
+            profilePictureImage.HeightRequest = optimalWidth;
+
+            HaveIAlreadyFollow = GlobalVariables.petProfileFragmentViewModel.HaveIAlreadyFollow(GlobalVariables.ActualUsersEmail, petid);
 
             int left = 0;
             int top = 0;
@@ -61,6 +55,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
 
+                image.HeightRequest = optimalWidth;
+
                 image.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
                     NumberOfTapsRequired = 1,
@@ -70,7 +66,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                     }
                 });
 
-                image.Aspect = Aspect.AspectFit;
+                image.Aspect = Aspect.AspectFill;
 
                 pictureListGrid.Children.Add(image, top, left);
 
@@ -87,40 +83,40 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 }
             }
 
-            if (HaveIAlreadyFollow) followButton.Text = petProfileFragmentViewModel.unfollowText;
-            else followButton.Text = petProfileFragmentViewModel.followText;
+            if (HaveIAlreadyFollow) followButton.Text = GlobalVariables.petProfileFragmentViewModel.unfollowText;
+            else followButton.Text = GlobalVariables.petProfileFragmentViewModel.followText;
         }
 
         private void followButton_Clicked(object sender, EventArgs e)
         {
             if (HaveIAlreadyFollow)
             {
-                string success = petProfileFragmentViewModel.UnFollow(userEmail, petid);        
+                string success = GlobalVariables.petProfileFragmentViewModel.UnFollow(GlobalVariables.ActualUsersEmail, petid);        
 
                 HaveIAlreadyFollow = !HaveIAlreadyFollow;
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    //hibaüzenet
+                    //TODO
                 }
                 else
                 {
-                    followButton.Text = petProfileFragmentViewModel.followText;
+                    followButton.Text = GlobalVariables.petProfileFragmentViewModel.followText;
                 }
             }
             else
             {
-                string success = petProfileFragmentViewModel.FollowAPet(userEmail, petid);
+                string success = GlobalVariables.petProfileFragmentViewModel.FollowAPet(GlobalVariables.ActualUsersEmail, petid);
 
                 HaveIAlreadyFollow = !HaveIAlreadyFollow;
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    //hibaüzenet
+                    //TODO
                 }
                 else
                 {
-                    followButton.Text = petProfileFragmentViewModel.unfollowText;
+                    followButton.Text = GlobalVariables.petProfileFragmentViewModel.unfollowText;
                 }
             }
         }

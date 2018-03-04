@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -29,13 +30,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             return userList;
         }
 
-        public bool IsMyPet(int petid, string userEmail)
+        public bool IsMyPet(int petid)
         {
-            var user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
-
             var pet = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetByID(petid);
 
-            if (pet.Uploader == user.id)
+            if (pet.Uploader == GlobalVariables.ActualUser.id)
             {
                 return true;
             }

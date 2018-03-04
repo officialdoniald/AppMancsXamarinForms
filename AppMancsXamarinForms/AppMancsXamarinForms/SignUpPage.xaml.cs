@@ -1,21 +1,14 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using Model;
+﻿using Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpPage : ContentPage
     {
-        SignupPageViewModel signupPageViewModel = new SignupPageViewModel();
-
         public SignUpPage()
         {
             InitializeComponent();
@@ -33,11 +26,11 @@ namespace AppMancsXamarinForms
                 ProfilePictureURL = ""
             };
 
-            string success = signupPageViewModel.SignUp(user);
+            string success = GlobalVariables.signupPageViewModel.SignUp(user);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //HIBA
+                //TODO
             }
             else
             {

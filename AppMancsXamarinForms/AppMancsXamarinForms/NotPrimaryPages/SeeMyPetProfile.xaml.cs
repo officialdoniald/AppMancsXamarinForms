@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
@@ -16,8 +17,6 @@ namespace AppMancsXamarinForms.NotPrimaryPages
     public partial class SeeMyPetProfile : ContentPage
     {
         private int petid = -1;
-
-        private string userEmail = "";
 
         private bool HaveIAlreadyFollow = false;
 
@@ -27,28 +26,27 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private Petpictures petpictures = new Petpictures();
 
-        private PetProfileFragmentViewModel petProfileFragmentViewModel =
-            new PetProfileFragmentViewModel();
-
         public SeeMyPetProfile(int petid)
         {
             this.petid = petid;
 
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
+            petPictureListfromDB = GlobalVariables.petProfileFragmentViewModel.GetPetPictureURL(petid);
 
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
-            petPictureListfromDB = petProfileFragmentViewModel.GetPetPictureURL(petid);
-
-            thisPet = petProfileFragmentViewModel.GetPetFromDBByID(petid);
+            thisPet = GlobalVariables.petProfileFragmentViewModel.GetPetFromDBByID(petid);
 
             InitializeComponent();
+
+            var currentWidth = Application.Current.MainPage.Width;
+
+            var optimalWidth = currentWidth / 3;
 
             petnameLabel.Text = thisPet.Name;
 
             profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
 
-            HaveIAlreadyFollow = petProfileFragmentViewModel.HaveIAlreadyFollow(userEmail, petid);
+            profilePictureImage.HeightRequest = optimalWidth;
+
+            HaveIAlreadyFollow = GlobalVariables.petProfileFragmentViewModel.HaveIAlreadyFollow(GlobalVariables.ActualUsersEmail, petid);
 
             int left = 0;
             int top = 0;
@@ -61,6 +59,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
 
+                image.HeightRequest = optimalWidth;
+
                 image.GestureRecognizers.Add(new TapGestureRecognizer()
                 {
                     NumberOfTapsRequired = 1,
@@ -70,7 +70,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                     }
                 });
 
-                image.Aspect = Aspect.AspectFit;
+                image.Aspect = Aspect.AspectFill;
 
                 pictureListGrid.Children.Add(image, top, left);
 
@@ -86,6 +86,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                     top++;
                 }
             }
+
+
         }
 
         public void OnPictureClicked(Petpictures petpictures)

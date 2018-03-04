@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -36,13 +37,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             return returnString;
         }
 
-        public string LikeClick(string userEmail, int petpicturesid)
+        public string LikeClick(int petpicturesid)
         {
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
-
             Likes likes = new Likes()
             {
-                UserID = user.id,
+                UserID = GlobalVariables.ActualUser.id,
                 Petpicturesid = petpicturesid
             };
 
@@ -58,13 +57,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
         }
 
-        public string UnLikeClick(string userEmail, int petpicturesid)
+        public string UnLikeClick(int petpicturesid)
         {
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEmail);
-
             Likes likes = new Likes()
             {
-                UserID = user.id,
+                UserID = GlobalVariables.ActualUser.id,
                 Petpicturesid = petpicturesid
             };
 
@@ -90,11 +87,9 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             return DependencyService.Get<IDBAccess.IBlobStorage>().GetLikeByPetpicturesID(petpicturesid);
         }
 
-        public bool HaveILiked(string userEMAIL, int petpicturesid)
+        public bool HaveILiked(int petpicturesid)
         {
-            int userid = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(userEMAIL).id;
-
-            Likes like = DependencyService.Get<IDBAccess.IBlobStorage>().GetLikeByUserID(userid, petpicturesid);
+            Likes like = DependencyService.Get<IDBAccess.IBlobStorage>().GetLikeByUserID(GlobalVariables.ActualUser.id, petpicturesid);
 
             if (like is null)
             {

@@ -22,11 +22,9 @@ namespace AppMancsXamarinForms
 
         public SearchPage()
         {
-            searchModelList = searchFragmentViewModel.GetSearchModel();
-
             InitializeComponent();
 
-            searchListView.ItemsSource = searchModelList;
+            SetTheListView();
         }
 
         private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -47,6 +45,18 @@ namespace AppMancsXamarinForms
             var searchResultPage = new SearchResultPage(selectedSearchModel.petpicturesList, hasht);
 
             Navigation.PushAsync(searchResultPage);
+        }
+
+        protected override void OnAppearing()
+        {
+            SetTheListView();
+        }
+
+        private void SetTheListView()
+        {
+            searchModelList = searchFragmentViewModel.GetSearchModel();
+
+            searchListView.ItemsSource = searchModelList;
         }
     }
 }

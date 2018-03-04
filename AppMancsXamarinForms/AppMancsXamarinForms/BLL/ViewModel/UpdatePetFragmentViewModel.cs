@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -50,7 +51,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             {
                 string uniqueBlobName = await DependencyService.Get<IBlobStorage.IBlobStorage>().UploadFileAsync(uri, stream);
 
-                uniqueBlobName = "https://officialdoniald.blob.core.windows.net/appmancs/" + uniqueBlobName;
+                uniqueBlobName = GlobalVariables.blobstorageurl + uniqueBlobName;
 
                 pet.ProfilePictureURL = uniqueBlobName;
 

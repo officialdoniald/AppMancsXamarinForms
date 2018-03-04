@@ -1,85 +1,50 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeMyPicturePage"
-             Title="Képem"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
-
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppMancsXamarinForms.NotPrimaryPages.SeeMyPicturePage" Title="Képem" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout
-            Orientation="Vertical">
-                <Grid>
+            <StackLayout Orientation="Vertical">
+                <Grid Margin="15,0,15,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="60"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="60">
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="60">
+                        </ColumnDefinition>
+                        <ColumnDefinition Width="60">
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                        </ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition>
+                        </RowDefinition>
                     </Grid.RowDefinitions>
-                    <controls:CircleImage
-                x:Name="profilePictureImage"
-                Aspect="AspectFit"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                        <controls:CircleImage.WidthRequest>
-                            <OnPlatform x:TypeArguments="x:Double">
-                                <On Platform="Android, iOS">40</On>
-                                <On Platform="WinPhone">75</On>
-                            </OnPlatform>
-                        </controls:CircleImage.WidthRequest>
-                        <controls:CircleImage.HeightRequest>
-                            <OnPlatform x:TypeArguments="x:Double">
-                                <On Platform="Android, iOS">40</On>
-                                <On Platform="WinPhone">75</On>
-                            </OnPlatform>
-                        </controls:CircleImage.HeightRequest>
-                    </controls:CircleImage>
-                    <Label
-                        Grid.Column="1"
-                        Grid.Row="0"
-                    x:Name="nameLabel"
-                    Style="{StaticResource NormalLabel}"
-                        HorizontalOptions="Start"
-                        VerticalOptions="Center">
+                    <Image x:Name="profilePictureImage" Aspect="AspectFit" Grid.Column="0" Grid.Row="0" HeightRequest="45">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label Grid.Column="1" Grid.Row="0" x:Name="nameLabel" Style="{StaticResource NormalLabel}" HorizontalOptions="Start" VerticalOptions="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                            NumberOfTapsRequired="1"
-                            Tapped="TapGestureRecognizer_Tapped"
-                            ></TapGestureRecognizer>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped">
+                            </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
+                    <Image HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" Source="like.png">
+                    </Image>
+                    <Label Grid.Column="3" Grid.Row="0" x:Name="howmanyLikesLabel" HorizontalOptions="Start" VerticalOptions="Center" Margin="15,0,0,0" Style="{StaticResource NormalLabel}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1">
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Button Grid.Column="4" Grid.Row="0" x:Name="deleteButton" Text="Törlöm" Clicked="deleteButton_Clicked" />
                 </Grid>
-                <Image
-                        x:Name="pictureImage"
-                    HeightRequest="300"
-                    Aspect="AspectFit"
-                    />
-                <Label
-                    x:Name="howmanyLikesLabel"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                    Margin="15,0,0,0"
-                    Style="{StaticResource NormalLabel}" >
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer
-                            NumberOfTapsRequired="1"
-                            Tapped="TapGestureRecognizer_Tapped_1"
-                            ></TapGestureRecognizer>
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label
-                    x:Name="hashtagsLabel"
-                    HorizontalOptions="Start"
-                    Margin="15,0,0,0"
-                    Style="{StaticResource NormalLabel}" />
-
-
-                <Button
-                    x:Name="deleteButton"
-                    Text="Törlöm"
-                    Clicked="deleteButton_Clicked"
-                />
+                <Image x:Name="pictureImage" Aspect="AspectFit"/>
+<!--                <Label x:Name="hashtagsLabel" HorizontalOptions="Start" Style="{StaticResource NormalLabel}" />-->
+                <StackLayout x:Name="mainStackLayout" Orientation="Horizontal" Margin="15,0,15,0"></StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

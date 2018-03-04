@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SeeAnOwnerPage : ContentPage
-	{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SeeAnOwnerPage : ContentPage
+    {
         private int userID = -1;
 
         private SeeAnOwnerProfileViewModel seeAnOwnerProfileViewModel =
@@ -21,49 +21,66 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private List<Pet> petList = new List<Pet>();
 
-        public SeeAnOwnerPage (int userid)
-		{
+        public SeeAnOwnerPage(int userid)
+        {
             this.userID = userid;
 
-			InitializeComponent ();
+            InitializeComponent();
 
-            User user = seeAnOwnerProfileViewModel.GetUser(userID);
+            var currentWidth = Application.Current.MainPage.Width;
+
+            var optimalWidth = currentWidth / 3 ;
+
+            User user = DependencyService.Get<BLL.IDBAccess.IBlobStorage>().GetUserByID(userID);
 
             if (!String.IsNullOrEmpty(user.ProfilePictureURL))
             {
                 profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+
+                profilePictureImage.HeightRequest = optimalWidth;
             }
 
             userNameLabel.Text = user.FirstName + " " + user.LastName;
 
             petList = seeAnOwnerProfileViewModel.GetPet(user.id);
 
-            petListView.ItemsSource = petList;
-
-            List<ListViewWithPictureAndSomeText> listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
-            
             foreach (var item in petList)
             {
-                listViewWithPictureAndSomeText.Add(new ListViewWithPictureAndSomeText()
+                StackLayout oneGrid = new StackLayout()
                 {
-                    pet = item,
-                    ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
-                    Name = item.Name
-                });
+                    Orientation = StackOrientation.Vertical
+                };
+
+                Image petProfilePictureImage = new Image(){
+                    Source = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
+                    HeightRequest = optimalWidth,
+                    Aspect = Aspect.AspectFill,
+                    HorizontalOptions = LayoutOptions.Center
+                };
+
+                Label petNameLabel = new Label()
+                {
+                    Text = item.Name,
+                    HorizontalOptions = LayoutOptions.Center
+                };
+
+                var goToPetProfileTapped = new TapGestureRecognizer();
+                goToPetProfileTapped.Tapped += (s, e) => {
+                    var searchResultPage = new SeeAPetProfile(item.id);
+
+                    Navigation.PushAsync(searchResultPage);
+                };
+
+                petProfilePictureImage.GestureRecognizers.Add(goToPetProfileTapped);
+                petNameLabel.GestureRecognizers.Add(goToPetProfileTapped);
+
+                oneGrid.Children.Add(petProfilePictureImage);
+                oneGrid.Children.Add(petNameLabel);
+
+                //mainStackLayout.Children.Add(oneGrid);
+
+                pictureListGrid.Children.Add(oneGrid);
             }
-
-            petListView.ItemsSource = listViewWithPictureAndSomeText;
-        }
-
-        private void petListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            var listView = (ListView)sender;
-
-            var selectedLVWPAST = (ListViewWithPictureAndSomeText)listView.SelectedItem;
-
-            var searchResultPage = new SeeAPetProfile(selectedLVWPAST.pet.id);
-
-            Navigation.PushAsync(searchResultPage);
         }
     }
 }

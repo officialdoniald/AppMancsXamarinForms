@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
@@ -13,27 +14,19 @@ namespace AppMancsXamarinForms.NotPrimaryPages
     {
         private Pet thisPet = new Pet();
 
-        private string userEmail = "";
-
         private int petpicturesid = -1;
 
         private List<User> users = new List<User>();
 
-        private WhosLikedViewModel whosLikedViewModel = new WhosLikedViewModel();
-
         public WhosLiked (int petpicturesid)
 		{
-            FileStoreAndLoading fileStoreAndLoading = new FileStoreAndLoading();
-
-            userEmail = fileStoreAndLoading.GetSomethingText("login.txt");
-
             this.petpicturesid = petpicturesid;
 
             //thisPet = whosLikedViewModel.GetPetByPetId(petpicturesid);
 
 			InitializeComponent ();
 
-            users = whosLikedViewModel.GetUserList(petpicturesid);
+            users = GlobalVariables.whosLikedViewModel.GetUserList(petpicturesid);
 
             List<ListViewWithPictureAndSomeText> listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
 
@@ -69,7 +62,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             var selectedLVWPAST = (ListViewWithPictureAndSomeText)listView.SelectedItem;
 
-            if (userEmail != selectedLVWPAST.user.Email)
+            if (GlobalVariables.ActualUsersEmail != selectedLVWPAST.user.Email)
             {
                 var searchResultPage = new SeeAnOwnerPage(selectedLVWPAST.user.id);
 

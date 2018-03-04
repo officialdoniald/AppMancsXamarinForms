@@ -26,7 +26,7 @@ namespace AppMancsXamarinForms
             }
             else
             {
-                //hiba
+                //TODO
             }
         }
     }
