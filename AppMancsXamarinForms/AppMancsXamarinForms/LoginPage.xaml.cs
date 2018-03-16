@@ -33,6 +33,8 @@ namespace AppMancsXamarinForms
             {
                 FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt, emailEntry.Text);
 
+                GlobalVariables.GetMyPets();
+
                 Navigation.PushModalAsync(new NotPrimaryPages.JustActivityIndicator("login"));
             }
         }

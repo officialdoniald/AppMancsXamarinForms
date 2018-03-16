@@ -15,33 +15,16 @@ namespace AppMancsXamarinForms
     {
         private int selectedPetId = -1;
 
-        private string[] myPets = new string[] { };
-
-        private List<Pet> myPetList = new List<Pet>();
-
         public UploadPhotoPage()
         {
             InitializeComponent();
 
-            myPetList = GlobalVariables.uploadPhotoFragmentViewModel.GetMyPets(GlobalVariables.ActualUser.id);
-
-            myPets = new string[myPetList.Count];
-
-            int i = 0;
-
-            if (myPetList.Count != 0)
+            if (GlobalVariables.Mypetlist.Count != 0)
             {
-                selectedPetId = myPetList[0].id;
+                selectedPetId = GlobalVariables.Mypetlist[0].petid;
             }
 
-            foreach (var item in myPetList)
-            {
-                myPets[i] = item.Name;
-
-                i++;
-            }
-
-            petPicker.ItemsSource = myPets;
+            petPicker.ItemsSource = GlobalVariables.MyPetsString;
         }
 
         private async Task galleryButton_ClickedAsync(object sender, EventArgs e)
@@ -80,7 +63,7 @@ namespace AppMancsXamarinForms
 
         private void petPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedPetId = myPetList[petPicker.SelectedIndex].id;
+            selectedPetId = GlobalVariables.Mypetlist[petPicker.SelectedIndex].petid;
         }
     }
 }

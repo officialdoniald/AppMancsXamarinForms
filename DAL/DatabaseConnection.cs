@@ -18,85 +18,85 @@ namespace DBAccess
         #region strings
 
         //GET
-        public string GET_USER_SQL { get; } =
+        public static string GET_USER_SQL { get; } =
                     "SELECT * FROM [dbo].[User]";
-        public string GET_Donates_SQL { get; } =
-                    "SELECT * FROM [dbo].[Donates]";
-        public string GET_Favoritepets_SQL { get; } =
-                    "SELECT * FROM [dbo].[Favoritepets]";
-        public string GET_Likes_SQL { get; } =
-                    "SELECT * FROM [dbo].[Likes]";
-        public string GET_Pet_SQL { get; } =
-                    "SELECT * FROM [dbo].[Pet]";
-        public string GET_Petpictures_SQL { get; } =
-                    "SELECT * FROM [dbo].[Petpictures]";
-        public string GET_Following_SQL { get; } =
-                    "SELECT * FROM [dbo].[Following]";
-        public string GET_HASHTAGS_SQL { get; } =
+        public static string GET_Donates_SQL { get; } =
+                     "SELECT * FROM [dbo].[Donates]";
+        public static string GET_Favoritepets_SQL { get; } =
+                     "SELECT * FROM [dbo].[Favoritepets]";
+        public static string GET_Likes_SQL { get; } =
+                     "SELECT * FROM [dbo].[Likes]";
+        public static string GET_Pet_SQL { get; } =
+                     "SELECT * FROM [dbo].[Pet]";
+        public static string GET_Petpictures_SQL { get; } =
+                     "SELECT * FROM [dbo].[Petpictures]";
+        public static string GET_Following_SQL { get; } =
+                     "SELECT * FROM [dbo].[Following]";
+        public static string GET_HASHTAGS_SQL { get; } =
                     "SELECT * FROM [dbo].[Hashtags]";
 
         //GETBYID
-        public string GET_USERBYEMAIL_SQL { get; } =
+        public static string GET_USERBYEMAIL_SQL { get; } =
                     "SELECT * FROM [dbo].[User] WHERE EMAIL=@EMAIL";
-        public string GET_USERBYFACEBOOKID_SQL { get; } =
+        public static string GET_USERBYFACEBOOKID_SQL { get; } =
                     "SELECT * FROM [dbo].[User] WHERE facebookid=@facebookid";
-        public string GET_USERBYID_SQL { get; } =
+        public static string GET_USERBYID_SQL { get; } =
                     "SELECT * FROM [dbo].[User] WHERE ID=@id";
-        public string GET_DonatesBYID_SQL { get; } =
+        public static string GET_DonatesBYID_SQL { get; } =
                     "SELECT * FROM [dbo].[Donates] WHERE ID=@id";
-        public string GET_FavoritepetsBYID_SQL { get; } =
+        public static string GET_FavoritepetsBYID_SQL { get; } =
                     "SELECT * FROM [dbo].[Favoritepets] WHERE ID=@id";
-        public string GET_LikesBYPetpicturesID_SQL { get; } =
+        public static string GET_LikesBYPetpicturesID_SQL { get; } =
                     "SELECT * FROM [dbo].[Likes] WHERE Petpicturesid=@id";
-        public string GET_LikesBYuserID_SQL { get; } =
+        public static string GET_LikesBYuserID_SQL { get; } =
                     "SELECT * FROM [dbo].[Likes] WHERE UserID=@userid AND Petpicturesid=@petpicturesid;";
-        public string GET_PetBYID_SQL { get; } =
+        public static string GET_PetBYID_SQL { get; } =
                     "SELECT * FROM [dbo].[Pet] WHERE ID=@id";
-        public string GET_PetpicturesBYID_SQL { get; } =
+        public static string GET_PetpicturesBYID_SQL { get; } =
                     "SELECT * FROM [dbo].[Petpictures] WHERE petid=@id";
-        public string GetOnePetpicturesByID_SQL { get; } =
+        public static string GetOnePetpicturesByID_SQL { get; } =
                     "SELECT * FROM [dbo].[Petpictures] WHERE id=@id";
-        public string GET_FollowingBYID_SQL { get; } =
+        public static string GET_FollowingBYID_SQL { get; } =
                     "SELECT * FROM [dbo].[Following] WHERE UserID=@userid AND fuserid=@petid";
-        public string GET_FollowingBYfuserID_SQL { get; } =
+        public static string GET_FollowingBYfuserID_SQL { get; } =
                     "SELECT * FROM [dbo].[Following] WHERE fuserid=@petid";
-        public string GET_FollowingBYuserID_SQL { get; } =
+        public static string GET_FollowingBYuserID_SQL { get; } =
                     "SELECT * FROM [dbo].[Following] WHERE userid=@petid";
-        public string GET_PetsBYUserID_SQL { get; } =
+        public static string GET_PetsBYUserID_SQL { get; } =
                     "SELECT * FROM [dbo].[Pet] WHERE Uploader=@UserID";
-        public string GET_HashtagsByPetpicturesID_SQL { get; } =
+        public static string GET_HashtagsByPetpicturesID_SQL { get; } =
                     "SELECT * FROM [dbo].[Hashtags] WHERE petpicturesid=@petpicturesid";
 
         //DELETE
-        public string DELETE_USER_SQL { get; } =
+        public static string DELETE_USER_SQL { get; } =
                    "DELETE FROM [dbo].[User] WHERE ID=@id";
-        public string DELETE_Following_SQL { get; } =
+        public static string DELETE_Following_SQL { get; } =
                    "DELETE FROM [dbo].[Following] WHERE userID=@userid AND fuserid=@petid";
-        public string DELETE_Donates_SQL { get; } =
+        public static string DELETE_Donates_SQL { get; } =
                     "DELETE FROM [dbo].[Donates] WHERE ID=@id";
-        public string DELETE_Favoritepets_SQL { get; } =
+        public static string DELETE_Favoritepets_SQL { get; } =
                     "DELETE FROM [dbo].[Favoritepets] WHERE ID=@id";
-        public string DELETE_Likes_SQL { get; } =
+        public static string DELETE_Likes_SQL { get; } =
                     "DELETE FROM [dbo].[Likes] WHERE ID=@id";
-        public string DELETE_LikesByUserIdAndPetPicturesId_SQL { get; } =
+        public static string DELETE_LikesByUserIdAndPetPicturesId_SQL { get; } =
                     "DELETE FROM [dbo].[Likes] WHERE UserID=@userid AND Petpicturesid=@petpicturesid;";
-        public string DELETE_Pet_SQL { get; } =
+        public static string DELETE_Pet_SQL { get; } =
                     "DELETE FROM [dbo].[Pet] WHERE ID=@id";
-        public string DELETE_Petpictures_SQL { get; } =
+        public static string DELETE_Petpictures_SQL { get; } =
                     "DELETE FROM [dbo].[Petpictures] WHERE ID=@id";
 
-        public string DELETE_Account_SQL { get; } =
+        public static string DELETE_Account_SQL { get; } =
             "DELETE FROM [dbo].[Donates] WHERE UserID=@UserID;" +
             "DELETE FROM [dbo].[Favoritepets] WHERE UserID=@UserID;" +
             "DELETE FROM [dbo].[Likes] WHERE UserID=@UserID;" +
             "DELETE FROM [dbo].[Following] WHERE UserID=@UserID;" +
             "DELETE FROM [dbo].[Pet] WHERE UserID=@UserID;" +
             "DELETE FROM [dbo].[User] WHERE UserID=@UserID;";
-        public string DELETE_Petpicutres_SQL { get; } =
+        public static string DELETE_Petpicutres_SQL { get; } =
             "DELETE FROM [dbo].[Petpictures] WHERE PetID=@PetID;";
 
         //UPDATE
-        public string UPDATE_USER_SQL { get; } =
+        public static string UPDATE_USER_SQL { get; } =
             "UPDATE [dbo].[USER] SET " +
             "FirstName=@FirstName," +
             "LastName=@LastName," +
@@ -105,7 +105,7 @@ namespace DBAccess
             "Email=@Email," +
             "Password=@Password" +
             " WHERE ID=@ID";
-        public string UPDATE_Pet_SQL { get; } =
+        public static string UPDATE_Pet_SQL { get; } =
             "UPDATE [dbo].[Pet] SET " +
             "Name=@Name," +
             "Age=@Age," +
@@ -114,7 +114,7 @@ namespace DBAccess
             "ProfilePicture=@ProfilePictureURL," +
             "Uploader=@Uploader" +
             " WHERE ID=@ID";
-        public string UPDATE_Donates_SQL { get; } =
+        public static string UPDATE_Donates_SQL { get; } =
             "UPDATE [dbo].[Donates] SET " +
             "UserID=@UserID," +
             "DonateDate=@DonateDate," +
@@ -122,65 +122,65 @@ namespace DBAccess
             "CashType=@CashType," +
             "PetID=@PetID" +
             " WHERE ID=@ID";
-        public string UPDATE_Petpictures_SQL { get; } =
+        public static string UPDATE_Petpictures_SQL { get; } =
             "UPDATE [dbo].[Petpictures] SET " +
             "PetID=@PetID," +
             "PictureURL=@PictureURL," +
             "UploadDate=@UploadDate" +
             " WHERE ID=@ID";
-        public string UPDATE_Likes_SQL { get; } =
+        public static string UPDATE_Likes_SQL { get; } =
             "UPDATE [dbo].[Likes] SET " +
             "Petpicturesid=@PetPictureURL," +
             "UserID=@UserID" +
             " WHERE ID=@ID";
-        public string UPDATE_Favoritepets_SQL { get; } =
+        public static string UPDATE_Favoritepets_SQL { get; } =
             "UPDATE [dbo].[Favoritepets] SET " +
             "UserID=@UserID," +
             "PetID=@PetID" +
             " WHERE ID=@ID";
-        public string UPDATE_Following_SQL { get; } =
+        public static string UPDATE_Following_SQL { get; } =
             "UPDATE [dbo].[Following] SET " +
             "UserID=@UserID," +
             "FUserID=@FUserID" +
             " WHERE ID=@ID";
 
-        public string INSERT_User_SQL { get; } =
+        public static string INSERT_User_SQL { get; } =
             "INSERT INTO [dbo].[USER]" +
             "([FirstName], [LastName], [FacebookId], [ProfilePicture], [Email], [Password]) " +
             "VALUES(" +
             "@FirstName,@LastName,@FacebookId,@ProfilePictureURL,@Email,@Password);";
-        public string INSERT_Pet_SQL { get; } =
+        public static string INSERT_Pet_SQL { get; } =
             "INSERT INTO [dbo].[Pet]" +
             "([Name], [Age], [PetType], [HaveAnOwner], [ProfilePicture], [Uploader]) " +
             "VALUES(" +
             "@Name,@Age,@PetType,@HaveAnOwner,@ProfilePictureURL,@Uploader);";
-        public string INSERT_Donates_SQL { get; } =
+        public static string INSERT_Donates_SQL { get; } =
             "INSERT INTO [dbo].[Donates]" +
             "([UserID], [DonateDate], [HowMany], [CashType], [PetID]) " +
             "VALUES(" +
             "@UserID,@DonateDate,@HowMany,@CashType,@PetID);";
         
-        public string INSERT_Petpictures_SQL { get; } =
+        public static string INSERT_Petpictures_SQL { get; } =
             "INSERT INTO [dbo].[Petpictures]" +
             "([PetID], [PictureURL], [UploadDate]) " +
             "VALUES(" +
             "@PetID,@PictureURL,@UploadDate);SET @id = SCOPE_IDENTITY();";
-        public string INSERT_Likes_SQL { get; } =
+        public static string INSERT_Likes_SQL { get; } =
             "INSERT INTO [dbo].[Likes]" +
             "([Petpicturesid], [UserID]) " +
             "VALUES(" +
             "@PetPictureURL,@UserID);";
-        public string INSERT_Favoritepets_SQL { get; } =
+        public static string INSERT_Favoritepets_SQL { get; } =
             "INSERT INTO [dbo].[Favoritepets]" +
             "([UserID], [PetID]) " +
             "VALUES(" +
             "@UserID,@PetID);";
-        public string INSERT_Following_SQL { get; } =
+        public static string INSERT_Following_SQL { get; } =
             "INSERT INTO [dbo].[Following]" +
             "([UserID], [FUserID]) " +
             "VALUES(" +
             "@UserID,@FUserID);";
-        public string INSERT_Hashtags_SQL { get; } =
+        public static string INSERT_Hashtags_SQL { get; } =
             "INSERT INTO [dbo].[Hashtags]" +
             "([petpicturesid], [hashtag]) " +
             "VALUES(" +

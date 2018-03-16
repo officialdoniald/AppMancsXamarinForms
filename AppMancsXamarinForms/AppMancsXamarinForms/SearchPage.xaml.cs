@@ -1,4 +1,5 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
+﻿using AppMancsXamarinForms.BLL.Helper;
+using AppMancsXamarinForms.BLL.ViewModel;
 using AppMancsXamarinForms.NotPrimaryPages;
 using Model;
 using System;
@@ -15,9 +16,6 @@ namespace AppMancsXamarinForms
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchPage : ContentPage
     {
-        SearchFragmentViewModel searchFragmentViewModel =
-            new SearchFragmentViewModel();
-
         List<SearchModel> searchModelList = new List<SearchModel>();
 
         public SearchPage()
@@ -29,7 +27,7 @@ namespace AppMancsXamarinForms
 
         private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var list = searchFragmentViewModel.GetSearchModelWithKeyword(searchEntry.Text, searchModelList);
+            var list = GlobalVariables.searchFragmentViewModel.GetSearchModelWithKeyword(searchEntry.Text, searchModelList);
 
             searchListView.ItemsSource = list;
         }
@@ -54,7 +52,7 @@ namespace AppMancsXamarinForms
 
         private void SetTheListView()
         {
-            searchModelList = searchFragmentViewModel.GetSearchModel();
+            searchModelList = GlobalVariables.searchFragmentViewModel.GetSearchModel();
 
             searchListView.ItemsSource = searchModelList;
         }

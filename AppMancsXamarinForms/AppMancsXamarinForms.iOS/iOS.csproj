@@ -201,10 +201,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DBAccess\DBAccess.csproj">
-      <Project>{c57cc09b-8b9a-40fc-994d-7dc1a04fcae2}</Project>
-      <Name>DBAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Model\Model.csproj">
       <Project>{c56b8b9c-e0d0-4ed0-ba30-b4faaa237c1f}</Project>
       <Name>Model</Name>
@@ -212,6 +208,10 @@
     <ProjectReference Include="..\AppMancsXamarinForms\AppMancs.csproj">
       <Project>{32A612EA-1617-470D-BE09-60AE6B71069C}</Project>
       <Name>AppMancs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DAL\DAL.csproj">
+      <Project>{6B4F2E42-04E0-43FC-9C53-FAF4201138AA}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

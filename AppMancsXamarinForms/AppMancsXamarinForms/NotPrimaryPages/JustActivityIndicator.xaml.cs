@@ -30,12 +30,17 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 GlobalVariables.InitializeUsersEmailVariable();
 
+                GlobalVariables.InitializeTheMyPetList();
+
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
                 });
-            }else
+            }
+            else
             {
+                GlobalVariables.InitializeTheMyPetList();
+
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
