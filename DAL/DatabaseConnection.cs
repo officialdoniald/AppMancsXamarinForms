@@ -153,7 +153,7 @@ namespace DBAccess
             "INSERT INTO [dbo].[Pet]" +
             "([Name], [Age], [PetType], [HaveAnOwner], [ProfilePicture], [Uploader]) " +
             "VALUES(" +
-            "@Name,@Age,@PetType,@HaveAnOwner,@ProfilePictureURL,@Uploader);";
+            "@Name,@Age,@PetType,@HaveAnOwner,@ProfilePictureURL,@Uploader);SET @id = SCOPE_IDENTITY();";
         public static string INSERT_Donates_SQL { get; } =
             "INSERT INTO [dbo].[Donates]" +
             "([UserID], [DonateDate], [HowMany], [CashType], [PetID]) " +
@@ -1179,7 +1179,7 @@ namespace DBAccess
             }
         }
 
-        public bool InsertPet(Pet pet)
+        public int InsertPet(Pet pet)
         {
             try
             {
@@ -1226,14 +1226,25 @@ namespace DBAccess
                         }
                      );
 
+                    var idpar = new SqlParameter("@id", DBNull.Value)
+                    {
+                        SqlDbType = System.Data.SqlDbType.Int,
+                        Direction = System.Data.ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(idpar);
+
                     cmd.ExecuteNonQuery();
 
-                    return true;
+                    int returnInt = (int)idpar.Value;
+
+                    cmd.ExecuteNonQuery();
+
+                    return returnInt;
                 }
             }
             catch (Exception)
             {
-                return false;
+                return -1;
             }
         }
 

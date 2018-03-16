@@ -21,6 +21,12 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().DeletePet(pet);
 
+            GlobalVariables.LocalSQLiteDatabase.DeleteMyPetList(GlobalVariables.ConvertPetToMyPetList(pet));
+
+            GlobalVariables.GetMyPets();
+            GlobalVariables.InitializeTheMyPetList();
+            GlobalVariables.AddedPet = true;
+
             if (!success)
             {
                 return language.SomethingWentWrong();

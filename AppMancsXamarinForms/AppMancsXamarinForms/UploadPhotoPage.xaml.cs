@@ -17,17 +17,32 @@ namespace AppMancsXamarinForms
 
         public UploadPhotoPage()
         {
+            Initialize();
+        }
+
+		protected override void OnAppearing()
+		{
+            if (GlobalVariables.AddedPet)
+            {
+                Initialize();
+            }
+        }
+
+        private void Initialize()
+        {
             InitializeComponent();
 
             if (GlobalVariables.Mypetlist.Count != 0)
             {
                 selectedPetId = GlobalVariables.Mypetlist[0].petid;
+
+                GlobalVariables.AddedPet = false;
             }
 
             petPicker.ItemsSource = GlobalVariables.MyPetsString;
         }
 
-        private async Task galleryButton_ClickedAsync(object sender, EventArgs e)
+		private async Task galleryButton_ClickedAsync(object sender, EventArgs e)
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {

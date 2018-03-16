@@ -20,9 +20,9 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         {
             bool isChecked = shelterpetSwitch.IsToggled;
 
-            int isCheckedToInt = 0;
+            int isCheckedToInt = 1;
 
-            if (isChecked) isCheckedToInt = 1;
+            if (isChecked) isCheckedToInt = 0;
 
             int age;
 
@@ -43,7 +43,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 HaveAnOwner = isCheckedToInt
             };
 
-            string success = await GlobalVariables.addpetFragmentViewModel.AddPetAsync(GlobalVariables.ActualUsersEmail, GlobalVariables.pathf, GlobalVariables.f, pet);
+            string success = await GlobalVariables.addpetFragmentViewModel.AddPetAsync(GlobalVariables.pathf, GlobalVariables.f, pet);
 
             if (!String.IsNullOrEmpty(success))
             {

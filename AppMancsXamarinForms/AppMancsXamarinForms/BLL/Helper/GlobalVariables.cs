@@ -66,6 +66,17 @@ namespace AppMancsXamarinForms.BLL.Helper
             "LocalDatabaseTable.db3";
 
         /// <summary>
+        /// Is Pet added?
+        /// </summary>
+        private static bool addedPet = false;
+
+        public static bool AddedPet
+        {
+            get => addedPet;
+            set => addedPet = value;
+        }
+
+        /// <summary>
         /// What is the actual user now?
         /// </summary>
         private static string[] myPetsString;
@@ -190,19 +201,11 @@ namespace AppMancsXamarinForms.BLL.Helper
 
             foreach (var item in myPetList)
             {
-                var myPetLists = new MyPetsList()
-                {
-                    Age = item.Age,
-                    HaveAnOwner = item.HaveAnOwner,
-                    Name = item.Name,
-                    petid = item.id,
-                    PetType = item.PetType,
-                    ProfilePictureURL = item.ProfilePictureURL
-                };
+                var pet = ConvertPetToMyPetList(item);
 
-                var itit = LocalSQLiteDatabase.InsertMyPetsList(myPetLists).Result;
+                var itit = LocalSQLiteDatabase.InsertMyPetsList(pet).Result;
 
-                Mypetlist.Add(myPetLists);
+                Mypetlist.Add(pet);
             }
         }
 
@@ -235,7 +238,44 @@ namespace AppMancsXamarinForms.BLL.Helper
             }
         }
 
-        // ha hozzá akarunk adni háziállatot, akkor a setmypetlist előtt inicializálni kell
-        //a háziállatokat.
+        /// <summary>
+        /// Converts Mypetlist to Pet.
+        /// </summary>
+        /// <returns>The my pet list to pet.</returns>
+        /// <param name="myPetsList">My pets list.</param>
+        public static Pet ConvertMyPetListToPet(MyPetsList myPetsList)
+        {
+            return new Pet()
+            {
+                id = myPetsList.petid,
+                Age = myPetsList.Age,
+                HaveAnOwner = myPetsList.HaveAnOwner,
+                Name = myPetsList.Name,
+                PetType = myPetsList.PetType,
+                ProfilePictureURL = myPetsList.ProfilePictureURL,
+                Uploader = myPetsList.Uploader
+            };
+        }
+
+        /// <summary>
+        /// Converts the Pet to Mypetlist.
+        /// </summary>
+        /// <returns>The pet to my pet list.</returns>
+        /// <param name="pet">Pet.</param>
+        public static MyPetsList ConvertPetToMyPetList(Pet pet)
+        {
+            return new MyPetsList()
+            {
+                Age = pet.Age,
+                HaveAnOwner = pet.HaveAnOwner,
+                Name = pet.Name,
+                petid = pet.id,
+                PetType = pet.PetType,
+                ProfilePictureURL = pet.ProfilePictureURL,
+                Uploader = pet.Uploader
+            };
+        }
+
+
     }
 }

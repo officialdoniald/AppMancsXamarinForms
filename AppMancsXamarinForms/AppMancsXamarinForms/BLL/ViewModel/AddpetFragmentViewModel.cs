@@ -1,10 +1,8 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
+﻿using AppMancsXamarinForms.BLL.Helper;
+using AppMancsXamarinForms.BLL.Languages;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -14,7 +12,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
     {
         private English language = new English();
         
-        public async Task<string> AddPetAsync(string EMAIL, string pathf, Stream f, Pet pet)
+        public async Task<string> AddPetAsync(string pathf, Stream f, Pet pet)
         {
             if (String.IsNullOrEmpty(pet.Name) || pet.Age < 0 || String.IsNullOrEmpty(pet.PetType))
             {
@@ -28,24 +26,34 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             {
                 string uniqueBlobName = await DependencyService.Get<IBlobStorage.IBlobStorage>().UploadFileAsync(pathf, f);
 
-                uniqueBlobName = "https://officialdoniald.blob.core.windows.net/appmancs/" + uniqueBlobName;
+                uniqueBlobName = GlobalVariables.blobstorageurl + uniqueBlobName;
 
                 pet.ProfilePictureURL = uniqueBlobName;
             }
             else pet.ProfilePictureURL = "";
 
-            User user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL);
+            pet.Uploader = GlobalVariables.ActualUser.id;
 
-            pet.Uploader = user.id;
+            int success = DependencyService.Get<IDBAccess.IBlobStorage>().InsertPet(pet);
 
-            bool success = DependencyService.Get<IDBAccess.IBlobStorage>().InsertPet(pet);
-
-            if (!success)
+            if (success == -1)
             {
                 return language.SomethingWentWrong();
             }
             else
             {
+                pet.id = success;
+
+                var myPetList = GlobalVariables.ConvertPetToMyPetList(pet);
+
+                GlobalVariables.Mypetlist.Add(myPetList);
+
+                GlobalVariables.SetMyPetListString();
+
+                GlobalVariables.AddedPet = true;
+
+                await GlobalVariables.LocalSQLiteDatabase.InsertMyPetsList(myPetList);
+                
                 return language.Empty();
             }
         }

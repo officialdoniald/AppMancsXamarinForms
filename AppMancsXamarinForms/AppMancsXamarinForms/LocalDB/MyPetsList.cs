@@ -21,6 +21,8 @@ namespace AppMancsXamarinForms.LocalDB
 
         public int HaveAnOwner { get; set; }
 
+        public int Uploader { get; set; }
+
         public string ProfilePictureURL { get; set; }
     }
 }

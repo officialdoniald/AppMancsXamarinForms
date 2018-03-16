@@ -1,13 +1,7 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
-using AppMancsXamarinForms.NotPrimaryPages;
+﻿using AppMancsXamarinForms.NotPrimaryPages;
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
@@ -17,7 +11,7 @@ namespace AppMancsXamarinForms
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MyAccountPage : ContentPage
     {
-        private List<Pet> petList = new List<Pet>();
+        List<ListViewWithPictureAndSomeText> listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
 
         public MyAccountPage()
         {
@@ -29,22 +23,6 @@ namespace AppMancsXamarinForms
             {
                 profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
             }
-
-            petList = GlobalVariables.seeAnOwnerProfileViewModel.GetPet(GlobalVariables.ActualUser.id);
-
-            List<ListViewWithPictureAndSomeText> listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
-
-            foreach (var item in petList)
-            {
-                listViewWithPictureAndSomeText.Add(new ListViewWithPictureAndSomeText()
-                {
-                    pet = item,
-                    ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
-                    Name = item.Name
-                });
-            }
-
-            petListView.ItemsSource = listViewWithPictureAndSomeText;
         }
 
         protected override void OnAppearing()
@@ -54,6 +32,20 @@ namespace AppMancsXamarinForms
             var optimalWidth = currentWidth / 3;
 
             profilePictureImage.HeightRequest = optimalWidth;
+
+            listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
+
+            foreach (var item in GlobalVariables.Mypetlist)
+            {
+                listViewWithPictureAndSomeText.Add(new ListViewWithPictureAndSomeText()
+                {
+                    pet = GlobalVariables.ConvertMyPetListToPet(item),
+                    ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
+                    Name = item.Name
+                });
+            }
+
+            petListView.ItemsSource = listViewWithPictureAndSomeText;
         }
 
         private void petListView_ItemTapped(object sender, ItemTappedEventArgs e)

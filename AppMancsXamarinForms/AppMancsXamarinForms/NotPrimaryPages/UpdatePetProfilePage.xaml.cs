@@ -47,7 +47,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             }
             else
             {
-                await Navigation.PushAsync(new MyAccountPage());
+                await Navigation.PopToRootAsync();
             }
         }
 

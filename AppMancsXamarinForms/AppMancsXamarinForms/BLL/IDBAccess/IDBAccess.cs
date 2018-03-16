@@ -63,7 +63,7 @@ namespace AppMancsXamarinForms.BLL.IDBAccess
 
         bool InsertUser(User user);
 
-        bool InsertPet(Pet pet);
+        int InsertPet(Pet pet);
 
         bool InsertDonates(Donates donates);
 

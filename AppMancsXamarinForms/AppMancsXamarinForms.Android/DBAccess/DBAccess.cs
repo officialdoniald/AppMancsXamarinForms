@@ -135,7 +135,7 @@ namespace AppMancsXamarinForms.Droid.DBAccess
             return databaseConnections.InsertUser(user);
         }
 
-        public bool InsertPet(Pet pet)
+        public int InsertPet(Pet pet)
         {
             return databaseConnections.InsertPet(pet);
         }
