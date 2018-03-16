@@ -18,8 +18,6 @@ namespace AppMancsXamarinForms.NotPrimaryPages
     {
         private int petid = -1;
 
-        private bool HaveIAlreadyFollow = false;
-
         private Pet thisPet = new Pet();
 
         private List<Petpictures> petPictureListfromDB = new List<Petpictures>();
@@ -32,7 +30,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             petPictureListfromDB = GlobalVariables.petProfileFragmentViewModel.GetPetPictureURL(petid);
 
-            thisPet = GlobalVariables.petProfileFragmentViewModel.GetPetFromDBByID(petid);
+            thisPet = GlobalVariables.LocalSQLiteDatabase.GetPetFromsMypetlist(petid);
 
             InitializeComponent();
 
@@ -45,8 +43,6 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
 
             profilePictureImage.HeightRequest = optimalWidth;
-
-            HaveIAlreadyFollow = GlobalVariables.petProfileFragmentViewModel.HaveIAlreadyFollow(GlobalVariables.ActualUsersEmail, petid);
 
             int left = 0;
             int top = 0;

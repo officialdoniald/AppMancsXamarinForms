@@ -47,6 +47,12 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
             else
             {
+                GlobalVariables.LocalSQLiteDatabase.UpdateMyPetList(pet);
+
+                GlobalVariables.InitializeTheMyPetList();
+
+                GlobalVariables.AddedPet = true;
+
                 return language.Empty();
             }
         }

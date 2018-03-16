@@ -22,7 +22,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             InitializeComponent();
 
-            thisPet = GlobalVariables.updatePetFragmentViewModel.GetThisPet(petid);
+            thisPet = GlobalVariables.LocalSQLiteDatabase.GetPetFromsMypetlist(petid);
 
             nameEntry.Placeholder = thisPet.Name;
             ageEntry.Placeholder = thisPet.Age.ToString();
@@ -55,9 +55,9 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         {
             bool isChecked = shelterpetSwitch.IsToggled;
 
-            int isCheckedToInt = 0;
+            int isCheckedToInt = 1;
 
-            if (!isChecked) isCheckedToInt = 1;
+            if (isChecked) isCheckedToInt = 0;
 
             int age;
 
