@@ -12,6 +12,9 @@ namespace AppMancsXamarinForms.BLL.Helper
 {
     public static class GlobalVariables
     {
+        public static List<WallListViewAdapter> wallListViewAdapter =
+            new List<WallListViewAdapter>();
+        
         public static SignupPageViewModel signupPageViewModel = 
             new SignupPageViewModel();
 

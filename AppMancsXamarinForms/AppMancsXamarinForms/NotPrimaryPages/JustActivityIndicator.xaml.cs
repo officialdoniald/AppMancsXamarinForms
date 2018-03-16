@@ -26,9 +26,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             if (!String.IsNullOrEmpty(isEmpty))
             {
+                GlobalVariables.InitializeUsersEmailVariable();
+
                 GlobalVariables.InitializeUser();
 
-                GlobalVariables.InitializeUsersEmailVariable();
+                GlobalVariables.GetMyPets();
 
                 GlobalVariables.InitializeTheMyPetList();
 

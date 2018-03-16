@@ -1,5 +1,4 @@
-﻿using System;
-using Model;
+﻿using Model;
 using SQLite;
 using Xamarin.Forms;
 
@@ -14,11 +13,11 @@ namespace AppMancsXamarinForms.LocalDB
             set;
         }
 
-        public Wall wallItem { get; set; }
+        //public Wall wallItem { get; set; }
 
-        public ImageSource profilepictureURL { get; set; }
+        //public ImageSource profilepictureURL { get; set; }
 
-        public ImageSource pictureURL { get; set; }
+        //public ImageSource pictureURL { get; set; }
 
         public string hashtags { get; set; }
 

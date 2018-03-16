@@ -16,8 +16,10 @@ namespace AppMancsXamarinForms.LocalDB
             database = new SQLiteAsyncConnection(databasePath);
             database.CreateTableAsync<MyPetsList>().Wait();
             database.CreateTableAsync<LastIndex>().Wait();
+            database.CreateTableAsync<MyWall>().Wait();
         }
 
+        //MyPetList
         public Task<List<MyPetsList>> GetMyPetsList()
         {
             return database.Table<MyPetsList>().ToListAsync();
@@ -52,18 +54,6 @@ namespace AppMancsXamarinForms.LocalDB
             return 1;
         }
 
-        public Task<int> GetLastIndex(LastIndex lastIndex)
-        {
-            if (database.Table<LastIndex>().ToListAsync() is null)
-            {
-                return database.InsertAsync(lastIndex);
-            }
-            else
-            {
-                return database.UpdateAsync(lastIndex);
-            }
-        }
-
         public Task<int> UpdateMyPetList(Pet pet)
         {
             var mypetlist = database.Table<MyPetsList>().Where(i => i.petid == pet.id).ToListAsync().Result;
@@ -80,7 +70,53 @@ namespace AppMancsXamarinForms.LocalDB
             return GlobalVariables.ConvertMyPetListToPet(database.Table<MyPetsList>().Where(i => i.petid == petid).FirstOrDefaultAsync().Result);
         }
 
+        //LastIndex
+        public Task<int> GetLastIndex(LastIndex lastIndex)
+        {
+            if (database.Table<LastIndex>().ToListAsync() is null)
+            {
+                return database.InsertAsync(lastIndex);
+            }
+            else
+            {
+                return database.UpdateAsync(lastIndex);
+            }
+        }
 
+        //MyWall
+        public Task<List<MyWall>> GetMyWallList()
+        {
+            return database.Table<MyWall>().ToListAsync();
+        }
+
+        public Task<int> InsertMyWall(MyWall myWall)
+        {
+            return database.InsertAsync(myWall);
+        }
+
+        public Task<int> DeleteMyWall(MyWall myWall)
+        {
+            return database.DeleteAsync(myWall);
+        }
+
+        public int DeleteAllMyWall()
+        {
+            var list = GetMyWallList().Result;
+
+            foreach (var item in list)
+            {
+                try
+                {
+                    database.DeleteAsync(item);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
 
         //public Task<List<TodoItem>> GetItemsNotDoneAsync()
         //{

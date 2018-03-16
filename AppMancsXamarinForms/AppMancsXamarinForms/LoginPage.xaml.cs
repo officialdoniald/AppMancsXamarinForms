@@ -15,7 +15,6 @@ namespace AppMancsXamarinForms
         {
             InitializeComponent();
 
-            //loginActivator.IsRunning = true;
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
@@ -32,8 +31,6 @@ namespace AppMancsXamarinForms
             else
             {
                 FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt, emailEntry.Text);
-
-                GlobalVariables.GetMyPets();
 
                 Navigation.PushModalAsync(new NotPrimaryPages.JustActivityIndicator("login"));
             }

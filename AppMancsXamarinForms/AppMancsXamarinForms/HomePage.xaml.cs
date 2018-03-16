@@ -3,7 +3,6 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
@@ -15,11 +14,10 @@ namespace AppMancsXamarinForms
     {
         private List<Wall> wallList = new List<Wall>();
 
-        private List<WallListViewAdapter> wallListViewAdapter =
-            new List<WallListViewAdapter>();
-
         public HomePage()
         {
+            GlobalVariables.wallListViewAdapter = new List<WallListViewAdapter>();
+            
             InitializeComponent();
 
             Icon = "home.png";
@@ -34,7 +32,7 @@ namespace AppMancsXamarinForms
             {
                 if (!GlobalVariables.whosLikedViewModel.IsMyPet(item.petpictures.PetID))
                 {
-                    wallListViewAdapter.Add(new WallListViewAdapter()
+                    GlobalVariables.wallListViewAdapter.Add(new WallListViewAdapter()
                     {
                         wallItem = item,
                         howManyLikes = item.howmanylikes.ToString(),
@@ -47,7 +45,7 @@ namespace AppMancsXamarinForms
                 }
             }
 
-            foreach (var item in wallListViewAdapter)
+            foreach (var item in GlobalVariables.wallListViewAdapter)
             {
                 //KÉP
                 var pictureImage = new Image()
@@ -89,7 +87,6 @@ namespace AppMancsXamarinForms
 
                 profileImage.GestureRecognizers.Add(goToPetProfileTapped);
                 profileName.GestureRecognizers.Add(goToPetProfileTapped);
-
 
                 var likeImage = new Image()
                 {
