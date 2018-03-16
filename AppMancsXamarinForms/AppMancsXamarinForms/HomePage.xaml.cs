@@ -209,13 +209,13 @@ namespace AppMancsXamarinForms
                     {
                         NumberOfTapsRequired = 1
                     };
-                    onHashtagClickedTap.Tapped += (s, e) =>
+                    onHashtagClickedTap.Tapped += async (s, e) =>
                     {
                         List<SearchModel> searchModelList = GlobalVariables.searchFragmentViewModel.GetSearchModel();
 
                         var asd24 = (from q in searchModelList where q.hashtag == item2 select q); 
 
-                        Navigation.PushAsync(new SearchResultPage(asd24.First().petpicturesList, item2.Split('#')[1]));
+                        await Navigation.PushAsync(new SearchResultPage(asd24.First().petpicturesList, item2.Split('#')[1]));
                     };
 
                     hashtagLabel.GestureRecognizers.Add(onHashtagClickedTap);

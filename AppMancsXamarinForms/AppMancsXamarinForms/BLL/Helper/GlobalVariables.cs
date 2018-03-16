@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using AppMancsXamarinForms.BLL.ViewModel;
+using AppMancsXamarinForms.LocalDB;
 using FileStoringWithDependency.IFileStoreAndLoad;
 using Model;
 using Plugin.Media.Abstractions;
@@ -80,6 +81,21 @@ namespace AppMancsXamarinForms.BLL.Helper
         {
             get => havetologin;
             set => havetologin = value;
+        }
+
+        private static LocalDatabaseTable localSQLiteDatabase;
+
+        public static LocalDatabaseTable LocalSQLiteDatabase
+        {
+            get{
+                if (localSQLiteDatabase == null)
+                {
+                    localSQLiteDatabase = new LocalDatabaseTable(DependencyService.Get<ILocalFileHelper>().GetLocalFilePath("LocalDatabaseTable.db3"));
+                }
+
+                return localSQLiteDatabase;
+            }
+            set => localSQLiteDatabase = value;
         }
 
         /// <summary>

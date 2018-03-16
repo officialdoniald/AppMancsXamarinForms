@@ -32,13 +32,13 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await Navigation.PushModalAsync(new MainPage());
+                    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
                 });
             }else
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await Navigation.PushModalAsync(new MainPage());
+                    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
                 });
             }
         }
