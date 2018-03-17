@@ -136,6 +136,8 @@
     <Compile Include="LocalDB\LocalDatabaseTable.cs" />
     <Compile Include="BLL\Helper\ILocalFileHelper.cs" />
     <Compile Include="LocalDB\LastIndex.cs" />
+    <Compile Include="LocalDB\WallItem.cs" />
+    <Compile Include="LocalDB\PetpicturesWall.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

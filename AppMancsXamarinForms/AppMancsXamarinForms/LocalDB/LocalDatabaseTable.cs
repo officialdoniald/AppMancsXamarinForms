@@ -16,7 +16,9 @@ namespace AppMancsXamarinForms.LocalDB
             database = new SQLiteAsyncConnection(databasePath);
             database.CreateTableAsync<MyPetsList>().Wait();
             database.CreateTableAsync<LastIndex>().Wait();
-            database.CreateTableAsync<MyWall>().Wait();
+            //database.CreateTableAsync<MyWall>().Wait();
+            //database.CreateTableAsync<PetpicturesWall>().Wait();
+            //database.CreateTableAsync<WallItem>().Wait();
         }
 
         //MyPetList
@@ -71,7 +73,7 @@ namespace AppMancsXamarinForms.LocalDB
         }
 
         //LastIndex
-        public Task<int> GetLastIndex(LastIndex lastIndex)
+        public Task<int> SetGetLastIndex(LastIndex lastIndex)
         {
             if (database.Table<LastIndex>().ToListAsync() is null)
             {
@@ -102,6 +104,86 @@ namespace AppMancsXamarinForms.LocalDB
         public int DeleteAllMyWall()
         {
             var list = GetMyWallList().Result;
+
+            foreach (var item in list)
+            {
+                try
+                {
+                    database.DeleteAsync(item);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+
+        //WallItem
+        public Wall GetWallItemById(int wallitemid)
+        {
+            return GlobalVariables.ConvertWallItemToWall(database.Table<WallItem>().Where(i => i.id == wallitemid).FirstOrDefaultAsync().Result);
+        }
+
+        public Task<List<WallItem>> GetWallItemList()
+        {
+            return database.Table<WallItem>().ToListAsync();
+        }
+
+        public Task<int> InsertWallItem(WallItem wallItem)
+        {
+            return database.InsertAsync(wallItem);
+        }
+
+        public Task<int> DeleteWallItem(WallItem wallItem)
+        {
+            return database.DeleteAsync(wallItem);
+        }
+
+        public int DeleteAllWallItem()
+        {
+            var list = GetWallItemList().Result;
+
+            foreach (var item in list)
+            {
+                try
+                {
+                    database.DeleteAsync(item);
+                }
+                catch (Exception)
+                {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+
+        //PetpicturesWall
+        public Petpictures GetPetpicturesWallById(int petpicturesid)
+        {
+            return GlobalVariables.ConvertPetPicturesWallToPetpictures(database.Table<PetpicturesWall>().Where(i => i.petpicturesid == petpicturesid).FirstOrDefaultAsync().Result);
+        }
+
+        public Task<List<PetpicturesWall>> GetPetpicturesWallList()
+        {
+            return database.Table<PetpicturesWall>().ToListAsync();
+        }
+
+        public Task<int> InsertPetpicturesWall(PetpicturesWall petpicturesWall)
+        {
+            return database.InsertAsync(petpicturesWall);
+        }
+
+        public Task<int> DeletePetpicturesWall(PetpicturesWall petpicturesWall)
+        {
+            return database.DeleteAsync(petpicturesWall);
+        }
+
+        public int DeleteAllPetpicturesWall()
+        {
+            var list = GetPetpicturesWallList().Result;
 
             foreach (var item in list)
             {

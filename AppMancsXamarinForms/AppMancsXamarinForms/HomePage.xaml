@@ -6,7 +6,13 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="mainStackLayout" Orientation="Vertical">
+            <StackLayout>
+                <StackLayout>
+                    <ActivityIndicator x:Name="loadActivity" IsRunning="true" IsVisible="true"/>
+                    <Button x:Name="updateWallButton" Text="Frissítés" Clicked="Handle_Clicked"/>
+                </StackLayout>
+                <StackLayout x:Name="mainStackLayout" Orientation="Vertical">
+                
                 <!--<ListView 
                     BackgroundColor="Transparent" 
                     SeparatorVisibility="None" 
@@ -96,6 +102,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>-->
+            </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -6,6 +6,7 @@ using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms
 {
@@ -16,15 +17,29 @@ namespace AppMancsXamarinForms
 
         public HomePage()
         {
-            GlobalVariables.wallListViewAdapter = new List<WallListViewAdapter>();
-            
             InitializeComponent();
 
-            Icon = "home.png";
+            Initialize();
 
-            Title = String.Empty;
+            loadActivity.IsRunning = false;
+        }
 
-            NavigationPage.SetHasNavigationBar(this, false);
+        private string followButtonText(bool haveILiked)
+        {
+            if (haveILiked)
+            {
+                return "unlike.png";
+            }
+            else
+            {
+                return "like.png";
+            }
+        }
+
+        private void Initialize()
+        {
+            
+            GlobalVariables.wallListViewAdapter = new List<WallListViewAdapter>();
 
             wallList = GlobalVariables.homeFragmentViewModel.GetWallList();
 
@@ -32,8 +47,10 @@ namespace AppMancsXamarinForms
             {
                 if (!GlobalVariables.whosLikedViewModel.IsMyPet(item.petpictures.PetID))
                 {
+                    //Itt kell majd a DB-be rakni
                     GlobalVariables.wallListViewAdapter.Add(new WallListViewAdapter()
                     {
+
                         wallItem = item,
                         howManyLikes = item.howmanylikes.ToString(),
                         petName = item.name,
@@ -44,6 +61,7 @@ namespace AppMancsXamarinForms
                     });
                 }
             }
+
 
             foreach (var item in GlobalVariables.wallListViewAdapter)
             {
@@ -210,7 +228,7 @@ namespace AppMancsXamarinForms
                     {
                         List<SearchModel> searchModelList = GlobalVariables.searchFragmentViewModel.GetSearchModel();
 
-                        var asd24 = (from q in searchModelList where q.hashtag == item2 select q); 
+                        var asd24 = (from q in searchModelList where q.hashtag == item2 select q);
 
                         await Navigation.PushAsync(new SearchResultPage(asd24.First().petpicturesList, item2.Split('#')[1]));
                     };
@@ -223,19 +241,21 @@ namespace AppMancsXamarinForms
                 mainStackLayout.Children.Add(header);
                 mainStackLayout.Children.Add(pictureImage);
                 mainStackLayout.Children.Add(footer);
+                loadActivity.IsRunning = false;
+
             }
         }
 
-        private string followButtonText(bool haveILiked)
+        private void Handle_Clicked(object sender, System.EventArgs e)
         {
-            if (haveILiked)
+            mainStackLayout.Children.Clear();
+
+            loadActivity.IsRunning = true;
+
+            Device.BeginInvokeOnMainThread(() =>
             {
-                return "unlike.png";
-            }
-            else
-            {
-                return "like.png";
-            }
+                Initialize();
+            });
         }
     }
 }

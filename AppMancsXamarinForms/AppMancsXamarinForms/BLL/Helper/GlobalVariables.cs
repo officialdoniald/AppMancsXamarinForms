@@ -279,6 +279,111 @@ namespace AppMancsXamarinForms.BLL.Helper
             };
         }
 
+        /// <summary>
+        /// Converts the pet pictures wall to petpictures.
+        /// </summary>
+        /// <returns>The pet pictures wall to petpictures.</returns>
+        /// <param name="petpicturesWall">Petpictures wall.</param>
+        public static Petpictures ConvertPetPicturesWallToPetpictures(PetpicturesWall petpicturesWall)
+        {
+            return new Petpictures()
+            {
+                id = petpicturesWall.petpicturesid,
+                PetID = petpicturesWall.PetID,
+                PictureURL = petpicturesWall.PictureURL,
+                UploadDate = petpicturesWall.UploadDate
+            };
+        }
+
+        /// <summary>
+        /// Converts the pet pictures to petpictures wall.
+        /// </summary>
+        /// <returns>The pet pictures to petpictures wall.</returns>
+        /// <param name="petpictures">Petpictures.</param>
+        public static PetpicturesWall ConvertPetPicturesToPetpicturesWall(Petpictures petpictures)
+        {
+            return new PetpicturesWall()
+            {
+                petpicturesid = petpictures.id,
+                PetID = petpictures.PetID,
+                PictureURL = petpictures.PictureURL, 
+                UploadDate = petpictures.UploadDate
+            };
+        }
+
+        /// <summary>
+        /// Converts my wall to wall list view adapter.
+        /// </summary>
+        /// <returns>The my wall to wall list view adapter.</returns>
+        /// <param name="myWall">My wall.</param>
+        public static WallListViewAdapter ConvertMyWallToWallListViewAdapter(MyWall myWall)
+        {
+            return new WallListViewAdapter()
+            {
+                profilepictureURL = ImageSource.FromUri(new Uri(myWall.profilepictureURL)),
+                pictureURL = ImageSource.FromUri(new Uri(myWall.pictureURL)),
+                hashtags = myWall.hashtags,
+                followButtonText = myWall.followButtonText,
+                petName = myWall.petName,
+                howManyLikes = myWall.howManyLikes,
+                wallItem = LocalSQLiteDatabase.GetWallItemById(myWall.wallItemid)
+            };
+        }
+
+        /// <summary>
+        /// Converts the wall list view adapter to my wall.
+        /// </summary>
+        /// <returns>The wall list view adapter to my wall.</returns>
+        /// <param name="wallListViewAdapter">Wall list view adapter.</param>
+        public static MyWall ConvertWallListViewAdapterToMyWall(WallListViewAdapter wallListViewAdapter)
+        {
+            return new MyWall()
+            {
+                profilepictureURL = wallListViewAdapter.profilepictureURL.ToString(),
+                pictureURL = wallListViewAdapter.pictureURL.ToString(),
+                hashtags = wallListViewAdapter.hashtags,
+                followButtonText = wallListViewAdapter.followButtonText,
+                petName = wallListViewAdapter.petName,
+                howManyLikes = wallListViewAdapter.howManyLikes,
+                wallItemid = wallListViewAdapter.wallItem.id
+            };
+        }
+
+        /// <summary>
+        /// Converts the wall item to wall.
+        /// </summary>
+        /// <returns>The wall item to wall.</returns>
+        /// <param name="wallItem">Wall item.</param>
+        public static Wall ConvertWallItemToWall(WallItem wallItem)
+        {
+            return new Wall()
+            {
+                id = wallItem.id,
+                howmanylikes = wallItem.howmanylikes,
+                haveILiked = wallItem.haveILiked,
+                name = wallItem.name,
+                ProfilePictureURL = wallItem.ProfilePictureURL,
+                petpictures = LocalSQLiteDatabase.GetPetpicturesWallById(wallItem.petpicturesid)
+            };
+        }
+
+        /// <summary>
+        /// Converts the wall to wall item.
+        /// </summary>
+        /// <returns>The wall to wall item.</returns>
+        /// <param name="wall">Wall.</param>
+        public static WallItem ConvertWallToWallItem(Wall wall)
+        {
+            return new WallItem()
+            {
+                howmanylikes = wall.howmanylikes,
+                haveILiked = wall.haveILiked,
+                name = wall.name,
+                ProfilePictureURL = wall.ProfilePictureURL, 
+                petpicturesid = wall.petpictures.id
+            };
+        }
+
 
     }
 }

@@ -1,18 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Model;
+using SQLite;
 
-namespace Model
+namespace AppMancsXamarinForms.LocalDB
 {
-    public class Wall
-    {//majd amikor forecheljük, számlálót veszünk fel és az lesz az id
+    public class WallItem
+    {
+        [PrimaryKey, AutoIncrement]
         public int id
         {
             get;
             set;
         }
         
-        public Petpictures petpictures { get; set; }
+        public int petpicturesid { get; set; }
 
         public int howmanylikes { get; set; }
 

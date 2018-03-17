@@ -13,11 +13,13 @@ namespace AppMancsXamarinForms.LocalDB
             set;
         }
 
-        //public Wall wallItem { get; set; }
+        public int wallItemid { get; set; }
 
-        //public ImageSource profilepictureURL { get; set; }
+        //majd ezt a kettőt konvertálni kell
+        public string profilepictureURL { get; set; }
 
-        //public ImageSource pictureURL { get; set; }
+        //majd ezt a kettőt konvertálni kell
+        public string pictureURL { get; set; }
 
         public string hashtags { get; set; }
 
