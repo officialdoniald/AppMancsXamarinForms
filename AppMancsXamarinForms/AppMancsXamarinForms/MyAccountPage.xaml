@@ -6,7 +6,7 @@
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
 
     <ContentPage.Content>
-        <ScrollView>
+        
         <StackLayout 
                 Style="{StaticResource NormalStackLayout}">
             <controls:CircleImage
@@ -35,7 +35,7 @@
                 Style="{StaticResource NormalButton}"
                 Text="Háziállat hozzáadása"
                 Clicked="addPetButton_Clicked"/>
-            <ListView 
+            <ScrollView><ListView 
                 ItemsSource="{Binding listViewWithPictureAndSomeText}" 
                 x:Name="petListView"
                 ItemTapped="petListView_ItemTapped"
@@ -73,7 +73,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            </StackLayout>
         </ScrollView>
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -40,6 +40,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 profilePictureImage.HeightRequest = optimalWidth;
             }
 
+            optimalWidth = currentWidth / 5;
+
             userNameLabel.Text = user.FirstName + " " + user.LastName;
 
             petList = seeAnOwnerProfileViewModel.GetPet(user.id);
@@ -79,7 +81,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 //mainStackLayout.Children.Add(oneGrid);
 
-                pictureListGrid.Children.Add(oneGrid);
+                //pictureListGrid.Children.Add(oneGrid);
+                petsStackLayout.Children.Add(oneGrid);
             }
         }
     }

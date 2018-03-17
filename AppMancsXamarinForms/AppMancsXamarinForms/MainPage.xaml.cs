@@ -32,6 +32,11 @@ namespace AppMancsXamarinForms
 
                 var navigationHomePage = new NavigationPage(homePage);
 
+                //navigationHomePage.Title = "Főmenü";
+                navigationHomePage.Icon = "home.png";
+
+                NavigationPage.SetHasNavigationBar(homePage, false);
+
                 var searchPage = new SearchPage();
 
                 var navigationSearchPage = new NavigationPage(searchPage);
@@ -59,7 +64,7 @@ namespace AppMancsXamarinForms
                 //Children.RemoveAt(0);
                 //Children.Insert(0, homePage);
                 //CurrentPage = homePage;
-                Children.Add(homePage);
+                Children.Add(navigationHomePage);
                 Children.Add(navigationSearchPage);
                 Children.Add(navigationUploadPhotoPage);
                 Children.Add(navigationMyAccountPage);

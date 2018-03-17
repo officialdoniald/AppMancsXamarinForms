@@ -108,7 +108,7 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static string ActualUsersEmail
         {
-            get => actualusersemail;
+            get => actualusersemail.ToLower();
             set => actualusersemail = value;
         }
 

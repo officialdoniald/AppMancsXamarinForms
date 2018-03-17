@@ -5,7 +5,7 @@
              Title="Keresés">
     <ContentPage.Content>
         <StackLayout 
-            Margin="10,25,0,0">
+            Margin="10,25,10,0">
             <Entry
                 x:Name="searchEntry"
                 Placeholder="Írj ami érdekel"
