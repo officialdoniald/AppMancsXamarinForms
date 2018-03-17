@@ -51,6 +51,7 @@
                 x:Name="addPetButton"
                 Style="{StaticResource NormalButton}"
                 Clicked="addPetButton_ClickedAsync"/>
+            <ActivityIndicator IsRunning="false" x:Name="uploadActivity"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -80,6 +80,17 @@ namespace AppMancsXamarinForms.BLL.Helper
         }
 
         /// <summary>
+        /// Is Photo added?
+        /// </summary>
+        private static bool addedPhoto = false;
+
+        public static bool AddedPhoto
+        {
+            get => addedPhoto;
+            set => addedPhoto = value;
+        }
+
+        /// <summary>
         /// What is the actual user now?
         /// </summary>
         private static string[] myPetsString;

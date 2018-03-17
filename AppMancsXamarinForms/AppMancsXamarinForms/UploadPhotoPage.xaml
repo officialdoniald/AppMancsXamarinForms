@@ -29,6 +29,7 @@
                     x:Name="addPhotoButton"
                     Clicked="addPhotoButton_ClickedAsync"
                     Style="{StaticResource NormalButton}"/>
+                <ActivityIndicator IsRunning="false" x:Name="uploadActivity"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -22,7 +22,7 @@ namespace AppMancsXamarinForms
 
 		protected override void OnAppearing()
 		{
-            if (GlobalVariables.AddedPet)
+            if (GlobalVariables.AddedPet || GlobalVariables.AddedPhoto)
             {
                 Initialize();
             }
@@ -37,6 +37,7 @@ namespace AppMancsXamarinForms
                 selectedPetId = GlobalVariables.Mypetlist[0].petid;
 
                 GlobalVariables.AddedPet = false;
+                GlobalVariables.AddedPhoto = false;
             }
 
             petPicker.ItemsSource = GlobalVariables.MyPetsString;
@@ -64,6 +65,10 @@ namespace AppMancsXamarinForms
 
         private async Task addPhotoButton_ClickedAsync(object sender, EventArgs e)
         {
+            uploadActivity.IsRunning = true;
+            addPhotoButton.IsEnabled = false;
+            galleryButton.IsEnabled = false;
+
             string success = await GlobalVariables.uploadPhotoFragmentViewModel.UploadPictureAsync(GlobalVariables.pathf, GlobalVariables.f, selectedPetId, hashtagsEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
@@ -72,8 +77,14 @@ namespace AppMancsXamarinForms
             }
             else
             {
+                GlobalVariables.AddedPhoto = true;
+
                 await Navigation.PushAsync(new SeeMyPetProfile(selectedPetId));
             }
+
+            galleryButton.IsEnabled = true;
+            addPhotoButton.IsEnabled = true;
+            uploadActivity.IsRunning = false;
         }
 
         private void petPicker_SelectedIndexChanged(object sender, EventArgs e)

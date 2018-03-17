@@ -18,6 +18,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         
         private async Task addPetButton_ClickedAsync(object sender, EventArgs e)
         {
+            uploadActivity.IsRunning = true;
+            addPetButton.IsEnabled = false;
+            galleryButton.IsEnabled = false;
+
             bool isChecked = shelterpetSwitch.IsToggled;
 
             int isCheckedToInt = 1;
@@ -53,6 +57,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             {
                 await Navigation.PopAsync();
             }
+
+            galleryButton.IsEnabled = true;
+            addPetButton.IsEnabled = true;
+            uploadActivity.IsRunning = false;
         }
 
         private async Task galleryButton_ClickedAsync(object sender, EventArgs e)
