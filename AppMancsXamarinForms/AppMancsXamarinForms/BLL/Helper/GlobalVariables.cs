@@ -71,6 +71,17 @@ namespace AppMancsXamarinForms.BLL.Helper
         /// <summary>
         /// Is Pet added?
         /// </summary>
+        private static bool isUpdatedMyProfile = false;
+
+        public static bool IsUpdatedMyProfile
+        {
+            get => isUpdatedMyProfile;
+            set => isUpdatedMyProfile = value;
+        }
+
+        /// <summary>
+        /// Is Pet added?
+        /// </summary>
         private static bool addedPet = false;
 
         public static bool AddedPet

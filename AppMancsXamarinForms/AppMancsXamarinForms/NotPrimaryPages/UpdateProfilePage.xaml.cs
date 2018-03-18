@@ -27,6 +27,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private async void updateMyProfileButton_ClickedAsync(object sender, EventArgs e)
         {
+            updateMyProfileButton.IsEnabled = false;
+            
             string success = GlobalVariables.updateProfileFragmentViewModel.UpdateProfile(firstnameEntry.Text, lastnameEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
@@ -35,12 +37,18 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             }
             else
             {
+                GlobalVariables.IsUpdatedMyProfile = true;
+                
                 await Navigation.PopAsync();
             }
+
+            updateMyProfileButton.IsEnabled = true;
         }
 
         private async void changeEmailButton_ClickedAsync(object sender, EventArgs e)
         {
+            changeEmailButton.IsEnabled = false;
+            
             string success = GlobalVariables.updateProfileFragmentViewModel.UpdateEmail(emailEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
@@ -51,10 +59,14 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             {
                 await Navigation.PopAsync();
             }
+
+            changeEmailButton.IsEnabled = true;
         }
 
         private async void changepwButton_ClickedAsync(object sender, EventArgs e)
         {
+            changepwButton.IsEnabled = false;
+
             string success = GlobalVariables.updateProfileFragmentViewModel.UpdatePassword(pwEntry.Text, newpwEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
@@ -65,10 +77,14 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             {
                 await Navigation.PopAsync();
             }
+
+            changepwButton.IsEnabled = true;
         }
 
         private async Task changeProfilePictureButton_ClickedAsync(object sender, EventArgs e)
         {
+            changeProfilePictureButton.IsEnabled = false;
+
             string success = await GlobalVariables.updateProfileFragmentViewModel.UpdateProfilePicture(GlobalVariables.pathf, GlobalVariables.f);
 
             if (!String.IsNullOrEmpty(success))
@@ -79,6 +95,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             {
                 await Navigation.PopAsync();
             }
+
+            changeProfilePictureButton.IsEnabled = true;
         }
 
         private async Task galleryButton_ClickedAsync(object sender, EventArgs e)
@@ -103,9 +121,13 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private async void changeFaceookButton_ClickedAsync(object sender, EventArgs e)
         {
+            changeFaceookButton.IsEnabled = false;
+            
             DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
             
             await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
+        
+            changeFaceookButton.IsEnabled = true;
         }
     }
 }

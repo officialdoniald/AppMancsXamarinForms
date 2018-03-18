@@ -11,7 +11,7 @@ using AppMancsXamarinForms.NotPrimaryPages;
 namespace AppMancsXamarinForms
 {
     public partial class MainPage : TabbedPage
-    {
+    { 
         public MainPage()
         {
             InitializeComponent();

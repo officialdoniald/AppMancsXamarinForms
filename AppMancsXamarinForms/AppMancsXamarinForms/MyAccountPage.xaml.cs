@@ -27,6 +27,18 @@ namespace AppMancsXamarinForms
 
         protected override void OnAppearing()
         {
+            if (GlobalVariables.IsUpdatedMyProfile)
+            {
+                if (!String.IsNullOrEmpty(GlobalVariables.ActualUser.ProfilePictureURL))
+                {
+                    profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
+                }
+
+                GlobalVariables.IsUpdatedMyProfile = false;
+            }
+
+            userNameLabel.Text = GlobalVariables.ActualUser.FirstName + " " + GlobalVariables.ActualUser.LastName;
+
             var currentWidth = Application.Current.MainPage.Width;
 
             var optimalWidth = currentWidth / 3;

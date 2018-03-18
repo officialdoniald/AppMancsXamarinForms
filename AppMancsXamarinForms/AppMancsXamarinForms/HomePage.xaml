@@ -5,19 +5,13 @@
              Title="Fal"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <StackLayout>
-                    <ActivityIndicator x:Name="loadActivity" IsRunning="true" IsVisible="true"/>
-                    <Button x:Name="updateWallButton" Text="Frissítés" Clicked="Handle_Clicked"/>
-                </StackLayout>
-                <StackLayout x:Name="mainStackLayout" Orientation="Vertical">
-                
-                <!--<ListView 
-                    BackgroundColor="Transparent" 
+                <ListView 
+                    BackgroundColor="Transparent"
+                    IsPullToRefreshEnabled="true"
+                     Refreshing="Handle_Refreshing"
                     SeparatorVisibility="None" 
-                    HasUnevenRows="True" 
-                    ItemsSource="{Binding wallListViewAdapter}" 
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding GlobalVariables.wallListViewAdapter}" 
                     x:Name="wallListView">
                     <ListView.ItemTemplate>
                         <DataTemplate>
@@ -59,7 +53,7 @@
                                 </Label>
                                 <Image 
                                     Aspect="AspectFit"
-                                        HorizontalOptions="Fill"
+                                    HorizontalOptions="Fill"
                                     Source="{Binding pictureURL}"
                                     Grid.Row="1"
                                     Grid.ColumnSpan="2" />
@@ -101,9 +95,6 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>-->
-            </StackLayout>
-            </StackLayout>
-        </ScrollView>
+                </ListView>
     </ContentPage.Content>
 </ContentPage>
