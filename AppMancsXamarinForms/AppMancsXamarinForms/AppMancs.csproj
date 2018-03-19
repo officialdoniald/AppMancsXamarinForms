@@ -138,6 +138,7 @@
     <Compile Include="LocalDB\LastIndex.cs" />
     <Compile Include="LocalDB\WallItem.cs" />
     <Compile Include="LocalDB\PetpicturesWall.cs" />
+    <Compile Include="CustomControls\ExtendedViewCell.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -346,6 +347,7 @@
   <ItemGroup>
     <Folder Include="BLL\Helper\" />
     <Folder Include="LocalDB\" />
+    <Folder Include="CustomControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
