@@ -34,19 +34,21 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 GlobalVariables.InitializeTheMyPetList();
 
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
-                });
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+                //});
+                Navigation.PushModalAsync(new NavigationPage(new MainPage()));
             }
             else
             {
                 GlobalVariables.InitializeTheMyPetList();
 
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
-                });
+                //Device.BeginInvokeOnMainThread(async () =>
+                //{
+                //    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
+                //});
+                Navigation.PushModalAsync(new NavigationPage(new MainPage()));
             }
         }
     }

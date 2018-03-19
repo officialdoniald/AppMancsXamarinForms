@@ -19,7 +19,15 @@ namespace AppMancsXamarinForms
         {
             InitializeComponent();
 
-            Initialize();
+            wallListView.IsRefreshing = true;
+
+            FirstTime();
+        }
+
+        private async Task FirstTime(){
+            await Task.Run(() => {
+                Initialize();
+            });
         }
 
         private string followButtonText(bool haveILiked)
@@ -47,7 +55,7 @@ namespace AppMancsXamarinForms
                     GlobalVariables.wallListViewAdapter.Add(new WallListViewAdapter()
                     {
                         wallItem = item,
-                        howManyLikes = item.howmanylikes.ToString(),
+                        howManyLikes = item.howmanylikes.ToString() + " Like",
                         petName = item.name,
                         profilepictureURL = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
                         pictureURL = ImageSource.FromUri(new Uri(item.petpictures.PictureURL)),
@@ -57,32 +65,6 @@ namespace AppMancsXamarinForms
                 }
             }
 
-            //    var asd = item.hashtags.Split(' ');
-
-            //    foreach (var item2 in asd)
-            //    {
-            //        Label hashtagLabel = new Label()
-            //        {
-            //            Text = item2
-            //        };
-
-            //        var onHashtagClickedTap = new TapGestureRecognizer()
-            //        {
-            //            NumberOfTapsRequired = 1
-            //        };
-            //        onHashtagClickedTap.Tapped += async (s, e) =>
-            //        {
-            //            List<SearchModel> searchModelList = GlobalVariables.searchFragmentViewModel.GetSearchModel();
-
-            //            var asd24 = (from q in searchModelList where q.hashtag == item2 select q);
-
-            //            await Navigation.PushAsync(new SearchResultPage(asd24.First().petpicturesList, item2.Split('#')[1]));
-            //        };
-
-            //        hashtagLabel.GestureRecognizers.Add(onHashtagClickedTap);
-
-            //        footer.Children.Add(hashtagLabel);
-            //    }
             Device.BeginInvokeOnMainThread(()=>{
                 wallListView.ItemsSource = GlobalVariables.wallListViewAdapter;
                 wallListView.IsRefreshing = false;
@@ -162,5 +144,49 @@ namespace AppMancsXamarinForms
                 likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
             }
         }
+
+        private void Button_Clicked_2(object sender, EventArgs e)
+        {
+
+            Image pic = (Image)sender;
+
+            var asd = (Grid)pic.Parent;
+
+            var collection = (Grid.IGridList<View>)asd.Children;
+
+            Image button = (Image)collection[3];
+
+            Label likeNumberLabel = (Label)collection[4];
+
+            var wallListViewAdapterClicked = (WallListViewAdapter)button.BindingContext;
+
+            int howmanylikes = wallListViewAdapterClicked.wallItem.howmanylikes;
+
+            if (wallListViewAdapterClicked.wallItem.haveILiked)
+            {
+                GlobalVariables.homeFragmentViewModel.Unlike(wallListViewAdapterClicked.wallItem.petpictures.id);
+
+                wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
+
+                button.Source = "like.png";
+
+                wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes - 1;
+
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
+            }
+            else
+            {
+                GlobalVariables.homeFragmentViewModel.LikePicture(wallListViewAdapterClicked.wallItem.petpictures.id);
+
+                wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
+
+                button.Source = "unlike.png";
+
+                wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes + 1;
+
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
+            }
+        }
+
     }
 }

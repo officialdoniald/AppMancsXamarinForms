@@ -56,7 +56,13 @@
                                     HorizontalOptions="Fill"
                                     Source="{Binding pictureURL}"
                                     Grid.Row="1"
-                                    Grid.ColumnSpan="2" />
+                                    Grid.ColumnSpan="2" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                            NumberOfTapsRequired="2"
+                                            Tapped="Button_Clicked_2"/>
+                                </Image.GestureRecognizers>
+                            </Image>
                                 <Image
                                     Source="{Binding followButtonText}"
                                     HorizontalOptions="Center"
