@@ -1,4 +1,5 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
+﻿using AppMancsXamarinForms.BLL.Helper;
+using AppMancsXamarinForms.BLL.ViewModel;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +14,7 @@ namespace AppMancsXamarinForms
             InitializeComponent();
         }
 
-        private void sendNewPassword_Clicked(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task sendNewPassword_ClickedAsync(object sender, EventArgs e)
         {
             ForgotPasswordPageViewModel forgotPasswordPageViewModel =
                    new ForgotPasswordPageViewModel();
@@ -22,11 +23,11 @@ namespace AppMancsXamarinForms
 
             if (String.IsNullOrEmpty(success))
             {
-                Navigation.PopToRootAsync();
+                await Navigation.PopToRootAsync();
             }
             else
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
         }
     }

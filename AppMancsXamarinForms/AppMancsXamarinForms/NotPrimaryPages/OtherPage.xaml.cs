@@ -14,19 +14,19 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             InitializeComponent();
         }
 
-        private void deleteAcoountPageButton_Clicked(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task deleteAcoountPageButton_ClickedAsync(object sender, EventArgs e)
         {
             string success = GlobalVariables.otherFragmentViewModel.DeleteAccount(GlobalVariables.ActualUsersEmail);
 
             if (!String.IsNullOrEmpty(success))
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
             else
             {
                 var page = new LoginPage();
 
-                Navigation.PushAsync(page);
+                await Navigation.PushAsync(page);
 
                 NavigationPage.SetHasNavigationBar(page, false);
             }

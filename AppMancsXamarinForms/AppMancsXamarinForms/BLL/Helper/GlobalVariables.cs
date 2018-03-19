@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using AppMancsXamarinForms.BLL.ViewModel;
 using AppMancsXamarinForms.LocalDB;
 using FileStoringWithDependency.IFileStoreAndLoad;
@@ -67,6 +68,17 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static string databaseFileName = 
             "LocalDatabaseTable.db3";
+
+        /// <summary>
+        /// Is Pet added?
+        /// </summary>
+        private static ContentPageFunctions contentPageFunctions = new ContentPageFunctions();
+
+        public static ContentPageFunctions ContentPageFunctions
+        {
+            get => contentPageFunctions;
+            set => contentPageFunctions = value;
+        }
 
         /// <summary>
         /// Is Pet added?
@@ -405,6 +417,7 @@ namespace AppMancsXamarinForms.BLL.Helper
                 petpicturesid = wall.petpictures.id
             };
         }
+
 
 
     }

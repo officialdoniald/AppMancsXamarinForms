@@ -88,7 +88,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             else likeornotImage.Source = "like.png";
         }
 
-        private void likeOrNotButton_Clicked(object sender, EventArgs e)
+        private async Task likeOrNotButton_ClickedAsync(object sender, EventArgs e)
         {
             if (haveiliked)
             {
@@ -96,7 +96,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    //TODO
+                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
                 }
                 else
                 {
@@ -115,7 +115,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    //TODO
+                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
                 }
                 else
                 {

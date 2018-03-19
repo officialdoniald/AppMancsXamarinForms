@@ -33,7 +33,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             if (!String.IsNullOrEmpty(success))
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
             else
             {
@@ -53,7 +53,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             if (!String.IsNullOrEmpty(success))
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
             else
             {
@@ -71,7 +71,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             if (!String.IsNullOrEmpty(success))
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
             else
             {
@@ -89,7 +89,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             if (!String.IsNullOrEmpty(success))
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
             else
             {

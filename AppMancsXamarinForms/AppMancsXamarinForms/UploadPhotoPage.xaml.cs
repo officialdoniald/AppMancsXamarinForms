@@ -73,7 +73,7 @@ namespace AppMancsXamarinForms
 
             if (!String.IsNullOrEmpty(success))
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
             else
             {

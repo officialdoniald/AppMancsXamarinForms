@@ -32,7 +32,7 @@
                     </Label>
                     <Image x:Name="likeornotImage" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="likeOrNotButton_Clicked" />
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="likeOrNotButton_ClickedAsync" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Label Grid.Column="3" Grid.Row="0" x:Name="howmanyLikesLabel" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource NormalLabel}">
@@ -44,7 +44,7 @@
                 </Grid>
                 <Image x:Name="pictureImage" Aspect="AspectFit">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="likeOrNotButton_Clicked" />
+                        <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="likeOrNotButton_ClickedAsync" />
                     </Image.GestureRecognizers>
                 </Image>
 <!--                <Label x:Name="hashtagsLabel" HorizontalOptions="Start" Style="{StaticResource NormalLabel}" />-->

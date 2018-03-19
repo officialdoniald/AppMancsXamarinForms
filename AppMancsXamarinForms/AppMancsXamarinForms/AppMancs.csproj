@@ -138,6 +138,7 @@
     <Compile Include="LocalDB\PetpicturesWall.cs" />
     <Compile Include="CustomControls\ExtendedViewCell.cs" />
     <Compile Include="BLL\Helper\English.cs" />
+    <Compile Include="BLL\Helper\ContentPageFunctions.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

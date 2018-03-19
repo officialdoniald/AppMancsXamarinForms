@@ -70,10 +70,11 @@ namespace FacebookLogin.Views
 
                 if (success == English.NoAccountFindWithThisFacebookAccount())
                 {
-                    //TODO
                     DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
 
                     await Navigation.PopToRootAsync();
+
+                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
                 }
                 else
                 {
@@ -86,7 +87,7 @@ namespace FacebookLogin.Views
                     //    Navigation.RemovePage(pages.Last());
                     //}
 
-                    Navigation.PushModalAsync(new JustActivityIndicator("facebook"));
+                    await Navigation.PushModalAsync(new JustActivityIndicator("facebook"));
                 }
             }
             else if (page is SignUpPage)
@@ -118,8 +119,9 @@ namespace FacebookLogin.Views
                 }
                 else
                 {
-                    //TODO
                     await Navigation.PushAsync(new UpdateProfilePage());
+
+                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
                 }
             }
         }

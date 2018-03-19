@@ -14,7 +14,7 @@ namespace AppMancsXamarinForms
             InitializeComponent();
         }
 
-        private void signupButton_Clicked(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task signupButton_ClickedAsync(object sender, EventArgs e)
         {
             signupButton.IsEnabled = false;
             
@@ -32,11 +32,11 @@ namespace AppMancsXamarinForms
 
             if (!String.IsNullOrEmpty(success))
             {
-                //TODO
+                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
             }
             else
             {
-                Navigation.PopToRootAsync();
+                await Navigation.PopToRootAsync();
             }
             signupButton.IsEnabled = true;
         }

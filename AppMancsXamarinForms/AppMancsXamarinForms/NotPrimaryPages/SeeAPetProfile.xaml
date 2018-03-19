@@ -18,7 +18,7 @@
                 Style="{StaticResource NormalLabel}"/>
             <Button
                     x:Name="followButton"
-                    Clicked="followButton_Clicked"
+                    Clicked="followButton_ClickedAsync"
                 Style="{StaticResource NormalButton}"
                 />
             <Button

@@ -87,7 +87,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             else followButton.Text = GlobalVariables.petProfileFragmentViewModel.followText;
         }
 
-        private void followButton_Clicked(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task followButton_ClickedAsync(object sender, EventArgs e)
         {
             if (HaveIAlreadyFollow)
             {
@@ -97,7 +97,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    //TODO
+                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
                 }
                 else
                 {
@@ -112,7 +112,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    //TODO
+                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
                 }
                 else
                 {
