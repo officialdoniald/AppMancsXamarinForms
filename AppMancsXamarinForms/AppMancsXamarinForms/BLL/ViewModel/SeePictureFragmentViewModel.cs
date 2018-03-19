@@ -1,5 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
-using Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +11,13 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class SeePictureFragmentViewModel
     {
-        private English language = new English();
-
         public string likeText;
         public string unlikeText;
 
         public SeePictureFragmentViewModel()
         {
-            likeText = language.Like();
-            unlikeText = language.UnLike();
+            likeText = English.Like();
+            unlikeText = English.UnLike();
         }
 
         public string GetHashtags(int petpicturesid)
@@ -49,11 +46,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (!success)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
-                return language.Empty();
+                return English.Empty();
             }
         }
 
@@ -69,11 +66,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (!success)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
-                return language.Empty();
+                return English.Empty();
             }
         }
 

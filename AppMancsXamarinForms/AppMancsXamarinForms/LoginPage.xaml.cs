@@ -1,10 +1,8 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
+﻿using AppMancsXamarinForms.FileStoreAndLoad;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
-using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms
 {
@@ -20,6 +18,8 @@ namespace AppMancsXamarinForms
 
         private void loginButton_Clicked(object sender, EventArgs e)
         {
+            loginButton.IsEnabled = false;
+
             string success = GlobalVariables.loginPageViewModel.Login(emailEntry.Text, pwEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
@@ -34,6 +34,8 @@ namespace AppMancsXamarinForms
 
                 Navigation.PushModalAsync(new NotPrimaryPages.JustActivityIndicator("login"));
             }
+
+            loginButton.IsEnabled = true;
         }
 
         private async void signUpButton_Clicked(object sender, EventArgs e)

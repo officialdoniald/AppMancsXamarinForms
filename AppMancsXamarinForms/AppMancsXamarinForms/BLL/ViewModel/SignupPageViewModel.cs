@@ -1,4 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
+﻿using AppMancsXamarinForms.BLL.Helper;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -12,8 +12,6 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class SignupPageViewModel
     {
-        private English language = new English();
-
         public async Task<string> UploadFileAsync(string pathf, Stream f)
         {
             string uniqueBlobName = await DependencyService.Get<IBlobStorage.IBlobStorage>().UploadFileAsync(pathf, f);
@@ -28,11 +26,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             if (String.IsNullOrEmpty(user.Email) || String.IsNullOrEmpty(user.FirstName) ||
                 String.IsNullOrEmpty(user.LastName) || String.IsNullOrEmpty(user.Password))
             {
-                return language.YouHaveToFillAllEntries();
+                return English.YouHaveToFillAllEntries();
             }
             if (user.Password.Length < 6 && user.Password.Length > 16)
             {
-                return language.BadPasswordLength();
+                return English.BadPasswordLength();
             }
 
             user.Email = user.Email.ToLower();
@@ -45,15 +43,15 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 if (success)
                 {
-                    return language.Empty();
+                    return English.Empty();
                 }
             }
             else
             {
-                return language.ThisEmailIsExist();
+                return English.ThisEmailIsExist();
             }
 
-            return language.SomethingWentWrong();
+            return English.SomethingWentWrong();
         }
     }
 }

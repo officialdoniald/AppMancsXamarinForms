@@ -1,4 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
+﻿using AppMancsXamarinForms.BLL.Helper;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -11,15 +11,13 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class PetProfileFragmentViewModel
     {
-        private English language = new English();
-
         public string followText;
         public string unfollowText;
         
         public PetProfileFragmentViewModel()
         {
-            followText = language.Follow();
-            unfollowText = language.UnFollow();
+            followText = English.Follow();
+            unfollowText = English.UnFollow();
         }
 
         public List<Petpictures> GetPetPictureURL(int petid)
@@ -48,11 +46,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (success)
             {
-                return language.Empty();
+                return English.Empty();
             }
             else
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
         }
 
@@ -86,11 +84,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (success)
             {
-                return language.Empty();
+                return English.Empty();
             }
             else
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
         }
 

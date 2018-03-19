@@ -1,4 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
+﻿using AppMancsXamarinForms.BLL.Helper;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -11,8 +11,6 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class ForgotPasswordPageViewModel
     {
-        private English language = new English();
-        
         private Segédfüggvények segédfüggvények =
             new Segédfüggvények();
 
@@ -20,7 +18,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
         {
             if (String.IsNullOrEmpty(EMAIL))
             {
-                return language.GiveYourEmail();
+                return English.GiveYourEmail();
             }
 
             EMAIL = EMAIL.ToLower();
@@ -29,7 +27,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (user.Email is null)
             {
-                return language.NoAcoountFoundWithThisEmail();
+                return English.NoAcoountFoundWithThisEmail();
             }
 
             user.Password = segédfüggvények.RandomString(8, false);
@@ -38,7 +36,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             //TODO send E-Mail
 
-            return language.Empty();
+            return English.Empty();
         }
     }
 }

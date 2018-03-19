@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AppMancsXamarinForms.BLL.ViewModel;
 using Xamarin.Forms;
-using AppMancsXamarinForms.BLL.Languages;
 using Model;
 using System.IO;
+using AppMancsXamarinForms.BLL.Helper;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class UploadPhotoFragmentViewModel
     {
-        private English language = new English();
-
         public List<Pet> GetMyPets(int userid)
         {
             return DependencyService.Get<IDBAccess.IBlobStorage>().GetPetsByUserID(userid);
@@ -29,7 +23,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
         {
             if (petid == -1)
             {
-                return language.ChooseAnimal();
+                return English.ChooseAnimal();
             }
             if (!String.IsNullOrEmpty(pathf))
             {
@@ -48,7 +42,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 if (success == -1)
                 {
-                    return language.SomethingWentWrong();
+                    return English.SomethingWentWrong();
                 }
                 else
                 {
@@ -71,18 +65,18 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                                 if (!asd)
                                 {
-                                    return language.SomethingWentWrong();
+                                    return English.SomethingWentWrong();
                                 }
                             }
                         }
                     }
 
-                    return language.Empty();
+                    return English.Empty();
                 }
             }
             else
             {
-                return language.ChooseAPicture();
+                return English.ChooseAPicture();
             }
 
 

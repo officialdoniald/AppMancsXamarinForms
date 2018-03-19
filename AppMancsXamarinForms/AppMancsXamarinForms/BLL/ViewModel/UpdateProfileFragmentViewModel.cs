@@ -1,5 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
-using Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,8 +12,6 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class UpdateProfileFragmentViewModel
     {
-        private English language = new English();
-
         private string UpdateUser(User user)
         {
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().UpdateUser(user.id, user);
@@ -23,11 +20,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             {
                 GlobalVariables.ActualUser = user;
                 
-                return language.Empty();
+                return English.Empty();
             }
             else
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
         }
 
@@ -35,7 +32,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
         {
             if (GlobalVariables.ActualUser.Email == newEmail)
             {
-                return language.ThisEmailIsYourEmail();
+                return English.ThisEmailIsYourEmail();
             }
             if (String.IsNullOrEmpty(newEmail))
             {
@@ -45,7 +42,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 if (!String.IsNullOrEmpty(checkEmailExist.Email))
                 {
-                    return language.ThisEmailIsExist();
+                    return English.ThisEmailIsExist();
                 }
                 else
                 {
@@ -56,7 +53,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             }
 
-            return language.SomethingWentWrong();
+            return English.SomethingWentWrong();
         }
 
         public string UpdateProfile(string firstname, string lastname)
@@ -92,17 +89,17 @@ namespace AppMancsXamarinForms.BLL.ViewModel
         {
             if (String.IsNullOrEmpty(oldpassword) || String.IsNullOrEmpty(newPassword))
             {
-                return language.ThisEmailIsExist();
+                return English.ThisEmailIsExist();
             }
 
             if (GlobalVariables.ActualUser.Password != oldpassword)
             {
-                return language.BadPasswordLength();
+                return English.BadPasswordLength();
             }
 
             if (newPassword.Length < 6 && newPassword.Length > 16)
             {
-                return language.BadPasswordLength();
+                return English.BadPasswordLength();
             }
 
             GlobalVariables.ActualUser.Password = newPassword;

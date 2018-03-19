@@ -40,8 +40,6 @@
     </Compile>
     <Compile Include="BLL\IBlobStorage\IBlobStorage.cs" />
     <Compile Include="BLL\IDBAccess\IDBAccess.cs" />
-    <Compile Include="BLL\Languages\English.cs" />
-    <Compile Include="BLL\Languages\ILanguage.cs" />
     <Compile Include="BLL\ViewModel\AddpetFragmentViewModel.cs" />
     <Compile Include="BLL\ViewModel\FacebookProfilePageViewModel.cs" />
     <Compile Include="BLL\ViewModel\ForgotPasswordPageViewModel.cs" />
@@ -139,6 +137,7 @@
     <Compile Include="LocalDB\WallItem.cs" />
     <Compile Include="LocalDB\PetpicturesWall.cs" />
     <Compile Include="CustomControls\ExtendedViewCell.cs" />
+    <Compile Include="BLL\Helper\English.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

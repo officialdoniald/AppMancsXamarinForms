@@ -1,5 +1,4 @@
 ﻿using AppMancsXamarinForms.BLL.Helper;
-using AppMancsXamarinForms.BLL.Languages;
 using Model;
 using System;
 using System.IO;
@@ -10,17 +9,15 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class AddpetFragmentViewModel
     {
-        private English language = new English();
-        
         public async Task<string> AddPetAsync(string pathf, Stream f, Pet pet)
         {
             if (String.IsNullOrEmpty(pet.Name) || pet.Age < 0 || String.IsNullOrEmpty(pet.PetType))
             {
-                return language.YouHaveToFillAllEntries();
+                return English.YouHaveToFillAllEntries();
             }
             else if (pet.Age < 0)
             {
-                return language.NotNegNumber();
+                return English.NotNegNumber();
             }
             else if (!String.IsNullOrEmpty(pathf))
             {
@@ -38,7 +35,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (success == -1)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
@@ -54,7 +51,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 await GlobalVariables.LocalSQLiteDatabase.InsertMyPetsList(myPetList);
                 
-                return language.Empty();
+                return English.Empty();
             }
         }
     }

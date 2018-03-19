@@ -1,17 +1,10 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AppMancsXamarinForms.BLL.Helper;
 using Xamarin.Forms;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class OtherFragmentViewModel
     {
-        private English language = new English();
-
         public string DeleteAccount(string EMAIL)
         {
             var user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL);
@@ -26,7 +19,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 if (!siker)
                 {
-                    return language.SomethingWentWrong();
+                    return English.SomethingWentWrong();
                 }
             }
 
@@ -34,11 +27,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (!success)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
-                return language.Empty();
+                return English.Empty();
             }
         }
     }

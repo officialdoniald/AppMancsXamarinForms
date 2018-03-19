@@ -1,4 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
+﻿using AppMancsXamarinForms.BLL.Helper;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -11,15 +11,13 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class FacebookProfilePageViewModel
     {
-        English english = new English();
-
         public string isThereAnyUser(string facebookid)
         {
             var user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByFacebookID(facebookid);
 
             if (user is null)
             {
-                return english.NoAccountFindWithThisFacebookAccount();
+                return English.NoAccountFindWithThisFacebookAccount();
             }
             else
             {
@@ -42,7 +40,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 if (!success)
                 {
-                    return english.SomethingWentWrong();
+                    return English.SomethingWentWrong();
                 }
                 else
                 {
@@ -51,7 +49,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
             else
             {
-                return english.AlreadyHaveThisFacebookAcoount();
+                return English.AlreadyHaveThisFacebookAcoount();
             }
         }
     }

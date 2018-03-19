@@ -1,5 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
-using Model;
+﻿using Model;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using AppMancsXamarinForms.BLL.Helper;
@@ -8,8 +7,6 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class HomeFragmentViewModel
     {
-        private English language = new English();
-
         public string GetHashtags(int petpicturesid)
         {
             var hashtags = DependencyService.Get<IDBAccess.IBlobStorage>().GetHashtagsByPetpictureID(petpicturesid);
@@ -89,11 +86,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (!success)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
-                return language.Empty();
+                return English.Empty();
             }
         }
 
@@ -109,11 +106,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (!success)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
-                return language.Empty();
+                return English.Empty();
             }
         }
 

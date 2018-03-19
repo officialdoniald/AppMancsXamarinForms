@@ -1,5 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
-using Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,8 +12,6 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class UpdatePetFragmentViewModel
     {
-        private English language = new English();
-
         public string DeletePet(int petid)
         {
             Pet pet = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetByID(petid);
@@ -29,11 +26,11 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (!success)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
-                return language.Empty();
+                return English.Empty();
             }
         }
 
@@ -43,7 +40,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             if (!success)
             {
-                return language.SomethingWentWrong();
+                return English.SomethingWentWrong();
             }
             else
             {
@@ -53,7 +50,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 GlobalVariables.AddedPet = true;
 
-                return language.Empty();
+                return English.Empty();
             }
         }
 
@@ -71,14 +68,14 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 if (!success)
                 {
-                    return language.SomethingWentWrong();
+                    return English.SomethingWentWrong();
                 }
                 else
                 {
-                    return language.Empty();
+                    return English.Empty();
                 }
             }
-            else return language.Empty();
+            else return English.Empty();
         }
 
         public Pet GetThisPet(int petid)

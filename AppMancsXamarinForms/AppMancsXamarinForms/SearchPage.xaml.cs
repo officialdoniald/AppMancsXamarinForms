@@ -22,7 +22,7 @@ namespace AppMancsXamarinForms
         {
             InitializeComponent();
 
-            SetTheListView();
+            FirstTime();
         }
 
         private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
@@ -45,9 +45,18 @@ namespace AppMancsXamarinForms
             Navigation.PushAsync(searchResultPage);
         }
 
-        protected override void OnAppearing()
+        private async Task FirstTime()
         {
-            SetTheListView();
+            await Task.Run(() => {
+                SetTheListView();
+            });
+        }
+
+        protected async override void OnAppearing()
+        {
+            await Task.Run(() => {
+                SetTheListView();
+            });
         }
 
         private void SetTheListView()

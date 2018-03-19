@@ -9,11 +9,11 @@
         
         <StackLayout 
                 Style="{StaticResource NormalStackLayout}">
-            <controls:CircleImage
+            <Image
                 x:Name="profilePictureImage"
                 Aspect="AspectFit"
                 HeightRequest="75">
-            </controls:CircleImage>
+            </Image>
             <Label 
                 x:Name="userNameLabel"
                 Style="{StaticResource NormalLabel}"/>

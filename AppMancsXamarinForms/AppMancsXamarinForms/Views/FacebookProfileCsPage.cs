@@ -6,7 +6,6 @@ using Device = Xamarin.Forms.Device;
 using AppMancsXamarinForms;
 using AppMancsXamarinForms.BLL.ViewModel;
 using AppMancsXamarinForms.FileStoreAndLoad;
-using AppMancsXamarinForms.BLL.Languages;
 using AppMancsXamarinForms.NotPrimaryPages;
 using AppMancsXamarinForms.BLL.Helper;
 
@@ -69,9 +68,7 @@ namespace FacebookLogin.Views
             {
                 string success = facebookProfilePageViewModel.isThereAnyUser(facebookProfile.Id);
 
-                English english = new English();
-
-                if (success == english.NoAccountFindWithThisFacebookAccount())
+                if (success == English.NoAccountFindWithThisFacebookAccount())
                 {
                     //TODO
                     DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
@@ -94,13 +91,11 @@ namespace FacebookLogin.Views
             }
             else if (page is SignUpPage)
             {
-                English english = new English();
-
                 DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
 
                 var success = facebookProfilePageViewModel.isThereAnyUser(facebookProfile.Id);
 
-                if (success == english.NoAccountFindWithThisFacebookAccount())
+                if (success == English.NoAccountFindWithThisFacebookAccount())
                 {
                     await Navigation.PushAsync(new SomeInformationPage(facebookProfile));
                 }

@@ -1,17 +1,15 @@
-﻿using AppMancsXamarinForms.BLL.Languages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AppMancsXamarinForms.BLL.Helper;
 using Xamarin.Forms;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class LoginPageViewModel
     {
-        private English language = new English();
-
         private Segédfüggvények segédfüggvények =
             new Segédfüggvények();
 
@@ -26,33 +24,33 @@ namespace AppMancsXamarinForms.BLL.ViewModel
         {
             if (String.IsNullOrEmpty(EMAIL) && String.IsNullOrEmpty(PASSWORD))
             {
-                return language.YouHaveToFillAllEntries();
+                return English.YouHaveToFillAllEntries();
             }
             if (String.IsNullOrEmpty(EMAIL))
             {
-                return language.EmailIsEmpty();
+                return English.EmailIsEmpty();
             }
             if (String.IsNullOrEmpty(PASSWORD))
             {
-                return language.PasswordIsEmpty();
+                return English.PasswordIsEmpty();
             }
             if (!segédfüggvények.IsValidEmailAddress(EMAIL.ToLower()))
             {
-                return language.BadEmailFormat();
+                return English.BadEmailFormat();
             }
             if (PASSWORD.Length < 6 || PASSWORD.Length > 16)
             {
-                return language.BadPasswordLength();
+                return English.BadPasswordLength();
             }
 
             var user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL.ToLower());
 
             if (user is null || user.Password != PASSWORD)
             {
-                return language.BadPasswordOrEmail();
+                return English.BadPasswordOrEmail();
             }
 
-            return language.Empty();
+            return English.Empty();
         }
     }
 }

@@ -16,6 +16,8 @@ namespace AppMancsXamarinForms
 
         private void signupButton_Clicked(object sender, EventArgs e)
         {
+            signupButton.IsEnabled = false;
+            
             User user = new User()
             {
                 Email = emailEntry.Text.ToLower(),
@@ -36,6 +38,7 @@ namespace AppMancsXamarinForms
             {
                 Navigation.PopToRootAsync();
             }
+            signupButton.IsEnabled = true;
         }
 
         private async void loginFacebookButton_Clicked(object sender, EventArgs e)
