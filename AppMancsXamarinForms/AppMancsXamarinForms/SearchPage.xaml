@@ -15,7 +15,9 @@
                     ItemTapped="searchListView_ItemTapped"
                     SeparatorVisibility="None"
                     ItemsSource="{Binding searchModelList}" 
-                    x:Name="searchListView">
+                    x:Name="searchListView"
+                    IsPullToRefreshEnabled="true"
+                    Refreshing="Handle_Refreshing">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

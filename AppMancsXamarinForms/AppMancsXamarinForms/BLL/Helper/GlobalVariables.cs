@@ -6,6 +6,8 @@ using AppMancsXamarinForms.BLL.ViewModel;
 using AppMancsXamarinForms.LocalDB;
 using FileStoringWithDependency.IFileStoreAndLoad;
 using Model;
+using Plugin.Connectivity;
+using Plugin.Connectivity.Abstractions;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 
@@ -419,6 +421,18 @@ namespace AppMancsXamarinForms.BLL.Helper
         }
 
 
+        /// <summary>
+        /// Event handler when connection changes
+        /// </summary>
+        static event ConnectivityChangedEventHandler ConnectivityChanged; 
 
+        public class ConnectivityChangedEventArgs : EventArgs
+        {
+            public bool IsConnected { get; set; }
+
+        }
+
+        public delegate void ConnectivityChangedEventHandler(object sender, ConnectivityChangedEventArgs e);
     }
+
 }

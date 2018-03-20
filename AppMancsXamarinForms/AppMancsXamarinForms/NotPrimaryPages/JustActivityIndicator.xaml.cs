@@ -20,6 +20,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             isEmpty = facebookOrLogin;
         }
 
+        public JustActivityIndicator(bool connection)
+        {
+            InitializeComponent();
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -34,20 +39,12 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 GlobalVariables.InitializeTheMyPetList();
 
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
-                //});
                 Navigation.PushModalAsync(new NavigationPage(new MainPage()));
             }
             else
             {
                 GlobalVariables.InitializeTheMyPetList();
 
-                //Device.BeginInvokeOnMainThread(async () =>
-                //{
-                //    await Navigation.PushModalAsync(new NavigationPage(new MainPage()));
-                //});
                 Navigation.PushModalAsync(new NavigationPage(new MainPage()));
             }
         }

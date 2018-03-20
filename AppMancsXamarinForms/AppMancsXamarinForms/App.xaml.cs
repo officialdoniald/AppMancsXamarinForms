@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using AppMancsXamarinForms.BLL.Helper;
+using Plugin.Connectivity;
 
 namespace AppMancsXamarinForms
 {
@@ -12,9 +13,12 @@ namespace AppMancsXamarinForms
 
         protected override void OnStart()
         {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                while (!CrossConnectivity.Current.IsConnected) { }
+            }
             GlobalVariables.InitializeUsersEmail();
 
-            // Handle when your app starts
             if (!GlobalVariables.HaveToLogin)
             {
                 GlobalVariables.InitializeUser();

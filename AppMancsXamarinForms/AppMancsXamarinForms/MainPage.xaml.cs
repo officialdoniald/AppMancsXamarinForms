@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using AppMancsXamarinForms.BLL.Helper;
 using AppMancsXamarinForms.NotPrimaryPages;
+using Plugin.Connectivity;
 
 namespace AppMancsXamarinForms
 {
@@ -15,7 +16,15 @@ namespace AppMancsXamarinForms
         public MainPage()
         {
             InitializeComponent();
+            CrossConnectivity.Current.ConnectivityChanged += async (sender, args) =>
+            {
+                if (!CrossConnectivity.Current.IsConnected)
+                {
+                    await Navigation.PushModalAsync(new NoConnection());
 
+                    await DisplayAlert("Failed", "You are offline!", "OK");
+                }
+            };
             NavigationPage.SetHasBackButton(this, false);
             NavigationPage.SetHasNavigationBar(this, false);
 

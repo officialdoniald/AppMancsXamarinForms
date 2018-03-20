@@ -22,12 +22,14 @@ namespace AppMancsXamarinForms
         {
             InitializeComponent();
 
+            searchListView.IsRefreshing = true;
+
             FirstTime();
         }
 
         private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var list = GlobalVariables.searchFragmentViewModel.GetSearchModelWithKeyword(searchEntry.Text, searchModelList);
+            var list = GlobalVariables.searchFragmentViewModel.GetSearchModelWithKeyword(searchEntry.Text.ToLower(), searchModelList);
 
             searchListView.ItemsSource = list;
         }
@@ -52,18 +54,22 @@ namespace AppMancsXamarinForms
             });
         }
 
-        protected async override void OnAppearing()
-        {
-            await Task.Run(() => {
-                SetTheListView();
-            });
-        }
-
         private void SetTheListView()
         {
             searchModelList = GlobalVariables.searchFragmentViewModel.GetSearchModel();
 
-            searchListView.ItemsSource = searchModelList;
+            Device.BeginInvokeOnMainThread(()=>{
+                searchListView.ItemsSource = searchModelList;
+
+                searchListView.IsRefreshing = false;
+            });
+        }
+
+        async void Handle_Refreshing(object sender, System.EventArgs e)
+        {
+            await Task.Run(() => {
+                SetTheListView();
+            });
         }
     }
 }
