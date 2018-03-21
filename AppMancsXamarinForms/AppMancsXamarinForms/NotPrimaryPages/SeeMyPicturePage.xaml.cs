@@ -1,5 +1,4 @@
 ﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,9 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             {
                 Label hashtagLabel = new Label()
                 {
-                    Text = item2
+                    Text = item2,
+                    TextColor = Color.FromHex("#FFCBB6"),
+                    FontSize = 15
                 };
 
                 var onHashtagClickedTap = new TapGestureRecognizer()
@@ -72,7 +73,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             howmanylike = likes.Count;
 
-            howmanyLikesLabel.Text = howmanylike.ToString() + " likes";
+            howmanyLikesLabel.Text = howmanylike.ToString() + English.GetLike();
 
             haveiliked = GlobalVariables.seePictureFragmentViewModel.HaveILiked(petpictures.id);
         }

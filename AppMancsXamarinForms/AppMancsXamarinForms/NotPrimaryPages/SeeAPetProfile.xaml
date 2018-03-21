@@ -25,7 +25,7 @@
                 x:Name="goToOwnerPageButton"
                 Clicked="goToOwnerPageButton_Clicked"
                 Style="{StaticResource NormalButton}"
-                Text="Ugrás a gazdi profiljára"
+                Text="Go to the owner's page"
                 />
             <Grid 
                 x:Name="pictureListGrid"

@@ -55,7 +55,7 @@ namespace AppMancsXamarinForms
                     GlobalVariables.wallListViewAdapter.Add(new WallListViewAdapter()
                     {
                         wallItem = item,
-                        howManyLikes = item.howmanylikes.ToString() + " Like",
+                        howManyLikes = item.howmanylikes.ToString() + English.GetLike(),
                         petName = item.name,
                         profilepictureURL = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
                         pictureURL = ImageSource.FromUri(new Uri(item.petpictures.PictureURL)),
@@ -78,12 +78,18 @@ namespace AppMancsXamarinForms
             });
         }
 
-
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Label label = (Label)sender;
+            var wallListViewAdapterClicked = new WallListViewAdapter();
 
-            var wallListViewAdapterClicked = (WallListViewAdapter)label.BindingContext;
+            try
+            {
+                wallListViewAdapterClicked = (WallListViewAdapter)(((Label)sender).BindingContext);
+            }
+            catch (Exception)
+            {
+                wallListViewAdapterClicked = (WallListViewAdapter)(((Image)sender).BindingContext);
+            }
 
             if (!GlobalVariables.whosLikedViewModel.IsMyPet(wallListViewAdapterClicked.wallItem.petpictures.PetID))
             {
@@ -129,7 +135,7 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes - 1;
 
-                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + English.GetLike();
             }
             else
             {
@@ -141,13 +147,12 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes + 1;
 
-                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + English.GetLike();
             }
         }
 
         private void Button_Clicked_2(object sender, EventArgs e)
         {
-
             Image pic = (Image)sender;
 
             var asd = (Grid)pic.Parent;
@@ -172,7 +177,7 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes - 1;
 
-                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + English.GetLike();
             }
             else
             {
@@ -184,7 +189,7 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes + 1;
 
-                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + " Like";
+                likeNumberLabel.Text = wallListViewAdapterClicked.wallItem.howmanylikes.ToString() + English.GetLike();
             }
         }
 

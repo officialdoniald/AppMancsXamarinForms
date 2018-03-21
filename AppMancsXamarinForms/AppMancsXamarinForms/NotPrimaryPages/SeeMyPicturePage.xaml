@@ -11,9 +11,7 @@
                         </ColumnDefinition>
                         <ColumnDefinition Width="60">
                         </ColumnDefinition>
-                        <ColumnDefinition Width="60">
-                        </ColumnDefinition>
-                        <ColumnDefinition>
+                        <ColumnDefinition Width="Auto">
                         </ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -32,19 +30,17 @@
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Image HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2" Source="like.png">
-                    </Image>
-                    <Label Grid.Column="3" Grid.Row="0" x:Name="howmanyLikesLabel" HorizontalOptions="Start" VerticalOptions="Center" Margin="15,0,0,0" Style="{StaticResource NormalLabel}">
+                    <Label Grid.Column="2" Grid.Row="0" x:Name="howmanyLikesLabel" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource NormalLabel}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1">
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Button Grid.Column="4" Grid.Row="0" x:Name="deleteButton" Text="Delete" Clicked="deleteButton_Clicked" />
+                    <Button Style="{StaticResource NormalButton}" Grid.Column="3" Grid.Row="0" x:Name="deleteButton" Text="Delete" Clicked="deleteButton_Clicked" VerticalOptions="Center" />
                 </Grid>
-                <Image x:Name="pictureImage" Aspect="AspectFit"/>
-<!--                <Label x:Name="hashtagsLabel" HorizontalOptions="Start" Style="{StaticResource NormalLabel}" />-->
-                <StackLayout x:Name="mainStackLayout" Orientation="Horizontal" Margin="15,0,15,0"></StackLayout>
+                <Image x:Name="pictureImage" Aspect="AspectFit" />
+                <StackLayout x:Name="mainStackLayout" Orientation="Horizontal" Margin="15,0,15,0">
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

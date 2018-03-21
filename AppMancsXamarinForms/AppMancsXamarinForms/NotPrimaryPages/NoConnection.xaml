@@ -2,8 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppMancsXamarinForms.NotPrimaryPages.NoConnection">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="No Internet connection..."/>
-            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="true"></ActivityIndicator>
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="No Internet connection..." Style="{StaticResource NormalLabel}"/>
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsRunning="true" Style="{StaticResource NormalActivityIndicator}"></ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

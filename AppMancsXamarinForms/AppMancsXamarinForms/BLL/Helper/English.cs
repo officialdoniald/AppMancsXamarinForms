@@ -114,5 +114,10 @@ namespace AppMancsXamarinForms.BLL.Helper
         {
             return "Do not be a negative number!";
         }
+
+        public static string GetLike()
+        {
+            return " like";
+        }
     }
 }

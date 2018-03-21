@@ -30,12 +30,12 @@
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Image x:Name="likeornotImage" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="2">
+                    <Image x:Name="likeornotImage" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="0" Grid.Column="3">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="likeOrNotButton_ClickedAsync" />
                         </Image.GestureRecognizers>
                     </Image>
-                    <Label Grid.Column="3" Grid.Row="0" x:Name="howmanyLikesLabel" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource NormalLabel}">
+                    <Label Grid.Column="2" Grid.Row="0" x:Name="howmanyLikesLabel" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource NormalLabel}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1">
                             </TapGestureRecognizer>
@@ -47,8 +47,8 @@
                         <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="likeOrNotButton_ClickedAsync" />
                     </Image.GestureRecognizers>
                 </Image>
-<!--                <Label x:Name="hashtagsLabel" HorizontalOptions="Start" Style="{StaticResource NormalLabel}" />-->
-                <StackLayout x:Name="mainStackLayout" Orientation="Horizontal" Margin="15,0,15,0"></StackLayout>
+                <StackLayout x:Name="mainStackLayout" Orientation="Horizontal" Margin="15,0,15,0">
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
