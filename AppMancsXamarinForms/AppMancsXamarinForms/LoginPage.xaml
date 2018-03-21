@@ -4,21 +4,21 @@
         <ScrollView>
             <StackLayout Style="{StaticResource NormalStackLayout}">
                 <Image Style="{StaticResource Logo}" Source="logo.jpg" />
-                <Button x:Name="loginFacebookButton" Style="{StaticResource FacebookButton}" Text="Bejelentkezés Facebook fiókkal" Clicked="loginFacebookButton_Clicked" />
-                <Label Text="Vagy" Style="{StaticResource NormalLabel}" />
+                <Button x:Name="loginFacebookButton" Style="{StaticResource FacebookButton}" Text="Login with Facebook" Clicked="loginFacebookButton_Clicked" />
+                <Label Text="or" Style="{StaticResource NormalLabel}" />
                 <Label Text="E-Mail:" Style="{StaticResource EntryAboveLabel}" />
                 <Entry x:Name="emailEntry" Style="{StaticResource NormalEnrty}" />
-                <Label Text="Jelszó:" Style="{StaticResource EntryAboveLabel}" />
+                <Label Text="Password:" Style="{StaticResource EntryAboveLabel}" />
                 <Entry x:Name="pwEntry" IsPassword="True" Style="{StaticResource NormalEnrty}" />
-                <Label Text="Elfelejtett jelszó" Style="{StaticResource NormalLabel}">
+                <Label Text="Forgot password" Style="{StaticResource NormalLabel}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
                     </Label.GestureRecognizers>
                 </Label>
                 <ActivityIndicator x:Name="loginActivator" IsRunning="false"></ActivityIndicator>
-                <Button x:Name="loginButton" Style="{StaticResource NormalButton}" Text="BEJELENTKEZÉS" Clicked="loginButton_Clicked" />
-                <Label Text="Nem vagy még tag?" Style="{StaticResource NormalLabel}" />
-                <Button x:Name="signUpButton" Style="{StaticResource NormalButton}" Text="REGISZTRÁLOK" Clicked="signUpButton_Clicked" />
+                <Button x:Name="loginButton" Style="{StaticResource NormalButton}" Text="Login" Clicked="loginButton_Clicked" />
+                <Label Text="Are you not a member yet?" Style="{StaticResource NormalLabel}" />
+                <Button x:Name="signUpButton" Style="{StaticResource NormalButton}" Text="Sign up" Clicked="signUpButton_Clicked" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

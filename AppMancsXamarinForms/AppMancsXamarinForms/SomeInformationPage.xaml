@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.SomeInformationPage"
-             Title="Magadról..."
+             Title="More about you..."
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
 
     <ContentPage.Content>
@@ -19,31 +19,31 @@
                 x:Name="changePictureButton"
                 Clicked="changePictureButton_Clicked"/>-->
             <Label
-                Text="Vezetéknév"
+                Text="Last name:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="lastnameEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Keresztnév"
+                Text="First name:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="firstnameEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="E-Mail"
+                Text="E-Mail:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="emailEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Jelszó"
+                Text="Password:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="pwEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Button
-                Text="Regisztráció"
+                Text="Sign up:"
                 x:Name="signupButton"
                 Style="{StaticResource NormalButton}"
                 Clicked="signupButton_Clicked"/>

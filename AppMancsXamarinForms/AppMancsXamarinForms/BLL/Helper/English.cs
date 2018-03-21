@@ -5,11 +5,11 @@ namespace AppMancsXamarinForms.BLL.Helper
     {
         public static string AlreadyHaveThisFacebookAcoount()
         {
-            return "Van már ilyen Facebook profillel felhasználó!";
+            return "Already has this Facebook account!";
         }
         public static string NoAccountFindWithThisFacebookAccount()
         {
-            return "Nem található ilyen Facebook felhasználóval fiók az adatbázisunkban!";
+            return "No account found with this Facebook account!";
         }
         public static string AppName()
         {
@@ -18,102 +18,101 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static string BadOldPassword()
         {
-            return "Nem megfelelő a régi jelszó!";
+            return "Wrong old password!";
         }
 
         public static string BadPasswordLength()
         {
-            return "Jelszavad 6-16 hosszúságúnak kell lenni!";
+            return "Your password must be 6 to 16 length!";
         }
 
         public static string ChooseAnimal()
         {
-            return "Válassz háziállatot!";
+            return "Choose a pet!";
         }
 
         public static string ChooseAPicture()
         {
-            return "Válassz fényképet!";
+            return "Choose a picture!";
         }
 
         public static string Empty()
         {
-            return "";
+            return String.Empty;
         }
 
         public static string SomethingWentWrong()
         {
-            return "Valami hiba történt, kérlek próbáld újra később!";
+            return "Something went wrong, please check back later!";
         }
 
         public static string ThisEmailIsExist()
         {
-            return "Van már ilyen E-Mail címmel felhasználó!";
+            return "This E-Mail is already exist!";
         }
 
         public static string ThisEmailIsYourEmail()
         {
-            return "Ez az E-Mail cím a mostanid!";
+            return "This is your actual E-Mail!";
         }
 
         public static string YouHaveToFillAllEntries()
         {
-            return "Tölts ki minden mezőt!";
+            return "Fill in each field!";
         }
-
 
         public static string Like()
         {
-            return "Tetszik";
+            return "Like";
         }
 
         public static string UnLike()
         {
-            return "Nem tetszik";
+            return "Dislike";
         }
 
         public static string Follow()
         {
-            return "Követem";
+            return "Follow";
         }
 
         public static string UnFollow()
         {
-            return "Nem követem";
+            return "Unfollow";
         }
 
         public static string GiveYourEmail()
         {
-            return "Add meg az E-Mail címedet!";
+            return "Please give your E-Mail!";
         }
         public static string NoAcoountFoundWithThisEmail()
         {
-            return "Nincs ilyen felhasználó az adatbázisunkban!";
+            return "No account found with this E-Mail!";
         }
 
         public static string EmailIsEmpty()
         {
-            return "E-Mail cím üres!";
+            return "E-Mail is empty!";
         }
 
         public static string PasswordIsEmpty()
         {
-            return "E-Mail cím üres!";
+            return "Password is empty!";
         }
 
         public static string BadEmailFormat()
         {
-            return "Biztos E-Mail címet adtál meg?";
+            return "Bad E-Mail format!";
         }
 
         public static string BadPasswordOrEmail()
         {
-            return "Rossz E-Mail cím jelszó páros!";
+            return "Wrong E-Mail Address Password!";
         }
 
         public static string NotNegNumber()
         {
-            return "Ne legyen már negatív szám!";
+            return "Do not be a negative number!";
         }
     }
 }

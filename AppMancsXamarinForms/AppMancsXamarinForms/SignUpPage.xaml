@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.SignUpPage"
-             Title="Regisztráció">
+             Title="Sign up">
     <ContentPage.Content>
         <ScrollView>
         <StackLayout 
@@ -13,34 +13,34 @@
             <Button
                 Style="{StaticResource FacebookButton}"
                 x:Name="loginFacebookButton"
-                Text="Regisztráció Facebook fiókkal"
+                Text="Sign up with Facebook"
                 Clicked="loginFacebookButton_Clicked"/>
             <Label
-                Text="Vezetéknév"
+                Text="Last name:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="lastnameEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Keresztnév"
+                Text="First name:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="firstnameEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="E-Mail"
+                Text="E-Mail:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="emailEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Label
-                Text="Jelszó"
+                Text="Password:"
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="pwEntry"
                 Style="{StaticResource NormalEnrty}"/>
             <Button
-                Text="Regisztráció"
+                Text="Sign up"
                 x:Name="signupButton"
                 Style="{StaticResource NormalButton}"
                 Clicked="signupButton_ClickedAsync"/>

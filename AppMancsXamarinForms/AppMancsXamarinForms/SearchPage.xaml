@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.SearchPage"
-             Title="Keresés">
+             Title="Search hashtags">
     <ContentPage.Content>
         <StackLayout 
             Margin="10,25,10,0">
             <Entry
                 x:Name="searchEntry"
-                Placeholder="Írj ami érdekel"
+                Placeholder="eg.:beautiful"
                 TextChanged="searchEntry_TextChanged"
                 Style="{StaticResource NormalEnrty}"/>
                 <ListView 

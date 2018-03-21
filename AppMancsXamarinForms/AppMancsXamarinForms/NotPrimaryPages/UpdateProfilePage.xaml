@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.UpdateProfilePage"
-             Title="Profilom szerkesztése"
+             Title="Edit my profile"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
 
     <ContentPage.Content>
@@ -10,7 +10,7 @@
             <StackLayout 
                     Style="{StaticResource NormalStackLayout}">
                 <Button
-                    Text="Galéria"
+                    Text="Gallery"
                     x:Name="galleryButton"
                     Style="{StaticResource NormalButton}"
                     Clicked="galleryButton_ClickedAsync"/>
@@ -20,59 +20,59 @@
                     HeightRequest="75">
                 </Image>
                 <Button
-                    Text="Módosít"
+                    Text="Change"
                     x:Name="changeProfilePictureButton"
                     Style="{StaticResource NormalButton}"
                     Clicked="changeProfilePictureButton_ClickedAsync"/>
                 <Button
-                    Text="Facebook fiók módosítása"
+                    Text="Change my Facebook account"
                     Style="{StaticResource FacebookButton}"
                     x:Name="changeFaceookButton"
                     Clicked="changeFaceookButton_ClickedAsync"/>
                 <Label
-                    Text="Vezetéknév"
+                    Text="Last name:"
                     Style="{StaticResource EntryAboveLabel}"/>
                 <Entry
                     x:Name="lastnameEntry"
                     Style="{StaticResource NormalEnrty}"/>
                 <Label
-                    Text="Keresztnév"
+                    Text="First name:"
                     Style="{StaticResource EntryAboveLabel}"/>
                 <Entry
                     x:Name="firstnameEntry"
                     Style="{StaticResource NormalEnrty}"/>
                 <Button
-                    Text="Módosít"
+                    Text="Change"
                     x:Name="updateMyProfileButton"
                     Style="{StaticResource NormalButton}"
                     Clicked="updateMyProfileButton_ClickedAsync"/>
                 <Label
-                    Text="E-Mail"
+                    Text="E-Mail:"
                     Style="{StaticResource EntryAboveLabel}"/>
                 <Entry
                     x:Name="emailEntry"
                     Style="{StaticResource NormalEnrty}"/>
                 <Button
-                    Text="Módosít"
+                    Text="Change"
                     x:Name="changeEmailButton"
                     Style="{StaticResource NormalButton}"
                     Clicked="changeEmailButton_ClickedAsync"/>
                 <Label
-                    Text="Jelenlegi jelszó"
+                    Text="Old password:"
                     Style="{StaticResource EntryAboveLabel}"/>
                 <Entry
                     x:Name="pwEntry"
                     IsPassword="True"
                     Style="{StaticResource NormalEnrty}"/>
                 <Label
-                    Text="Új jelszó"
+                    Text="New password:"
                     Style="{StaticResource EntryAboveLabel}"/>
                 <Entry
                     x:Name="newpwEntry"
                     IsPassword="True"
                     Style="{StaticResource NormalEnrty}"/>
                 <Button
-                    Text="Módosít"
+                    Text="Change"
                     Style="{StaticResource NormalButton}"
                     x:Name="changepwButton"
                     Clicked="changepwButton_ClickedAsync"/>

@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.UploadPhotoPage"
-             Title="Kép hozzáadása">
+             Title="Upload photo">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout
                Style="{StaticResource NormalStackLayout}">
                 <Button
-                    Text="Galéria"
+                    Text="Gallery"
                     x:Name="galleryButton"
                     Clicked="galleryButton_ClickedAsync"
                     Style="{StaticResource NormalButton}"/>
@@ -16,16 +16,16 @@
                     x:Name="pictureImage"/>
                 <Picker
                     x:Name="petPicker"
-                    Title="Háziállataim"
+                    Title="My pets"
                     TextColor="#FFCBB6"
                     VerticalOptions="Center"
                     SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
                 <Entry 
                     x:Name="hashtagsEntry"
-                    Placeholder="Hashtagek (pl.: #legszebb)"
+                    Placeholder="Hashtags (eg.: #beautiful)"
                     Style="{StaticResource NormalEnrty}"/>
                 <Button
-                    Text="Fotó feltöltése"
+                    Text="Upload photo"
                     x:Name="addPhotoButton"
                     Clicked="addPhotoButton_ClickedAsync"
                     Style="{StaticResource NormalButton}"/>

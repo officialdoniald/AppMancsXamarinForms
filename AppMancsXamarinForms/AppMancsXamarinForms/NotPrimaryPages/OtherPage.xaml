@@ -2,19 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMancsXamarinForms.NotPrimaryPages.OtherPage"
-             Title="Többi">
+             Title="Other">
     <ContentPage.Content>
         <StackLayout
                 Style="{StaticResource NormalStackLayout}">
             <Button
                 Margin="0,25,0,0"
-                Text="Fiókom törlése"
+                Text="Delete my account"
                 Style="{StaticResource NormalButton}"
                 x:Name="deleteAcoountPageButton"
                 Clicked="deleteAcoountPageButton_ClickedAsync"/>
             <Button
                 Margin="0,25,0,0"
-                Text="Kijelentkezés"
+                Text="Logout"
                 Style="{StaticResource NormalButton}"
                 x:Name="loguotButton"
                 Clicked="loguotButton_Clicked"/>
