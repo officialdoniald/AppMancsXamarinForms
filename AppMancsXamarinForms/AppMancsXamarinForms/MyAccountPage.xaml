@@ -35,7 +35,7 @@
                 Style="{StaticResource NormalButton}"
                 Text="Add pet"
                 Clicked="addPetButton_Clicked"/>
-            <ScrollView><ListView 
+            <ListView 
                 ItemsSource="{Binding listViewWithPictureAndSomeText}" 
                 x:Name="petListView"
                 ItemTapped="petListView_ItemTapped"
@@ -73,7 +73,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </ScrollView>
             </StackLayout>
     </ContentPage.Content>
 </ContentPage>

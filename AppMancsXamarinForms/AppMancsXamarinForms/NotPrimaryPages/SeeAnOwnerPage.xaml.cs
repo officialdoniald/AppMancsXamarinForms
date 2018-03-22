@@ -1,11 +1,9 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
+﻿using AppMancsXamarinForms.BLL.Helper;
+using AppMancsXamarinForms.BLL.ViewModel;
 using Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,10 +14,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
     {
         private int userID = -1;
 
-        private SeeAnOwnerProfileViewModel seeAnOwnerProfileViewModel =
-                new SeeAnOwnerProfileViewModel();
-
         private List<Pet> petList = new List<Pet>();
+
+        double currentWidth = 0;
+
+        double optimalWidth = 0;
 
         public SeeAnOwnerPage(int userid)
         {
@@ -27,65 +26,83 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             InitializeComponent();
 
-            var currentWidth = Application.Current.MainPage.Width;
+            Initialize();
+        }
 
-            var optimalWidth = currentWidth / 3 ;
-
-            User user = DependencyService.Get<BLL.IDBAccess.IBlobStorage>().GetUserByID(userID);
-
-            if (!String.IsNullOrEmpty(user.ProfilePictureURL))
+        private async Task Initialize()
+        {
+            await Task.Run(() =>
             {
-                profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+                User user = DependencyService.Get<BLL.IDBAccess.IBlobStorage>().GetUserByID(userID);
 
-                profilePictureImage.HeightRequest = optimalWidth;
-            }
-
-            optimalWidth = currentWidth / 5;
-
-            userNameLabel.Text = user.FirstName + " " + user.LastName;
-
-            petList = seeAnOwnerProfileViewModel.GetPet(user.id);
-
-            foreach (var item in petList)
-            {
-                StackLayout oneGrid = new StackLayout()
+                if (!String.IsNullOrEmpty(user.ProfilePictureURL))
                 {
-                    Orientation = StackOrientation.Vertical
-                };
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        currentWidth = Application.Current.MainPage.Width;
 
-                Image petProfilePictureImage = new Image(){
-                    Source = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
-                    HeightRequest = optimalWidth,
-                    Aspect = Aspect.AspectFill,
-                    HorizontalOptions = LayoutOptions.Center
-                };
+                        optimalWidth = currentWidth / 3;
 
-                Label petNameLabel = new Label()
+                        profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
+
+                        profilePictureImage.HeightRequest = optimalWidth;
+                    });
+                }
+
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    Text = item.Name,
-                    HorizontalOptions = LayoutOptions.Center,
-                    TextColor = Color.FromHex("#FFCBB6"),
-                    FontSize = 15
-                };
+                    currentWidth = Application.Current.MainPage.Width;
 
-                var goToPetProfileTapped = new TapGestureRecognizer();
-                goToPetProfileTapped.Tapped += (s, e) => {
-                    var searchResultPage = new SeeAPetProfile(item.id);
+                    optimalWidth = currentWidth / 5;
 
-                    Navigation.PushAsync(searchResultPage);
-                };
+                    userNameLabel.Text = user.FirstName + " " + user.LastName;
+                });
 
-                petProfilePictureImage.GestureRecognizers.Add(goToPetProfileTapped);
-                petNameLabel.GestureRecognizers.Add(goToPetProfileTapped);
+                petList = GlobalVariables.seeAnOwnerProfileViewModel.GetPet(user.id);
 
-                oneGrid.Children.Add(petProfilePictureImage);
-                oneGrid.Children.Add(petNameLabel);
+                foreach (var item in petList)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        StackLayout oneGrid = new StackLayout()
+                        {
+                            Orientation = StackOrientation.Vertical
+                        };
 
-                //mainStackLayout.Children.Add(oneGrid);
+                        Image petProfilePictureImage = new Image()
+                        {
+                            Source = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
+                            HeightRequest = optimalWidth,
+                            Aspect = Aspect.AspectFill,
+                            HorizontalOptions = LayoutOptions.Center
+                        };
 
-                //pictureListGrid.Children.Add(oneGrid);
-                petsStackLayout.Children.Add(oneGrid);
-            }
+                        Label petNameLabel = new Label()
+                        {
+                            Text = item.Name,
+                            HorizontalOptions = LayoutOptions.Center,
+                            TextColor = Color.FromHex("#FFCBB6"),
+                            FontSize = 15
+                        };
+
+                        var goToPetProfileTapped = new TapGestureRecognizer();
+                        goToPetProfileTapped.Tapped += (s, e) =>
+                        {
+                            var searchResultPage = new SeeAPetProfile(item.id);
+
+                            Navigation.PushAsync(searchResultPage);
+                        };
+
+                        petProfilePictureImage.GestureRecognizers.Add(goToPetProfileTapped);
+                        petNameLabel.GestureRecognizers.Add(goToPetProfileTapped);
+
+                        oneGrid.Children.Add(petProfilePictureImage);
+                        oneGrid.Children.Add(petNameLabel);
+
+                        petsStackLayout.Children.Add(oneGrid);
+                    });
+                }
+            });
         }
     }
 }
