@@ -28,6 +28,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             }
             else
             {
+                FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt, String.Empty);
+                
                 var page = new LoginPage();
 
                 await Navigation.PushAsync(page);
