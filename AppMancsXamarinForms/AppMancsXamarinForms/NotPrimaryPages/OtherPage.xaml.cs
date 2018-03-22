@@ -16,7 +16,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         private async System.Threading.Tasks.Task deleteAcoountPageButton_ClickedAsync(object sender, EventArgs e)
         {
-            string success = GlobalVariables.otherFragmentViewModel.DeleteAccount(GlobalVariables.ActualUsersEmail);
+            loguotButton.IsEnabled = false;
+            deleteAcoountPageButton.IsEnabled = false;
+            deleteActivity.IsRunning = true;
+
+            string success = GlobalVariables.otherFragmentViewModel.DeleteAccount();
 
             if (!String.IsNullOrEmpty(success))
             {
@@ -30,15 +34,22 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 NavigationPage.SetHasNavigationBar(page, false);
             }
+            loguotButton.IsEnabled = true;
+            deleteAcoountPageButton.IsEnabled = true;
+            deleteActivity.IsRunning = false;
         }
 
         private void loguotButton_Clicked(object sender, EventArgs e)
         {
+            loguotButton.IsEnabled = false;
+
             FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt,String.Empty);
 
             var page = new NavigationPage(new LoginPage());
 
             Navigation.PushModalAsync(page);
+
+            loguotButton.IsEnabled = true;
         }
     }
 }

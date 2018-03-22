@@ -72,6 +72,28 @@ namespace AppMancsXamarinForms.BLL.Helper
             "LocalDatabaseTable.db3";
 
         /// <summary>
+        /// Is Pet deleted?
+        /// </summary>
+        private static bool isPetDeleted = false;
+
+        public static bool IsPetDeleted
+        {
+            get => isPetDeleted;
+            set => isPetDeleted = value;
+        }
+
+        /// <summary>
+        /// Is Picture deleted?
+        /// </summary>
+        private static bool isPictureDeleted = false;
+
+        public static bool IsPictureDeleted
+        {
+            get => isPictureDeleted;
+            set => isPictureDeleted = value;
+        }
+
+        /// <summary>
         /// Is Pet added?
         /// </summary>
         private static ContentPageFunctions contentPageFunctions = new ContentPageFunctions();

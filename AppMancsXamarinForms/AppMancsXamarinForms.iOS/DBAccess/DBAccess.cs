@@ -260,9 +260,9 @@ namespace AppMancsXamarinForms.iOS.DBAccess
             return databaseConnections.DeleteAccount(UserID);
         }
 
-        public bool DeletePetpictures(int PetID)
+        public bool DeletePetpictures(int PetID, int userid)
         {
-            return databaseConnections.DeletePetpictures(PetID);
+            return databaseConnections.DeletePetpictures(PetID,userid);
         }
 
         public User GetUserByFacebookID(string facebookID)

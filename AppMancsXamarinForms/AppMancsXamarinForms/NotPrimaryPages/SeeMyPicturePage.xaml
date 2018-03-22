@@ -36,7 +36,7 @@
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Button Style="{StaticResource NormalButton}" Grid.Column="3" Grid.Row="0" x:Name="deleteButton" Text="Delete" Clicked="deleteButton_Clicked" VerticalOptions="Center" />
+                    <Button Style="{StaticResource NormalButton}" Grid.Column="3" Grid.Row="0" x:Name="deleteButton" Text="Delete" Clicked="deleteButton_ClickedAsync" VerticalOptions="Center" />
                 </Grid>
                 <Image x:Name="pictureImage" Aspect="AspectFit" />
                 <StackLayout x:Name="mainStackLayout" Orientation="Horizontal" Margin="15,0,15,0">

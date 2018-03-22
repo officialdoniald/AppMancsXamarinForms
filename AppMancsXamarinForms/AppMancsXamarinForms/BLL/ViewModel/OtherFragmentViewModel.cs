@@ -5,25 +5,19 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 {
     public class OtherFragmentViewModel
     {
-        public string DeleteAccount(string EMAIL)
+        public string DeleteAccount()
         {
-            var user = DependencyService.Get<IDBAccess.IBlobStorage>().GetUserByEmail(EMAIL);
-
-            int UserID = user.id;
-
-            var petlist = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetsByUserID(UserID);
-
-            foreach (var item in petlist)
+            foreach (var item in GlobalVariables.Mypetlist)
             {
-                bool siker = DependencyService.Get<IDBAccess.IBlobStorage>().DeletePetpictures(item.id);
+                string siker = GlobalVariables.updatePetFragmentViewModel.DeletePet(item.petid);
 
-                if (!siker)
+                if (!string.IsNullOrEmpty(siker))
                 {
                     return English.SomethingWentWrong();
                 }
             }
 
-            bool success = DependencyService.Get<IDBAccess.IBlobStorage>().DeleteAccount(UserID);
+            bool success = DependencyService.Get<IDBAccess.IBlobStorage>().DeleteAccount(GlobalVariables.ActualUser.id);
 
             if (!success)
             {

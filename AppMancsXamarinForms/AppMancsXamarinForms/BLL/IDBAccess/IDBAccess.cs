@@ -117,7 +117,7 @@ namespace AppMancsXamarinForms.BLL.IDBAccess
 
         bool DeleteAccount(int UserID);
 
-        bool DeletePetpictures(int PetID);
+        bool DeletePetpictures(int PetID, int userid);
 
         #endregion
     }

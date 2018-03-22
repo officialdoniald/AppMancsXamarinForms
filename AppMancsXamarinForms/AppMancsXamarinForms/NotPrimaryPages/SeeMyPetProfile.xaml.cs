@@ -95,8 +95,12 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             });
         }
 
+		protected override void OnAppearing()
+		{
+            InitializeThePetPictures();
+		}
 
-        public void OnPictureClicked(Petpictures petpictures)
+		public void OnPictureClicked(Petpictures petpictures)
         {
             Navigation.PushAsync(new SeeMyPicturePage(petpictures));
         }

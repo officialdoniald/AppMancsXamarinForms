@@ -18,6 +18,9 @@
                 Style="{StaticResource NormalButton}"
                 x:Name="loguotButton"
                 Clicked="loguotButton_Clicked"/>
+            <ActivityIndicator x:Name="deleteActivity">
+                
+            </ActivityIndicator>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

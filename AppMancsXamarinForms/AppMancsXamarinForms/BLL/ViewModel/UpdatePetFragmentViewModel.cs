@@ -14,14 +14,28 @@ namespace AppMancsXamarinForms.BLL.ViewModel
     {
         public string DeletePet(int petid)
         {
-            Pet pet = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetByID(petid);
+            var petpictureList = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetpictureByID(petid);
+
+            foreach (var item in petpictureList)
+            {
+                bool successD = GlobalVariables.seePictureFragmentViewModel.DeletePicture(item);
+
+                if (!successD)
+                {
+                    return English.SomethingWentWrong();
+                }
+            }
+
+            Pet pet = GlobalVariables.ConvertMyPetListToPet(GlobalVariables.Mypetlist.Where(i => i.petid == petid).FirstOrDefault());
 
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().DeletePet(pet);
 
             GlobalVariables.LocalSQLiteDatabase.DeleteMyPetList(GlobalVariables.ConvertPetToMyPetList(pet));
 
             GlobalVariables.GetMyPets();
+
             GlobalVariables.InitializeTheMyPetList();
+
             GlobalVariables.AddedPet = true;
 
             if (!success)

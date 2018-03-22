@@ -102,9 +102,20 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             Navigation.PushAsync(new WhosLiked(petpictures.id));
         }
 
-        private void deleteButton_Clicked(object sender, EventArgs e)
+        private async Task deleteButton_ClickedAsync(object sender, EventArgs e)
         {
-            //TODO
+            if (!GlobalVariables.seePictureFragmentViewModel.DeletePicture(this.petpictures))
+            {
+                await DisplayAlert("Failed",English.SomethingWentWrong(),"OK");
+            }
+            else
+            {
+                GlobalVariables.IsPictureDeleted = true;
+
+                await Navigation.PopToRootAsync();
+
+                await DisplayAlert("Successful", English.SuccessfulDeletedThePicture(), "OK");
+            }
         }
     }
 }

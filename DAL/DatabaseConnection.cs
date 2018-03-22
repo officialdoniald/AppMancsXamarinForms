@@ -81,19 +81,23 @@ namespace DBAccess
         public static string DELETE_LikesByUserIdAndPetPicturesId_SQL { get; } =
                     "DELETE FROM [dbo].[Likes] WHERE UserID=@userid AND Petpicturesid=@petpicturesid;";
         public static string DELETE_Pet_SQL { get; } =
-                    "DELETE FROM [dbo].[Pet] WHERE ID=@id";
+                    "DELETE FROM [dbo].[Favoritepets] WHERE petid=@id;" +
+            "DELETE FROM [dbo].[Pet] WHERE ID=@id;";
         public static string DELETE_Petpictures_SQL { get; } =
-                    "DELETE FROM [dbo].[Petpictures] WHERE ID=@id";
-
+                    "DELETE FROM [dbo].[Following] WHERE userID=@userid;" +
+                    "DELETE FROM [dbo].[Likes] WHERE Petpicturesid=@id;" +
+                    "DELETE FROM [dbo].[Hashtags] WHERE Petpicturesid=@id;" +
+            "DELETE FROM [dbo].[Petpictures] WHERE ID=@id;";
+        public static string DELETE_Petpictures_SQL2 { get; } =
+                    "DELETE FROM [dbo].[Likes] WHERE Petpicturesid=@id;" +
+                    "DELETE FROM [dbo].[Hashtags] WHERE Petpicturesid=@id;" +
+                    "DELETE FROM [dbo].[Petpictures] WHERE ID=@id;";
         public static string DELETE_Account_SQL { get; } =
-            "DELETE FROM [dbo].[Donates] WHERE UserID=@UserID;" +
-            "DELETE FROM [dbo].[Favoritepets] WHERE UserID=@UserID;" +
-            "DELETE FROM [dbo].[Likes] WHERE UserID=@UserID;" +
-            "DELETE FROM [dbo].[Following] WHERE UserID=@UserID;" +
-            "DELETE FROM [dbo].[Pet] WHERE UserID=@UserID;" +
-            "DELETE FROM [dbo].[User] WHERE UserID=@UserID;";
+                    "DELETE FROM [dbo].[Favoritepets] WHERE UserID=@UserID;" +
+                    "DELETE FROM [dbo].[Following] WHERE UserID=@UserID OR FUserID=@UserID;" +
+                    "DELETE FROM [dbo].[User] WHERE id=@UserID;";
         public static string DELETE_Petpicutres_SQL { get; } =
-            "DELETE FROM [dbo].[Petpictures] WHERE PetID=@PetID;";
+                    "DELETE FROM [dbo].[Petpictures] WHERE PetID=@PetID;";
 
         //UPDATE
         public static string UPDATE_USER_SQL { get; } =
@@ -1744,7 +1748,7 @@ namespace DBAccess
                         , conn))
                     {
                         cmd.Parameters.AddWithValue("@id", pet.id);
-                        if (cmd.ExecuteNonQuery() == 1) return true;
+                        if (cmd.ExecuteNonQuery() >= 0) return true;
                         else return false;
                     }
                 }
@@ -1856,11 +1860,11 @@ namespace DBAccess
                 {
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(
-                        DELETE_Petpictures_SQL
+                        DELETE_Petpictures_SQL2
                         , conn))
                     {
                         cmd.Parameters.AddWithValue("@id", petpictures.id);
-                        if (cmd.ExecuteNonQuery() == 1) return true;
+                        if (cmd.ExecuteNonQuery() >= 0) return true;
                         else return false;
                     }
                 }
@@ -1908,7 +1912,7 @@ namespace DBAccess
                         , conn))
                     {
                         cmd.Parameters.AddWithValue("@UserID", UserID);
-                        if (cmd.ExecuteNonQuery() == 1) return true;
+                        if (cmd.ExecuteNonQuery() >=1 ) return true;
                         else return false;
                     }
                 }
@@ -1919,7 +1923,7 @@ namespace DBAccess
             }
         }
 
-        public bool DeletePetpictures(int PetID)
+        public bool DeletePetpictures(int PetID, int userid)
         {
             try
             {
@@ -1927,11 +1931,12 @@ namespace DBAccess
                 {
                     conn.Open();
                     using (SqlCommand cmd = new SqlCommand(
-                        DELETE_Account_SQL
+                        DELETE_Petpictures_SQL
                         , conn))
                     {
                         cmd.Parameters.AddWithValue("@PetID", PetID);
-                        if (cmd.ExecuteNonQuery() == 1) return true;
+                        cmd.Parameters.AddWithValue("@userid", userid);
+                        if (cmd.ExecuteNonQuery() >= 0) return true;
                         else return false;
                     }
                 }

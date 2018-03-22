@@ -7,10 +7,22 @@ namespace AppMancsXamarinForms.BLL.Helper
         {
             return "Already has this Facebook account!";
         }
+
+        public static string SuccessfulDeletedThePicture()
+        {
+            return "You have deleted your picture!";
+        }
+
+        public static string SuccessfulDeletedThePet()
+        {
+            return "You have deleted your pet!";
+        }
+
         public static string NoAccountFindWithThisFacebookAccount()
         {
             return "No account found with this Facebook account!";
         }
+
         public static string AppName()
         {
             return "AppMancs";
@@ -85,6 +97,7 @@ namespace AppMancsXamarinForms.BLL.Helper
         {
             return "Please give your E-Mail!";
         }
+
         public static string NoAcoountFoundWithThisEmail()
         {
             return "No account found with this E-Mail!";

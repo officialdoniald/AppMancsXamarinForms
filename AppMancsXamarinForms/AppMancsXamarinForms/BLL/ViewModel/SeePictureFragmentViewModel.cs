@@ -102,5 +102,10 @@ namespace AppMancsXamarinForms.BLL.ViewModel
         {
             return DependencyService.Get<IDBAccess.IBlobStorage>().GetOnePetpicturesByID(id);
         }
+
+        public bool DeletePicture(Petpictures petpictures)
+        {
+            return DependencyService.Get<IDBAccess.IBlobStorage>().DeletePetpictures(petpictures);
+        }
     }
 }

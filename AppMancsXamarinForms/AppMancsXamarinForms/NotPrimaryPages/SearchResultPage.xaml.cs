@@ -80,8 +80,15 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             });
         }
 
-            
-        public void OnPictureClicked(Petpictures petpictures)
+		protected override void OnAppearing()
+		{
+            if (GlobalVariables.IsPictureDeleted)
+            {
+                Initialize();
+            }
+        }
+
+		public void OnPictureClicked(Petpictures petpictures)
         {
             var isThisMyPet = GlobalVariables.Mypetlist.Where(u => u.petid == petpictures.PetID).FirstOrDefault();
 
