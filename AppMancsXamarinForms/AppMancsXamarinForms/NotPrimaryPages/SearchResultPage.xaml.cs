@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
@@ -26,53 +28,64 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             InitializeComponent();
 
-            var currentWidth = Application.Current.MainPage.Width;
+            Initialize();
+        }
 
-            var optimalWidth = currentWidth / 3;
+        private async Task Initialize(){
+            await Task.Run(()=>{
+                Device.BeginInvokeOnMainThread(() => {
+                    var currentWidth = Application.Current.MainPage.Width;
 
-            int left = 0;
-            int top = 0;
+                    var optimalWidth = currentWidth / 3;
 
-            int i = 1;
+                    int left = 0;
+                    int top = 0;
 
-            foreach (var item in petpicturesList)
-            {
-                Image image = new Image();
+                    int i = 1;
 
-                image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
-
-                image.HeightRequest = optimalWidth;
-
-                image.Aspect = Aspect.AspectFill;
-
-                image.GestureRecognizers.Add(new TapGestureRecognizer()
-                {
-                    NumberOfTapsRequired = 1,
-                    TappedCallback = delegate
+                    foreach (var item in petpicturesList)
                     {
-                        OnPictureClicked(item);
+                        Image image = new Image();
+
+                        image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
+
+                        image.HeightRequest = optimalWidth;
+
+                        image.Aspect = Aspect.AspectFill;
+
+                        image.GestureRecognizers.Add(new TapGestureRecognizer()
+                        {
+                            NumberOfTapsRequired = 1,
+                            TappedCallback = delegate
+                            {
+                                OnPictureClicked(item);
+                            }
+                        });
+
+                        searchResultGrid.Children.Add(image, top, left);
+
+                        if (i == 3)
+                        {
+                            left++;
+                            i = 1;
+                            top = 0;
+                        }
+                        else
+                        {
+                            i++;
+                            top++;
+                        }
                     }
                 });
-
-                searchResultGrid.Children.Add(image, top, left);
-
-                if (i == 3)
-                {
-                    left++;
-                    i = 1;
-                    top = 0;
-                }
-                else
-                {
-                    i++;
-                    top++;
-                }
-            }
+            });
         }
-        
+
+            
         public void OnPictureClicked(Petpictures petpictures)
         {
-            if (!GlobalVariables.whosLikedViewModel.IsMyPet(petpictures.PetID))
+            var isThisMyPet = GlobalVariables.Mypetlist.Where(u => u.petid == petpictures.PetID).FirstOrDefault();
+
+            if (isThisMyPet is null)
             {
                 Navigation.PushAsync(new SeeAPicturePage(petpictures));
             }

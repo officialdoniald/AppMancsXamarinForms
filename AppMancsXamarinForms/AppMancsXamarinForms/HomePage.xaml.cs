@@ -91,7 +91,9 @@ namespace AppMancsXamarinForms
                 wallListViewAdapterClicked = (WallListViewAdapter)(((Image)sender).BindingContext);
             }
 
-            if (!GlobalVariables.whosLikedViewModel.IsMyPet(wallListViewAdapterClicked.wallItem.petpictures.PetID))
+            var isThisMyPet = GlobalVariables.Mypetlist.Where(u => u.petid == wallListViewAdapterClicked.wallItem.petpictures.PetID);
+
+            if (isThisMyPet != null)
             {
                 Navigation.PushAsync(new SeeAPetProfile(wallListViewAdapterClicked.wallItem.petpictures.PetID));
             }
@@ -119,7 +121,7 @@ namespace AppMancsXamarinForms
 
             var collection = (Grid.IGridList<View>)asd.Children;
 
-            Label likeNumberLabel = (Label)collection[4];
+            Label likeNumberLabel = (Label)collection[3];
 
             var wallListViewAdapterClicked = (WallListViewAdapter)button.BindingContext;
 
@@ -159,9 +161,9 @@ namespace AppMancsXamarinForms
 
             var collection = (Grid.IGridList<View>)asd.Children;
 
-            Image button = (Image)collection[3];
+            Image button = (Image)collection[4];
 
-            Label likeNumberLabel = (Label)collection[4];
+            Label likeNumberLabel = (Label)collection[3];
 
             var wallListViewAdapterClicked = (WallListViewAdapter)button.BindingContext;
 

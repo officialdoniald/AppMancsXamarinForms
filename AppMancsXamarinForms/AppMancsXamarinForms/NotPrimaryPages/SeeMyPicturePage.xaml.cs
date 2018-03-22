@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
@@ -28,54 +29,67 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             InitializeComponent();
 
-            thisPet = GlobalVariables.seePictureFragmentViewModel.GetPetById(petpictures.PetID);
+            Initialize();
+        }
 
-            nameLabel.Text = thisPet.Name;
-
-            profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
-
-            pictureImage.Source = ImageSource.FromUri(new Uri(petpictures.PictureURL));
-
-            //pictureImage.HeightRequest = Application.Current.MainPage.Width * 1.5;
-
-            var asd = GlobalVariables.seePictureFragmentViewModel.GetHashtags(petpictures.id).Split(' ');
-
-            foreach (var item2 in asd)
+        private async Task Initialize()
+        {
+            await Task.Run(() =>
             {
-                Label hashtagLabel = new Label()
+                thisPet = GlobalVariables.ConvertMyPetListToPet(GlobalVariables.Mypetlist.Where(u => u.petid == petpictures.PetID).FirstOrDefault());
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    Text = item2,
-                    TextColor = Color.FromHex("#FFCBB6"),
-                    FontSize = 15
-                };
+                    nameLabel.Text = thisPet.Name;
 
-                var onHashtagClickedTap = new TapGestureRecognizer()
+                    profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
+
+                    pictureImage.Source = ImageSource.FromUri(new Uri(petpictures.PictureURL));
+                });
+
+                var asd = GlobalVariables.seePictureFragmentViewModel.GetHashtags(petpictures.id).Split(' ');
+
+                foreach (var item2 in asd)
                 {
-                    NumberOfTapsRequired = 1
-                };
-                onHashtagClickedTap.Tapped += (s, e) =>
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Label hashtagLabel = new Label()
+                        {
+                            Text = item2,
+                            TextColor = Color.FromHex("#FFCBB6"),
+                            FontSize = 15
+                        };
+
+                        var onHashtagClickedTap = new TapGestureRecognizer()
+                        {
+                            NumberOfTapsRequired = 1
+                        };
+                        onHashtagClickedTap.Tapped += (s, e) =>
+                        {
+                            SearchFragmentViewModel searchFragmentViewModel = new SearchFragmentViewModel();
+
+                            List<SearchModel> searchModelList = searchFragmentViewModel.GetSearchModel();
+
+                            var asd24 = (from q in searchModelList where q.hashtag == item2 select q);
+
+                            Navigation.PushAsync(new SearchResultPage(asd24.First().petpicturesList, item2.Split('#')[1]));
+                        };
+
+                        hashtagLabel.GestureRecognizers.Add(onHashtagClickedTap);
+
+                        mainStackLayout.Children.Add(hashtagLabel);
+                    });
+                }
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    SearchFragmentViewModel searchFragmentViewModel = new SearchFragmentViewModel();
+                    likes = GlobalVariables.seePictureFragmentViewModel.GetLikes(petpictures.id);
 
-                    List<SearchModel> searchModelList = searchFragmentViewModel.GetSearchModel();
+                    howmanylike = likes.Count;
 
-                    var asd24 = (from q in searchModelList where q.hashtag == item2 select q);
+                    howmanyLikesLabel.Text = howmanylike.ToString() + English.GetLike();
 
-                    Navigation.PushAsync(new SearchResultPage(asd24.First().petpicturesList, item2.Split('#')[1]));
-                };
-
-                hashtagLabel.GestureRecognizers.Add(onHashtagClickedTap);
-
-                mainStackLayout.Children.Add(hashtagLabel);
-            }
-
-            likes = GlobalVariables.seePictureFragmentViewModel.GetLikes(petpictures.id);
-
-            howmanylike = likes.Count;
-
-            howmanyLikesLabel.Text = howmanylike.ToString() + English.GetLike();
-
-            haveiliked = GlobalVariables.seePictureFragmentViewModel.HaveILiked(petpictures.id);
+                    haveiliked = GlobalVariables.seePictureFragmentViewModel.HaveILiked(petpictures.id);
+                });
+            });
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

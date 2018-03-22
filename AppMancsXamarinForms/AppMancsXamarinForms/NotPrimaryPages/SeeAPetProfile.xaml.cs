@@ -1,97 +1,116 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.FileStoreAndLoad;
-using Model;
+﻿using Model;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SeeAPetProfile : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SeeAPetProfile : ContentPage
     {
         private int petid = -1;
+
+        private double currentWidth = 0;
+        private double optimalWidth = 0;
 
         private bool HaveIAlreadyFollow = false;
 
         private Pet thisPet = new Pet();
-        
+
         private List<Petpictures> petPictureListfromDB = new List<Petpictures>();
 
         private Petpictures petpictures = new Petpictures();
 
-        public SeeAPetProfile (int petid)
-		{
+        public SeeAPetProfile(int petid)
+        {
             this.petid = petid;
-
-            petPictureListfromDB = GlobalVariables.petProfileFragmentViewModel.GetPetPictureURL(petid);
-
-            thisPet = GlobalVariables.petProfileFragmentViewModel.GetPetFromDBByID(petid);
 
             InitializeComponent();
 
-            var currentWidth = Application.Current.MainPage.Width;
+            InitializeThePetPictures();
+        }
 
-            var optimalWidth = currentWidth / 3;
-
-            petnameLabel.Text = thisPet.Name;
-
-            profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
-
-            profilePictureImage.HeightRequest = optimalWidth;
-
-            HaveIAlreadyFollow = GlobalVariables.petProfileFragmentViewModel.HaveIAlreadyFollow(GlobalVariables.ActualUsersEmail, petid);
-
-            int left = 0;
-            int top = 0;
-
-            int i = 1;
-
-            foreach (var item in petPictureListfromDB)
+        private async Task InitializeThePetPictures()
+        {
+            await Task.Run(() =>
             {
-                Image image = new Image();
+                petPictureListfromDB = GlobalVariables.petProfileFragmentViewModel.GetPetPictureURL(petid);
 
-                image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
+                thisPet = GlobalVariables.petProfileFragmentViewModel.GetPetFromDBByID(petid);
 
-                image.HeightRequest = optimalWidth;
-
-                image.GestureRecognizers.Add(new TapGestureRecognizer()
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    NumberOfTapsRequired = 1,
-                    TappedCallback = delegate
-                    {
-                        OnPictureClicked(item);
-                    }
+                    currentWidth = Application.Current.MainPage.Width;
+
+                    optimalWidth = currentWidth / 3;
+
+                    petnameLabel.Text = thisPet.Name;
+
+                    profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
+
+                    profilePictureImage.HeightRequest = optimalWidth;
                 });
 
-                image.Aspect = Aspect.AspectFill;
+                HaveIAlreadyFollow = GlobalVariables.petProfileFragmentViewModel.HaveIAlreadyFollow(GlobalVariables.ActualUsersEmail, petid);
 
-                pictureListGrid.Children.Add(image, top, left);
+                int left = 0;
+                int top = 0;
 
-                if (i == 3)
+                int i = 1;
+
+                foreach (var item in petPictureListfromDB)
                 {
-                    left++;
-                    i = 1;
-                    top = 0;
-                }
-                else
-                {
-                    i++;
-                    top++;
-                }
-            }
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Image image = new Image();
 
-            if (HaveIAlreadyFollow) followButton.Text = GlobalVariables.petProfileFragmentViewModel.unfollowText;
-            else followButton.Text = GlobalVariables.petProfileFragmentViewModel.followText;
+                        image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
+
+                        image.HeightRequest = optimalWidth;
+
+                        image.GestureRecognizers.Add(new TapGestureRecognizer()
+                        {
+                            NumberOfTapsRequired = 1,
+                            TappedCallback = delegate
+                            {
+                                OnPictureClicked(item);
+                            }
+                        });
+
+                        image.Aspect = Aspect.AspectFill;
+
+                        pictureListGrid.Children.Add(image, top, left);
+
+                        if (i == 3)
+                        {
+                            left++;
+                            i = 1;
+                            top = 0;
+                        }
+                        else
+                        {
+                            i++;
+                            top++;
+                        }
+                    });
+                }
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (HaveIAlreadyFollow) followButton.Text = GlobalVariables.petProfileFragmentViewModel.unfollowText;
+                    else followButton.Text = GlobalVariables.petProfileFragmentViewModel.followText;
+                });
+            });
         }
 
         private async System.Threading.Tasks.Task followButton_ClickedAsync(object sender, EventArgs e)
         {
             if (HaveIAlreadyFollow)
             {
-                string success = GlobalVariables.petProfileFragmentViewModel.UnFollow(GlobalVariables.ActualUsersEmail, petid);        
+                string success = GlobalVariables.petProfileFragmentViewModel.UnFollow(GlobalVariables.ActualUsersEmail, petid);
 
                 HaveIAlreadyFollow = !HaveIAlreadyFollow;
 

@@ -25,5 +25,28 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 }
             };
         }
+
+        public NoConnection(bool isFromLogin)
+        {
+            CrossConnectivity.Current.ConnectivityChanged += async (sender, args) =>
+            {
+                if (CrossConnectivity.Current.IsConnected && !wasNotConn)
+                {
+                    wasNotConn = true;
+
+                    var page = new AppMancsXamarinForms.LoginPage();
+
+                    var navPage = new NavigationPage(page);
+
+                    NavigationPage.SetHasNavigationBar(navPage, false);
+
+                    await Navigation.PushModalAsync(navPage);
+                }
+                else
+                {
+                    wasNotConn = false;
+                }
+            };
+        }
     }
 }

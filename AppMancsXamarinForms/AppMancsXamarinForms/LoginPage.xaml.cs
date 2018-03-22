@@ -3,15 +3,33 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using Plugin.Connectivity;
+using AppMancsXamarinForms.NotPrimaryPages;
 
 namespace AppMancsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        private bool wasNotConn = false;
+
         public LoginPage()
         {
             InitializeComponent();
+
+            CrossConnectivity.Current.ConnectivityChanged += async (sender, args) =>
+            {
+                if (!CrossConnectivity.Current.IsConnected && !wasNotConn)
+                {
+                    wasNotConn = true;
+
+                    await Navigation.PushModalAsync(new NoConnection(true));
+                }
+                else
+                {
+                    wasNotConn = false;
+                }
+            };
 
             NavigationPage.SetHasNavigationBar(this, false);
         }

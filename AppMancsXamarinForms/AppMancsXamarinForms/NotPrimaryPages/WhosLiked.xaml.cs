@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WhosLiked : ContentPage
     {
-        private Pet thisPet = new Pet();
+        //private Pet thisPet = new Pet();
 
         private int petpicturesid = -1;
 
@@ -26,35 +27,43 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
 			InitializeComponent ();
 
-            users = GlobalVariables.whosLikedViewModel.GetUserList(petpicturesid);
-
-            List<ListViewWithPictureAndSomeText> listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
-
-            foreach (var item in users)
-            {
-                ListViewWithPictureAndSomeText listViewWith = new ListViewWithPictureAndSomeText()
-                {
-                    user = item,
-                    Name = item.LastName + " " + item.FirstName
-                    //pet = thisPet
-                };
-
-                if (!String.IsNullOrEmpty(item.ProfilePictureURL))
-                {
-                    listViewWith.ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL));
-                }
-                else
-                {
-                    listViewWith.ProfilePicture = "";
-                }
-                
-                listViewWithPictureAndSomeText.Add(listViewWith);
-            }
-
-            userListView.ItemsSource = listViewWithPictureAndSomeText;
+            Initialize();
         }
         
+        private async Task Initialize(){
+            await Task.Run(()=>{
+                users = GlobalVariables.whosLikedViewModel.GetUserList(petpicturesid);
 
+                List<ListViewWithPictureAndSomeText> listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
+
+                foreach (var item in users)
+                {
+                    ListViewWithPictureAndSomeText listViewWith = new ListViewWithPictureAndSomeText()
+                    {
+                        user = item,
+                        Name = item.LastName + " " + item.FirstName
+                        //pet = thisPet
+                    };
+
+                    if (!String.IsNullOrEmpty(item.ProfilePictureURL))
+                    {
+                        listViewWith.ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL));
+                    }
+                    else
+                    {
+                        listViewWith.ProfilePicture = "";
+                    }
+
+                    listViewWithPictureAndSomeText.Add(listViewWith);
+                }
+
+                Device.BeginInvokeOnMainThread(()=>{
+                    userListView.ItemsSource = listViewWithPictureAndSomeText;
+
+                    userListView.IsRefreshing = false;
+                });
+            });
+        }
 
         private void userListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
@@ -74,6 +83,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 Navigation.PushAsync(searchResultPage);
             }
+        }
+
+        void Handle_Refreshing(object sender, System.EventArgs e)
+        {
+            Initialize();
         }
     }
 }

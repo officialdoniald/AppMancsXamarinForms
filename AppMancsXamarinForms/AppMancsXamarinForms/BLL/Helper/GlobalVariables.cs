@@ -284,16 +284,22 @@ namespace AppMancsXamarinForms.BLL.Helper
         /// <param name="myPetsList">My pets list.</param>
         public static Pet ConvertMyPetListToPet(MyPetsList myPetsList)
         {
-            return new Pet()
+            if (myPetsList is null)
             {
-                id = myPetsList.petid,
-                Age = myPetsList.Age,
-                HaveAnOwner = myPetsList.HaveAnOwner,
-                Name = myPetsList.Name,
-                PetType = myPetsList.PetType,
-                ProfilePictureURL = myPetsList.ProfilePictureURL,
-                Uploader = myPetsList.Uploader
-            };
+                return null;
+            }else
+            {
+                return new Pet()
+                {
+                    id = myPetsList.petid,
+                    Age = myPetsList.Age,
+                    HaveAnOwner = myPetsList.HaveAnOwner,
+                    Name = myPetsList.Name,
+                    PetType = myPetsList.PetType,
+                    ProfilePictureURL = myPetsList.ProfilePictureURL,
+                    Uploader = myPetsList.Uploader
+                };
+            }
         }
 
         /// <summary>

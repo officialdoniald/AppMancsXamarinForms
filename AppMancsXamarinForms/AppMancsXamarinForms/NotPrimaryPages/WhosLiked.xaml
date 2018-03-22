@@ -1,49 +1,26 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMancsXamarinForms.NotPrimaryPages.WhosLiked"
-             Title="Whos liked"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
-
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppMancsXamarinForms.NotPrimaryPages.WhosLiked" Title="Whos liked" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
     <ContentPage.Content>
-        <ScrollView>
-        <StackLayout
-            Margin="25,0,25,0">
-            <ListView 
-                ItemsSource="{Binding listViewWithPictureAndSomeText}"
-                SeparatorVisibility="None"
-                x:Name="userListView"
-                ItemTapped="userListView_ItemTapped">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="60"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Image
-                                    Source="{Binding ProfilePicture}"
-                                    Grid.Row="0" 
-                                    Grid.Column="0"
-                                    Aspect="AspectFit"
-                                    HeightRequest="45">
-                                </Image>
-                                <Label 
-                                    Text="{Binding Name}"
-                                    HorizontalOptions="Start"
-                                    VerticalOptions="Center"
-                                    Style="{StaticResource NormalLabel}"
-                                    Grid.Row="0" 
-                                    Grid.Column="1"/>
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            </StackLayout>
-        </ScrollView>
+        <ListView ItemsSource="{Binding listViewWithPictureAndSomeText}" SeparatorVisibility="None" x:Name="userListView" ItemTapped="userListView_ItemTapped" IsPullToRefreshEnabled="true" Refreshing="Handle_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition>
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ProfilePicture}" Grid.Row="0" Grid.Column="0" Aspect="AspectFit" HeightRequest="45">
+                            </Image>
+                            <Label Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource NormalLabel}" Grid.Row="0" Grid.Column="1" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
