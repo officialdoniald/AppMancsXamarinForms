@@ -114,7 +114,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
+                    await DisplayAlert(English.Failed(),success,English.OK());
                 }
                 else
                 {
@@ -133,7 +133,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 if (!String.IsNullOrEmpty(success))
                 {
-                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
+                    await DisplayAlert(English.Failed(),success,English.OK());
                 }
                 else
                 {

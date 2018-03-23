@@ -136,7 +136,6 @@
     <Compile Include="LocalDB\PetpicturesWall.cs" />
     <Compile Include="CustomControls\ExtendedViewCell.cs" />
     <Compile Include="BLL\Helper\English.cs" />
-    <Compile Include="BLL\Helper\ContentPageFunctions.cs" />
     <Compile Include="NotPrimaryPages\NoConnection.xaml.cs">
       <DependentUpon>NoConnection.xaml</DependentUpon>
     </Compile>

@@ -44,7 +44,7 @@ namespace AppMancsXamarinForms
             {
                 Device.BeginInvokeOnMainThread(() => loginActivator.IsRunning = false);
 
-                DisplayAlert("Figyelmeztetés", success, "OK");
+                DisplayAlert(English.Failed(), success, English.OK());
             }
             else
             {

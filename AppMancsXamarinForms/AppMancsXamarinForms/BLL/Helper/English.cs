@@ -3,6 +3,16 @@ namespace AppMancsXamarinForms.BLL.Helper
 {
     public static class English
     {
+        public static string Failed()
+        {
+            return "Failed";
+        }
+
+        public static string OK()
+        {
+            return "OK";
+        }
+        
         public static string AlreadyHaveThisFacebookAcoount()
         {
             return "Already has this Facebook account!";

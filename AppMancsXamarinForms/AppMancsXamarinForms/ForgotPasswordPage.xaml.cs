@@ -16,10 +16,7 @@ namespace AppMancsXamarinForms
 
         private async System.Threading.Tasks.Task sendNewPassword_ClickedAsync(object sender, EventArgs e)
         {
-            ForgotPasswordPageViewModel forgotPasswordPageViewModel =
-                   new ForgotPasswordPageViewModel();
-
-            string success = forgotPasswordPageViewModel.SendEmail(emailEntry.Text);
+            string success = GlobalVariables.forgotPasswordPageViewModel.SendEmail(emailEntry.Text);
 
             if (String.IsNullOrEmpty(success))
             {
@@ -27,7 +24,7 @@ namespace AppMancsXamarinForms
             }
             else
             {
-                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
+                await DisplayAlert(English.Failed(),success,English.OK());
             }
         }
     }

@@ -17,9 +17,12 @@ namespace AppMancsXamarinForms.BLL.Helper
     {
         public static List<WallListViewAdapter> wallListViewAdapter =
             new List<WallListViewAdapter>();
-        
-        public static SignupPageViewModel signupPageViewModel = 
+
+        public static SignupPageViewModel signupPageViewModel =
             new SignupPageViewModel();
+
+        public static ForgotPasswordPageViewModel forgotPasswordPageViewModel =
+            new ForgotPasswordPageViewModel();
 
         public static WhosLikedViewModel whosLikedViewModel = 
             new WhosLikedViewModel();
@@ -91,17 +94,6 @@ namespace AppMancsXamarinForms.BLL.Helper
         {
             get => isPictureDeleted;
             set => isPictureDeleted = value;
-        }
-
-        /// <summary>
-        /// Is Pet added?
-        /// </summary>
-        private static ContentPageFunctions contentPageFunctions = new ContentPageFunctions();
-
-        public static ContentPageFunctions ContentPageFunctions
-        {
-            get => contentPageFunctions;
-            set => contentPageFunctions = value;
         }
 
         /// <summary>

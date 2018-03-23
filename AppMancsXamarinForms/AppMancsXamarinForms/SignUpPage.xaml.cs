@@ -17,10 +17,10 @@ namespace AppMancsXamarinForms
         private async System.Threading.Tasks.Task signupButton_ClickedAsync(object sender, EventArgs e)
         {
             signupButton.IsEnabled = false;
-            
+
             User user = new User()
             {
-                Email = emailEntry.Text.ToLower(),
+                Email = emailEntry.Text,
                 Password = pwEntry.Text,
                 FirstName = firstnameEntry.Text,
                 LastName = lastnameEntry.Text,
@@ -32,7 +32,7 @@ namespace AppMancsXamarinForms
 
             if (!String.IsNullOrEmpty(success))
             {
-                await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
+                await DisplayAlert(English.Failed(),success,English.OK());
             }
             else
             {

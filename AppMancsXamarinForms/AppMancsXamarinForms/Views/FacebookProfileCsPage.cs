@@ -74,7 +74,7 @@ namespace FacebookLogin.Views
 
                     await Navigation.PopToRootAsync();
 
-                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
+                    await DisplayAlert(English.Failed(),success,English.OK());
                 }
                 else
                 {
@@ -121,7 +121,7 @@ namespace FacebookLogin.Views
                 {
                     await Navigation.PushAsync(new UpdateProfilePage());
 
-                    await GlobalVariables.ContentPageFunctions.CreateNegativDisplayAlert(success);
+                    await DisplayAlert(English.Failed(),success,English.OK());
                 }
             }
         }
