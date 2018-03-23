@@ -139,6 +139,7 @@
     <Compile Include="NotPrimaryPages\NoConnection.xaml.cs">
       <DependentUpon>NoConnection.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BLL\Helper\IMailerInj.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

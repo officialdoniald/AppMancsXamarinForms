@@ -75,6 +75,18 @@ namespace AppMancsXamarinForms.BLL.Helper
             "LocalDatabaseTable.db3";
 
         /// <summary>
+        /// The SMTP Mail server.
+        /// </summary>
+        public static SMTPUser SMTPUser = new SMTPUser()
+        {
+            SMTPCLientHost = "smtp.gmail.com",
+            SMTPEmail = "bence960206@gmail.com",
+            SMTPPassword = "96kEHTPp2o0206",
+            SMTPServerPort = 587,
+            SMTPUsername = "bence960206"
+        };
+
+        /// <summary>
         /// Is Pet deleted?
         /// </summary>
         private static bool isPetDeleted = false;

@@ -36,8 +36,11 @@ namespace AppMancsXamarinForms
             }
             else
             {
+                string sentMail = DependencyService.Get<IMailerInj>().SendMail(emailEntry.Text,string.Empty);
+
                 await Navigation.PopToRootAsync();
             }
+
             signupButton.IsEnabled = true;
         }
 

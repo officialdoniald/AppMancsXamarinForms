@@ -47,6 +47,7 @@
     <Compile Include="User.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="WallListViewAdapter.cs" />
+    <Compile Include="SMTPUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />

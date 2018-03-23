@@ -46,8 +46,6 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 }
                 else
                 {
-                    //TODO új emailt küldeni az új címre
-
                     return UpdateUser(GlobalVariables.ActualUser);
                 }
 
