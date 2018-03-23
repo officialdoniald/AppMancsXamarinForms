@@ -41,9 +41,10 @@
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="pwEntry"
+                IsPassword="true"
                 Style="{StaticResource NormalEnrty}"/>
             <Button
-                Text="Sign up:"
+                Text="Sign up"
                 x:Name="signupButton"
                 Style="{StaticResource NormalButton}"
                 Clicked="signupButton_Clicked"/>

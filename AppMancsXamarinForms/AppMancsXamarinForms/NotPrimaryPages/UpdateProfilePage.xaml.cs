@@ -119,15 +119,15 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             profilePictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
 
-        private async void changeFaceookButton_ClickedAsync(object sender, EventArgs e)
-        {
-            changeFaceookButton.IsEnabled = false;
+        //private async void changeFaceookButton_ClickedAsync(object sender, EventArgs e)
+        //{
+        //    changeFaceookButton.IsEnabled = false;
             
-            DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
+        //    DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
             
-            await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
+        //    await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
         
-            changeFaceookButton.IsEnabled = true;
-        }
+        //    changeFaceookButton.IsEnabled = true;
+        //}
     }
 }

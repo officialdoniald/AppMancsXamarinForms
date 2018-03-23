@@ -32,24 +32,30 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 
                 var page = new LoginPage();
 
-                await Navigation.PushAsync(page);
-
-                NavigationPage.SetHasNavigationBar(page, false);
+                await Navigation.PushModalAsync(new NavigationPage(page)
+                {
+                    BarBackgroundColor = Color.FromHex("#FFCBB6"),
+                    BarTextColor = Color.White
+                });
             }
             loguotButton.IsEnabled = true;
             deleteAcoountPageButton.IsEnabled = true;
             deleteActivity.IsRunning = false;
         }
 
-        private void loguotButton_Clicked(object sender, EventArgs e)
+        private async System.Threading.Tasks.Task loguotButton_Clicked(object sender, EventArgs e)
         {
             loguotButton.IsEnabled = false;
 
             FileStoreAndLoading.InsertToFile(GlobalVariables.logintxt,String.Empty);
 
-            var page = new NavigationPage(new LoginPage());
+            var page = new LoginPage();
 
-            Navigation.PushModalAsync(page);
+            await Navigation.PushModalAsync(new NavigationPage(page)
+            {
+                BarBackgroundColor = Color.FromHex("#FFCBB6"),
+                BarTextColor = Color.White
+            });
 
             loguotButton.IsEnabled = true;
         }

@@ -24,11 +24,11 @@
                     x:Name="changeProfilePictureButton"
                     Style="{StaticResource NormalButton}"
                     Clicked="changeProfilePictureButton_ClickedAsync"/>
-                <Button
+                <!--<Button
                     Text="Change my Facebook account"
                     Style="{StaticResource FacebookButton}"
                     x:Name="changeFaceookButton"
-                    Clicked="changeFaceookButton_ClickedAsync"/>
+                    Clicked="changeFaceookButton_ClickedAsync"/>-->
                 <Label
                     Text="Last name:"
                     Style="{StaticResource EntryAboveLabel}"/>

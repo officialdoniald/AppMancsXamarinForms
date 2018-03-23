@@ -10,11 +10,11 @@
             <Image
                 Style="{StaticResource Logo}"
                 Source="logo.jpg"/>
-            <Button
+            <!--<Button
                 Style="{StaticResource FacebookButton}"
                 x:Name="loginFacebookButton"
                 Text="Sign up with Facebook"
-                Clicked="loginFacebookButton_Clicked"/>
+                Clicked="loginFacebookButton_Clicked"/>-->
             <Label
                 Text="Last name:"
                 Style="{StaticResource EntryAboveLabel}"/>
@@ -38,6 +38,7 @@
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="pwEntry"
+                IsPassword="true"
                 Style="{StaticResource NormalEnrty}"/>
             <Button
                 Text="Sign up"
