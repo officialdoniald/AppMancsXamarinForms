@@ -7,7 +7,7 @@
                 <!--<Button x:Name="loginFacebookButton" Style="{StaticResource FacebookButton}" Text="Login with Facebook" Clicked="loginFacebookButton_Clicked" />
                 <Label Text="or" Style="{StaticResource NormalLabel}" />-->
                 <Label Text="E-Mail:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="emailEntry" Style="{StaticResource NormalEnrty}" />
+                <Entry x:Name="emailEntry" Keyboard="Email" Style="{StaticResource NormalEnrty}" />
                 <Label Text="Password:" Style="{StaticResource EntryAboveLabel}" />
                 <Entry x:Name="pwEntry" IsPassword="True" Style="{StaticResource NormalEnrty}" />
                 <Label Text="Forgot password" Style="{StaticResource NormalLabel}">

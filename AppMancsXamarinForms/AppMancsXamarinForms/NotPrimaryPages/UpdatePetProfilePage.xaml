@@ -35,6 +35,7 @@
                     Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="ageEntry"
+                    Keyboard="Numeric"
                     Style="{StaticResource NormalEnrty}"/>
             <Label
                 Text="Species:"
