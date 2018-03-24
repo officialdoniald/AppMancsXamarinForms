@@ -28,14 +28,12 @@ namespace AppMancsXamarinForms
 
         protected override void OnAppearing()
         {
-            if (GlobalVariables.IsUpdatedMyProfile)
+            if (!String.IsNullOrEmpty(GlobalVariables.ActualUser.ProfilePictureURL))
             {
-                if (!String.IsNullOrEmpty(GlobalVariables.ActualUser.ProfilePictureURL))
-                {
-                    profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
-                }
-
-                GlobalVariables.IsUpdatedMyProfile = false;
+                profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
+            }else
+            {
+                profilePictureImage.Source = "";
             }
 
             userNameLabel.Text = GlobalVariables.ActualUser.FirstName + " " + GlobalVariables.ActualUser.LastName;
@@ -53,7 +51,7 @@ namespace AppMancsXamarinForms
                 listViewWithPictureAndSomeText.Add(new ListViewWithPictureAndSomeText()
                 {
                     pet = GlobalVariables.ConvertMyPetListToPet(item),
-                    ProfilePicture = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
+                    ProfilePicture = item.ProfilePictureURL == string.Empty ? "" : ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
                     Name = item.Name
                 });
             }

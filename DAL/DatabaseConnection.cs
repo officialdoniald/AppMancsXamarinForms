@@ -1241,8 +1241,6 @@ namespace DBAccess
 
                     int returnInt = (int)idpar.Value;
 
-                    cmd.ExecuteNonQuery();
-
                     return returnInt;
                 }
             }

@@ -36,7 +36,9 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             }
             catch (Exception)
             {
-                age = -1;
+                await DisplayAlert(English.Failed(), English.YouHaveToFillAllEntries(), English.OK());
+                
+                return;
             }
 
             Pet pet = new Pet()

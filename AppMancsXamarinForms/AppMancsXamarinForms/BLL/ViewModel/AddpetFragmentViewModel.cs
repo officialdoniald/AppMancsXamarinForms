@@ -1,6 +1,7 @@
 ﻿using AppMancsXamarinForms.BLL.Helper;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -11,7 +12,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
     {
         public async Task<string> AddPetAsync(string pathf, Stream f, Pet pet)
         {
-            if (String.IsNullOrEmpty(pet.Name) || pet.Age < 0 || String.IsNullOrEmpty(pet.PetType))
+            if (String.IsNullOrEmpty(pet.Name) || String.IsNullOrEmpty(pet.PetType))
             {
                 return English.YouHaveToFillAllEntries();
             }

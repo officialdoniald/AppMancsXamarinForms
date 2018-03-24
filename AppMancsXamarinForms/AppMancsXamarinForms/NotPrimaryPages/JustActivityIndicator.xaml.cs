@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AppMancsXamarinForms.BLL.Helper;
 using Xamarin.Forms;
 
@@ -35,9 +36,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 GlobalVariables.InitializeUser();
 
+                GlobalVariables.Mypetlist = new List<LocalDB.MyPetsList>();
+
                 GlobalVariables.GetMyPets();
 
-                GlobalVariables.InitializeTheMyPetList();
+                GlobalVariables.SetMyPetListString();
 
                 Navigation.PushModalAsync(new NavigationPage(new MainPage()));
             }

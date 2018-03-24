@@ -21,6 +21,16 @@ namespace AppMancsXamarinForms.LocalDB
             //database.CreateTableAsync<WallItem>().Wait();
         }
 
+
+        public Task<int> DropTableMyPetlist()
+        {
+            var returnableInt =  database.DropTableAsync<MyPetsList>();
+
+            database.CreateTableAsync<MyPetsList>().Wait();
+
+            return returnableInt;
+        }
+
         //MyPetList
         public Task<List<MyPetsList>> GetMyPetsList()
         {

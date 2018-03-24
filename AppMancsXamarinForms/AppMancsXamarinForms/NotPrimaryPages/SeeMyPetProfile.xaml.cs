@@ -47,7 +47,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                     petnameLabel.Text = thisPet.Name;
 
-                    profilePictureImage.Source = ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
+                    profilePictureImage.Source = thisPet.ProfilePictureURL == "" ? "" : ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
 
                     profilePictureImage.HeightRequest = optimalWidth;
                 });

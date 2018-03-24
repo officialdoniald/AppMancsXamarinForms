@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using AppMancsXamarinForms.BLL.Helper;
+using AppMancsXamarinForms.LocalDB;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -30,20 +31,20 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().DeletePet(pet);
 
-            GlobalVariables.LocalSQLiteDatabase.DeleteMyPetList(GlobalVariables.ConvertPetToMyPetList(pet));
-
-            GlobalVariables.GetMyPets();
-
-            GlobalVariables.InitializeTheMyPetList();
-
-            GlobalVariables.AddedPet = true;
-
             if (!success)
             {
                 return English.SomethingWentWrong();
             }
             else
             {
+                GlobalVariables.Mypetlist = new List<LocalDB.MyPetsList>();
+
+                GlobalVariables.GetMyPets();
+
+                GlobalVariables.SetMyPetListString();
+
+                GlobalVariables.AddedPet = true;
+
                 return English.Empty();
             }
         }
@@ -86,6 +87,12 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 }
                 else
                 {
+                    await GlobalVariables.LocalSQLiteDatabase.UpdateMyPetList(pet);
+
+                    GlobalVariables.InitializeTheMyPetList();
+
+                    GlobalVariables.AddedPet = true;
+
                     return English.Empty();
                 }
             }

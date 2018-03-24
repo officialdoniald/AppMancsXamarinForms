@@ -258,7 +258,7 @@ namespace AppMancsXamarinForms.BLL.Helper
         /// </summary>
         public static void GetMyPets()
         {
-            LocalSQLiteDatabase.DeleteAllMyPetList();
+            LocalSQLiteDatabase.DropTableMyPetlist();
 
             var myPetList = uploadPhotoFragmentViewModel.GetMyPets(ActualUser.id);
 
