@@ -3,8 +3,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource NormalStackLayout}">
-                <Image x:Name="profilePictureImage" Aspect="AspectFit">
-                </Image>
+                <Image x:Name="profilePictureImage" Aspect="AspectFit"/>
                 <Label x:Name="userNameLabel" Style="{StaticResource NormalLabel}" />
                 <Label Text="Pets:" Style="{StaticResource NormalLabel}" />
                 <StackLayout x:Name="petsStackLayout" Orientation="Vertical" HorizontalOptions="Center">
