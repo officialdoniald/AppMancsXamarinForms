@@ -32,6 +32,7 @@
                 Style="{StaticResource EntryAboveLabel}"/>
             <Entry
                 x:Name="emailEntry"
+                Keyboard="Email"
                 Style="{StaticResource NormalEnrty}"/>
             <Label
                 Text="Password:"
