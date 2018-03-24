@@ -1,52 +1,26 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMancsXamarinForms.SignUpPage"
-             Title="Sign up">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppMancsXamarinForms.SignUpPage" Title="Sign up">
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout 
-                Style="{StaticResource NormalStackLayout}">
-                <Label Style="{StaticResource LogoAboveText}" Text="Chara"/>
-            <Image
+            <StackLayout Style="{StaticResource NormalStackLayout}">
+                <Label Style="{StaticResource LogoAboveText}" Text="Chara" />
+                <!--<Image
                 Style="{StaticResource Logo}"
-                Source="logo.jpg"/>
-            <!--<Button
+                Source="logo.jpg"/>-->
+                <!--<Button
                 Style="{StaticResource FacebookButton}"
                 x:Name="loginFacebookButton"
                 Text="Sign up with Facebook"
                 Clicked="loginFacebookButton_Clicked"/>-->
-            <Label
-                Text="Last name:"
-                Style="{StaticResource EntryAboveLabel}"/>
-            <Entry
-                x:Name="lastnameEntry"
-                Style="{StaticResource NormalEnrty}"/>
-            <Label
-                Text="First name:"
-                Style="{StaticResource EntryAboveLabel}"/>
-            <Entry
-                x:Name="firstnameEntry"
-                Style="{StaticResource NormalEnrty}"/>
-            <Label
-                Text="E-Mail:"
-                Style="{StaticResource EntryAboveLabel}"/>
-            <Entry
-                x:Name="emailEntry"
-                Keyboard="Email"
-                Style="{StaticResource NormalEnrty}"/>
-            <Label
-                Text="Password:"
-                Style="{StaticResource EntryAboveLabel}"/>
-            <Entry
-                x:Name="pwEntry"
-                IsPassword="true"
-                Style="{StaticResource NormalEnrty}"/>
-            <Button
-                Text="Sign up"
-                x:Name="signupButton"
-                Style="{StaticResource NormalButton}"
-                Clicked="signupButton_ClickedAsync"/>
+                <Label Text="Last name:" Style="{StaticResource EntryAboveLabel}" />
+                <Entry x:Name="lastnameEntry" Style="{StaticResource NormalEnrty}" />
+                <Label Text="First name:" Style="{StaticResource EntryAboveLabel}" />
+                <Entry x:Name="firstnameEntry" Style="{StaticResource NormalEnrty}" />
+                <Label Text="E-Mail:" Style="{StaticResource EntryAboveLabel}" />
+                <Entry x:Name="emailEntry" Keyboard="Email" Style="{StaticResource NormalEnrty}" />
+                <Label Text="Password:" Style="{StaticResource EntryAboveLabel}" />
+                <Entry x:Name="pwEntry" IsPassword="true" Style="{StaticResource NormalEnrty}" />
+                <Button Text="Sign up" x:Name="signupButton" Style="{StaticResource NormalButton}" Clicked="signupButton_ClickedAsync" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -4,7 +4,7 @@
         <ScrollView>
             <StackLayout Style="{StaticResource NormalStackLayout}">
                 <Label Style="{StaticResource LogoAboveText}" Text="Chara"/>
-                <Image Style="{StaticResource Logo}" Source="logo.jpg" />
+                <!--                <Image Style="{StaticResource Logo}" Source="logo.jpg" />-->
                 <!--<Button x:Name="loginFacebookButton" Style="{StaticResource FacebookButton}" Text="Login with Facebook" Clicked="loginFacebookButton_Clicked" />
                 <Label Text="or" Style="{StaticResource NormalLabel}" />-->
                 <Label Text="E-Mail:" Style="{StaticResource EntryAboveLabel}" />
@@ -16,7 +16,8 @@
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
                     </Label.GestureRecognizers>
                 </Label>
-                <ActivityIndicator x:Name="loginActivator" IsRunning="false"></ActivityIndicator>
+                <ActivityIndicator x:Name="loginActivator" IsRunning="false">
+                </ActivityIndicator>
                 <Button x:Name="loginButton" Style="{StaticResource NormalButton}" Text="Login" Clicked="loginButton_Clicked" />
                 <Label Text="Are you not a member yet?" Style="{StaticResource NormalLabel}" />
                 <Button x:Name="signUpButton" Style="{StaticResource NormalButton}" Text="Sign up" Clicked="signUpButton_Clicked" />
