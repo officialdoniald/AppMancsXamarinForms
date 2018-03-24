@@ -55,8 +55,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         Label hashtagLabel = new Label()
                         {
                             Text = item2,
-                            TextColor = Color.FromHex("#FFCBB6"),
-                            FontSize = 15
+                            TextColor = Color.FromHex(GlobalVariables.InitColor),
+                            FontSize = GlobalVariables.FontSize
                         };
 
                         var onHashtagClickedTap = new TapGestureRecognizer()
@@ -106,7 +106,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         {
             if (!GlobalVariables.seePictureFragmentViewModel.DeletePicture(this.petpictures))
             {
-                await DisplayAlert("Failed",English.SomethingWentWrong(),"OK");
+                await DisplayAlert(English.Failed(),English.SomethingWentWrong(),English.OK());
             }
             else
             {
@@ -114,7 +114,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 await Navigation.PopToRootAsync();
 
-                await DisplayAlert("Successful", English.SuccessfulDeletedThePicture(), "OK");
+                await DisplayAlert(English.Successful(), English.SuccessfulDeletedThePicture(), English.OK());
             }
         }
     }

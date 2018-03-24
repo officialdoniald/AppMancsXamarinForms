@@ -34,11 +34,11 @@ namespace AppMancsXamarinForms
         {
             if (haveILiked)
             {
-                return "unlike.png";
+                return GlobalVariables.unlikepng;
             }
             else
             {
-                return "like.png";
+                return GlobalVariables.likepng;
             }
         }
 
@@ -133,7 +133,7 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
 
-                button.Source = "like.png";
+                button.Source = GlobalVariables.likepng;
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes - 1;
 
@@ -145,7 +145,7 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
 
-                button.Source = "unlike.png";
+                button.Source = GlobalVariables.unlikepng;
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes + 1;
 
@@ -175,7 +175,7 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
 
-                button.Source = "like.png";
+                button.Source = GlobalVariables.likepng;
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes - 1;
 
@@ -187,7 +187,7 @@ namespace AppMancsXamarinForms
 
                 wallListViewAdapterClicked.wallItem.haveILiked = !wallListViewAdapterClicked.wallItem.haveILiked;
 
-                button.Source = "unlike.png";
+                button.Source = GlobalVariables.unlikepng;
 
                 wallListViewAdapterClicked.wallItem.howmanylikes = howmanylikes + 1;
 

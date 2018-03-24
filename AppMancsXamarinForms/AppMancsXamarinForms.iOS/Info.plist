@@ -51,6 +51,8 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>fd</string>
 	<key>CFBundleName</key>
-	<string>Chara</string>
+	<string>AppMancsXamarinForms</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
 </dict>
 </plist>

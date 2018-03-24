@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using AppMancsXamarinForms.BLL.ViewModel;
 using AppMancsXamarinForms.LocalDB;
 using FileStoringWithDependency.IFileStoreAndLoad;
 using Model;
-using Plugin.Connectivity;
-using Plugin.Connectivity.Abstractions;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
 
@@ -61,6 +58,22 @@ namespace AppMancsXamarinForms.BLL.Helper
             new SeePictureFragmentViewModel();
 
         public static string logintxt = "login.txt";
+
+        public static string InitColor = "#FFCBB6";
+
+        public static int FontSize = 15;
+
+        public static string likepng = "like.png";
+
+        public static string unlikepng = "unlike.png";
+
+        public static string homepng = "home.png";
+
+        public static string searchpng = "search.png";
+
+        public static string camerapng = "camera.png";
+
+        public static string profilepng = "profile.png";
 
         public static Stream f;
 

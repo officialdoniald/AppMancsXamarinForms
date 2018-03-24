@@ -81,8 +81,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         {
                             Text = item.Name,
                             HorizontalOptions = LayoutOptions.Center,
-                            TextColor = Color.FromHex("#FFCBB6"),
-                            FontSize = 15
+                            TextColor = Color.FromHex(GlobalVariables.InitColor),
+                            FontSize = GlobalVariables.FontSize
                         };
 
                         var goToPetProfileTapped = new TapGestureRecognizer();

@@ -69,7 +69,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
-                await DisplayAlert("Warning", "No picking available, please try again later!", "OK");
+                await DisplayAlert(English.Failed(), English.NoPicking(), English.OK());
                 return;
             }
 

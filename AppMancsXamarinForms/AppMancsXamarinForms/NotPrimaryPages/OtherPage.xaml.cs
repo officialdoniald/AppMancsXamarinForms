@@ -34,7 +34,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 await Navigation.PushModalAsync(new NavigationPage(page)
                 {
-                    BarBackgroundColor = Color.FromHex("#FFCBB6"),
+                    BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor),
                     BarTextColor = Color.White
                 });
             }
@@ -53,7 +53,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             await Navigation.PushModalAsync(new NavigationPage(page)
             {
-                BarBackgroundColor = Color.FromHex("#FFCBB6"),
+                BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor),
                 BarTextColor = Color.White
             });
 

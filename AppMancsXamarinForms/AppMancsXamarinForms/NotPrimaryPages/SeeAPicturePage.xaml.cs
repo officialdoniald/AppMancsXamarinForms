@@ -65,8 +65,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         Label hashtagLabel = new Label()
                         {
                             Text = item2,
-                            TextColor = Color.FromHex("#FFCBB6"),
-                            FontSize = 15
+                            TextColor = Color.FromHex(GlobalVariables.InitColor),
+                            FontSize = GlobalVariables.FontSize
                         };
 
                         var onHashtagClickedTap = new TapGestureRecognizer()
@@ -100,8 +100,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                     haveiliked = GlobalVariables.seePictureFragmentViewModel.HaveILiked(petpictures.id);
 
-                    if (haveiliked) likeornotImage.Source = "unlike.png";
-                    else likeornotImage.Source = "like.png";
+                    if (haveiliked) likeornotImage.Source = GlobalVariables.unlikepng;
+                    else likeornotImage.Source = GlobalVariables.likepng;
                 });
             });
         }
@@ -124,7 +124,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                     haveiliked = !haveiliked;
 
-                    likeornotImage.Source = "like.png";
+                    likeornotImage.Source = GlobalVariables.likepng;
                 }
             }
             else
@@ -143,7 +143,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                     haveiliked = !haveiliked;
 
-                    likeornotImage.Source = "unlike.png";
+                    likeornotImage.Source = GlobalVariables.unlikepng;
                 }
             }
         }

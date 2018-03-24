@@ -30,7 +30,7 @@ namespace AppMancsXamarinForms
                 var page = new AppMancsXamarinForms.LoginPage();
 
                 MainPage = new NavigationPage(page){
-                    BarBackgroundColor = Color.FromHex("#FFCBB6"),
+                    BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor),
                     BarTextColor = Color.White
                 };
 

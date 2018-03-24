@@ -1,10 +1,4 @@
-﻿using AppMancsXamarinForms.BLL.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using AppMancsXamarinForms.BLL.Helper;
 using AppMancsXamarinForms.NotPrimaryPages;
 using Plugin.Connectivity;
@@ -42,32 +36,32 @@ namespace AppMancsXamarinForms
 
                 var navigationHomePage = new NavigationPage(homePage);
                 //navigationHomePage.Title = "Főmenü";
-                navigationHomePage.Icon = "home.png";
-                navigationHomePage.BarBackgroundColor = Color.FromHex("#FFCBB6");
+                navigationHomePage.Icon = GlobalVariables.homepng;
+                navigationHomePage.BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor);
                 navigationHomePage.BarTextColor = Color.White;
                 NavigationPage.SetHasNavigationBar(homePage, false);
 
                 var searchPage = new SearchPage();
                 var navigationSearchPage = new NavigationPage(searchPage);
                 //navigationSearchPage.Title = "Keresés";
-                navigationSearchPage.Icon = "search.png";
-                navigationSearchPage.BarBackgroundColor = Color.FromHex("#FFCBB6");
+                navigationSearchPage.Icon = GlobalVariables.searchpng;
+                navigationSearchPage.BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor);
                 navigationSearchPage.BarTextColor = Color.White;
                 NavigationPage.SetHasNavigationBar(searchPage, false);
 
                 var uploadPhotoPage = new UploadPhotoPage();
                 var navigationUploadPhotoPage = new NavigationPage(uploadPhotoPage);
                 //navigationUploadPhotoPage.Title = "Fotó";
-                navigationUploadPhotoPage.Icon = "camera.png";
-                navigationUploadPhotoPage.BarBackgroundColor = Color.FromHex("#FFCBB6");
+                navigationUploadPhotoPage.Icon = GlobalVariables.camerapng;
+                navigationUploadPhotoPage.BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor);
                 navigationUploadPhotoPage.BarTextColor = Color.White;
                 NavigationPage.SetHasNavigationBar(uploadPhotoPage, false);
 
                 var myAccountPage = new MyAccountPage();
                 var navigationMyAccountPage = new NavigationPage(myAccountPage);
                 //navigationMyAccountPage.Title = "Fiók";
-                navigationMyAccountPage.Icon = "profile.png";
-                navigationMyAccountPage.BarBackgroundColor = Color.FromHex("#FFCBB6");
+                navigationMyAccountPage.Icon = GlobalVariables.profilepng;
+                navigationMyAccountPage.BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor);
                 navigationMyAccountPage.BarTextColor = Color.White;
                 NavigationPage.SetHasNavigationBar(myAccountPage, false);
 

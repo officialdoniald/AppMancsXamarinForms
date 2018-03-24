@@ -8,6 +8,16 @@ namespace AppMancsXamarinForms.BLL.Helper
             return "Failed";
         }
 
+        public static string Successful()
+        {
+            return "Successful";
+        }
+
+        public static string NoPicking()
+        {
+            return "No picking available, please try again later!";
+        }
+
         public static string OK()
         {
             return "OK";
