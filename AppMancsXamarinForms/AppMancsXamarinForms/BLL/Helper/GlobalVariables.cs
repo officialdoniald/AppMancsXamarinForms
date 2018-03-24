@@ -59,10 +59,6 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static string logintxt = "login.txt";
 
-        public static string InitColor = "#FFCBB6";
-
-        public static int FontSize = 15;
-
         public static string likepng = "like.png";
 
         public static string unlikepng = "unlike.png";

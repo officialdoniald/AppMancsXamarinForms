@@ -80,9 +80,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         Label petNameLabel = new Label()
                         {
                             Text = item.Name,
-                            HorizontalOptions = LayoutOptions.Center,
-                            TextColor = Color.FromHex(GlobalVariables.InitColor),
-                            FontSize = GlobalVariables.FontSize
+                            Style = (Style)Resources["NormalLabel"]
                         };
 
                         var goToPetProfileTapped = new TapGestureRecognizer();

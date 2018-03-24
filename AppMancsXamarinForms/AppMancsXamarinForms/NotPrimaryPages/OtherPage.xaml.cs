@@ -34,8 +34,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 await Navigation.PushModalAsync(new NavigationPage(page)
                 {
-                    BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor),
-                    BarTextColor = Color.White
+                    Style = (Style)Resources["NavigationPageStyle"]
                 });
             }
             loguotButton.IsEnabled = true;
@@ -53,8 +52,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             await Navigation.PushModalAsync(new NavigationPage(page)
             {
-                BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor),
-                BarTextColor = Color.White
+                Style = (Style)Resources["NavigationPageStyle"]
             });
 
             loguotButton.IsEnabled = true;

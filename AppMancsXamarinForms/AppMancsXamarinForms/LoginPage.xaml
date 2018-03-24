@@ -3,6 +3,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource NormalStackLayout}">
+                <Label Style="{StaticResource LogoAboveText}" Text="Chara"/>
                 <Image Style="{StaticResource Logo}" Source="logo.jpg" />
                 <!--<Button x:Name="loginFacebookButton" Style="{StaticResource FacebookButton}" Text="Login with Facebook" Clicked="loginFacebookButton_Clicked" />
                 <Label Text="or" Style="{StaticResource NormalLabel}" />-->

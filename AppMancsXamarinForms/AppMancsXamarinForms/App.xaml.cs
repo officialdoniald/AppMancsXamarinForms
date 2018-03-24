@@ -30,8 +30,7 @@ namespace AppMancsXamarinForms
                 var page = new AppMancsXamarinForms.LoginPage();
 
                 MainPage = new NavigationPage(page){
-                    BarBackgroundColor = Color.FromHex(GlobalVariables.InitColor),
-                    BarTextColor = Color.White
+                    Style = (Style)Resources["NavigationPageStyle"]
                 };
 
                 NavigationPage.SetHasNavigationBar(page, false);
