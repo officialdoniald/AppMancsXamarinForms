@@ -46,7 +46,9 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             }
             else
             {
-                GlobalVariables.InitializeTheMyPetList();
+                GlobalVariables.GetMyPets();
+
+                GlobalVariables.SetMyPetListString();
 
                 Navigation.PushModalAsync(new NavigationPage(new MainPage()));
             }

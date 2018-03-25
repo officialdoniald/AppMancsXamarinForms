@@ -1,13 +1,10 @@
 ﻿using Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using AppMancsXamarinForms.BLL.Helper;
-using AppMancsXamarinForms.LocalDB;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -37,11 +34,20 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
             else
             {
-                GlobalVariables.Mypetlist = new List<LocalDB.MyPetsList>();
+                int i = 0;
 
-                GlobalVariables.GetMyPets();
+                foreach (var item in GlobalVariables.Mypetlist)
+                {
+                    if (item.petid == petid)
+                    {
+                        GlobalVariables.Mypetlist.RemoveAt(i);
+                        GlobalVariables.MyPetsString.RemoveAt(i);
 
-                GlobalVariables.SetMyPetListString();
+                        break;
+                    }
+
+                    i++;
+                }
 
                 GlobalVariables.AddedPet = true;
 
@@ -59,9 +65,24 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
             else
             {
-                GlobalVariables.LocalSQLiteDatabase.UpdateMyPetList(pet);
+                int i = 0;
 
-                GlobalVariables.InitializeTheMyPetList();
+                foreach (var item in GlobalVariables.Mypetlist)
+                {
+                    if (item.petid == pet.id)
+                    {
+                        GlobalVariables.Mypetlist[i].PetType = pet.PetType;
+                        GlobalVariables.Mypetlist[i].Age = pet.Age;
+                        GlobalVariables.Mypetlist[i].HaveAnOwner = pet.HaveAnOwner;
+                        GlobalVariables.Mypetlist[i].Name = pet.Name;
+
+                        GlobalVariables.MyPetsString[i] = pet.Name;
+
+                        break;
+                    }
+
+                    i++;
+                }
 
                 GlobalVariables.AddedPet = true;
 
@@ -87,9 +108,19 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 }
                 else
                 {
-                    await GlobalVariables.LocalSQLiteDatabase.UpdateMyPetList(pet);
+                    int i = 0;
 
-                    GlobalVariables.InitializeTheMyPetList();
+                    foreach (var item in GlobalVariables.Mypetlist)
+                    {
+                        if (item.petid == pet.id)
+                        {
+                            GlobalVariables.Mypetlist[i].ProfilePictureURL = pet.ProfilePictureURL;
+
+                            break;
+                        }
+
+                        i++;
+                    }
 
                     GlobalVariables.AddedPet = true;
 

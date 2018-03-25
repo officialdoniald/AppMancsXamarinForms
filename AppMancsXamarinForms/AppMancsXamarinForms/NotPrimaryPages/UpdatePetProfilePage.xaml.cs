@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using System.Linq;
 
 namespace AppMancsXamarinForms.NotPrimaryPages
 {
@@ -22,7 +23,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             InitializeComponent();
 
-            thisPet = GlobalVariables.LocalSQLiteDatabase.GetPetFromsMypetlist(petid);
+            thisPet = GlobalVariables.ConvertMyPetListToPet(GlobalVariables.Mypetlist.Where(i => i.petid == petid).FirstOrDefault());
 
             nameEntry.Placeholder = thisPet.Name;
             ageEntry.Placeholder = thisPet.Age.ToString();

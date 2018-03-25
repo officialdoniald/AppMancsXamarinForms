@@ -156,9 +156,9 @@ namespace AppMancsXamarinForms.BLL.Helper
         /// <summary>
         /// What is the actual user now?
         /// </summary>
-        private static string[] myPetsString;
+        private static List<string> myPetsString;
 
-        public static string[] MyPetsString
+        public static List<string> MyPetsString
         {
             get => myPetsString;
             set => myPetsString = value;
@@ -215,15 +215,15 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static LocalDatabaseTable LocalSQLiteDatabase
         {
-            get{
-                if (localSQLiteDatabase == null)
-                {
-                    localSQLiteDatabase = new LocalDatabaseTable(DependencyService.Get<ILocalFileHelper>().GetLocalFilePath(databaseFileName));
-                }
+            get
+            //{if (localSQLiteDatabase == null)
+                //{
+                //    localSQLiteDatabase = new LocalDatabaseTable(DependencyService.Get<ILocalFileHelper>().GetLocalFilePath(databaseFileName));
+                //}
 
-                return localSQLiteDatabase;
-            }
-            set => localSQLiteDatabase = value;
+                //return localSQLiteDatabase;
+                ;set;
+            //set => localSQLiteDatabase = value;
         }
 
         /// <summary>
@@ -270,8 +270,6 @@ namespace AppMancsXamarinForms.BLL.Helper
         /// </summary>
         public static void GetMyPets()
         {
-            LocalSQLiteDatabase.DropTableMyPetlist();
-
             var myPetList = uploadPhotoFragmentViewModel.GetMyPets(ActualUser.id);
 
             Mypetlist = new List<MyPetsList>();
@@ -279,8 +277,6 @@ namespace AppMancsXamarinForms.BLL.Helper
             foreach (var item in myPetList)
             {
                 var pet = ConvertPetToMyPetList(item);
-
-                LocalSQLiteDatabase.InsertMyPetsList(pet);
 
                 Mypetlist.Add(pet);
             }
@@ -303,15 +299,11 @@ namespace AppMancsXamarinForms.BLL.Helper
         /// </summary>
         public static void SetMyPetListString()
         {
-            MyPetsString = new string[GlobalVariables.Mypetlist.Count];
-
-            int i = 0;
+            MyPetsString = new List<string>();
 
             foreach (var item in GlobalVariables.Mypetlist)
             {
-                MyPetsString[i] = item.Name;
-
-                i++;
+                MyPetsString.Add(item.Name);
             }
         }
 

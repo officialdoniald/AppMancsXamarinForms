@@ -46,11 +46,13 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 GlobalVariables.Mypetlist.Add(myPetList);
 
-                GlobalVariables.SetMyPetListString();
+                GlobalVariables.MyPetsString.Add(myPetList.Name);
+
+                //GlobalVariables.SetMyPetListString();
 
                 GlobalVariables.AddedPet = true;
 
-                GlobalVariables.LocalSQLiteDatabase.InsertMyPetsList(myPetList);
+                //GlobalVariables.LocalSQLiteDatabase.InsertMyPetsList(myPetList);
                 
                 return English.Empty();
             }

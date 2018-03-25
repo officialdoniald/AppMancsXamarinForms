@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AppMancsXamarinForms.BLL.Helper;
 using Model;
@@ -14,7 +15,6 @@ namespace AppMancsXamarinForms.LocalDB
         public LocalDatabaseTable(string databasePath)
         {
             database = new SQLiteAsyncConnection(databasePath);
-            database.CreateTableAsync<MyPetsList>().Wait();
             database.CreateTableAsync<LastIndex>().Wait();
             //database.CreateTableAsync<MyWall>().Wait();
             //database.CreateTableAsync<PetpicturesWall>().Wait();
@@ -66,20 +66,22 @@ namespace AppMancsXamarinForms.LocalDB
             return 1;
         }
 
-        public Task<int> UpdateMyPetList(Pet pet)
+        public async Task<int> UpdateMyPetList(Pet pet)
         {
-            var mypetlist = database.Table<MyPetsList>().Where(i => i.petid == pet.id).ToListAsync().Result;
+            var mypetlist = GlobalVariables.ConvertMyPetListToPet(GlobalVariables.Mypetlist.Where(i => i.petid == pet.id).FirstOrDefault());
 
             var convertedNewPet = GlobalVariables.ConvertPetToMyPetList(pet);
 
-            convertedNewPet.id = mypetlist[0].id;
+            convertedNewPet.id = mypetlist.id;
 
-            return database.UpdateAsync(convertedNewPet);
+            return  await database.UpdateAsync(convertedNewPet);
         }
 
         public Pet GetPetFromsMypetlist(int petid)
         {
-            return GlobalVariables.ConvertMyPetListToPet(database.Table<MyPetsList>().Where(i => i.petid == petid).FirstOrDefaultAsync().Result);
+            var pet = database.Table<MyPetsList>().Where(i => i.petid == petid).FirstOrDefaultAsync();
+            
+            return GlobalVariables.ConvertMyPetListToPet(pet.Result);
         }
 
         //LastIndex

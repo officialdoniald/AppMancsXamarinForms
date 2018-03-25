@@ -7,15 +7,24 @@ namespace AppMancsXamarinForms.BLL.ViewModel
     {
         public string DeleteAccount()
         {
-            foreach (var item in GlobalVariables.Mypetlist)
-            {
-                string siker = GlobalVariables.updatePetFragmentViewModel.DeletePet(item.petid);
+            int i = 0;
 
-                if (!string.IsNullOrEmpty(siker))
+            if (GlobalVariables.Mypetlist.Count != 0)
+            {
+                while (GlobalVariables.Mypetlist.Count != 0)
                 {
-                    return English.SomethingWentWrong();
+                    string siker = GlobalVariables.updatePetFragmentViewModel.DeletePet(GlobalVariables.Mypetlist[i].petid);
+
+                    if (!string.IsNullOrEmpty(siker))
+                    {
+                        return English.SomethingWentWrong();
+                    }
+
+                    i++;
                 }
             }
+
+            GlobalVariables.Mypetlist = new System.Collections.Generic.List<LocalDB.MyPetsList>();
 
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().DeleteAccount(GlobalVariables.ActualUser.id);
 
