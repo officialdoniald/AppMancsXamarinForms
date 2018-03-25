@@ -8,9 +8,9 @@
                 <!--<Button x:Name="loginFacebookButton" Style="{StaticResource FacebookButton}" Text="Login with Facebook" Clicked="loginFacebookButton_Clicked" />
                 <Label Text="or" Style="{StaticResource NormalLabel}" />-->
                 <Label Text="E-Mail:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="emailEntry" Keyboard="Email" Style="{StaticResource NormalEnrty}" />
+                <Entry x:Name="emailEntry" Keyboard="Email" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnEmail"/>
                 <Label Text="Password:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="pwEntry" IsPassword="True" Style="{StaticResource NormalEnrty}" />
+                <Entry x:Name="pwEntry" IsPassword="True" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnPassword" />
                 <Label Text="Forgot password" Style="{StaticResource NormalLabel}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />

@@ -70,5 +70,15 @@ namespace AppMancsXamarinForms
         {
             await Navigation.PushAsync(new ForgotPasswordPage());
         }
+
+        void Handle_CompletedOnPassword(object sender, System.EventArgs e)
+        {
+            loginButton_Clicked(this,new EventArgs());
+        }
+
+        void Handle_CompletedOnEmail(object sender, System.EventArgs e)
+        {
+            pwEntry.Focus();
+        }
     }
 }

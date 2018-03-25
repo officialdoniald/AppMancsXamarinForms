@@ -1,6 +1,7 @@
 ﻿using AppMancsXamarinForms.BLL.Helper;
 using AppMancsXamarinForms.BLL.ViewModel;
 using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,6 +27,11 @@ namespace AppMancsXamarinForms
             {
                 await DisplayAlert(English.Failed(),success,English.OK());
             }
+        }
+
+        async Task Handle_Completed(object sender, System.EventArgs e)
+        {
+            await sendNewPassword_ClickedAsync(this,new EventArgs());
         }
     }
 }

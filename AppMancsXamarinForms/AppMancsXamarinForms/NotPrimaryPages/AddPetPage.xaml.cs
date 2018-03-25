@@ -84,5 +84,19 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             profilePictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
+
+        void Handle_CompletedOnNameEntry(object sender, System.EventArgs e)
+        {
+            ageEntry.Focus();
+        }
+
+        void Handle_CompletedOnAgeEntry(object sender, System.EventArgs e)
+        {
+            typeEntry.Focus();
+        }
+        void Handle_CompletedOnTypeEntry(object sender, System.EventArgs e)
+        {
+            shelterpetSwitch.Focus();
+        }
     }
 }

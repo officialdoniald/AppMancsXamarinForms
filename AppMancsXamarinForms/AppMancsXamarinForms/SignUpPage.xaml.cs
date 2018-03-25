@@ -35,12 +35,12 @@ namespace AppMancsXamarinForms
                 await Navigation.PopToRootAsync();
             }
 
-
             signupButton.IsEnabled = true;
             uploadActivity.IsRunning = false;
         }
 
         private void Registration(){
+            
             Device.BeginInvokeOnMainThread(() => {
                 signupButton.IsEnabled = false;
                 uploadActivity.IsRunning = true;
@@ -58,15 +58,34 @@ namespace AppMancsXamarinForms
 
             string success = GlobalVariables.signupPageViewModel.SignUp(user);
             asd = success;
-
-
         }
 
-        private async void loginFacebookButton_Clicked(object sender, EventArgs e)
+        void Handle_CompletedOnEmailEntry(object sender, System.EventArgs e)
         {
-            DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
-
-            await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
+            pwEntry.Focus();
         }
+
+        void Handle_CompletedOnLastNameEntry(object sender, System.EventArgs e)
+        {
+            firstnameEntry.Focus();
+        }
+
+        void Handle_CompletedOnFirstNameEntry(object sender, System.EventArgs e)
+        {
+            emailEntry.Focus();
+        }
+
+        async Task Handle_CompletedOnPasswordEntry(object sender, System.EventArgs e)
+        {
+            await signupButton_ClickedAsync(this, new EventArgs());
+        }
+
+        //private async void loginFacebookButton_Clicked(object sender, EventArgs e)
+        //{
+        //    DependencyService.Get<IClearCookies>().ClearAllWebAppCookies();
+
+        //    await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
+        //}
+
     }
 }

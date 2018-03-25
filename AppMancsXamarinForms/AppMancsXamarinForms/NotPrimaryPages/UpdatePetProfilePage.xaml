@@ -1,66 +1,24 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMancsXamarinForms.NotPrimaryPages.UpdatePetProfilePage"
-             Title="Edit my pet's profile"
-             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
-
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppMancsXamarinForms.NotPrimaryPages.UpdatePetProfilePage" Title="Edit my pet's profile" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout 
-                    Style="{StaticResource NormalStackLayout}">
-                <Button
-                    Text="Gallery"
-                    x:Name="galleryButton"
-                    Style="{StaticResource NormalButton}"
-                    Clicked="galleryButton_ClickedAsync"/>
-                <Image
-                    x:Name="profilePictureImage"
-                    Aspect="AspectFit"
-                    HeightRequest="75">
+            <StackLayout Style="{StaticResource NormalStackLayout}">
+                <Button Text="Gallery" x:Name="galleryButton" Style="{StaticResource NormalButton}" Clicked="galleryButton_ClickedAsync" />
+                <Image x:Name="profilePictureImage" Aspect="AspectFit" HeightRequest="75">
                 </Image>
-                <Button
-                    Text="Change"
-                    x:Name="changeProfilePictureButton"
-                    Style="{StaticResource NormalButton}"
-                    Clicked="changeProfilePictureButton_Clicked"/>
-            <Label
-                Text="Name:"
-                    Style="{StaticResource EntryAboveLabel}"/>
-            <Entry
-                x:Name="nameEntry"
-                    Style="{StaticResource NormalEnrty}"/>
-            <Label
-                Text="Age:"
-                    Style="{StaticResource EntryAboveLabel}"/>
-            <Entry
-                x:Name="ageEntry"
-                    Keyboard="Numeric"
-                    Style="{StaticResource NormalEnrty}"/>
-            <Label
-                Text="Species:"
-                    Style="{StaticResource EntryAboveLabel}"/>
-            <Entry
-                x:Name="typeEntry"
-                    Style="{StaticResource NormalEnrty}"/>
-            <StackLayout Orientation="Horizontal">
-                <Switch
-                    x:Name="shelterpetSwitch"/>
-                <Label
-                    Text="Shelter pet?:"
-                Style="{StaticResource NormalLabel}"
-                    VerticalOptions="Center"/>
-            </StackLayout>
-            <Button
-                Text="Change"
-                x:Name="changePetButton"
-                    Style="{StaticResource NormalButton}"
-                Clicked="changePetButton_ClickedAsync"/>
-            <Button
-                Text="Delete profile"
-                    Style="{StaticResource NormalButton}"
-                x:Name="deletePetButton"
-                Clicked="deletePetButton_ClickedAsync"/>
+                <Button Text="Change" x:Name="changeProfilePictureButton" Style="{StaticResource NormalButton}" Clicked="changeProfilePictureButton_Clicked" />
+                <Label Text="Name:" Style="{StaticResource EntryAboveLabel}" />
+                <Entry x:Name="nameEntry" Style="{StaticResource NormalEnrty}" />
+                <Label Text="Age:" Style="{StaticResource EntryAboveLabel}" />
+                <Entry x:Name="ageEntry" Keyboard="Numeric" Style="{StaticResource NormalEnrty}" />
+                <Label Text="Species:" Style="{StaticResource EntryAboveLabel}" />
+                <Entry x:Name="typeEntry" Style="{StaticResource NormalEnrty}" />
+                <StackLayout Orientation="Horizontal">
+                    <Switch x:Name="shelterpetSwitch" />
+                    <Label Text="Shelter pet?:" Style="{StaticResource NormalLabel}" VerticalOptions="Center" />
+                </StackLayout>
+                <Button Text="Change" x:Name="changePetButton" Style="{StaticResource NormalButton}" Clicked="changePetButton_ClickedAsync" />
+                <Button Text="Delete profile" Style="{StaticResource NormalButton}" x:Name="deletePetButton" Clicked="deletePetButton_ClickedAsync" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

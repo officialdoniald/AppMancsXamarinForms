@@ -23,7 +23,8 @@
                 <Entry 
                     x:Name="hashtagsEntry"
                     Placeholder="Hashtags (eg.: #beautiful)"
-                    Style="{StaticResource NormalEnrty}"/>
+                    Style="{StaticResource NormalEnrty}"
+                    Completed="Handle_Completed"/>
                 <Button
                     Text="Upload photo"
                     x:Name="addPhotoButton"

@@ -91,5 +91,10 @@ namespace AppMancsXamarinForms
         {
             selectedPetId = GlobalVariables.Mypetlist[petPicker.SelectedIndex].petid;
         }
+
+        async Task Handle_Completed(object sender, System.EventArgs e)
+        {
+            await addPhotoButton_ClickedAsync(this, new EventArgs());
+        }
     }
 }

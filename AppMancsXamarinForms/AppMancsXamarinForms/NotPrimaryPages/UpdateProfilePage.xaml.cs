@@ -63,7 +63,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             changeEmailButton.IsEnabled = true;
         }
 
-        private async void changepwButton_ClickedAsync(object sender, EventArgs e)
+        private async Task changepwButton_ClickedAsync(object sender, EventArgs e)
         {
             changepwButton.IsEnabled = false;
 
@@ -119,6 +119,16 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             profilePictureImage.Source = ImageSource.FromStream(() => file.GetStream());
         }
 
+        void Handle_CompletedOnOldPWEntry(object sender, System.EventArgs e)
+        {
+            newpwEntry.Focus();
+        }
+
+        async Task Handle_CompletedOnNewPWEntry(object sender, System.EventArgs e)
+        {
+            await changepwButton_ClickedAsync(this, new EventArgs());
+        }
+
         //private async void changeFaceookButton_ClickedAsync(object sender, EventArgs e)
         //{
         //    changeFaceookButton.IsEnabled = false;
@@ -129,5 +139,6 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         
         //    changeFaceookButton.IsEnabled = true;
         //}
+
     }
 }

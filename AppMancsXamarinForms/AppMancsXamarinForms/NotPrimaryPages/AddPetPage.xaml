@@ -4,14 +4,13 @@
         <ScrollView>
             <StackLayout Style="{StaticResource NormalStackLayout}">
                 <Button Text="Gallery" x:Name="galleryButton" Style="{StaticResource NormalButton}" Clicked="galleryButton_ClickedAsync" />
-                <Image x:Name="profilePictureImage" Aspect="AspectFit" Margin="0,20,0,0" HeightRequest="75">
-                </Image>
+                <Image x:Name="profilePictureImage" Aspect="AspectFit" Margin="0,20,0,0" HeightRequest="75" />
                 <Label Text="Name:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="nameEntry" Style="{StaticResource NormalEnrty}" />
+                <Entry x:Name="nameEntry" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnNameEntry"/>
                 <Label Text="Age:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="ageEntry" Keyboard="Numeric" Style="{StaticResource NormalEnrty}" />
+                <Entry x:Name="ageEntry" Keyboard="Numeric" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnAgeEntry"/>
                 <Label Text="Species:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="typeEntry" Style="{StaticResource NormalEnrty}" />
+                <Entry x:Name="typeEntry" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnTypeEntry"/>
                 <StackLayout Orientation="Horizontal">
                     <Switch x:Name="shelterpetSwitch" />
                     <Label Text="Shelter pet?:" Style="{StaticResource NormalLabel}" VerticalOptions="Center" />
