@@ -34,7 +34,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 await Navigation.PushModalAsync(new NavigationPage(page)
                 {
-                    Style = (Style)Resources["NavigationPageStyle"]
+                    Style = GlobalVariables.NavigationPageStyle
                 });
             }
             loguotButton.IsEnabled = true;
@@ -52,7 +52,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
             await Navigation.PushModalAsync(new NavigationPage(page)
             {
-                Style = (Style)Resources["NavigationPageStyle"]
+                Style = GlobalVariables.NavigationPageStyle
             });
 
             loguotButton.IsEnabled = true;

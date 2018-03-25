@@ -48,22 +48,22 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 {
                     if (!String.IsNullOrEmpty(hashtag))
                     {
-                        var hashtags = hashtag.Split(' ');
+                        var hashtags = hashtag.Trim().Split('#');
 
-                        bool asd = true;
+                        bool uploadedHashtag = true;
 
                         foreach (var item in hashtags)
                         {
-                            if (item[0] == '#')
+                            if (!string.IsNullOrEmpty(item))
                             {
                                 Hashtags ahashtag = new Hashtags();
 
-                                ahashtag.hashtag = item.Remove(0, 1);
+                                ahashtag.hashtag = item.Replace(" ", string.Empty);
                                 ahashtag.petpicturesid = success;
 
-                                asd = DependencyService.Get<IDBAccess.IBlobStorage>().InsertHashtags(ahashtag);
+                                uploadedHashtag = DependencyService.Get<IDBAccess.IBlobStorage>().InsertHashtags(ahashtag);
 
-                                if (!asd)
+                                if (!uploadedHashtag)
                                 {
                                     return English.SomethingWentWrong();
                                 }

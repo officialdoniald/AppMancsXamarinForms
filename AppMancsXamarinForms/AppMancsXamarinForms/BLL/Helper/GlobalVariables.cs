@@ -71,6 +71,9 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static string profilepng = "profile.png";
 
+        public static Style NormalLabel;
+        public static Style NavigationPageStyle;
+
         public static Stream f;
 
         public static string pathf = "";

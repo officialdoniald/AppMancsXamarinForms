@@ -37,28 +37,28 @@ namespace AppMancsXamarinForms
                 var navigationHomePage = new NavigationPage(homePage);
                 //navigationHomePage.Title = "Főmenü";
                 navigationHomePage.Icon = GlobalVariables.homepng;
-                navigationHomePage.Style = (Style)Resources["NavigationPageStyle"];
+                navigationHomePage.Style = GlobalVariables.NavigationPageStyle;
                 NavigationPage.SetHasNavigationBar(homePage, false);
 
                 var searchPage = new SearchPage();
                 var navigationSearchPage = new NavigationPage(searchPage);
                 //navigationSearchPage.Title = "Keresés";
                 navigationSearchPage.Icon = GlobalVariables.searchpng;
-                navigationHomePage.Style = (Style)Resources["NavigationPageStyle"];
+                navigationSearchPage.Style = GlobalVariables.NavigationPageStyle;
                 NavigationPage.SetHasNavigationBar(searchPage, false);
 
                 var uploadPhotoPage = new UploadPhotoPage();
                 var navigationUploadPhotoPage = new NavigationPage(uploadPhotoPage);
                 //navigationUploadPhotoPage.Title = "Fotó";
                 navigationUploadPhotoPage.Icon = GlobalVariables.camerapng;
-                navigationHomePage.Style = (Style)Resources["NavigationPageStyle"];
+                navigationUploadPhotoPage.Style = GlobalVariables.NavigationPageStyle;
                 NavigationPage.SetHasNavigationBar(uploadPhotoPage, false);
 
                 var myAccountPage = new MyAccountPage();
                 var navigationMyAccountPage = new NavigationPage(myAccountPage);
                 //navigationMyAccountPage.Title = "Fiók";
                 navigationMyAccountPage.Icon = GlobalVariables.profilepng;
-                navigationHomePage.Style = (Style)Resources["NavigationPageStyle"];
+                navigationMyAccountPage.Style = GlobalVariables.NavigationPageStyle;
                 NavigationPage.SetHasNavigationBar(myAccountPage, false);
 
                 Children.Add(navigationHomePage);

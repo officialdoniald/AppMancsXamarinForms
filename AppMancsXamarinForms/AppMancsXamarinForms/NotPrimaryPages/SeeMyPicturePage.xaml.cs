@@ -55,7 +55,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         Label hashtagLabel = new Label()
                         {
                             Text = item2,
-                            Style = (Style)Resources["NormalLabel"]
+                            Style = GlobalVariables.NormalLabel
                         };
 
                         var onHashtagClickedTap = new TapGestureRecognizer()

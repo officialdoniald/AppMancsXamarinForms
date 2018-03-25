@@ -9,6 +9,9 @@ namespace AppMancsXamarinForms
         public App()
         {
             InitializeComponent();
+
+            GlobalVariables.NormalLabel = (Style)Resources["NormalLabel"];
+            GlobalVariables.NavigationPageStyle = (Style)Resources["NavigationPageStyle"];
         }
 
         protected override void OnStart()
@@ -30,7 +33,7 @@ namespace AppMancsXamarinForms
                 var page = new AppMancsXamarinForms.LoginPage();
 
                 MainPage = new NavigationPage(page){
-                    Style = (Style)Resources["NavigationPageStyle"]
+                    Style = GlobalVariables.NavigationPageStyle
                 };
 
                 NavigationPage.SetHasNavigationBar(page, false);
