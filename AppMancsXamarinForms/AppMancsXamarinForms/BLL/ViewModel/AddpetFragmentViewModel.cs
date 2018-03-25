@@ -50,7 +50,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 GlobalVariables.AddedPet = true;
 
-                await GlobalVariables.LocalSQLiteDatabase.InsertMyPetsList(myPetList);
+                GlobalVariables.LocalSQLiteDatabase.InsertMyPetsList(myPetList);
                 
                 return English.Empty();
             }

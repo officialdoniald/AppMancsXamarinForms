@@ -280,7 +280,7 @@ namespace AppMancsXamarinForms.BLL.Helper
             {
                 var pet = ConvertPetToMyPetList(item);
 
-                var itit = LocalSQLiteDatabase.InsertMyPetsList(pet).Result;
+                LocalSQLiteDatabase.InsertMyPetsList(pet);
 
                 Mypetlist.Add(pet);
             }

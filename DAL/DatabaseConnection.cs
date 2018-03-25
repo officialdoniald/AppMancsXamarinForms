@@ -82,7 +82,8 @@ namespace DBAccess
                     "DELETE FROM [dbo].[Likes] WHERE UserID=@userid AND Petpicturesid=@petpicturesid;";
         public static string DELETE_Pet_SQL { get; } =
                     "DELETE FROM [dbo].[Favoritepets] WHERE petid=@id;" +
-            "DELETE FROM [dbo].[Pet] WHERE ID=@id;";
+                    "DELETE FROM [dbo].[Following] WHERE FUserID=@id;" +
+                    "DELETE FROM [dbo].[Pet] WHERE ID=@id;";
         public static string DELETE_Petpictures_SQL { get; } =
                     "DELETE FROM [dbo].[Following] WHERE userID=@userid;" +
                     "DELETE FROM [dbo].[Likes] WHERE Petpicturesid=@id;" +
@@ -94,7 +95,7 @@ namespace DBAccess
                     "DELETE FROM [dbo].[Petpictures] WHERE ID=@id;";
         public static string DELETE_Account_SQL { get; } =
                     "DELETE FROM [dbo].[Favoritepets] WHERE UserID=@UserID;" +
-                    "DELETE FROM [dbo].[Following] WHERE UserID=@UserID OR FUserID=@UserID;" +
+                    "DELETE FROM [dbo].[Following] WHERE UserID=@UserID;" +
                     "DELETE FROM [dbo].[User] WHERE id=@UserID;";
         public static string DELETE_Petpicutres_SQL { get; } =
                     "DELETE FROM [dbo].[Petpictures] WHERE PetID=@PetID;";
