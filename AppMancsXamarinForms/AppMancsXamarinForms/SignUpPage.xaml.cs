@@ -3,21 +3,48 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SignUpPage : ContentPage
     {
+        private string asd = "";
+
         public SignUpPage()
         {
             InitializeComponent();
         }
 
-        private async System.Threading.Tasks.Task signupButton_ClickedAsync(object sender, EventArgs e)
+        private async Task signupButton_ClickedAsync(object sender, EventArgs e)
         {
-            signupButton.IsEnabled = false;
-            uploadActivity.IsRunning = true;
+            await Task.Run(()=>{
+                Registration();
+            });
+
+            if (!String.IsNullOrEmpty(asd))
+            {
+                await DisplayAlert(English.Failed(), asd, English.OK());
+                uploadActivity.IsRunning = false;
+            }
+            else
+            {
+                string sentMail = DependencyService.Get<IMailerInj>().SendMail(emailEntry.Text, string.Empty);
+
+                await Navigation.PopToRootAsync();
+            }
+
+
+            signupButton.IsEnabled = true;
+            uploadActivity.IsRunning = false;
+        }
+
+        private void Registration(){
+            Device.BeginInvokeOnMainThread(() => {
+                signupButton.IsEnabled = false;
+                uploadActivity.IsRunning = true;
+            });
 
             User user = new User()
             {
@@ -30,21 +57,9 @@ namespace AppMancsXamarinForms
             };
 
             string success = GlobalVariables.signupPageViewModel.SignUp(user);
+            asd = success;
 
-            if (!String.IsNullOrEmpty(success))
-            {
-                await DisplayAlert(English.Failed(),success,English.OK());
-                uploadActivity.IsRunning = false;
-            }
-            else
-            {
-                string sentMail = DependencyService.Get<IMailerInj>().SendMail(emailEntry.Text,string.Empty);
 
-                await Navigation.PopToRootAsync();
-            }
-
-            signupButton.IsEnabled = true;
-            uploadActivity.IsRunning = false;
         }
 
         private async void loginFacebookButton_Clicked(object sender, EventArgs e)
