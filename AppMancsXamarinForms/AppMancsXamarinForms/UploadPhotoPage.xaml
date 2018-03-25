@@ -17,8 +17,8 @@
                 <Picker
                     x:Name="petPicker"
                     Title="My pets"
-                    TextColor="#FFCBB6"
                     VerticalOptions="Center"
+                    Style="{StaticResource NormalPicker}"
                     SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
                 <Entry 
                     x:Name="hashtagsEntry"
@@ -29,7 +29,7 @@
                     x:Name="addPhotoButton"
                     Clicked="addPhotoButton_ClickedAsync"
                     Style="{StaticResource NormalButton}"/>
-                <ActivityIndicator IsRunning="false" x:Name="uploadActivity"/>
+                <ActivityIndicator IsRunning="false" x:Name="uploadActivity" Style="{StaticResource NormalActivityIndicator}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

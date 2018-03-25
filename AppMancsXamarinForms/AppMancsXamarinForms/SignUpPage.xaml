@@ -21,6 +21,7 @@
                 <Label Text="Password:" Style="{StaticResource EntryAboveLabel}" />
                 <Entry x:Name="pwEntry" IsPassword="true" Style="{StaticResource NormalEnrty}" />
                 <Button Text="Sign up" x:Name="signupButton" Style="{StaticResource NormalButton}" Clicked="signupButton_ClickedAsync" />
+                <ActivityIndicator IsRunning="false" x:Name="uploadActivity" Style="{StaticResource NormalActivityIndicator}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

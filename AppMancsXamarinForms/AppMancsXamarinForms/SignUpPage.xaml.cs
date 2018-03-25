@@ -17,6 +17,7 @@ namespace AppMancsXamarinForms
         private async System.Threading.Tasks.Task signupButton_ClickedAsync(object sender, EventArgs e)
         {
             signupButton.IsEnabled = false;
+            uploadActivity.IsRunning = true;
 
             User user = new User()
             {
@@ -33,6 +34,7 @@ namespace AppMancsXamarinForms
             if (!String.IsNullOrEmpty(success))
             {
                 await DisplayAlert(English.Failed(),success,English.OK());
+                uploadActivity.IsRunning = false;
             }
             else
             {
@@ -42,6 +44,7 @@ namespace AppMancsXamarinForms
             }
 
             signupButton.IsEnabled = true;
+            uploadActivity.IsRunning = false;
         }
 
         private async void loginFacebookButton_Clicked(object sender, EventArgs e)
