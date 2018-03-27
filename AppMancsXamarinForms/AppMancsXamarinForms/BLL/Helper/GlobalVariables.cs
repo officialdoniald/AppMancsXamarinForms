@@ -89,10 +89,10 @@ namespace AppMancsXamarinForms.BLL.Helper
         public static SMTPUser SMTPUser = new SMTPUser()
         {
             SMTPCLientHost = "smtp.gmail.com",
-            SMTPEmail = "bence960206@gmail.com",
-            SMTPPassword = "96kEHTPp2o0206",
+            SMTPEmail = "*****",
+            SMTPPassword = "*****",
             SMTPServerPort = 587,
-            SMTPUsername = "bence960206"
+            SMTPUsername = "****"
         };
 
         /// <summary>
