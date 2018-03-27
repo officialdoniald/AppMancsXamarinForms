@@ -11,7 +11,7 @@ namespace DBAccess
 
         public static string ConnectionString { get; } =
             "Data Source=tcp:projektfifi.database.windows.net,1433;" +
-            "Initial Catalog=projektfifi;User ID=doniald@projektfifi;Password=96kEHTPp2o0206;";
+            "Initial Catalog=projektfifi;User ID=********;Password=*****;";
 
         #endregion
 
