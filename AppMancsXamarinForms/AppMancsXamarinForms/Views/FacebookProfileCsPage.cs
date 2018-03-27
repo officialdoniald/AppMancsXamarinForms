@@ -18,7 +18,7 @@ namespace FacebookLogin.Views
         /// Make sure to get a new ClientId from:
         /// https://developers.facebook.com/apps/
         /// </summary>
-        private string ClientId = "142251139871410";
+        private string ClientId = "*******";
 
         public FacebookProfileCsPage()
         {
