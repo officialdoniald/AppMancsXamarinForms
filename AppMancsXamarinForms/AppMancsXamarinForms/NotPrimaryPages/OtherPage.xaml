@@ -7,13 +7,13 @@
         <StackLayout
                 Style="{StaticResource NormalStackLayout}">
             <Button
-                Margin="0,25,0,0"
+                Margin="50,25,50,0"
                 Text="Delete my account"
                 Style="{StaticResource NormalButton}"
                 x:Name="deleteAcoountPageButton"
                 Clicked="deleteAcoountPageButton_ClickedAsync"/>
             <Button
-                Margin="0,25,0,0"
+                Margin="50,25,50,0"
                 Text="Logout"
                 Style="{StaticResource NormalButton}"
                 x:Name="loguotButton"

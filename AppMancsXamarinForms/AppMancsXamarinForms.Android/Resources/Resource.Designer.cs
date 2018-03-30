@@ -3931,16 +3931,19 @@ namespace AppMancsXamarinForms.Droid
 			public const int select_dialog_singlechoice_material = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int support_simple_spinner_dropdown_item = 2130903104;
+			public const int SplashScreenLayout = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int Tabbar = 2130903105;
+			public const int support_simple_spinner_dropdown_item = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int Toolbar = 2130903106;
+			public const int Tabbar = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int tooltip = 2130903107;
+			public const int Toolbar = 2130903107;
+			
+			// aapt resource value: 0x7f030044
+			public const int tooltip = 2130903108;
 			
 			static Layout()
 			{

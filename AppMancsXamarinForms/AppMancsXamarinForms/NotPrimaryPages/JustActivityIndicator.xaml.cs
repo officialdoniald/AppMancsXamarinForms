@@ -36,7 +36,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 GlobalVariables.InitializeUser();
 
-                GlobalVariables.Mypetlist = new List<LocalDB.MyPetsList>();
+                GlobalVariables.Mypetlist = new List<GlobalVariables.MyPetsList>();
 
                 GlobalVariables.GetMyPets();
 

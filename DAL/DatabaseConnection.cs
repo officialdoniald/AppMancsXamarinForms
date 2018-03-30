@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using AppMancsXamarinForms.BLL.Helper;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,7 +12,7 @@ namespace DBAccess
 
         public static string ConnectionString { get; } =
             "Data Source=tcp:projektfifi.database.windows.net,1433;" +
-            "Initial Catalog=projektfifi;User ID=********;Password=*****;";
+            "Initial Catalog=projektfifi;User ID=doniald@projektfifi;Password=" + GlobalVariables.pw + ";";
 
         #endregion
 

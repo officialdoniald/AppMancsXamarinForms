@@ -50,6 +50,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                     profilePictureImage.Source = thisPet.ProfilePictureURL == "" ? "" : ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
 
                     profilePictureImage.HeightRequest = optimalWidth;
+                    profilePictureImage.WidthRequest = optimalWidth;
                 });
                 int left = 0;
                 int top = 0;

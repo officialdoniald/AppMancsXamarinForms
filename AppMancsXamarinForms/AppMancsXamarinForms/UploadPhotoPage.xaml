@@ -1,36 +1,14 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMancsXamarinForms.UploadPhotoPage"
-             Title="Upload photo">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppMancsXamarinForms.UploadPhotoPage" Title="Upload photo">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout
-               Style="{StaticResource NormalStackLayout}">
-                <Button
-                    Text="Gallery"
-                    x:Name="galleryButton"
-                    Clicked="galleryButton_ClickedAsync"
-                    Style="{StaticResource NormalButton}"/>
-                <Image
-                    x:Name="pictureImage"/>
-                <Picker
-                    x:Name="petPicker"
-                    Title="My pets"
-                    VerticalOptions="Center"
-                    Style="{StaticResource NormalPicker}"
-                    SelectedIndexChanged="petPicker_SelectedIndexChanged"/>
-                <Entry 
-                    x:Name="hashtagsEntry"
-                    Placeholder="Hashtags (eg.: #beautiful)"
-                    Style="{StaticResource NormalEnrty}"
-                    Completed="Handle_Completed"/>
-                <Button
-                    Text="Upload photo"
-                    x:Name="addPhotoButton"
-                    Clicked="addPhotoButton_ClickedAsync"
-                    Style="{StaticResource NormalButton}"/>
-                <ActivityIndicator IsRunning="false" x:Name="uploadActivity" Style="{StaticResource NormalActivityIndicator}"/>
+            <StackLayout Style="{StaticResource NormalStackLayout}">
+                <Button Text="Gallery" x:Name="galleryButton" Clicked="galleryButton_ClickedAsync" Style="{StaticResource NormalButton}" />
+                <Image x:Name="pictureImage"/>
+                <Picker x:Name="petPicker" Title="My pets" VerticalOptions="Center" Style="{StaticResource NormalPicker}" SelectedIndexChanged="petPicker_SelectedIndexChanged" Margin="50,10,50,10"/>
+                <Entry x:Name="hashtagsEntry" Placeholder="Hashtags (eg.: #beautiful)" Style="{StaticResource NormalEnrty}" Completed="Handle_Completed" />
+                <Button Text="Upload photo" x:Name="addPhotoButton" Clicked="addPhotoButton_ClickedAsync" Style="{StaticResource NormalButton}" />
+                <ActivityIndicator IsRunning="false" x:Name="uploadActivity" Style="{StaticResource NormalActivityIndicator}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

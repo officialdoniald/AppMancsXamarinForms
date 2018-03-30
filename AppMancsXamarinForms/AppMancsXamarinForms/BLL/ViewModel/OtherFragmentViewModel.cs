@@ -24,7 +24,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 }
             }
 
-            GlobalVariables.Mypetlist = new System.Collections.Generic.List<LocalDB.MyPetsList>();
+            GlobalVariables.Mypetlist = new System.Collections.Generic.List<GlobalVariables.MyPetsList>();
 
             bool success = DependencyService.Get<IDBAccess.IBlobStorage>().DeleteAccount(GlobalVariables.ActualUser.id);
 

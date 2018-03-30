@@ -23,15 +23,15 @@ namespace AppMancsXamarinForms.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            //Custom iOS Tabbar Theme
-            UITabBar.Appearance.BarTintColor = new UIColor(red: 0.91f, green: 0.63f, blue: 0.57f, alpha: 1.0f);
-            UITabBar.Appearance.TintColor = UIColor.White;
-            UIProgressView.Appearance.TintColor = UIColor.LightGray;
+            //Custom iOS Tabbar Theme new UIColor(red: 0.91f, green: 0.63f, blue: 0.57f, alpha: 1.0f)
+            UITabBar.Appearance.BarTintColor = UIColor.White;
+            UITabBar.Appearance.TintColor = UIColor.Black;
+            UIProgressView.Appearance.TintColor = UIColor.LightTextColor;
 
             global::Xamarin.Forms.Forms.Init();
-            ImageCircleRenderer.Init();
 
             LoadApplication(new App());
+            ImageCircleRenderer.Init();
             // Set app theme
 
             return base.FinishedLaunching(app, options);

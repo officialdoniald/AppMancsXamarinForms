@@ -13,15 +13,15 @@
                 Text="Sign up with Facebook"
                 Clicked="loginFacebookButton_Clicked"/>-->
                 <Label Text="Last name:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="lastnameEntry" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnLastNameEntry"/>
+                <Entry x:Name="lastnameEntry" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnLastNameEntry" />
                 <Label Text="First name:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="firstnameEntry" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnFirstNameEntry"/>
+                <Entry x:Name="firstnameEntry" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnFirstNameEntry" />
                 <Label Text="E-Mail:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="emailEntry" Keyboard="Email" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnEmailEntry"/>
+                <Entry x:Name="emailEntry" Keyboard="Email" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnEmailEntry" />
                 <Label Text="Password:" Style="{StaticResource EntryAboveLabel}" />
-                <Entry x:Name="pwEntry" IsPassword="true" Style="{StaticResource NormalEnrty}"  Completed="Handle_CompletedOnPasswordEntry"/>
+                <Entry x:Name="pwEntry" IsPassword="true" Style="{StaticResource NormalEnrty}" Completed="Handle_CompletedOnPasswordEntry" />
                 <Button Text="Sign up" x:Name="signupButton" Style="{StaticResource NormalButton}" Clicked="signupButton_ClickedAsync" />
-                <ActivityIndicator IsRunning="false" x:Name="uploadActivity" Style="{StaticResource NormalActivityIndicator}"/>
+                <ActivityIndicator IsRunning="false" x:Name="uploadActivity" Style="{StaticResource NormalActivityIndicator}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

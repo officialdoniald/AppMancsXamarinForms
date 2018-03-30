@@ -18,8 +18,7 @@ namespace AppMancsXamarinForms.Droid
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            SetStatusBarColor(Android.Graphics.Color.Rgb(233,160,145));
-            
+
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);

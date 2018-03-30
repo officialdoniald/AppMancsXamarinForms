@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppMancsXamarinForms.BLL.Helper;
+using Plugin.Media.Abstractions;
 
 namespace AppMancsXamarinForms
 {
@@ -51,7 +52,7 @@ namespace AppMancsXamarinForms
                 return;
             }
 
-            var file = await CrossMedia.Current.PickPhotoAsync();
+            MediaFile file = await CrossMedia.Current.PickPhotoAsync();
 
             GlobalVariables.mediaFile = file;
 

@@ -1,33 +1,14 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMancsXamarinForms.SearchPage"
-             Title="Search hashtags">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AppMancsXamarinForms.SearchPage" Title="Search hashtags">
     <ContentPage.Content>
-        <StackLayout 
-            Margin="10,25,10,0">
-            <Entry
-                x:Name="searchEntry"
-                Placeholder="eg.:beautiful"
-                TextChanged="searchEntry_TextChanged"
-                Style="{StaticResource NormalEnrty}"/>
-                <ListView 
-                    ItemTapped="searchListView_ItemTapped"
-                    SeparatorVisibility="None"
-                    ItemsSource="{Binding searchModelList}" 
-                    x:Name="searchListView"
-                    IsPullToRefreshEnabled="true"
-                    Refreshing="Handle_Refreshing">
+        <StackLayout>
+            <Entry x:Name="searchEntry" Placeholder="eg.:beautiful" TextChanged="searchEntry_TextChanged" Style="{StaticResource NormalEnrty}" Margin="5,25,5,0" />
+            <ListView ItemTapped="searchListView_ItemTapped" SeparatorVisibility="None" ItemsSource="{Binding searchModelList}" Margin="5,0,5,0" x:Name="searchListView" IsPullToRefreshEnabled="true" Refreshing="Handle_Refreshing" BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid
-                                BackgroundColor="White">
-                                <Label 
-                                Text="{Binding hashtag}"
-                                HorizontalOptions="Start"
-                                VerticalOptions="Center"
-                                Style="{StaticResource NormalLabel}"/>
+                            <Grid BackgroundColor="White">
+                                <Label Text="{Binding hashtag}" HorizontalOptions="Start" VerticalOptions="Center" Style="{StaticResource NormalLabel}" Margin="5,0,5,0" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

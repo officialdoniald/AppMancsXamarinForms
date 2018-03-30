@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using AppMancsXamarinForms.BLL.ViewModel;
-using AppMancsXamarinForms.LocalDB;
 using FileStoringWithDependency.IFileStoreAndLoad;
 using Model;
 using Plugin.Media.Abstractions;
@@ -86,16 +85,18 @@ namespace AppMancsXamarinForms.BLL.Helper
         public static string databaseFileName = 
             "LocalDatabaseTable.db3";
 
+        public static string pw = "";
+
         /// <summary>
         /// The SMTP Mail server.
         /// </summary>
         public static SMTPUser SMTPUser = new SMTPUser()
         {
             SMTPCLientHost = "smtp.gmail.com",
-            SMTPEmail = "*****",
-            SMTPPassword = "*****",
+            SMTPEmail = "bence960206@gmail.com",
+            SMTPPassword = pw,
             SMTPServerPort = 587,
-            SMTPUsername = "****"
+            SMTPUsername = "bence960206"
         };
 
         /// <summary>
@@ -209,24 +210,6 @@ namespace AppMancsXamarinForms.BLL.Helper
         }
 
         /// <summary>
-        /// The local SQLite database.
-        /// </summary>
-        private static LocalDatabaseTable localSQLiteDatabase;
-
-        public static LocalDatabaseTable LocalSQLiteDatabase
-        {
-            get
-            //{if (localSQLiteDatabase == null)
-                //{
-                //    localSQLiteDatabase = new LocalDatabaseTable(DependencyService.Get<ILocalFileHelper>().GetLocalFilePath(databaseFileName));
-                //}
-
-                //return localSQLiteDatabase;
-                ;set;
-            //set => localSQLiteDatabase = value;
-        }
-
-        /// <summary>
         /// Initializes the user.
         /// </summary>
         public static void InitializeUser()
@@ -245,7 +228,17 @@ namespace AppMancsXamarinForms.BLL.Helper
 
                 if (!String.IsNullOrEmpty(ActualUsersEmail))
                 {
-                    HaveToLogin = false;
+                    User user = DependencyService.Get<BLL.IDBAccess.IBlobStorage>().GetUserByEmail(ActualUsersEmail);
+
+                    if (user is null)
+                    {
+                        HaveToLogin = true;
+                    }
+                    else
+                    {
+                        HaveToLogin = false;
+                    }
+
                 }else
                 {
                     HaveToLogin = true;
@@ -280,18 +273,6 @@ namespace AppMancsXamarinForms.BLL.Helper
 
                 Mypetlist.Add(pet);
             }
-        }
-
-        /// <summary>
-        /// Initializes the list of my pets.
-        /// </summary>
-        public static void InitializeTheMyPetList()
-        {
-            Mypetlist = new List<MyPetsList>();
-
-            Mypetlist = LocalSQLiteDatabase.GetMyPetsList().Result;
-
-            SetMyPetListString();
         }
 
         /// <summary>
@@ -352,112 +333,6 @@ namespace AppMancsXamarinForms.BLL.Helper
         }
 
         /// <summary>
-        /// Converts the pet pictures wall to petpictures.
-        /// </summary>
-        /// <returns>The pet pictures wall to petpictures.</returns>
-        /// <param name="petpicturesWall">Petpictures wall.</param>
-        public static Petpictures ConvertPetPicturesWallToPetpictures(PetpicturesWall petpicturesWall)
-        {
-            return new Petpictures()
-            {
-                id = petpicturesWall.petpicturesid,
-                PetID = petpicturesWall.PetID,
-                PictureURL = petpicturesWall.PictureURL,
-                UploadDate = petpicturesWall.UploadDate
-            };
-        }
-
-        /// <summary>
-        /// Converts the pet pictures to petpictures wall.
-        /// </summary>
-        /// <returns>The pet pictures to petpictures wall.</returns>
-        /// <param name="petpictures">Petpictures.</param>
-        public static PetpicturesWall ConvertPetPicturesToPetpicturesWall(Petpictures petpictures)
-        {
-            return new PetpicturesWall()
-            {
-                petpicturesid = petpictures.id,
-                PetID = petpictures.PetID,
-                PictureURL = petpictures.PictureURL, 
-                UploadDate = petpictures.UploadDate
-            };
-        }
-
-        /// <summary>
-        /// Converts my wall to wall list view adapter.
-        /// </summary>
-        /// <returns>The my wall to wall list view adapter.</returns>
-        /// <param name="myWall">My wall.</param>
-        public static WallListViewAdapter ConvertMyWallToWallListViewAdapter(MyWall myWall)
-        {
-            return new WallListViewAdapter()
-            {
-                profilepictureURL = ImageSource.FromUri(new Uri(myWall.profilepictureURL)),
-                pictureURL = ImageSource.FromUri(new Uri(myWall.pictureURL)),
-                hashtags = myWall.hashtags,
-                followButtonText = myWall.followButtonText,
-                petName = myWall.petName,
-                howManyLikes = myWall.howManyLikes,
-                wallItem = LocalSQLiteDatabase.GetWallItemById(myWall.wallItemid)
-            };
-        }
-
-        /// <summary>
-        /// Converts the wall list view adapter to my wall.
-        /// </summary>
-        /// <returns>The wall list view adapter to my wall.</returns>
-        /// <param name="wallListViewAdapter">Wall list view adapter.</param>
-        public static MyWall ConvertWallListViewAdapterToMyWall(WallListViewAdapter wallListViewAdapter)
-        {
-            return new MyWall()
-            {
-                profilepictureURL = wallListViewAdapter.profilepictureURL.ToString(),
-                pictureURL = wallListViewAdapter.pictureURL.ToString(),
-                hashtags = wallListViewAdapter.hashtags,
-                followButtonText = wallListViewAdapter.followButtonText,
-                petName = wallListViewAdapter.petName,
-                howManyLikes = wallListViewAdapter.howManyLikes,
-                wallItemid = wallListViewAdapter.wallItem.id
-            };
-        }
-
-        /// <summary>
-        /// Converts the wall item to wall.
-        /// </summary>
-        /// <returns>The wall item to wall.</returns>
-        /// <param name="wallItem">Wall item.</param>
-        public static Wall ConvertWallItemToWall(WallItem wallItem)
-        {
-            return new Wall()
-            {
-                id = wallItem.id,
-                howmanylikes = wallItem.howmanylikes,
-                haveILiked = wallItem.haveILiked,
-                name = wallItem.name,
-                ProfilePictureURL = wallItem.ProfilePictureURL,
-                petpictures = LocalSQLiteDatabase.GetPetpicturesWallById(wallItem.petpicturesid)
-            };
-        }
-
-        /// <summary>
-        /// Converts the wall to wall item.
-        /// </summary>
-        /// <returns>The wall to wall item.</returns>
-        /// <param name="wall">Wall.</param>
-        public static WallItem ConvertWallToWallItem(Wall wall)
-        {
-            return new WallItem()
-            {
-                howmanylikes = wall.howmanylikes,
-                haveILiked = wall.haveILiked,
-                name = wall.name,
-                ProfilePictureURL = wall.ProfilePictureURL, 
-                petpicturesid = wall.petpictures.id
-            };
-        }
-
-
-        /// <summary>
         /// Event handler when connection changes
         /// </summary>
         static event ConnectivityChangedEventHandler ConnectivityChanged; 
@@ -469,6 +344,25 @@ namespace AppMancsXamarinForms.BLL.Helper
         }
 
         public delegate void ConnectivityChangedEventHandler(object sender, ConnectivityChangedEventArgs e);
+
+        public class MyPetsList
+        {
+            public int id { get; set; }
+
+            public int petid { get; set; }
+
+            public string Name { get; set; }
+
+            public int Age { get; set; }
+
+            public string PetType { get; set; }
+
+            public int HaveAnOwner { get; set; }
+
+            public int Uploader { get; set; }
+
+            public string ProfilePictureURL { get; set; }
+        }
     }
 
 }

@@ -43,6 +43,7 @@ namespace AppMancsXamarinForms
             var optimalWidth = currentWidth / 3;
 
             profilePictureImage.HeightRequest = optimalWidth;
+            profilePictureImage.WidthRequest = optimalWidth;
 
             listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
 

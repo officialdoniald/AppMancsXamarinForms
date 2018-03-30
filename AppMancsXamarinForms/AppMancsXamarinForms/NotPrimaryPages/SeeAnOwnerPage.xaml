@@ -3,7 +3,19 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Style="{StaticResource NormalStackLayout}">
-                <Image x:Name="profilePictureImage" Aspect="AspectFit"/>
+                <!--<Image x:Name="profilePictureImage" Aspect="AspectFit"/>-->
+                <controls:CircleImage x:Name="profilePictureImage" HorizontalOptions="Center" Source="{Binding profilePictureImage}" Aspect="AspectFill">
+                    <controls:CircleImage.WidthRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.WidthRequest>
+                    <controls:CircleImage.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android, iOS">75</On>
+                        </OnPlatform>
+                    </controls:CircleImage.HeightRequest>
+                </controls:CircleImage>
                 <Label x:Name="userNameLabel" Style="{StaticResource NormalLabel}" />
                 <Label Text="Pets:" Style="{StaticResource NormalLabel}" />
                 <StackLayout x:Name="petsStackLayout" Orientation="Vertical" HorizontalOptions="Center">

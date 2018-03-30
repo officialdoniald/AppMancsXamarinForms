@@ -1,5 +1,6 @@
 ﻿using AppMancsXamarinForms.BLL.Helper;
 using AppMancsXamarinForms.BLL.ViewModel;
+using ImageCircle.Forms.Plugin.Abstractions;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
 
                         profilePictureImage.HeightRequest = optimalWidth;
+                        profilePictureImage.WidthRequest = optimalWidth;
                     });
                 }
 
@@ -69,12 +71,23 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                             Orientation = StackOrientation.Vertical
                         };
 
-                        Image petProfilePictureImage = new Image()
+                        //Image petProfilePictureImage = new Image()
+                        //{
+                        //    Source = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
+                        //    HeightRequest = optimalWidth,
+                        //    Aspect = Aspect.AspectFill,
+                        //    HorizontalOptions = LayoutOptions.Center
+                        //};
+
+                        CircleImage petProfilePictureImage = new CircleImage
                         {
-                            Source = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
+                            //BorderColor = Color.White,
+                            //BorderThickness = 0,
                             HeightRequest = optimalWidth,
+                            WidthRequest = optimalWidth,
                             Aspect = Aspect.AspectFill,
-                            HorizontalOptions = LayoutOptions.Center
+                            HorizontalOptions = LayoutOptions.Center,
+                            Source = ImageSource.FromUri(new Uri(item.ProfilePictureURL)),
                         };
 
                         Label petNameLabel = new Label()

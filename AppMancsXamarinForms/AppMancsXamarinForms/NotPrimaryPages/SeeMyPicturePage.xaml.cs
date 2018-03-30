@@ -21,6 +21,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
         Pet thisPet = new Pet();
 
+        Thickness Thickness = new Thickness();
+
         Petpictures petpictures = new Petpictures();
 
         public SeeMyPicturePage(Petpictures petpictures)
@@ -28,6 +30,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
             this.petpictures = petpictures;
 
             InitializeComponent();
+
+            Thickness.Bottom = 0;
+            Thickness.Left = 0;
+            Thickness.Right = 0;
+            Thickness.Top = 0;
 
             Initialize();
         }
@@ -55,7 +62,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                         Label hashtagLabel = new Label()
                         {
                             Text = item2,
-                            Style = GlobalVariables.NormalLabel
+                            Style = GlobalVariables.NormalLabel,
+                            Margin = Thickness
                         };
 
                         var onHashtagClickedTap = new TapGestureRecognizer()
