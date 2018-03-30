@@ -70,10 +70,10 @@ namespace AppMancsXamarinForms
                 wallListView.IsRefreshing = false;
             });
 
-            if (wallList.Count == 0 && Device.OS == TargetPlatform.Android)
-            {
-                wallListView.IsRefreshing = false;
-            }
+            //if (wallList.Count == 0 && Device.OS == TargetPlatform.Android)
+            //{
+            //    wallListView.IsRefreshing = false;
+            //}
         }
 
         async void Handle_Refreshing(object sender, System.EventArgs e)

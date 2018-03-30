@@ -17,7 +17,7 @@
                     </controls:CircleImage.HeightRequest>
                 </controls:CircleImage>
                 <Label x:Name="userNameLabel" Style="{StaticResource NormalLabel}" />
-                <Label Text="Pets:" Style="{StaticResource NormalLabel}" />
+                <Label Text="Pets:" Style="{StaticResource NormalLabel}" Margin="50,25,50,10"/>
                 <StackLayout x:Name="petsStackLayout" Orientation="Vertical" HorizontalOptions="Center">
                 </StackLayout>
             </StackLayout>
