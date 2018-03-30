@@ -51,7 +51,13 @@
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Button Style="{StaticResource NormalButton}" Margin="0,0,0,0" Grid.Column="3" Grid.Row="0" x:Name="deleteButton" Text="Delete" Clicked="deleteButton_ClickedAsync" VerticalOptions="Center" HorizontalOptions="End" />
+                    <!--<Button Style="{StaticResource NormalButton}" Margin="0,0,0,0" Grid.Column="3" Grid.Row="0" x:Name="deleteButton" Text="Delete" Clicked="deleteButton_ClickedAsync" VerticalOptions="Center" HorizontalOptions="End" />-->
+                    <Image Source="delete.png" Margin="0,0,0,0" Grid.Column="3" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="deleteButton_ClickedAsync">
+                            </TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
                 </Grid>
                 <Image x:Name="pictureImage" Aspect="AspectFit" />
                 <StackLayout x:Name="mainStackLayout" Orientation="Horizontal" Margin="15,0,15,0">

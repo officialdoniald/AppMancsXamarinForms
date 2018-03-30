@@ -15,6 +15,10 @@
             <Style TargetType="NavigationPage" x:Key="NavigationPageStyle">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource AppBarColor}" />
                 <Setter Property="BarTextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <Style TargetType="ContentPage" x:Key="ContentPageStyle">
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
             <Style TargetType="Entry" x:Key="NormalEnrty">
                 <Setter Property="TextColor" Value="{StaticResource AppColor}" />
