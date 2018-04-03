@@ -25,7 +25,7 @@ namespace AppMancsXamarinForms.iOS
         {
             //Custom iOS Tabbar Theme new UIColor(red: 0.91f, green: 0.63f, blue: 0.57f, alpha: 1.0f)
             UITabBar.Appearance.BarTintColor = UIColor.White;
-            UITabBar.Appearance.TintColor = UIColor.Black;
+            UITabBar.Appearance.TintColor = new UIColor(red: 0.91f, green: 0.63f, blue: 0.57f, alpha: 1.0f);
             UIProgressView.Appearance.TintColor = UIColor.LightTextColor;
 
             global::Xamarin.Forms.Forms.Init();

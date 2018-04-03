@@ -204,7 +204,7 @@
     <Compile Include="LocalFilePath\LocalFileHelper.cs" />
     <Compile Include="CustomRenderers\ExtendedViewCellRenderer.cs" />
     <Compile Include="MailerInj\MailerInj.cs" />
-    <Compile Include="SplashScreen.cs" />
+    <Compile Include="Properties\SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -217,6 +217,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\layout\SplashScreenLayout.axml" />
+    <AndroidResource Include="Resources\drawable\Icontwo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
