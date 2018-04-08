@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
 using ImageCircle.Forms.Plugin.Droid;
+using System.Threading.Tasks;
 
 namespace AppMancsXamarinForms.Droid
 {
@@ -16,13 +17,13 @@ namespace AppMancsXamarinForms.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            base.OnCreate(bundle);
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.OnCreate(bundle);
-
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            ImageCircleRenderer.Init();
+            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
             LoadApplication(new App());
         }
 
@@ -30,6 +31,8 @@ namespace AppMancsXamarinForms.Droid
         {
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        public override void OnBackPressed() { }
     }
 }
 

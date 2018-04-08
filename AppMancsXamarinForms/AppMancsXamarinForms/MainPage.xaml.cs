@@ -63,6 +63,7 @@ namespace AppMancsXamarinForms
 
                 Children.Add(navigationHomePage);
                 Children.Add(navigationSearchPage);
+                //Children.Add(navigationlostPetPagePage);
                 Children.Add(navigationUploadPhotoPage);
                 Children.Add(navigationMyAccountPage);
             });
