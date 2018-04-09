@@ -206,6 +206,7 @@
     <Compile Include="MailerInj\MailerInj.cs" />
     <Compile Include="Properties\SplashScreen.cs" />
     <Compile Include="SplashScreenActivity.cs" />
+    <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -221,6 +222,7 @@
     <AndroidResource Include="Resources\drawable\Icontwo.png" />
     <AndroidResource Include="Resources\drawable\finalylogo.png" />
     <AndroidResource Include="Resources\drawable\explore.png" />
+    <AndroidResource Include="Resources\drawable\loginbackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -275,9 +277,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\IndieFlower.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />

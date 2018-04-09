@@ -137,6 +137,7 @@
     <Compile Include="LostPetPage.xaml.cs">
       <DependentUpon>LostPetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\CustomEntry.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">

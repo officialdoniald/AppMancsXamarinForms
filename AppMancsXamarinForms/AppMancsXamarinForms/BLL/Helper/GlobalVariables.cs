@@ -58,9 +58,9 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static string logintxt = "login.txt";
 
-        public static string likepng = "like.png";
+        public static string likepng = "unlike.png";
 
-        public static string unlikepng = "unlike.png";
+        public static string unlikepng = "like.png";
 
         public static string homepng = "home.png";
 

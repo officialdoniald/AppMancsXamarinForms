@@ -8,6 +8,16 @@
     <ImageView
         android:id="@+id/iconpic"
         android:src="@drawable/finalylogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="1000px" />
+    <TextView
+        android:id="@+id/copiurl"
+        android:text="Copiright @ Chara by officialdoniald"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:gravity="center" />
 </LinearLayout>

@@ -116,6 +116,7 @@
     <Compile Include="CustomRenderers\ExtendedVievCellRenderer.cs" />
     <Compile Include="MailerInj\MailerInj.cs" />
     <None Include="Entitlements.plist" />
+    <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
@@ -152,6 +153,7 @@
     <BundleResource Include="Resources\logo.png" />
     <BundleResource Include="Resources\finalylogo.png" />
     <BundleResource Include="Resources\mostjo.png" />
+    <BundleResource Include="Resources\loginbackground.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
