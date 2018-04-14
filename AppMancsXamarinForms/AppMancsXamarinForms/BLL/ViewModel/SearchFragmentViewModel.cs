@@ -27,6 +27,12 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
             SearchModel searchModel = new SearchModel();
 
+            searchModelList.Add(new SearchModel()
+            {
+                hashtag = "#all",
+                petpicturesList = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetpictures()
+            });
+
             foreach (var item in hastagsordered)
             {
                 foreach (var item1 in item)
@@ -70,5 +76,27 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             return searchablelist;
         }
 
+        public List<Petpictures> GetPetpictures()
+        {
+            List<Petpictures> petpicturelist = DependencyService.Get<IDBAccess.IBlobStorage>().GetPetpictures();
+
+            return ShuffleList<Petpictures>(petpicturelist);
+        }
+
+        private List<E> ShuffleList<E>(List<E> inputList)
+        {
+            List<E> randomList = new List<E>();
+
+            Random r = new Random();
+            int randomIndex = 0;
+            while (inputList.Count > 0)
+            {
+                randomIndex = r.Next(0, inputList.Count); //Choose a random object in the list
+                randomList.Add(inputList[randomIndex]); //add it to the new, random list
+                inputList.RemoveAt(randomIndex); //remove to avoid duplicates
+            }
+
+            return randomList; //return the new random list
+        }
     }
 }

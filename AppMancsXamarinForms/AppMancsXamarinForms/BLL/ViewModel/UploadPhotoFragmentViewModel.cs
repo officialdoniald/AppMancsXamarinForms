@@ -29,7 +29,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             {
                 string uniqueBlobName = await DependencyService.Get<IBlobStorage.IBlobStorage>().UploadFileAsync(pathf, f);
 
-                uniqueBlobName = "https://officialdoniald.blob.core.windows.net/appmancs/" + uniqueBlobName;
+                uniqueBlobName = GlobalVariables.blobstorageurl + uniqueBlobName;
 
                 Petpictures petpictures = new Petpictures()
                 {

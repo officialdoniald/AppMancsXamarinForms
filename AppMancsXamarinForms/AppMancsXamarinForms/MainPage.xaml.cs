@@ -47,6 +47,13 @@ namespace AppMancsXamarinForms
                 navigationSearchPage.Style = GlobalVariables.NavigationPageStyle;
                 NavigationPage.SetHasNavigationBar(searchPage, false);
 
+                var peopleSearchPage = new PeopleSearchPage();
+                var navigationPeopleSearchPage = new NavigationPage(peopleSearchPage);
+                //navigationMyAccountPage.Title = "Fiók";
+                navigationPeopleSearchPage.Icon = GlobalVariables.peoplepng;
+                navigationPeopleSearchPage.Style = GlobalVariables.NavigationPageStyle;
+                NavigationPage.SetHasNavigationBar(peopleSearchPage, false);
+
                 var uploadPhotoPage = new UploadPhotoPage();
                 var navigationUploadPhotoPage = new NavigationPage(uploadPhotoPage);
                 //navigationUploadPhotoPage.Title = "Fotó";
@@ -63,7 +70,7 @@ namespace AppMancsXamarinForms
 
                 Children.Add(navigationHomePage);
                 Children.Add(navigationSearchPage);
-                //Children.Add(navigationlostPetPagePage);
+                Children.Add(navigationPeopleSearchPage);
                 Children.Add(navigationUploadPhotoPage);
                 Children.Add(navigationMyAccountPage);
             });

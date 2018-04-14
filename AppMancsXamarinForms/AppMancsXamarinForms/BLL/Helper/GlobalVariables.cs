@@ -56,7 +56,12 @@ namespace AppMancsXamarinForms.BLL.Helper
         public static SeePictureFragmentViewModel seePictureFragmentViewModel =
             new SeePictureFragmentViewModel();
 
+        public static PeopleSearchPageViewModel peopleSearchPageViewModel =
+            new PeopleSearchPageViewModel();
+
         public static string logintxt = "login.txt";
+
+        public static string peoplepng = "people.png";
 
         public static string likepng = "unlike.png";
 
@@ -87,7 +92,7 @@ namespace AppMancsXamarinForms.BLL.Helper
         public static string databaseFileName = 
             "LocalDatabaseTable.db3";
 
-        public static string pw = "";
+        public static string pw = "*******";
 
         /// <summary>
         /// The SMTP Mail server.

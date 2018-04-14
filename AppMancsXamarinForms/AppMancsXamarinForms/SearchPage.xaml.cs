@@ -18,20 +18,55 @@ namespace AppMancsXamarinForms
     {
         List<SearchModel> searchModelList = new List<SearchModel>();
 
+        private double currentWidth = 0;
+        private double optimalWidth = 0;
+
         public SearchPage()
         {
             InitializeComponent();
 
+            hashtagsListStackLayout.IsVisible = false;
+            randomPicturesStackLayout.IsVisible = true;
+
             searchListView.IsRefreshing = true;
 
+            InitializeThePetPictures();
             FirstTime();
         }
 
-        private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var list = GlobalVariables.searchFragmentViewModel.GetSearchModelWithKeyword(searchEntry.Text.ToLower(), searchModelList);
+		protected override void OnAppearing()
+		{
+            base.OnAppearing();
 
-            searchListView.ItemsSource = list;
+            if (GlobalVariables.IsPictureDeleted)
+            {
+                searchListView.IsRefreshing = true;
+
+                searchListView.ItemsSource = new List<SearchModel>();
+
+                FirstTime();
+
+                GlobalVariables.IsPictureDeleted = false;
+            }
+
+            InitializeThePetPictures();
+        }
+
+		private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (searchEntry.Text.Length > 0)
+            {
+                hashtagsListStackLayout.IsVisible = true;
+                randomPicturesStackLayout.IsVisible = false;
+                
+                var list = GlobalVariables.searchFragmentViewModel.GetSearchModelWithKeyword(searchEntry.Text.ToLower(), searchModelList);
+
+                searchListView.ItemsSource = list;
+            }else
+            {
+                hashtagsListStackLayout.IsVisible = false;
+                randomPicturesStackLayout.IsVisible = true;
+            }
         }
 
         private void searchListView_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -71,5 +106,66 @@ namespace AppMancsXamarinForms
                 SetTheListView();
             });
         }
+
+        private async Task InitializeThePetPictures()
+        {
+            await Task.Run(() =>
+            {
+                List<Petpictures> petpicturesList = GlobalVariables.searchFragmentViewModel.GetPetpictures();
+
+                currentWidth = Application.Current.MainPage.Width;
+
+                optimalWidth = currentWidth / 3;
+
+                int left = 0;
+                int top = 0;
+
+                int i = 1;
+
+                foreach (var item in petpicturesList)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Image image = new Image();
+
+                        image.Source = ImageSource.FromUri(new Uri(item.PictureURL));
+
+                        image.HeightRequest = optimalWidth;
+
+                        image.GestureRecognizers.Add(new TapGestureRecognizer()
+                        {
+                            NumberOfTapsRequired = 1,
+                            TappedCallback = delegate
+                            {
+                                OnPictureClicked(item);
+                            }
+                        });
+
+                        image.Aspect = Aspect.AspectFill;
+
+                        pictureListGrid.Children.Add(image, top, left);
+
+                        if (i == 3)
+                        {
+                            left++;
+                            i = 1;
+                            top = 0;
+                        }
+                        else
+                        {
+                            i++;
+                            top++;
+                        }
+                    });
+                }
+            });
+        }
+
+        public void OnPictureClicked(Petpictures petpictures)
+        {
+            Navigation.PushAsync(new SeeMyPicturePage(petpictures));
+        }
+
+
     }
 }

@@ -223,6 +223,7 @@
     <AndroidResource Include="Resources\drawable\finalylogo.png" />
     <AndroidResource Include="Resources\drawable\explore.png" />
     <AndroidResource Include="Resources\drawable\loginbackground.jpg" />
+    <AndroidResource Include="Resources\drawable\people.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

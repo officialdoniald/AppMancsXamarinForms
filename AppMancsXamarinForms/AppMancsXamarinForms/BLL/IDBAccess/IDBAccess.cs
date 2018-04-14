@@ -23,6 +23,8 @@ namespace AppMancsXamarinForms.BLL.IDBAccess
 
         List<Hashtags> GetHashtags();
 
+        List<User> GetUsersByKeyword(string keyword);
+
         #endregion
 
         #region GetByIDFunctions

@@ -21,9 +21,9 @@ xmlns="http://xamarin.com/schemas/2014/forms"
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
+            <Button BorderColor="White" TextColor="White" x:Name="loginButton" Style="{StaticResource NormalButton}" Text="Login" Clicked="loginButton_Clicked" />
             <ActivityIndicator Color="White" x:Name="loginActivator" IsRunning="false" Style="{StaticResource NormalActivityIndicator}">
             </ActivityIndicator>
-            <Button BorderColor="White" TextColor="White" x:Name="loginButton" Style="{StaticResource NormalButton}" Text="Login" Clicked="loginButton_Clicked" />
             <Label Text="Are you not a member yet?" Style="{StaticResource NormalLabel}" TextColor="White"/>
             <Button BorderColor="White" TextColor="White" x:Name="signUpButton" Style="{StaticResource NormalButton}" Text="Sign up" Clicked="signUpButton_Clicked" />
         </StackLayout>

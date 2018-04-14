@@ -154,6 +154,7 @@
     <BundleResource Include="Resources\finalylogo.png" />
     <BundleResource Include="Resources\mostjo.png" />
     <BundleResource Include="Resources\loginbackground.jpg" />
+    <BundleResource Include="Resources\people.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

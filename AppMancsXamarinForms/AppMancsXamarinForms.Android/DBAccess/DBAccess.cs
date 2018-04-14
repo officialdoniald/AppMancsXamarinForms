@@ -52,6 +52,11 @@ namespace AppMancsXamarinForms.Droid.DBAccess
             return databaseConnections.GetHashtags();
         }
 
+        public List<User> GetUsersByKeyword(string keyword)
+        {
+            return databaseConnections.GetUsersByKeyword(keyword);
+        }
+
         #endregion
 
         #region GetByIDFunctions

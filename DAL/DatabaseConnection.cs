@@ -32,10 +32,12 @@ namespace DBAccess
         public static string GET_Petpictures_SQL { get; } =
                      "SELECT * FROM [dbo].[Petpictures]";
         public static string GET_Following_SQL { get; } =
-                     "SELECT * FROM [dbo].[Following]";
+                    "SELECT * FROM [dbo].[Following]";
         public static string GET_HASHTAGS_SQL { get; } =
                     "SELECT * FROM [dbo].[Hashtags]";
-
+        public static string GET_USERSBYKEYWORD_SQL { get; } =
+            //"SELECT * FROM [dbo].[User] Where FirstName LIKE " + '%' + "@keyword" + '%' + " OR LastName= LIKE "+'%'+"@keyword"+'%';
+            "SELECT id,Email,FirstName,LastName,ProfilePicture FROM [dbo].[User]";
         //GETBYID
         public static string GET_USERBYEMAIL_SQL { get; } =
                     "SELECT * FROM [dbo].[User] WHERE EMAIL=@EMAIL";
@@ -513,6 +515,52 @@ namespace DBAccess
                     }
                 }
                 return hashtags;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public List<User> GetUsersByKeyword(string keyword)
+        {
+            List<User> users = new List<User>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(ConnectionString))
+                using (SqlCommand cmd = new SqlCommand(GET_USERSBYKEYWORD_SQL, conn))
+                {
+                    conn.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        if (reader != null)
+                        {
+                            while (reader.Read())
+                            {
+                                User user = new User();
+
+                                user.id = reader.GetInt32(reader.GetOrdinal("id"));
+                                user.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
+                                user.LastName = reader.GetString(reader.GetOrdinal("LastName"));
+                                user.Email = reader.GetString(reader.GetOrdinal("Email"));
+                                try
+                                {
+                                    user.ProfilePictureURL = reader.GetString(reader.GetOrdinal("ProfilePicture"));
+                                }
+                                catch (Exception)
+                                {
+                                    user.ProfilePictureURL = null;
+                                }
+
+                                users.Add(user);
+                            }
+                        }
+                    }
+                }
+                return users;
             }
             catch (Exception)
             {

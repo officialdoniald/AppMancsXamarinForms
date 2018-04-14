@@ -56,22 +56,22 @@ namespace AppMancsXamarinForms
 
 		private async Task galleryButton_ClickedAsync(object sender, EventArgs e)
 		{
-			if (!CrossMedia.Current.IsPickPhotoSupported)
-			{
-				await DisplayAlert(English.Failed(), English.NoPicking(), English.OK());
-				return;
-			}
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await DisplayAlert(English.Failed(), English.NoPicking(), English.OK());
+                return;
+            }
 
-			var file = await CrossMedia.Current.PickPhotoAsync();
+            var file = await CrossMedia.Current.PickPhotoAsync();
 
-			GlobalVariables.mediaFile = file;
+            GlobalVariables.mediaFile = file;
 
-			if (file == null) return;
+            if (file == null) return;
 
-			GlobalVariables.f = file.GetStream();
-			GlobalVariables.pathf = file.Path;
-         
-			pictureImage.Source = ImageSource.FromStream(() => GlobalVariables.f);
+            GlobalVariables.f = file.GetStream();
+            GlobalVariables.pathf = file.Path;
+
+            pictureImage.Source = ImageSource.FromStream(() => file.GetStream());
 
 			asdx = true;
 		}
@@ -92,6 +92,7 @@ namespace AppMancsXamarinForms
 			{
 				GlobalVariables.AddedPhoto = true;
 
+                await Navigation.PopToRootAsync();
 				await Navigation.PushAsync(new SeeMyPetProfile(selectedPetId));
 			}
 
