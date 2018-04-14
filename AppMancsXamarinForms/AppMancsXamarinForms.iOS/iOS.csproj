@@ -29,7 +29,7 @@
     <MtouchDebug>true</MtouchDebug>
     <MtouchI18n>west</MtouchI18n>
 <CodesignKey>iPhone Developer: Bence Lenart (K67PT7R4SU)</CodesignKey>
-<CodesignProvision>VS: com.yourcompany.AppMancsXamarinForms Development</CodesignProvision>
+<CodesignProvision>VS: com.officialdoniald.petbellies Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -40,7 +40,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignProvision>VS: com.yourcompany.AppMancsXamarinForms Development</CodesignProvision>
+    <CodesignProvision>VS: com.officialdoniald.petbellies Development</CodesignProvision>
     <CodesignKey>iPhone Developer: Bence Lenart (K67PT7R4SU)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -53,7 +53,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Bence Lenart (K67PT7R4SU)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <BuildIpa>true</BuildIpa>
@@ -61,7 +61,8 @@
 <MtouchSdkVersion>11.3</MtouchSdkVersion>
 <IOSDebugOverWiFi>true</IOSDebugOverWiFi>
 <MtouchLink>None</MtouchLink>
-<CodesignProvision>VS: com.yourcompany.AppMancsXamarinForms Development</CodesignProvision>
+<CodesignProvision>VS: com.officialdoniald.petbellies Development</CodesignProvision>
+<AssemblyName>PetBellies</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -73,7 +74,8 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer: Bence Lenart (K67PT7R4SU)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>VS: com.yourcompany.AppMancsXamarinForms Development</CodesignProvision>
+    <CodesignProvision>VS: com.officialdoniald.petbellies Development</CodesignProvision>
+<AssemblyName>PetBellies</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -84,9 +86,10 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>VS: com.yourcompany.AppMancsXamarinForms Development</CodesignProvision>
+    <CodesignProvision>VS: com.officialdoniald.petbellies Development</CodesignProvision>
     <CodesignKey>iPhone Developer: Bence Lenart (K67PT7R4SU)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+<AssemblyName>PetBellies</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -96,9 +99,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignProvision>VS: com.yourcompany.AppMancsXamarinForms Development</CodesignProvision>
+    <CodesignProvision>VS: com.officialdoniald.petbellies Development</CodesignProvision>
     <CodesignKey>iPhone Developer: Bence Lenart (K67PT7R4SU)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+<AssemblyName>PetBellies</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BlobStorage\BlobStorage.cs" />

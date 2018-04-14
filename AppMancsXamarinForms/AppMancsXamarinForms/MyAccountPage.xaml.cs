@@ -19,15 +19,17 @@ namespace AppMancsXamarinForms
             InitializeComponent();
 
             userNameLabel.Text = GlobalVariables.ActualUser.FirstName + " " + GlobalVariables.ActualUser.LastName;
-
-            if(!String.IsNullOrEmpty(GlobalVariables.ActualUser.ProfilePictureURL))
-            {
-                profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
-            }
         }
 
         protected override void OnAppearing()
         {
+            var currentWidth = Application.Current.MainPage.Width;
+
+            var optimalWidth = currentWidth / 3;
+
+            profilePictureImage.HeightRequest = optimalWidth;
+            profilePictureImage.WidthRequest = optimalWidth;
+            
             if (!String.IsNullOrEmpty(GlobalVariables.ActualUser.ProfilePictureURL))
             {
                 profilePictureImage.Source = ImageSource.FromUri(new Uri(GlobalVariables.ActualUser.ProfilePictureURL));
@@ -37,13 +39,6 @@ namespace AppMancsXamarinForms
             }
 
             userNameLabel.Text = GlobalVariables.ActualUser.FirstName + " " + GlobalVariables.ActualUser.LastName;
-
-            var currentWidth = Application.Current.MainPage.Width;
-
-            var optimalWidth = currentWidth / 3;
-
-            profilePictureImage.HeightRequest = optimalWidth;
-            profilePictureImage.WidthRequest = optimalWidth;
 
             listViewWithPictureAndSomeText = new List<ListViewWithPictureAndSomeText>();
 

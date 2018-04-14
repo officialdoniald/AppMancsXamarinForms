@@ -3,10 +3,10 @@
 xmlns:customControls="clr-namespace:AppMancsXamarinForms.CustomControls;assembly=AppMancsXamarinForms"
 xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppMancsXamarinForms.LoginPage" Title="AppMancs">
+             x:Class="AppMancsXamarinForms.LoginPage" Title="PetBellies">
     <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
         <StackLayout Style="{StaticResource NormalStackLayout}">
-            <Label Style="{StaticResource LogoAboveText}" Text="Chara" TextColor="White" />
+            <Label Style="{StaticResource LogoAboveText}" Text="PetBellies" TextColor="White" />
             <!--                <Image Style="{StaticResource Logo}" Source="logo.jpg" />-->
             <!--<Button x:Name="loginFacebookButton" Style="{StaticResource FacebookButton}" Text="Login with Facebook" Clicked="loginFacebookButton_Clicked" />
                 <Label Text="or" Style="{StaticResource NormalLabel}" />-->

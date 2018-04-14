@@ -49,10 +49,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                     petnameLabel.Text = thisPet.Name;
 
-                    profilePictureImage.Source = thisPet.ProfilePictureURL == "" ? "" : ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
-
                     profilePictureImage.HeightRequest = optimalWidth;
                     profilePictureImage.WidthRequest = optimalWidth;
+
+                    profilePictureImage.Source = thisPet.ProfilePictureURL == "" ? "" : ImageSource.FromUri(new Uri(thisPet.ProfilePictureURL));
                 });
 
                 HaveIAlreadyFollow = GlobalVariables.petProfileFragmentViewModel.HaveIAlreadyFollow(GlobalVariables.ActualUsersEmail, petid);

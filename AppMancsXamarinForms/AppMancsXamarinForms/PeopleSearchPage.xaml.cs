@@ -83,7 +83,7 @@ namespace AppMancsXamarinForms
 
         private void SetList()
         {
-            if (searchEntry.Text.Length >= 3 && isItFinished)
+            if (!String.IsNullOrEmpty(searchEntry.Text) && searchEntry.Text.Length >= 3 && isItFinished)
             {
                 Device.BeginInvokeOnMainThread(()=>
                 {
@@ -91,16 +91,20 @@ namespace AppMancsXamarinForms
                 });
 
                 userListView.ItemsSource = GlobalVariables.peopleSearchPageViewModel.GetUserByKeyWord(searchEntry.Text, userJustWithPicAndName);
-
-                Device.BeginInvokeOnMainThread(() => 
-                {
-                    userListView.IsRefreshing = false;
-                });
+            }else
+            {
+                userListView.ItemsSource = userJustWithPicAndName;
             }
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                userListView.IsRefreshing = false;
+            });
         }
 
-        void Handle_Refreshing(object sender, System.EventArgs e)
+        async void Handle_Refreshing(object sender, System.EventArgs e)
         {
+            await Initialize();
+            
             SetList();
         }
     }

@@ -45,7 +45,7 @@ namespace AppMancsXamarinForms.BLL.Helper
 
         public static string AppName()
         {
-            return "AppMancs";
+            return "PetBellies";
         }
 
         public static string BadOldPassword()

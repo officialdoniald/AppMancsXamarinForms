@@ -92,7 +92,7 @@ namespace AppMancsXamarinForms.BLL.Helper
         public static string databaseFileName = 
             "LocalDatabaseTable.db3";
 
-        public static string pw = "*******";
+        public static string pw = "96kEHTPp2o0206";
 
         /// <summary>
         /// The SMTP Mail server.

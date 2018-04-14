@@ -44,10 +44,10 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                         optimalWidth = currentWidth / 3;
 
-                        profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
-
                         profilePictureImage.HeightRequest = optimalWidth;
                         profilePictureImage.WidthRequest = optimalWidth;
+
+                        profilePictureImage.Source = ImageSource.FromUri(new Uri(user.ProfilePictureURL));
                     });
                 }
 

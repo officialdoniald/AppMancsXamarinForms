@@ -10,7 +10,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
     {
         public List<User> GetUserWithKeyword(string keyword)
         {
-            return DependencyService.Get<IDBAccess.IBlobStorage>().GetUsersByKeyword(keyword);
+            return ShuffleList<User>(DependencyService.Get<IDBAccess.IBlobStorage>().GetUsersByKeyword(keyword));
         }
 
         public List<UserJustWithPicAndName> GetUserByKeyWord(string keyword, List<UserJustWithPicAndName> users)
@@ -32,6 +32,23 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
 
             return searchablelist;
+        }
+
+
+        private List<E> ShuffleList<E>(List<E> inputList)
+        {
+            List<E> randomList = new List<E>();
+
+            Random r = new Random();
+            int randomIndex = 0;
+            while (inputList.Count > 0)
+            {
+                randomIndex = r.Next(0, inputList.Count); //Choose a random object in the list
+                randomList.Add(inputList[randomIndex]); //add it to the new, random list
+                inputList.RemoveAt(randomIndex); //remove to avoid duplicates
+            }
+
+            return randomList; //return the new random list
         }
     }
 }
