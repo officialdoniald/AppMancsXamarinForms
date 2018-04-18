@@ -111,6 +111,13 @@ namespace AppMancsXamarinForms
         {
             await Task.Run(() =>
             {
+                Device.BeginInvokeOnMainThread(() => {
+
+                    pictureListGrid.Children.Clear();
+                });
+
+                SetTheListView();
+
                 List<Petpictures> petpicturesList = GlobalVariables.searchFragmentViewModel.GetPetpictures();
 
                 currentWidth = Application.Current.MainPage.Width;
@@ -163,7 +170,16 @@ namespace AppMancsXamarinForms
 
         public void OnPictureClicked(Petpictures petpictures)
         {
-            Navigation.PushAsync(new SeeMyPicturePage(petpictures));
+            var isThisMyPet = GlobalVariables.Mypetlist.Where(u => u.petid == petpictures.PetID).FirstOrDefault();
+
+            if (isThisMyPet is null)
+            {
+                Navigation.PushAsync(new SeeAPicturePage(petpictures));
+            }
+            else
+            {
+                Navigation.PushAsync(new SeeMyPicturePage(petpictures));
+            }
         }
 
 

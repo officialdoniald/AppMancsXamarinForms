@@ -105,6 +105,9 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
         public bool DeletePicture(Petpictures petpictures)
         {
+            string asd = petpictures.PictureURL.Remove(0, GlobalVariables.blobstorageurl.Length);
+            DependencyService.Get<IBlobStorage.IBlobStorage>().DeleteFileAsync(asd);
+
             return DependencyService.Get<IDBAccess.IBlobStorage>().DeletePetpictures(petpictures);
         }
     }

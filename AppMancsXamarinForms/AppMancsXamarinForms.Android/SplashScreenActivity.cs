@@ -6,7 +6,7 @@ using Android.OS;
 
 namespace AppMancsXamarinForms.Droid
 {
-    [Activity(Label = "Chara", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "PetBellies", Icon = "@drawable/icon", Theme = "@style/MainTheme",NoHistory = false, MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class SplashScreenActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

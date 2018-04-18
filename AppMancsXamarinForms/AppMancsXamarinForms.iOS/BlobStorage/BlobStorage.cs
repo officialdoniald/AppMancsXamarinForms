@@ -51,5 +51,16 @@ namespace AppMancsXamarinForms.iOS.BlobStorage
 
             return uniqueBlobName;
         }
+
+        public async Task<bool> DeleteFileAsync(string name)
+        {
+            CloudBlobClient cloudBlobClient = CloudStorageAccount
+               .Parse(connectionString)
+               .CreateCloudBlobClient();
+            
+            invmeContainer = cloudBlobClient.GetContainerReference("appmancs");
+            var blob = invmeContainer.GetBlobReference(name);
+            return await blob.DeleteIfExistsAsync();
+        }
     }
 }

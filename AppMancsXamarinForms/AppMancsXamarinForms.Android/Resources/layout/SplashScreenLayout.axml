@@ -14,7 +14,7 @@
         android:layout_marginBottom="1000px" />
     <TextView
         android:id="@+id/copiurl"
-        android:text="Copiright @ Chara by officialdoniald"
+        android:text="Copiright @ PetBellies 2018"
         android:layout_height="wrap_content"
         android:layout_width="fill_parent"
         android:textColor="@android:color/white"

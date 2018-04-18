@@ -12,5 +12,7 @@ namespace AppMancsXamarinForms.BLL.IBlobStorage
         Task<List<Uri>> GetAllBlobUrisAsync();
 
         Task<string> UploadFileAsync(string filepath, Stream file);
+
+        Task<bool> DeleteFileAsync(string name);
     }
 }
