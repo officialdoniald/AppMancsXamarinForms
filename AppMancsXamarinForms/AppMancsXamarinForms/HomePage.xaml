@@ -50,7 +50,7 @@
                                     </TapGestureRecognizer>
                                 </Label.GestureRecognizers>
                             </Label>
-                            <Image HorizontalOptions="Center" Aspect="AspectFit" Source="{Binding pictureURL}" Grid.Row="1" Grid.ColumnSpan="4">
+                            <Image Style="{StaticResource FillImageStyle}" Source="{Binding pictureURL}" Grid.Row="1" Grid.ColumnSpan="4">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="Button_Clicked_2" />
                                 </Image.GestureRecognizers>
@@ -67,7 +67,7 @@
                                 </Image.GestureRecognizers>
                             </Image>
                             <Label Text="{Binding hashtags}" Margin="5,0,0,5" Style="{StaticResource NormalLabel}" HorizontalOptions="Start" VerticalOptions="Center" Grid.Row="2" Grid.ColumnSpan="4" />
-                        </Grid>
+                       </Grid>
                     </customControls:ExtendedViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

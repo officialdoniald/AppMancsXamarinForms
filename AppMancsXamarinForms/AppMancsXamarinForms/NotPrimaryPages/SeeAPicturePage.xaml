@@ -57,7 +57,7 @@
                         </Label.GestureRecognizers>
                     </Label>
                 </Grid>
-                <Image x:Name="pictureImage" Aspect="AspectFit">
+                <Image x:Name="pictureImage" Style="{StaticResource FillImageStyle}">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="likeOrNotButton_ClickedAsync" />
                     </Image.GestureRecognizers>

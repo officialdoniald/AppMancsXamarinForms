@@ -20,6 +20,17 @@
             <Style TargetType="ContentPage" x:Key="ContentPageStyle">
                 <Setter Property="BackgroundColor" Value="White" />
             </Style>
+            <Style TargetType="Image" x:Key="FillImageStyle">
+                <Setter Property="VerticalOptions" Value="Fill" />
+                <Setter Property="Aspect" Value="AspectFill" />
+                <Setter Property="HeightRequest" Value="400" />
+            </Style>
+
+            <!--<Style TargetType="Image" x:Key="FillImageStyle">
+                <Setter Property="VerticalOptions" Value="Fill" />
+                <Setter Property="HorizontalOptions" Value="Fill" />
+                <Setter Property="Aspect" Value="Fill" />
+            </Style>-->
             <Style TargetType="Entry" x:Key="NormalEnrty">
                 <Setter Property="TextColor" Value="{StaticResource AppColor}" />
                 <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
