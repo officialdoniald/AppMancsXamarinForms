@@ -43,6 +43,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    followersLabel.Text = GlobalVariables.followersViewModel.GetUserList(this.petid).Count + " followers";
+
                     currentWidth = Application.Current.MainPage.Width;
 
                     optimalWidth = currentWidth / 3;
@@ -149,6 +151,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         public void OnPictureClicked(Petpictures petpictures)
         {
             Navigation.PushAsync(new SeeAPicturePage(petpictures));
+        }
+
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new FollowersPage(thisPet.id));
         }
     }
 }

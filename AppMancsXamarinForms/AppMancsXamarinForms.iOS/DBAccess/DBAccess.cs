@@ -118,9 +118,9 @@ namespace AppMancsXamarinForms.iOS.DBAccess
             return databaseConnections.GetOnePetpicturesByID(ID);
         }
 
-        public List<Following> GetFollowingByfuserID(int userID, int petid)
+        public List<Following> GetFollowingByfuserID(int petid)
         {
-            return databaseConnections.GetFollowingByfuserID(userID, petid);
+            return databaseConnections.GetFollowingByfuserID(petid);
         }
 
         public List<Following> GetFollowingByuserID(int userID)

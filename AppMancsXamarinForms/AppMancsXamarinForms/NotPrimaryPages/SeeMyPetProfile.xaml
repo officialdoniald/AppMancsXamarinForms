@@ -18,6 +18,11 @@
                     </controls:CircleImage.HeightRequest>
                 </controls:CircleImage>
                 <Label x:Name="petnameLabel" Style="{StaticResource NormalLabel}" />
+                <Label x:Name="followersLabel" Style="{StaticResource NormalLabel}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="Handle_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
                 <Button x:Name="updateButton" Clicked="updateButton_Clicked" Text="Change" Style="{StaticResource NormalButton}" />
                 <Grid x:Name="pictureListGrid" Style="{StaticResource ThreePicInOneRow}">
                     <Grid.ColumnDefinitions>

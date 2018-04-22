@@ -41,6 +41,8 @@ namespace AppMancsXamarinForms.NotPrimaryPages
                 petPictureListfromDB = GlobalVariables.petProfileFragmentViewModel.GetPetPictureURL(petid);
                 Device.BeginInvokeOnMainThread(() =>
                 {
+                    followersLabel.Text = GlobalVariables.followersViewModel.GetUserList(this.petid).Count + " followers";
+
                     currentWidth = Application.Current.MainPage.Width;
 
                     optimalWidth = currentWidth / 3;
@@ -109,6 +111,11 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         private void updateButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new UpdatePetProfilePage(thisPet.id));
+        }
+
+        void Handle_Tapped(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new FollowersPage(thisPet.id));
         }
     }
 }

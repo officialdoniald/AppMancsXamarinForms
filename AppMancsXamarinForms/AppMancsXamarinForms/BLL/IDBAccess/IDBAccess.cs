@@ -53,7 +53,7 @@ namespace AppMancsXamarinForms.BLL.IDBAccess
 
         Petpictures GetOnePetpicturesByID(int ID);
 
-        List<Following> GetFollowingByfuserID(int userID, int petid);
+        List<Following> GetFollowingByfuserID(int petid);
 
         List<Following> GetFollowingByuserID(int userID);
 

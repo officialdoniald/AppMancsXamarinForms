@@ -59,6 +59,9 @@ namespace AppMancsXamarinForms.BLL.Helper
         public static PeopleSearchPageViewModel peopleSearchPageViewModel =
             new PeopleSearchPageViewModel();
 
+        public static FollowersViewModel followersViewModel =
+            new FollowersViewModel();
+
         public static string logintxt = "login.txt";
 
         public static string peoplepng = "people.png";

@@ -145,6 +145,10 @@
     <Compile Include="PrivaciPolicyPage.xaml.cs">
       <DependentUpon>PrivaciPolicyPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotPrimaryPages\FollowersPage.xaml.cs">
+      <DependentUpon>FollowersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\ViewModel\FollowersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -172,6 +176,10 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Include="PrivaciPolicyPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotPrimaryPages\FollowersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

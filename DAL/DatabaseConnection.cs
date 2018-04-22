@@ -1056,7 +1056,7 @@ namespace DBAccess
             }
         }
 
-        public List<Following> GetFollowingByfuserID(int userID, int petid)
+        public List<Following> GetFollowingByfuserID(int petid)
         {
             List<Following> followings = null;
 
@@ -1072,6 +1072,8 @@ namespace DBAccess
 
                         if (reader != null)
                         {
+                            followings = new List<Following>();
+
                             while (reader.Read())
                             {
                                 Following following = new Following();
