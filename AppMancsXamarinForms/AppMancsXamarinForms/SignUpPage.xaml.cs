@@ -87,5 +87,25 @@ namespace AppMancsXamarinForms
         //    await Navigation.PushAsync(new FacebookLogin.Views.FacebookProfileCsPage());
         //}
 
+        async Task Handle_TappedAsync(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new TermsAndCondPage());
+        }
+
+        async Task Handle_Tapped2(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new PrivaciPolicyPage());
+        }
+
+        void Handle_Toggled(object sender, Xamarin.Forms.ToggledEventArgs e)
+        {
+            if (imover13Switch.IsToggled)
+            {
+                signupButton.IsEnabled = true;
+            }else
+            {
+                signupButton.IsEnabled = false;
+            }
+        }
     }
 }

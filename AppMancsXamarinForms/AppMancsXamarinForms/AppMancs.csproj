@@ -134,14 +134,17 @@
       <DependentUpon>NoConnection.xaml</DependentUpon>
     </Compile>
     <Compile Include="BLL\Helper\IMailerInj.cs" />
-    <Compile Include="LostPetPage.xaml.cs">
-      <DependentUpon>LostPetPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\CustomEntry.cs" />
     <Compile Include="PeopleSearchPage.xaml.cs">
       <DependentUpon>PeopleSearchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="BLL\ViewModel\PeopleSearchPageViewModel.cs" />
+    <Compile Include="TermsAndCondPage.xaml.cs">
+      <DependentUpon>TermsAndCondPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrivaciPolicyPage.xaml.cs">
+      <DependentUpon>PrivaciPolicyPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -160,11 +163,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="LostPetPage.xaml">
+    <EmbeddedResource Include="PeopleSearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="PeopleSearchPage.xaml">
+    <EmbeddedResource Include="TermsAndCondPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrivaciPolicyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
