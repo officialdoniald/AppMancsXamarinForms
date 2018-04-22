@@ -52,20 +52,18 @@ namespace AppMancsXamarinForms
             InitializeThePetPictures();
         }
 
-		private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
+		private async void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (searchEntry.Text.Length > 0)
             {
-                hashtagsListStackLayout.IsVisible = true;
-                randomPicturesStackLayout.IsVisible = false;
-                
                 var list = GlobalVariables.searchFragmentViewModel.GetSearchModelWithKeyword(searchEntry.Text.ToLower(), searchModelList);
 
                 searchListView.ItemsSource = list;
             }else
             {
-                hashtagsListStackLayout.IsVisible = false;
-                randomPicturesStackLayout.IsVisible = true;
+                await Task.Run(() => {
+                    SetTheListView();
+                });
             }
         }
 
@@ -183,5 +181,19 @@ namespace AppMancsXamarinForms
         }
 
 
+        void Handle_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            hashtagsListStackLayout.IsVisible = true;
+            randomPicturesStackLayout.IsVisible = false;
+        }
+
+        void Handle_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if (String.IsNullOrEmpty(searchEntry.Text))
+            {
+                hashtagsListStackLayout.IsVisible = false;
+                randomPicturesStackLayout.IsVisible = true;
+            }
+        }
     }
 }
