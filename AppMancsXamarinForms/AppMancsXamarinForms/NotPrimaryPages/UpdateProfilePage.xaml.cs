@@ -49,7 +49,7 @@ namespace AppMancsXamarinForms.NotPrimaryPages
         {
             changeEmailButton.IsEnabled = false;
             
-            string success = GlobalVariables.updateProfileFragmentViewModel.UpdateEmail(emailEntry.Text);
+            string success = await GlobalVariables.updateProfileFragmentViewModel.UpdateEmailAsync(emailEntry.Text);
 
             if (!String.IsNullOrEmpty(success))
             {

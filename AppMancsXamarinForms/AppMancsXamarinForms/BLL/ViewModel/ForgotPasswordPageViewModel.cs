@@ -3,6 +3,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -14,7 +15,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
         private Segédfüggvények segédfüggvények =
             new Segédfüggvények();
 
-        public string SendEmail(string EMAIL)
+        public async Task<string> SendEmailAsync(string EMAIL)
         {
             if (String.IsNullOrEmpty(EMAIL))
             {
@@ -39,9 +40,15 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 return English.SomethingWentWrong();
             }
 
-            string sentMail = DependencyService.Get<IMailerInj>().SendMail(user.Email,user.Password);
+            //string sentMail = DependencyService.Get<IMailerInj>().SendMail(user.Email,user.Password);
 
-            return sentMail;
+            string url = String.Format("http://petbellies.com/php/petbelliesforgotp.php?email={0}&nev={1}&pw={2}", EMAIL, user.FirstName,user.Password);
+            Uri uri = new Uri(url);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "GET";
+            WebResponse res = await request.GetResponseAsync();
+
+            return string.Empty;
         }
     }
 }

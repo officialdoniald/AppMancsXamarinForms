@@ -76,7 +76,7 @@ namespace AppMancsXamarinForms
                 user.ProfilePictureURL = await GlobalVariables.signupPageViewModel.UploadFileAsync(GlobalVariables.pathf, GlobalVariables.f);
             }
 
-            string success = GlobalVariables.signupPageViewModel.SignUp(user);
+            string success = await GlobalVariables.signupPageViewModel.SignUpAsync(user);
 
             if (!String.IsNullOrEmpty(success))
             {

@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using AppMancsXamarinForms.BLL.Helper;
+using System.Net;
+using FileStoringWithDependency.IFileStoreAndLoad;
 
 namespace AppMancsXamarinForms.BLL.ViewModel
 {
@@ -28,13 +30,13 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             }
         }
 
-        public string UpdateEmail(string newEmail)
+        public async Task<string> UpdateEmailAsync(string newEmail)
         {
             if (GlobalVariables.ActualUser.Email == newEmail)
             {
                 return English.ThisEmailIsYourEmail();
             }
-            if (String.IsNullOrEmpty(newEmail))
+            if (!String.IsNullOrEmpty(newEmail))
             {
                 GlobalVariables.ActualUser.Email = newEmail;
 
@@ -46,6 +48,16 @@ namespace AppMancsXamarinForms.BLL.ViewModel
                 }
                 else
                 {
+                    GlobalVariables.ActualUsersEmail = GlobalVariables.ActualUser.Email;
+
+                    string url = String.Format("http://petbellies.com/php/petbellieschangeemail.php?email={0}&nev={1}", GlobalVariables.ActualUser.Email, GlobalVariables.ActualUser.FirstName);
+                    Uri uri = new Uri(url);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                    request.Method = "GET";
+                    WebResponse res = await request.GetResponseAsync();
+
+                    DependencyService.Get<IFileStoreAndLoad>().SaveText(GlobalVariables.logintxt,GlobalVariables.ActualUsersEmail);
+
                     return UpdateUser(GlobalVariables.ActualUser);
                 }
 

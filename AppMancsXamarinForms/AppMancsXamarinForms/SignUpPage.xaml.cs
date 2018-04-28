@@ -20,7 +20,7 @@ namespace AppMancsXamarinForms
         private async Task signupButton_ClickedAsync(object sender, EventArgs e)
         {
             await Task.Run(()=>{
-                Registration();
+                RegistrationAsync();
             });
 
             if (!String.IsNullOrEmpty(asd))
@@ -39,7 +39,7 @@ namespace AppMancsXamarinForms
             uploadActivity.IsRunning = false;
         }
 
-        private void Registration(){
+        private async Task RegistrationAsync(){
             
             Device.BeginInvokeOnMainThread(() => {
                 signupButton.IsEnabled = false;
@@ -56,7 +56,7 @@ namespace AppMancsXamarinForms
                 ProfilePictureURL = ""
             };
 
-            string success = GlobalVariables.signupPageViewModel.SignUp(user);
+            string success = await GlobalVariables.signupPageViewModel.SignUpAsync(user);
             asd = success;
         }
 
@@ -77,7 +77,10 @@ namespace AppMancsXamarinForms
 
         async Task Handle_CompletedOnPasswordEntry(object sender, System.EventArgs e)
         {
-            await signupButton_ClickedAsync(this, new EventArgs());
+            if (signupButton.IsEnabled)
+            {
+                await signupButton_ClickedAsync(this, new EventArgs());
+            }
         }
 
         //private async void loginFacebookButton_Clicked(object sender, EventArgs e)

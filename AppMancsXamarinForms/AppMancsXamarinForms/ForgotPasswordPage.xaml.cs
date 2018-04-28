@@ -17,7 +17,7 @@ namespace AppMancsXamarinForms
 
         private async System.Threading.Tasks.Task sendNewPassword_ClickedAsync(object sender, EventArgs e)
         {
-            string success = GlobalVariables.forgotPasswordPageViewModel.SendEmail(emailEntry.Text);
+            var success = await  GlobalVariables.forgotPasswordPageViewModel.SendEmailAsync(emailEntry.Text);
 
             if (String.IsNullOrEmpty(success))
             {

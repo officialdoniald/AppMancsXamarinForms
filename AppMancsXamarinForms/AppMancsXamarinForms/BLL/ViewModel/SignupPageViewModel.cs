@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -21,7 +22,7 @@ namespace AppMancsXamarinForms.BLL.ViewModel
             return uniqueBlobName;
         }
 
-        public string SignUp(User user)
+        public async Task<string> SignUpAsync(User user)
         {
             if (String.IsNullOrEmpty(user.Email) || String.IsNullOrEmpty(user.FirstName) ||
                 String.IsNullOrEmpty(user.LastName) || String.IsNullOrEmpty(user.Password))
@@ -43,6 +44,12 @@ namespace AppMancsXamarinForms.BLL.ViewModel
 
                 if (success)
                 {
+                    string url = String.Format("http://petbellies.com/php/petbelliesreg.php?email={0}&nev={1}", user.Email, user.FirstName);
+                    Uri uri = new Uri(url);
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                    request.Method = "GET";
+                    WebResponse res = await request.GetResponseAsync();
+                    
                     return English.Empty();
                 }
             }
